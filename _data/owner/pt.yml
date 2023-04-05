@@ -2,13 +2,13 @@
 # Owner's Personal Information
 ###########################################################
 # This is your brand name
-brand: "Sua Marca"
+brand: "Deborah Barbedo"
 
 # text below the brand name
 brand_sub_text: "$site_sample"
 
 # used for seo meta post author (if it's not defined in post)
-name: "Seu Nome"
+name: "Deborah Cholodoysky Barbedo Pereira"
 
 # home page top header texts
 home:
@@ -48,9 +48,9 @@ meta_common_description: "Descrição Meta."
 # the order of the items will be shown as here.
 # comment to remove any contact item
 contacts:
-  #- github: ""
-  #- email: ""
-  #- linkedin: ""
+  - github: "https://github.com/DeborahBarbedo"
+  - email: "deborahbarbedo@gmail.com"
+  - linkedin: "https://www.linkedin.com/in/deborah-pereira-a67072145/"
   #- twitter: ""
   #- mastodon: ""
   #- instagram: ""
