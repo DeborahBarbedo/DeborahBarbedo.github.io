@@ -2,7 +2,7 @@
 # Owner's Personal Information
 ###########################################################
 # This is your brand name
-brand: "Deborah Barbedo"
+brand: "Deborah"
 
 # text below the brand name
 brand_sub_text: "$site_sample"
@@ -48,9 +48,9 @@ meta_common_description: "Your meta description."
 # the order of the items will be shown as here.
 # comment to remove any contact item
 contacts:
-  - github: "https://github.com/DeborahBarbedo"
-  - email: "deborahbarbedo@gmail.com"
-  - linkedin: "https://www.linkedin.com/in/deborah-pereira-a67072145/?locale=en_US"
+  - github: "DeborahBarbedo"
+  #- email: "deborahbarbedo@gmail.com"
+  - linkedin: "in/deborah-pereira-a67072145/?locale=en_US"
   #- twitter: ""
   #- mastodon: ""
   #- instagram: ""

@@ -42,7 +42,8 @@ lng_pair: id_links
 page_data:
   main:
     header: "Links"
-    info: "Uma descrição para sua página de links."
+    info: "Nesta página, você encontrará uma lista de links úteis para ajudá-lo(a) a aprimorar suas habilidades em machine learning, análise de dados e estatística.
+Não hesite em explorar nossa lista de links úteis e encontrar os recursos que melhor se adequam às suas necessidades. Estou sempre adicionando novos recursos, portanto, verifique frequentemente esta página para encontrar as atualizações mais recentes. Boa sorte em sua jornada de aprendizado!"
 
   # To change order of the Categories, simply change order. (you don't need to change list order.)
   category:
