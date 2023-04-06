@@ -53,13 +53,13 @@ language_switch_top_nav: false
 brand_replace: "$site_brand"
 
 # replace text with data.lang[language].constants.greeting
-greetings_replace: "$site_greetings"
+greetings_replace: "Teste aqui greetings" # "$site_greetings"
 
 # replace text with data.lang[language].constants.welcome
-welcome_replace: "$site_welcome"
+welcome_replace: "teste aqui welcome" #"$site_welcome"
 
 # replace text with data.lang[language].constants.sample
-sample_replace: "$site_sample"
+sample_replace: "teste aqui sample" #"$site_sample"
 
 ###########################################################
 #                Search
