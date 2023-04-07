@@ -40,5 +40,6 @@ img: ":about.jpg"
 
 {%- include util/auto-content-generator.liquid -%}
 {{ website_info_text_first }}
-
+&emsp;Apresentando algumas das ferramentas e conhecimentos necessários para explorar o poder dos dados através de Estatística e Aprendizado de Máquina.
 {{ website_info_text_second }}
+
