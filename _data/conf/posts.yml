@@ -178,7 +178,7 @@ comments:
     # emit-metadata options: 0, 1
     emit-metadata: 0
     # input-position options: top, bottom
-    input-position: bottom
+    input-position: top
     # theme-light options:
     # light, light_high_contrast, light_protanopia, light_tritanopia, preferred_color_scheme
     theme-light: light_protanopia
