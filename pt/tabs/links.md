@@ -42,8 +42,7 @@ lng_pair: id_links
 page_data:
   main:
     header: "Links"
-    info: "Nesta página, você encontrará uma lista de links úteis para ajudá-lo(a) a aprimorar suas habilidades em machine learning, análise de dados e estatística.
-Não hesite em explorar nossa lista de links úteis e encontrar os recursos que melhor se adequam às suas necessidades. Estou sempre adicionando novos recursos, portanto, verifique frequentemente esta página para encontrar as atualizações mais recentes. Boa sorte em sua jornada de aprendizado!"
+    info: "É um prazer compartilhar com você uma lista de links que podem ajudá-lo(a) a aprimorar suas habilidades em machine learning, análise de dados e estatística. Sinta-se à vontade para explorar os recursos disponíveis e escolher aqueles que melhor se adequam às suas necessidades. Além disso, atualizo regularmente essa lista com novos recursos, então lembre-se de voltar aqui de vez em quando para ficar por dentro das atualizações mais recentes. Desejo-lhe boa sorte em sua jornada de aprendizado e estou sempre disponível para ajudar caso precise de algum suporte ou orientação."
 
   # To change order of the Categories, simply change order. (you don't need to change list order.)
   category:
@@ -63,7 +62,7 @@ Não hesite em explorar nossa lista de links úteis e encontrar os recursos que 
     - type: id_programming
       title: "Stack OverFlow"
       url: "https://stackoverflow.com/"
-      info: "Stack Overflow é um site voltado para perguntas e respostas para professionais e entusiastas da programação."
+      info: "Stack Overflow é um site voltado para perguntas e respostas para profissionais e entusiastas da programação."
 
     # jekyiiliquid
     - type: id_jekyiiliquid
@@ -85,11 +84,11 @@ Não hesite em explorar nossa lista de links úteis e encontrar os recursos que 
     - type: id_jekyiiliquid
       title: "Referências de Liquid"
       url: "https://shopify.dev/api/liquid/"
-      info: "Liquid é uma linguagem modelo create pelo Shopify e escrita em Ruby. Ela, agora, está disponível em código aberto no GitHub."
+      info: "Liquid é uma linguagem modelo criado pelo Shopify e escrita em Ruby. Ela, agora, está disponível em código aberto no GitHub."
 
     # webdesign
     - type: id_webdesign
       title: "W3Schools"
       url: "https://www.w3schools.com/"
-      info: "W3Schools oferece tutoriais gratuitos, referências e exercícios nas linguagens mais importantes da web, cobrindo a mais populares como HTML, CSS, JavaScript, Python, SQL, Java e mutio mais."
+      info: "W3Schools oferece tutoriais gratuitos, referências e exercícios nas linguagens mais importantes da web, cobrindo a mais populares como HTML, CSS, JavaScript, Python, SQL, Java e muito mais."
 ---
