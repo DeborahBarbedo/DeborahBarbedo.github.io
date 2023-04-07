@@ -174,7 +174,7 @@ privacy-policy:
 constants:
   greetings: Olá
   welcome: Bem vindo
-  sample: Pq isso fica se repetindo?
+  # sample: Pq isso fica se repetindo?
 
 # for contact form
 contact_form:
