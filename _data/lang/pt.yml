@@ -172,7 +172,7 @@ privacy-policy:
 
 # constants to be replaced for
 constants:
-  #greetings: Olá
+  greetings:  
   welcome: Bem vindo
   # sample: Pq isso fica se repetindo?
 
