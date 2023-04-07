@@ -42,6 +42,3 @@ img: ":about.jpg"
 {{ website_info_text_first }}
 &emsp;Data scientist with experience in building score algorithms and processing large volumes of data to identify patterns and make predictions.
 {{ website_info_text_second }}
-
-#Introducing some of the tools and knowledge necessary to harness the power of data through Statistics and Machine Learning.
-

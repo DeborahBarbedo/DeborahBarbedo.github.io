@@ -42,6 +42,3 @@ img: ":about.jpg"
 {{ website_info_text_first }}
 &emsp;Cientista de dados com experiência em processamento de grandes volumes de dados para identificar padrões e realizar previsões.
 {{ website_info_text_second }}
-
-#Apresentando algumas das ferramentas e conhecimentos necessários para explorar o poder dos dados através de Estatística e Aprendizado de Máquina.
-
