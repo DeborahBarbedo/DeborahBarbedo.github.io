@@ -38,7 +38,8 @@ img: ":about.jpg"
 
 {%- comment -%} Please delete below and place your page content here {%- endcomment -%}
 
-{%- include util/auto-content-generator.liquid -%}
+#{%- include util/auto-content-generator.liquid -%}
 {{ website_info_text_first }}
-
+Introducing some of the tools and knowledge necessary to harness the power of data through Statistics and Machine Learning.
 {{ website_info_text_second }}
+vê no que dá
