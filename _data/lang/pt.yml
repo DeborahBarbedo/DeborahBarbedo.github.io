@@ -172,7 +172,7 @@ privacy-policy:
 
 # constants to be replaced for
 constants:
-  greetings:
+  greetings: Bem vindo(a) ao meu blog!
   welcome: Bem vindo
   # sample: Pq isso fica se repetindo?
 

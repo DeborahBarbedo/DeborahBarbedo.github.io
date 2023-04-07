@@ -40,5 +40,8 @@ img: ":about.jpg"
 
 # {%- include util/auto-content-generator.liquid -%}
 {{ website_info_text_first }}
-&emsp;Data scientist with experience in building score algorithms and processing large volumes of data to identify patterns and make predictions.
+&emsp; As a data scientist with expertise in building score algorithms and processing large volumes of data to identify patterns and make predictions, I'm excited to share my knowledge with you through my blog.
 {{ website_info_text_second }}
+
+&emsp; If you have any questions or feedback, please don't hesitate to reach out to me.
+Thank you for visiting, and I look forward to helping you on your data-driven journey!

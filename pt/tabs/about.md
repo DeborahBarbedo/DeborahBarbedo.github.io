@@ -40,5 +40,9 @@ img: ":about.jpg"
 
 # {%- include util/auto-content-generator.liquid -%}
 {{ website_info_text_first }}
-&emsp;Cientista de dados com experiência em processamento de grandes volumes de dados para identificar padrões e realizar previsões.
+&emsp; Como uma cientista de dados com experiência em processamento de grandes volumes de dados para identificar padrões e realizar previsões, estou empolgada em compartilhar meu conhecimento com você por meio do meu blog.
 {{ website_info_text_second }}
+
+&emsp; Espero que você se sinta à vontade para explorar as ideias deste blog.
+Se tiver alguma dúvida ou feedback, não hesite em entrar em contato comigo.
+Obrigado pela visita e espero ajudá-lo(a) em sua jornada baseada em dados!
