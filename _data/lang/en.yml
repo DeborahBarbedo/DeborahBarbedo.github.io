@@ -15,7 +15,7 @@ lng:
     title: Language
     msg_page: View this page in English.
     # if page translation is not available, use this.
-    msg_site: To home
+    msg_site: To English home page
 
 date:
   # if %b is used in the long format, it will be replaced with the corresponding item in 'months' list below.
@@ -171,9 +171,9 @@ privacy-policy:
 
 # constants to be replaced for
 constants:
-  greetings: Hello
+  greetings: Nice to me you ~
   welcome: Welcome
-  sample: Sample
+  sample: SAMPLE
 
 # for contact form
 contact_form:
@@ -213,7 +213,7 @@ cookie_consent:
           These cookies do not store any personally identifiable information.
           $gtag_info
       analytics:
-        title: Performance cookies
+        title: Performance cookies #Performance and analytics cookies
         info: $gtag_info
       preferences:
         title: Functionality cookies
