@@ -40,6 +40,8 @@ img: ":about.jpg"
 
 # {%- include util/auto-content-generator.liquid -%}
 {{ website_info_text_first }}
-Introducing some of the tools and knowledge necessary to harness the power of data through Statistics and Machine Learning.
+&emsp;Data scientist with experience in building score algorithms and processing large volumes of data to identify patterns and make predictions.
 {{ website_info_text_second }}
-vê no que dá
+
+#Introducing some of the tools and knowledge necessary to harness the power of data through Statistics and Machine Learning.
+
