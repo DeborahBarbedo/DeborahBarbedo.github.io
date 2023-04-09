@@ -41,7 +41,7 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-Python Function for WoE and IV Calculation
+# Python Function for WoE and IV Calculation
 
 <!-- outline-end -->
 
@@ -49,6 +49,9 @@ Hey, have you ever heard of Information Value and Weight of Evidence? These two 
 Using Information Value and Weight of Evidence, you can see just how effective a variable is in predicting the response you want, and even find out which direction that variable is leaning the response.
 
 But here's the thing: when I started using Python to create and select variables, I realized that was missing a function that could include these metrics in my analysis. So, I decided to make my own functions in Python that would generate tables with WoE and IV.
+
+## WoE and IV for discrete variables
+
 I started off by building a function for discrete variables and kept improving from there.
 
 <script src="https://gist.github.com/DeborahBarbedo/08ed242316fe3b9ed3350460e2a140f3.js"></script>
@@ -68,6 +71,7 @@ The function generated a table that clearly showed the WoE and IV values for eac
 
 If you're working with this same dataset (or any other for that matter), I highly recommend giving this function a go. It's a powerful tool for gaining insights into your data and improving your predictive models.
 
+## WoE and IV for continuous variables
 
 When it came to the continuous variables, things got a bit trickier for me. I wasn't entirely sure how to break down these variables for analysis because they can vary so much depending on the problem at hand.
 
@@ -102,6 +106,9 @@ It was definitely a challenge, but the end result was super satisfying!
 |       17 |  Fare |     [27.] a [39.6875] | 0.103825 | 0.099415 | 0.957525 | -0.043403 | 0.00 |
 |       18 |  Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 1.796366 |  0.585766 | 0.04 |
 |       19 |  Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.37 |
+
+
+## All together now
 
 Once I got over the initial obstacles, I decided to tackle creating another function. This one would combine the metrics for both discrete and continuous variables into a single, comprehensive table.
 
