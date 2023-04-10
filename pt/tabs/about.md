@@ -45,4 +45,4 @@ img: ":about.jpg"
 
 &emsp; Espero que você se sinta à vontade para explorar as ideias deste blog.
 Se tiver alguma dúvida ou feedback, não hesite em entrar em contato comigo.
-Obrigado pela visita e espero ajudá-lo(a) em sua jornada baseada em dados!
+Obrigada pela visita e espero ajudá-lo(a) em sua jornada baseada em dados!
