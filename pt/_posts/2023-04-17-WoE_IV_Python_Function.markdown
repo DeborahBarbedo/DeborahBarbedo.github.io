@@ -1,28 +1,28 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 1_WoE_IV_Python_function
-title: "Function in Python to calculate WoE and IV"
+title: "Função em Python para calcular WoE e IV"
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
-#author: "Deborah Cholodoysky Barbedo Pereira"
+author: "Deborah Cholodoysky Barbedo Pereira"
 # multiple category is not supported
 category: Python
 # multiple tag entries are possible
-tags: [Python, variable's analysis, metrics ]
+tags: [Python, Análise de variáveis, Métricas ]
 # thumbnail image for post
-img: ":IV_and_WoE _functions_in_Python.jpg"
+img: ":IV_WoE_Funcao_Python.jpg"
 # disable comments on this page
 #comments_disable: true
 
 # publish date
-date: 2023-04-09 20:48:53 +0900
+date: 2023-04-17 13:57:53 +0900
 
 # seo
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Information Value (IV) and Weight of Evidence (WoE) are powerful techniques for evaluating the predictive power of features in a dataset when building predictive models in Python. This page describes how to create functions in Python for WoE and IV to improved model performance."
+meta_description: "Valor da Informação (IV) e Peso da Evidência (WoE) são técnicas poderosas para avaliar o poder preditivo de variáveis em um conjunto de dados ao construir modelos preditivos. Esta página descreve como criar funções em Python para WoE e IV para melhorar o desempenho do modelo."
 
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
@@ -41,22 +41,26 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-# Python Function for WoE and IV Calculation
+# Função em Python para calcular WoE e IV
 
 <!-- outline-end -->
 
-Hey, have you ever heard of Information Value and Weight of Evidence? These two stats are a total power duo when it comes to picking predictor variables for logistic regression models. Together, they help improve predictability big time!
-Using Information Value and Weight of Evidence, you can see just how effective a variable is in predicting the response you want, and even find out which direction that variable is leaning the response.
+Você já ouviu falar de Valor de Informação e Peso de Evidência? Essas duas estatísticas são uma dupla dinâmica para a seleção de variáveis preditoras em modelos de regressão logística - elas trabalham juntas para melhorar a preditividade!
 
-But here's the thing: when I started using Python to create and select variables, I realized that was missing a function that could include these metrics in my analysis. So, I decided to make my own functions in Python that would generate tables with WoE and IV.
+Com o Valor de Informação e o Peso de Evidência, você pode ter insights sobre a eficácia de uma variável em prever a resposta desejada, além de descobrir a direção em que essa variável está inclinando a resposta.
 
-## WoE and IV for discrete variables
+Mas quando comecei a usar Python para selecionar e criar variáveis, percebi que faltava uma função que pudesse trazer essas métricas para a análise. Então, resolvi criar minhas próprias funções em Python para gerar tabelas que mostrassem o WoE e o IV.
 
-I started off by building a function for discrete variables and kept improving from there.
+
+## WoE e IV para variáveis discretas
+
+Comecei criando uma função para as variáveis discretas e fui me aprimorando a partir daí. Quem sabe, talvez você também possa criar suas próprias funções para aprimorar sua análise de dados!
 
 <script src="https://gist.github.com/DeborahBarbedo/08ed242316fe3b9ed3350460e2a140f3.js"></script>
 
-So, I plugged some data from the [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) competition into my Python WoE and IV function, and let me tell you, the results were seriously eye-opening!
+
+Então, inseri alguns dados da competição [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) na minha função de WoE e IV em Python, e deixe-me dizer, os resultados foram realmente surpreendentes!
+
 
 | Survived |        0 |        1 |       RR |       WoE |       IV | IV_total |
 |---------:|---------:|---------:|---------:|----------:|---------:|---------:|
@@ -67,22 +71,23 @@ So, I plugged some data from the [Titanic - Machine Learning from Disaster](http
 |        S | 0.777778 | 0.638235 | 0.820588 | -0.197734 | 0.027592 | 0.122728 |
 
 
-The function generated a table that clearly showed the WoE and IV values for each variable in the dataset, giving me a better understanding of which factors were most important in predicting survival rates.
+A função gerou uma tabela que claramente mostrou os valores de WoE e IV para cada variável no conjunto de dados, me dando uma compreensão melhor de quais fatores eram mais importantes para prever as taxas de sobrevivência.
 
-If you're working with this same dataset (or any other for that matter), I highly recommend giving this function a go. It's a powerful tool for gaining insights into your data and improving your predictive models.
+Se você estiver trabalhando com esse mesmo conjunto de dados (ou qualquer outro, na verdade), eu altamente recomendo testar essa função. É uma ferramenta poderosa para obter insights sobre seus dados e melhorar seus modelos preditivos.
 
-## WoE and IV for continuous variables
+## WoE e IV para variáveis contínuas
 
-When it came to the continuous variables, things got a bit trickier for me. I wasn't entirely sure how to break down these variables for analysis because they can vary so much depending on the problem at hand.
+Quando se trata das variáveis contínuas, a coisa ficou um pouco mais complicada para mim. Eu não tinha certeza de qual era a melhor forma de dividir essas variáveis para a análise, já que elas podem ser bem diferentes dependendo do problema.
 
-I spent a lot of time brainstorming and drafting several different ideas until I finally settled on breaking everything down into deciles. That way, I could analyze the IV return in larger portions (like quartiles) if needed.
+Fiquei pensando e rascunhando várias ideias, até que finalmente decidi colocar tudo em decis, porque isso permitiria analisar o retorno pelo IV em partes maiores (quartis, por exemplo), se fosse necessário.
 
-Anyway, after a lot of hard work, I finally came up with a function for the continuous variables.
+Então, aqui está como ficou a função para as variáveis contínuas:
 
 <script src="https://gist.github.com/DeborahBarbedo/d9ddd529f9b4359e4a867a649ab9544b.js"></script>
 
 
-It was definitely a challenge, but the end result was super satisfying!
+Foi um trabalho árduo, mas o resultado foi bem satisfatório!
+
 
 | variable | limit |                     0 |        1 |       RR |      WoE |        IV |      |
 |---------:|------:|----------------------:|---------:|---------:|---------:|----------:|------|
@@ -108,15 +113,15 @@ It was definitely a challenge, but the end result was super satisfying!
 |       19 |  Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.37 |
 
 
-## All together now
+## Tudo junto agora
 
-Once I got over the initial obstacles, I decided to tackle creating another function. This one would combine the metrics for both discrete and continuous variables into a single, comprehensive table.
+Depois de superar os obstáculos iniciais, decidi me desafiar ainda mais e criar outra função incrível - aquela que uniria as métricas tanto das variáveis discretas quanto das contínuas em uma única tabela.
 
-I must admit, this function was way easier and quicker to make! So, without further ado, check out the function I whipped up to bring it all together in one table:
+Confesso que essa função foi bem mais rápida de criar! Então, sem mais delongas, aqui está a função que fiz para juntar tudo isso em uma tabela só:
 
 <script src="https://gist.github.com/DeborahBarbedo/bc3597b64ad2fcd54266664c62adbe3f.js"></script>
 
-The final table is:
+A tabela final ficou da seguinte forma:
 
 |    | variable |                 limit |        0 |        1 |       RR |       WoE |       IV | IV_total |
 |---:|---------:|----------------------:|---------:|---------:|---------:|----------:|---------:|---------:|
@@ -146,8 +151,8 @@ The final table is:
 | 18 |     Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 1.796366 |  0.585766 | 0.040000 |          |
 | 19 |     Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.370000 |          |
 
-Hey, did you liked my Python functions for calculating IV and WoE? I had a blast creating them, but I've realized that there are still a lot of folks out there who might be feeling a bit lost when it comes to these metrics.
+Vocês gostaram das minhas funções para o cálculo do IV e WoE em Python? Eu amei criá-las, mas percebi que ainda tem muita gente por aí que fica meio perdida com essas métricas e não sabe como utilizá-las para melhorar seus modelos de regressão logística.
 
-Since they can be so helpful in improving your logistic regression models, I've decided it's high time to write up a post and explain everything in detail. I'm going to walk you through how to calculate IV and WoE and give you some seriously valuable tips on how to use these metrics to make savvy decisions and elevate your models to the next level.
+Por isso, decidi que é hora de criar um post e explicar tudo bem detalhadamente! Vou mostrar como é realizado o cálculo do IV e do WoE, e dar dicas valiosas sobre como tomar decisões e escolhas inteligentes para melhorar seus modelos com base nessas métricas.
 
-I'm really excited to share all of this with you, so don't miss out! Keep your eyes peeled for my next post!
+Estou super empolgada para compartilhar tudo isso com vocês, então fiquem ligados(as)!
