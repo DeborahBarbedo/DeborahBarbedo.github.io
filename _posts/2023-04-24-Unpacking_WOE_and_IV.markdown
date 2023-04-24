@@ -41,7 +41,7 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-# Mastering Logistic Regression: Unpacking WOE and IV Metrics for Variable Selection and Interpretation.
+# Unpacking WOE and IV Metrics for Variable Selection and Interpretation.
 
 <!-- outline-end -->
 
