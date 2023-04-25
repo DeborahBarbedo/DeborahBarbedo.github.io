@@ -7,9 +7,9 @@ title: "Function in Python to calculate WoE and IV"
 # if not specified, .name will be used from _data/owner/[language].yml
 #author: "Deborah Cholodoysky Barbedo Pereira"
 # multiple category is not supported
-category: Python
+category: Data Analysis
 # multiple tag entries are possible
-tags: [Python, variable's analysis, metrics ]
+tags: [Python functions, Data analysis, Logistic regression, Feature selection, Information Value (IV), Weight of Evidence (WoE), Predictive modeling, Titanic dataset ]
 # thumbnail image for post
 img: ":IV_and_WoE _functions_in_Python.jpg"
 # disable comments on this page
@@ -40,7 +40,7 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-# Python Function for WoE and IV Calculation
+Improve Your Logistic Regression Model with Python Functions for WoE and IV Calculation.
 
 <!-- outline-end -->
 
@@ -147,6 +147,6 @@ The final table is:
 
 Hey, did you liked my Python functions for calculating IV and WoE? I had a blast creating them, but I've realized that there are still a lot of folks out there who might be feeling a bit lost when it comes to these metrics.
 
-Since they can be so helpful in improving your logistic regression models, I've decided it's high time to write up a post and explain everything in detail. I'm going to walk you through how to calculate IV and WoE and give you some seriously valuable tips on how to use these metrics to make savvy decisions and elevate your models to the next level.
+Since they can be so helpful in improving your logistic regression models, I've decided it's high time to write up a post and explain everything in detail. I'm going to walk you through how to calculate IV and WoE and give you some seriously valuable tips on [how to use these metrics](https://deborahbarbedo.github.io/posts/2023-04-24-Unpacking_WOE_and_IV) to make savvy decisions and elevate your models to the next level.
 
 I'm really excited to share all of this with you, so don't miss out! Keep your eyes peeled for my next post!
