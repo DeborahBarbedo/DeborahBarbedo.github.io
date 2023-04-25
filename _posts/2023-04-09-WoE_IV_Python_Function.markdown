@@ -40,7 +40,7 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-Improve Your Logistic Regression Model with Python Functions for WoE and IV Calculation.
+Improve Your Logistic Regression Model with Python Functions.
 
 <!-- outline-end -->
 
