@@ -7,7 +7,7 @@ title: "Mastering Logistic Regression: Unpacking WOE and IV Metrics for Variable
 # if not specified, .name will be used from _data/owner/[language].yml
 #author: "Deborah Cholodoysky Barbedo Pereira"
 # multiple category is not supported
-category: Python
+category: Logistic Regression
 # multiple tag entries are possible
 tags: [Logistic Regression, variable's analysis, metrics ]
 # thumbnail image for post
