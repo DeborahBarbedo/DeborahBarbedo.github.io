@@ -5,11 +5,11 @@ title: "Função em Python para calcular WoE e IV"
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
-author: "Deborah Cholodoysky Barbedo Pereira"
+#author: "Deborah Cholodoysky Barbedo Pereira"
 # multiple category is not supported
-category: Python
+category: Análise de dados
 # multiple tag entries are possible
-tags: [Python, Análise de variáveis, Métricas ]
+tags: [Programação em Python, Análise de dados, Regressão logística, Seleção de variáveis, Valor de Informação (IV), Peso de Evidência (WoE), Conjunto de Dados Titanic]
 # thumbnail image for post
 img: ":IV_WoE_Funcao_Python.jpg"
 # disable comments on this page
@@ -40,7 +40,7 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-# Função em Python para calcular WoE e IV
+Melhore modelos de regressão logística com WoE e IV em Python.
 
 <!-- outline-end -->
 
