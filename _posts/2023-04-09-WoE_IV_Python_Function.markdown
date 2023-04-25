@@ -22,8 +22,7 @@ date: 2023-04-09 20:48:53 +0900
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Information Value (IV) and Weight of Evidence (WoE) are powerful techniques for evaluating the predictive power of features in a dataset when building predictive models in Python. This page describes how to create functions in Python for WoE and IV to improved model performance."
-
+meta_description: "Learn how to enhance your predictive models with the power of Information Value (IV) and Weight of Evidence (WoE). This page provides step-by-step instructions for creating custom Python functions that calculate WoE and IV, enabling you to accurately evaluate feature predictiveness and improve model performance."
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
 # image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.

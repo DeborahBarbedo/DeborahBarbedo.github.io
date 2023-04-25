@@ -22,8 +22,7 @@ date: 2023-04-17 13:57:53 +0900
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Valor da Informação (IV) e Peso da Evidência (WoE) são técnicas poderosas para avaliar o poder preditivo de variáveis em um conjunto de dados ao construir modelos preditivos. Esta página descreve como criar funções em Python para WoE e IV para melhorar o desempenho do modelo."
-
+meta_description: "Aprenda como aprimorar seus modelos preditivos com o poder do Valor da Informação (IV) e Peso da Evidência (WoE). Nesta página, você encontrará instruções passo a passo para criar funções personalizadas em Python que calculam WoE e IV, permitindo avaliar com precisão a preditividade das variáveis e melhorar o desempenho do seu modelo."
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
 # image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
