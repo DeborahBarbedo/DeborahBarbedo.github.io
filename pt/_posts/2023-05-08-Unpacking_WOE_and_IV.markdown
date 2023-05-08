@@ -1,7 +1,7 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 2_WoE_IV_Python_Unpacking
-title: "Domine a Regressão Logística: Desvendando as Métricas WoE e IV para Seleção e Interpretação de Variáveis"
+title: "Dominando a Regressão Logística: Melhore modelos de regressão logística com funções de  WoE e IV em Python."
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
@@ -11,7 +11,7 @@ category: Análise de dados
 # multiple tag entries are possible
 tags: [Análise de dados, Regressão logística, Seleção de variáveis, Valor de Informação (IV), Peso de Evidência (WoE), Conjunto de Dados Titanic, Risco Relativo]
 # thumbnail image for post
-img: ":IV_WoE_Funcao_Python.jpg"
+img: ":IV_and_WoE_desvenda.jpg"
 # disable comments on this page
 #comments_disable: true
 
@@ -35,7 +35,7 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-published: false
+#published: false
 ---
 
 <!-- outline-start -->
