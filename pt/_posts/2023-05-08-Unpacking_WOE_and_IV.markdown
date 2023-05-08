@@ -16,7 +16,7 @@ img: ":IV_and_WoE_desvenda.jpg"
 #comments_disable: true
 
 # publish date
-date: 2023-05-08 13:57:53 +0900
+date: 2023-05-08 19:57:53 +0900
 
 # seo
 # if not specified, date will be used.
@@ -56,7 +56,6 @@ Lembra do post anterior sobre [como criar as funções WoE e IV em Python]( http
 
 Abaixo são explicadas as diversas métricas apresentadas na tabela que são úteis para avaliar a relação entre a variável estudada e a ocorrência de resultados negativos ou positivos.
 
-The table presents several metrics that are useful in evaluating the relationship between the study variable and the occurrence of negative or positive outcomes. Some of these metrics include:
 -	**Proporção 0 ou 1 na variável resposta** para cada setor da variável estudada, o que ajuda a entender a distribuição da variável em relação aos resultados.
 -	**Risco relativo**, um indicador importante que mostra a associação entre a variável e a variável resposta. Quanto mais variável for o RR entre as categorias da variável explicativa, mais útil ele é. Um RR próximo de 1 indica pouca associação com a variável resposta, um RR > 1 indica uma associação positiva e um RR < 1 indica uma associação negativa.
 -	**WoE**, uma métrica útil para avaliar a discriminação da variável. Quanto mais longe de 0 o WoE estiver, mais discriminatória será a variável. Um WoE negativo indica que a variável não favorece a ocorrência da variável resposta, enquanto um WoE positivo indica que a variável favorece a ocorrência.
@@ -73,7 +72,7 @@ Além disso, temos uma tabela que indica a classificação dos valores de IV:
 | \> 0.5     | Poder de previsão suspeito  |
 
 
-Essa tabela é importante para avaliar a qualidade da capacidade preditiva da variável, de acordo com o valor do IV. É interessante ficar atento à classificação de cada valor e utilizá-la como referência para a interpretação dos resultados. Se você estiver interessado em conferir a tabela original, pode encontrá-la neste [link](https://teses.usp.br/teses/disponiveis/45/45134/tde-05022015-232801/pt-br.php).
+Essa tabela é importante para avaliar a qualidade da capacidade preditiva da variável, de acordo com o valor do IV. É interessante ficar atento à classificação de cada valor e utilizá-la como referência para a interpretação dos resultados. Se você estiver com interesse em conferir a tabela original, pode encontrá-la neste [link](https://teses.usp.br/teses/disponiveis/45/45134/tde-05022015-232801/pt-br.php).
 
 Essas métricas permitem que você tenha uma visão ainda mais clara dos seus dados! Com elas, você pode compreender melhor a relação entre as variáveis estudadas e o resultado que você está buscando prever. Não deixe de utilizá-las para melhorar a qualidade da sua análise e tomar decisões mais embasadas!
 
@@ -94,7 +93,7 @@ Ao aplicarmos a função [Woe_IV_Discrete](https://gist.github.com/DeborahBarbed
 |     male | 0.852459 | 0.318713 | 0.373875 | -0.983833 | 0.525116 | 1.341681 |
 
 
-O Risco Relativo sugere que ser mulher é um fator positivo para sobrevivência, com passageiras do sexo feminino tendo aproximadamente cinco vezes mais chances de sobreviver em comparação com os passageiros do sexo masculino. A métrica WoE confirma essa relação, mostrando que ser do sexo feminino favorece a sobrevivência. A métrica IV indica que a variável sexo está fortemente relacionada à variável resposta, o que sugere um alto poder preditivo.
+O Risco Relativo sugere que ser mulher é um fator positivo para sobrevivência, com passageiras tendo aproximadamente cinco vezes mais chances de sobreviver em comparação com os passageiros do sexo masculino. A métrica WoE confirma essa relação, mostrando que ser do sexo feminino favorece a sobrevivência. A métrica IV indica que a variável sexo está fortemente relacionada à variável resposta, o que sugere um alto poder preditivo.
 
 Vamos dar uma olhada na tabela gerada pela função [Woe_IV_Continuous](https://gist.github.com/DeborahBarbedo/d9ddd529f9b4359e4a867a649ab9544b) para a variável "Fare".
 
