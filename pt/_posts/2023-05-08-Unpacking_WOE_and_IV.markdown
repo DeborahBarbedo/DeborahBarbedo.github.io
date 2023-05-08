@@ -1,7 +1,7 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 2_WoE_IV_Python_Unpacking
-title: "Dominando a Regressão Logística: Melhore modelos de regressão logística com funções de  WoE e IV em Python."
+title: "Dominando a Regressão Logística: Desvendando as Métricas WoE e IV para Seleção e Interpretação de Variáveis."
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
