@@ -1,14 +1,3 @@
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']]
-    }
-  };
-</script>
-
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 3_WoE_IV_Python_calculation_teste
@@ -47,6 +36,19 @@ image_lazy_loader_on: true
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
 #published: false
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+
 ---
 
 <!-- outline-start -->
