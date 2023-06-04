@@ -16,7 +16,7 @@ img: ":IV_and_WoE _functions_in_Python.jpg"
 #comments_disable: true
 
 # publish date
-date: 2023-06-09 20:48:53 +0900
+date: 2023-06-04 20:48:53 +0900
 
 # seo
 # if not specified, date will be used.
@@ -36,18 +36,6 @@ image_lazy_loader_on: true
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
 #published: false
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']]
-    }
-  };
-</script>
-
 
 ---
 
