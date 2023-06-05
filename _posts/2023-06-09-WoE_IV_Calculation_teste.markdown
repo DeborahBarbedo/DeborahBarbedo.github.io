@@ -87,7 +87,6 @@ $ % Pop_{female} = \frac{ # Pop_{female}}{ # Pop} = \frac{81 + 233}{81 + 233 + 4
 |---------:|---------:|---------:|---------:|---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| $frac{314}{891}$ |
 |     male  | 468 | 109|0.85| 0.32| $frac{577}{891}$ |
-|---------:|---------:|---------:|---------:|---------:|---------:|
 |     Total | 549 | 342 | 1 | 1 |
 
 RR (Relative Risk):
@@ -102,7 +101,6 @@ $ RR_{female} = \frac{ % Survived_{1, female}}{ % Survived_{0, female }} = \frac
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| $frac{0.68}{0.15}$ |
 |     male  | 468 | 109|0.85| 0.32| 0.65| $frac{0.32}{0.85}$ |
-|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|
 |     Total | 549 | 342 | 1 | 1 |1| |
 WoE (Weight of Evidence):
 The farther from zero, the more discriminative the variable is in terms of WoE. Negative values indicate that the variable does not favor the occurrence, while positive values indicate the favoring of the occurrence.
@@ -118,8 +116,6 @@ $ WoE_{female} = ln(RR_{female}) \approx 1.529877 $
 
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|ln(4.62) |
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|ln(0.37) |
-|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|
-
 |     Total | 549 | 342 | 1 | 1 |1| | 0 |
 
 IV (Information Value) :
@@ -147,8 +143,6 @@ $ IV_{female} = WoE_{female} \times (\% Survived_{1, female} - \% Survived_{0, f
 
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| 1.53 * (0.68-0.15) *100|
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| -0.98* (0.32-0.85) *100|
-|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
-
 |     Total | 549 | 342 | 1 | 1 |1| | 0 | | |
 
 The table with all the calculated metrics looks as follows:
@@ -158,8 +152,6 @@ The table with all the calculated metrics looks as follows:
 
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| 0.82|
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| 0.53|
-|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
-
 |     Total | 549 | 342 | 1 | 1 |1| | 0 | | 1.35|
 
 For a more accurate interpretation of the calculated data, I have provided an explanatory post here. Additionally, if you need to perform the calculations in Python, I have created another post with the corresponding formulas at this link. On my Github page, you can find supporting materials related to the topic of this post. The intention of these resources is to provide a deeper understanding and assist in the practical application of IV, WoE, and RR calculations. If you have any further questions or need more information, I'm here to help!
