@@ -1,7 +1,7 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
-lng_pair: 3_WoE_IV_Python_calculation_teste
-title: "Calculate WoE and IV"
+lng_pair: 3_WoE_IV_Python_calculation
+title: "Mastering Logistic Regression: A Comprehensive Guide to WoE and IV Calculation"
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
@@ -9,9 +9,9 @@ title: "Calculate WoE and IV"
 # multiple category is not supported
 category: Data Analysis
 # multiple tag entries are possible
-tags: [Python functions, Data analysis, Logistic regression, Feature selection, Information Value (IV), Weight of Evidence (WoE), Predictive modeling, Titanic dataset ]
+tags: [Data analysis, Logistic regression, Feature selection, Information Value (IV), Weight of Evidence (WoE), Predictive modeling, Titanic dataset ]
 # thumbnail image for post
-img: ":IV_and_WoE _functions_in_Python.jpg"
+img: ":WoE_IV_Python_calculation.jpg"
 # disable comments on this page
 #comments_disable: true
 
@@ -22,7 +22,7 @@ date: 2023-06-04 20:48:53 +0900
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Learn how to enhance your predictive models with the power of Information Value (IV) and Weight of Evidence (WoE). This page provides step-by-step instructions for creating custom Python functions that calculate WoE and IV, enabling you to accurately evaluate feature predictiveness and improve model performance."
+meta_description: "Learn how to calculate and understand the Weight of Evidence (WoE) and Information Value (IV) metrics, which are widely used to differentiate between creditworthy and non-creditworthy individuals. This blog post explores these calculations using the Titanic - Machine Learning from Disaster dataset, focusing on survival information segregated by gender. Demystify the concepts of IV, WoE, and RR (Relative Risk) to make them more accessible and tangible. Dive into the provided data and tables to gain insights and apply these metrics effectively."
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
 # image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
@@ -35,20 +35,20 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-published: false
+#published: false
 
 ---
 
 <!-- outline-start -->
 
-WoE (Weight of Evidence) and IV (Information Value) Calculation.
+ A Comprehensive Guide to WoE (Weight of Evidence) and IV (Information Value) Calculation.
 
 <!-- outline-end -->
 
+These metrics are widely recognized for their ability to discern between creditworthy and non-creditworthy individuals. Throughout our journey into understanding these calculations, we frequently encounter the familiar labels of 'good' and 'bad' customers. In this context, 'bad customers' are those who have defaulted on their loans, while 'good customers' are those who have dutifully fulfilled their financial obligations.
 
-WoE (Weight of Evidence) and IV (Information Value) are best known in the field of credit assessment. As we delve into the calculations of these metrics, we often encounter terms like 'Good' and as they are commonly used to distinguish between creditworthy and non-creditworthy customers. In this context, “bad customers” refer to those who have defaulted on their loans, while 'Good customers' are those who have fulfilled their obligations.
+To shed light on these concepts, we will draw insights from the [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) dataset, specifically examining the survival information segregated by gender. Our aim is to demystify the calculations of IV, WoE, and RR, making them more approachable and tangible. We will utilize the provided data in the table below as a foundation for our exploration.
 
-Based on the Kaggle Titanic competition dataset, we've segregated survival information by gender.  To make the concepts more accessible, this post will guide you through the calculations of IV, WoE, and RR using the data provided in the table below:
 
 | Sector | # <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " /> | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{1}" title="https://latex.codecogs.com/svg.image?\small target_{1}" /> |
 |--------:|--------:|--------:|
@@ -167,4 +167,11 @@ The table with all the calculated metrics looks as follows:
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| 0.53|
 |     Total | 549 | 342 | 1 | 1 |1| | 0 | | 1.35|
 
-For a more accurate interpretation of the calculated data, I have provided an explanatory post [here](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV). Additionally, if you need to perform the calculations in Python, I have created another post with the corresponding formulas at this [link](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function). On [my Github page](https://github.com/DeborahBarbedo), you can find [supporting materials](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) related to the topic of this post. The intention of these resources is to provide a deeper understanding and assist in the practical application of IV, WoE, and RR calculations. If you have any further questions or need more information, I'm here to help!
+To ensure a more precise comprehension of WoE, IV, and RR, I have curated an informative post that delves into these concepts. You can access it [here](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV). This article aims to provide a comprehensive explanation, elucidating the intricacies of these metrics.
+
+Moreover, if you find yourself in need of performing these calculations using Python, I have created another post featuring the corresponding formulas, which can be accessed at this [link](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function). This resource will empower you to execute the calculations efficiently.
+
+For additional support, I have compiled a variety of supplementary materials on [my Github](https://github.com/DeborahBarbedo), specifically related to the topic of this post. These resources, accessible in the [supporting materials](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) repository, are designed to enhance your comprehension and aid in the practical implementation of IV, WoE, and RR calculations.
+
+If you have any further questions or need more information, I'm here to help!
+
