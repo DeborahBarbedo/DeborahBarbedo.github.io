@@ -16,7 +16,7 @@ img: ":WoE_IV_Python_calculation.jpg"
 #comments_disable: true
 
 # publish date
-date: 2023-05-04 11:48:53 +0900
+date: 2023-06-05 11:48:53 +0900
 
 # seo
 # if not specified, date will be used.
@@ -126,7 +126,7 @@ For this problem, in the female sector:
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|ln(4.62) |
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|ln(0.37) |
-|     Total | 549 | 342 | 1 | 1 |1| | 0 |
+|     Total | 549 | 342 | 1 | 1 |1| |  |
 
 The farther from zero, the more discriminative the variable is in terms of WoE. Negative values indicate that the variable does not favor the occurrence, while positive values indicate the favoring of the occurrence.
 
@@ -142,7 +142,7 @@ At sector female:
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| <img src="https://latex.codecogs.com/svg.image?\tiny&space;1.53&space;\times&space;(0.68-0.15&space;)&space;" title="https://latex.codecogs.com/svg.image?\tiny 1.53 \times (0.68-0.15 ) " />|
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| <img src="https://latex.codecogs.com/svg.image?\tiny&space;-0.98&space;\times&space;(0.32-0.85&space;)" title="https://latex.codecogs.com/svg.image?\tiny -0.98 \times (0.32-0.85 )" />|
-|     Total | 549 | 342 | 1 | 1 |1| | 0 | | |
+|     Total | 549 | 342 | 1 | 1 |1| |  | | |
 
 
 There is a table indicating the classification of the IV values:
@@ -165,7 +165,7 @@ The table with all the calculated metrics looks as follows:
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| 0.82|
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| 0.53|
-|     Total | 549 | 342 | 1 | 1 |1| | 0 | | 1.35|
+|     Total | 549 | 342 | 1 | 1 |1| |  |  1.35|
 
 To ensure a more precise comprehension of WoE, IV, and RR, I have curated an informative post that delves into these concepts. You can access it [here](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV). This article aims to provide a comprehensive explanation, elucidating the intricacies of these metrics.
 
