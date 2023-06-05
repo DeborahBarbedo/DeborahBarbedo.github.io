@@ -83,12 +83,15 @@ For this problem, in the female sector:
 
 # Percentage of population in the study sector:
 
+The Percentage of Population in the study sector is a measure that indicates the proportion of the total population represented by a particular sector:
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;%&space;population_{sector_i}&space;=&space;\frac{&space;population_{sector_i}}{&space;population}" title="https://latex.codecogs.com/svg.image?\small % population_{sector_i} = \frac{ population_{sector_i}}{ population}" />
 
-For the chosen sector, which is female in this case, the calculation of the population percentage would be:
+Let's calculate the percentage of population for the chosen sector, which is the female sector in this case:
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;%&space;population_{female}&space;=&space;\frac{&space;population_{female}}{&space;population&space;}&space;=&space;\frac{81&space;&plus;&space;233}{81&space;&plus;&space;233&space;&plus;&space;468&space;&plus;109}&space;\approx&space;0.352413" title="https://latex.codecogs.com/svg.image?\small % population_{female} = \frac{ population_{female}}{ population } = \frac{81 + 233}{81 + 233 + 468 +109} \approx 0.352413" />
+
+Now, let's examine the table that presents the statistics:
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   |
 |---------:|---------:|---------:|---------:|---------:|---------:|
@@ -96,11 +99,15 @@ For the chosen sector, which is female in this case, the calculation of the popu
 |     male  | 468 | 109|0.85| 0.32| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{577}{891}" title="https://latex.codecogs.com/svg.image?\tiny \frac{577}{891}" /> |
 |     Total | 549 | 342 | 1 | 1 |
 
-This measure gives us an idea of how much the study sector represents in relation to the total population. It is important to consider this distribution for a more comprehensive analysis of the results.
+This measure provides us with valuable information about the representation of the study sector within the overall population. Understanding this distribution is crucial for conducting a comprehensive analysis of the results and drawing meaningful conclusions from the data.
 
 # Relative Risk (RR):
 
+RR (Relative Risk) for Sector i can be calculated as the percentage of target occurrences in Sector i compared to the total target occurrences:
+
 <img src="https://latex.codecogs.com/svg.image?\small&space;RR_{sector_i}&space;=&space;\frac{&space;%&space;target_{1,&space;sector_i}}{&space;%&space;target_{0,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small RR_{sector_i} = \frac{ % target_{1, sector_i}}{ % target_{0, sector_i}}" />
+
+Similarly, RR for the Female category can be calculated as the percentage of survived occurrences among females compared to the total occurrences:
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;RR_{female}&space;=&space;\frac{&space;%&space;survived_{1,&space;female}}{&space;%&space;survived_{0,&space;female&space;}}&space;=&space;\frac{&space;\frac{233}{233&plus;109}}{&space;\frac{81}{81&plus;468}&space;}&space;\approx&space;4.617609" title="https://latex.codecogs.com/svg.image?\small RR_{female} = \frac{ % survived_{1, female}}{ % survived_{0, female }} = \frac{ \frac{233}{233+109}}{ \frac{81}{81+468} } \approx 4.617609" />
 
@@ -116,11 +123,15 @@ When the relative risk is close to 1, the variable is considered neutral, which 
 
 # Weight of Evidence (WoE):
 
+ It can be calculated using the natural logarithm of the Relative Risk (RR) for each sector:
+
 <img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;RR_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\small WoE_{sector_i} = ln\left ( RR_{sector_i} \right )" />
 
-For this problem, in the female sector:
+Let's consider the female sector as an example:
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{female}&space;=&space;ln\left&space;(&space;RR_{female}&space;\right&space;)&space;\approx&space;1.529877" title="https://latex.codecogs.com/svg.image?\small WoE_{female} = ln\left ( RR_{female} \right ) \approx 1.529877" />
+
+Now, let's examine the table that presents the statistics:
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % Population   | RR |    WoE |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|
@@ -128,13 +139,15 @@ For this problem, in the female sector:
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|ln(0.37) |
 |     Total | 549 | 342 | 1 | 1 |1| |  |
 
-The farther from zero, the more discriminative the variable is in terms of WoE. Negative values indicate that the variable does not favor the occurrence, while positive values indicate the favoring of the occurrence.
+By analyzing the WoE values, we can gain insights into the discriminative nature of the variables in predicting the desired outcome.
 
 # Information Value (IV):
 
+It can be calculated using the following formula:
+
 <img src="https://latex.codecogs.com/svg.image?\small&space;IV_{sector_i}&space;=&space;WoE_{sector_i}&space;\times&space;(%&space;target_{1,&space;sector_i}&space;-&space;%&space;target_{0,&space;sector_i}&space;)" title="https://latex.codecogs.com/svg.image?\small IV_{sector_i} = WoE_{sector_i} \times (% target_{1, sector_i} - % target_{0, sector_i} )" />
 
-At sector female:
+Let's consider the Female sector as an example:
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;IV_{female}&space;=&space;WoE_{female}&space;\times&space;(\%&space;survived_{1,&space;female}&space;-&space;\%&space;survived_{0,&space;female}&space;)&space;&space;=&space;1.529877&space;\times&space;(0.681287&space;-&space;0.147541&space;)&space;\approx&space;0.816566" title="https://latex.codecogs.com/svg.image?\small IV_{female} = WoE_{female} \times (\% survived_{1, female} - \% survived_{0, female} ) = 1.529877 \times (0.681287 - 0.147541 ) \approx 0.816566" />
 
@@ -145,18 +158,7 @@ At sector female:
 |     Total | 549 | 342 | 1 | 1 |1| |  | | |
 
 
-There is a table indicating the classification of the IV values:
-
-| IV        | Classification            |
-|-----------|---------------------------|
-| ≤ 0.02   | Not useful for prediction |
-| 0.02 -0.1 | Weak predictive power     |
-| 0.1 - 0.3 | Moderate predictive power |
-| 0.3 - 0.5 | Strong predictive power   |
-| \> 0.5     | Suspect predictive power  |
-
-
-If you're interested in checking out the original table, you can find it at this [link](https://teses.usp.br/teses/disponiveis/45/45134/tde-05022015-232801/pt-br.php).
+If you're interested in checking out the IV values classification , you can find it at this [link](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV).
 
 
 The table with all the calculated metrics looks as follows:
