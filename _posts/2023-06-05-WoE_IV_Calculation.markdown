@@ -119,8 +119,6 @@ Similarly, RR for the Female category can be calculated as the percentage of sur
 
 The relative risk is a measure that allows us to assess the variability of categories within an explanatory variable, indicating how discriminative that variable can be.
 
-When the relative risk is close to 1, the variable is considered neutral, which means that the association between that variable and the desired outcome is unlikely to exist. If the relative risk is greater than 1, it indicates a positive association between the variable and the occurrence of the desired outcome. On the other hand, if the relative risk is less than 1, it indicates a negative association between the variable and the occurrence of the desired outcome.
-
 # Weight of Evidence (WoE):
 
  It can be calculated using the natural logarithm of the Relative Risk (RR) for each sector:
