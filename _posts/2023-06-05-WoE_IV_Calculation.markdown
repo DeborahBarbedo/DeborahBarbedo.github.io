@@ -72,7 +72,7 @@ What is typically described as 'bad' is the <img src="https://latex.codecogs.com
 
 For this problem, in the female sector:
 
-<img src="https://latex.codecogs.com/svg.image?\tiny&space;%&space;survived_{1,&space;female}&space;=&space;\frac{&space;survived_{1,&space;female}}{&space;survived_{1}&space;}&space;=&space;\frac{233}{233&plus;109}&space;\approx&space;0.681287" title="https://latex.codecogs.com/svg.image?\tiny % survived_{1, female} = \frac{ survived_{1, female}}{ survived_{1} } = \frac{233}{233+109} \approx 0.681287" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;survived_{1,&space;female}&space;=&space;\frac{&space;survived_{1,&space;female}}{&space;survived_{1}&space;}&space;=&space;\frac{233}{233&plus;109}&space;\approx&space;0.681287" title="https://latex.codecogs.com/svg.image?\small % survived_{1, female} = \frac{ survived_{1, female}}{ survived_{1} } = \frac{233}{233+109} \approx 0.681287" />
 
 | Sector | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" /> | # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> | % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" /> | % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |
 |--------:|--------:|--------:|--------:|--------:|
@@ -84,11 +84,11 @@ For this problem, in the female sector:
 # Percentage of population in the study sector:
 
 
-<img src="https://latex.codecogs.com/svg.image?\tiny&space;%&space;population_{sector_i}&space;=&space;\frac{&space;population_{sector_i}}{&space;population}" title="https://latex.codecogs.com/svg.image?\tiny % population_{sector_i} = \frac{ population_{sector_i}}{ population}" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;population_{sector_i}&space;=&space;\frac{&space;population_{sector_i}}{&space;population}" title="https://latex.codecogs.com/svg.image?\small % population_{sector_i} = \frac{ population_{sector_i}}{ population}" />
 
 For the chosen sector, which is female in this case, the calculation of the population percentage would be:
 
-<img src="https://latex.codecogs.com/svg.image?\tiny&space;%&space;population_{female}&space;=&space;\frac{&space;population_{female}}{&space;population&space;}&space;=&space;\frac{81&space;&plus;&space;233}{81&space;&plus;&space;233&space;&plus;&space;468&space;&plus;109}&space;\approx&space;0.352413" title="https://latex.codecogs.com/svg.image?\tiny % population_{female} = \frac{ population_{female}}{ population } = \frac{81 + 233}{81 + 233 + 468 +109} \approx 0.352413" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;population_{female}&space;=&space;\frac{&space;population_{female}}{&space;population&space;}&space;=&space;\frac{81&space;&plus;&space;233}{81&space;&plus;&space;233&space;&plus;&space;468&space;&plus;109}&space;\approx&space;0.352413" title="https://latex.codecogs.com/svg.image?\small % population_{female} = \frac{ population_{female}}{ population } = \frac{81 + 233}{81 + 233 + 468 +109} \approx 0.352413" />
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   |
 |---------:|---------:|---------:|---------:|---------:|---------:|
@@ -100,9 +100,9 @@ This measure gives us an idea of how much the study sector represents in relatio
 
 # Relative Risk (RR):
 
-<img src="https://latex.codecogs.com/svg.image?\tiny&space;RR_{sector_i}&space;=&space;\frac{&space;%&space;target_{1,&space;sector_i}}{&space;%&space;target_{0,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\tiny RR_{sector_i} = \frac{ % target_{1, sector_i}}{ % target_{0, sector_i}}" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;RR_{sector_i}&space;=&space;\frac{&space;%&space;target_{1,&space;sector_i}}{&space;%&space;target_{0,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small RR_{sector_i} = \frac{ % target_{1, sector_i}}{ % target_{0, sector_i}}" />
 
-<img src="https://latex.codecogs.com/svg.image?\tiny&space;RR_{female}&space;=&space;\frac{&space;%&space;survived_{1,&space;female}}{&space;%&space;survived_{0,&space;female&space;}}&space;=&space;\frac{&space;\frac{233}{233&plus;109}}{&space;\frac{81}{81&plus;468}&space;}&space;\approx&space;4.617609" title="https://latex.codecogs.com/svg.image?\tiny RR_{female} = \frac{ % survived_{1, female}}{ % survived_{0, female }} = \frac{ \frac{233}{233+109}}{ \frac{81}{81+468} } \approx 4.617609" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;RR_{female}&space;=&space;\frac{&space;%&space;survived_{1,&space;female}}{&space;%&space;survived_{0,&space;female&space;}}&space;=&space;\frac{&space;\frac{233}{233&plus;109}}{&space;\frac{81}{81&plus;468}&space;}&space;\approx&space;4.617609" title="https://latex.codecogs.com/svg.image?\small RR_{female} = \frac{ % survived_{1, female}}{ % survived_{0, female }} = \frac{ \frac{233}{233+109}}{ \frac{81}{81+468} } \approx 4.617609" />
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | RR |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|
@@ -116,11 +116,11 @@ When the relative risk is close to 1, the variable is considered neutral, which 
 
 # Weight of Evidence (WoE):
 
-$ <img src="https://latex.codecogs.com/svg.image?\tiny&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;RR_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\tiny WoE_{sector_i} = ln\left ( RR_{sector_i} \right )" /> $
+$ <img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;RR_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\small WoE_{sector_i} = ln\left ( RR_{sector_i} \right )" /> $
 
 For this problem, in the female sector:
 
-<img src="https://latex.codecogs.com/svg.image?\tiny&space;WoE_{female}&space;=&space;ln\left&space;(&space;RR_{female}&space;\right&space;)&space;\approx&space;1.529877" title="https://latex.codecogs.com/svg.image?\tiny WoE_{female} = ln\left ( RR_{female} \right ) \approx 1.529877" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{female}&space;=&space;ln\left&space;(&space;RR_{female}&space;\right&space;)&space;\approx&space;1.529877" title="https://latex.codecogs.com/svg.image?\small WoE_{female} = ln\left ( RR_{female} \right ) \approx 1.529877" />
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % Population   | RR |    WoE |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|
@@ -132,11 +132,11 @@ The farther from zero, the more discriminative the variable is in terms of WoE. 
 
 # Information Value (IV):
 
-<img src="https://latex.codecogs.com/svg.image?\tiny&space;IV_{sector_i}&space;=&space;WoE_{sector_i}&space;\times&space;(%&space;target_{1,&space;sector_i}&space;-&space;%&space;target_{0,&space;sector_i}&space;)" title="https://latex.codecogs.com/svg.image?\tiny IV_{sector_i} = WoE_{sector_i} \times (% target_{1, sector_i} - % target_{0, sector_i} )" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;IV_{sector_i}&space;=&space;WoE_{sector_i}&space;\times&space;(%&space;target_{1,&space;sector_i}&space;-&space;%&space;target_{0,&space;sector_i}&space;)" title="https://latex.codecogs.com/svg.image?\small IV_{sector_i} = WoE_{sector_i} \times (% target_{1, sector_i} - % target_{0, sector_i} )" />
 
 At sector female:
 
-<img src="https://latex.codecogs.com/svg.image?\tiny&space;IV_{female}&space;=&space;WoE_{female}&space;\times&space;(\%&space;survived_{1,&space;female}&space;-&space;\%&space;survived_{0,&space;female}&space;)&space;&space;=&space;1.529877&space;\times&space;(0.681287&space;-&space;0.147541&space;)&space;\approx&space;0.816566" title="https://latex.codecogs.com/svg.image?\tiny IV_{female} = WoE_{female} \times (\% survived_{1, female} - \% survived_{0, female} ) = 1.529877 \times (0.681287 - 0.147541 ) \approx 0.816566" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;IV_{female}&space;=&space;WoE_{female}&space;\times&space;(\%&space;survived_{1,&space;female}&space;-&space;\%&space;survived_{0,&space;female}&space;)&space;&space;=&space;1.529877&space;\times&space;(0.681287&space;-&space;0.147541&space;)&space;\approx&space;0.816566" title="https://latex.codecogs.com/svg.image?\small IV_{female} = WoE_{female} \times (\% survived_{1, female} - \% survived_{0, female} ) = 1.529877 \times (0.681287 - 0.147541 ) \approx 0.816566" />
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | RR |    WoE | IV |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
