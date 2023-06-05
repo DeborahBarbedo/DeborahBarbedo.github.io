@@ -116,7 +116,7 @@ When the relative risk is close to 1, the variable is considered neutral, which 
 
 # Weight of Evidence (WoE):
 
-$ <img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;RR_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\small WoE_{sector_i} = ln\left ( RR_{sector_i} \right )" /> $
+<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;RR_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\small WoE_{sector_i} = ln\left ( RR_{sector_i} \right )" />
 
 For this problem, in the female sector:
 
