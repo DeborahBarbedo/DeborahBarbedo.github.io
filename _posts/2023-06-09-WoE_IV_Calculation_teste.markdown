@@ -50,15 +50,14 @@ WoE (Weight of Evidence) and IV (Information Value) are best known in the field 
 
 Based on the Kaggle Titanic competition dataset, we've segregated survival information by gender.  To make the concepts more accessible, this post will guide you through the calculations of IV, WoE, and RR using the data provided in the table below:
 
-| Sector |        # target_{0}  |        # target_{1}|
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{1}" />|
 |---------:|---------:|---------:|
 |   female | 81 | 233|
 |     male  | 468 | 109|
-|---------:|---------:|---------:|
 |     Total | 549 | 342 |
 What is commonly referred to as 'good' is the $target_{0}$.
 
-$ % Target_{0, sector_i} = \frac{ # Target_{0, sector_i}}{ # Target_{0}} $
+$$ % Target_{0, sector_i} = \frac{ # Target_{0, sector_i}}{ # Target_{0}} $$
 
 Let's consider the chosen sector as female.
 For this problem:
