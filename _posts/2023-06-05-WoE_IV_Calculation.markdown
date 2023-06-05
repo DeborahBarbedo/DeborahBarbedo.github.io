@@ -1,7 +1,7 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 3_WoE_IV_Python_calculation
-title: "Mastering Logistic Regression: A Comprehensive Guide to WoE and IV Calculation"
+title: "Mastering Logistic Regression: A Comprehensive Guide to WoE and IV Calculation."
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
@@ -52,7 +52,7 @@ To shed light on these concepts, we will draw insights from the [Titanic - Machi
 
 | Sector | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" /> | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{1}" title="https://latex.codecogs.com/svg.image?\small target_{1}" /> |
 |--------:|--------:|--------:|
-| female  | 81      | 233     |
+| female | 81      | 233     |
 | male    | 468     | 109     |
 | Total   | 549     | 342     |
 
@@ -103,7 +103,7 @@ This measure provides us with valuable information about the representation of t
 
 # Relative Risk (RR):
 
-RR (Relative Risk) for Sector i can be calculated as the percentage of target occurrences in Sector i compared to the total target occurrences:
+RR (Relative Risk) for Sector ‘i’ can be calculated as the percentage of target occurrences in Sector ‘i’ compared to the total target occurrences:
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;RR_{sector_i}&space;=&space;\frac{&space;%&space;target_{1,&space;sector_i}}{&space;%&space;target_{0,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small RR_{sector_i} = \frac{ % target_{1, sector_i}}{ % target_{0, sector_i}}" />
 
@@ -167,11 +167,11 @@ The table with all the calculated metrics looks as follows:
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| 0.53|
 |     Total | 549 | 342 | 1 | 1 |1| |  |  1.35|
 
+
 To ensure a more precise comprehension of WoE, IV, and RR, I have curated an informative post that delves into these concepts. You can access it [here](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV). This article aims to provide a comprehensive explanation, elucidating the intricacies of these metrics.
 
 Moreover, if you find yourself in need of performing these calculations using Python, I have created another post featuring the corresponding formulas, which can be accessed at this [link](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function). This resource will empower you to execute the calculations efficiently.
 
-For additional support, I have compiled a variety of supplementary materials on [my Github](https://github.com/DeborahBarbedo), specifically related to the topic of this post. These resources, accessible in the [supporting materials](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) repository, are designed to enhance your comprehension and aid in the practical implementation of IV, WoE, and RR calculations.
+For additional support, I have compiled a variety of supplementary materials on [my GitHub](https://github.com/DeborahBarbedo), specifically related to the topic of this post. These resources, accessible in the [supporting materials](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) repository, are designed to enhance your comprehension and aid in the practical implementation of IV, WoE, and RR calculations.
 
 If you have any further questions or need more information, I'm here to help!
-
