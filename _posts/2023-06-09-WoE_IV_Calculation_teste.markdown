@@ -69,7 +69,7 @@ What is typically described as 'bad' is the <img src="https://latex.codecogs.com
 
 | Sector | # <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" /> | # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> || % <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" /> | % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |
 |---------:|---------:|---------:|---------:|---------:|
-|   female | 81 | 233| <img src="https://latex.codecogs.com/svg.image?\frac{81}{594}" title="https://latex.codecogs.com/svg.image?\frac{81}{594}" /> | <img src="https://latex.codecogs.com/svg.image?\frac{233}{342}" title="https://latex.codecogs.com/svg.image?\frac{233}{342}" /> |
+|   female | 81 | 233| <img src="https://latex.codecogs.com/svg.image?\frac{81}{594}" title="https://latex.codecogs.com/svg.image?\frac{81}{594}" /> | <img src="https://latex.codecogs.com/svg.image?\small&space;\frac{233}{342}" title="https://latex.codecogs.com/svg.image?\small \frac{233}{342}" /> |
 |     male  | 468 | 109|$\frac{468}{594}$ | $\frac{109}{342}$ |
 |     Total | 549 | 342 |
 
