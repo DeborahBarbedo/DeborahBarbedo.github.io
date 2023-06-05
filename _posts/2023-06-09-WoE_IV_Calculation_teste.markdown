@@ -50,14 +50,14 @@ WoE (Weight of Evidence) and IV (Information Value) are best known in the field 
 
 Based on the Kaggle Titanic competition dataset, we've segregated survival information by gender.  To make the concepts more accessible, this post will guide you through the calculations of IV, WoE, and RR using the data provided in the table below:
 
-| Sector |        # <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{1}" />|
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|
 |---------:|---------:|---------:|
 |   female | 81 | 233|
 |     male  | 468 | 109|
 |     Total | 549 | 342 |
 What is commonly referred to as 'good' is the $target_{0}$.
 
-$$ % Target_{0, sector_i} = \frac{ # Target_{0, sector_i}}{ # Target_{0}} $$
+<img src="https://latex.codecogs.com/svg.image?%&space;target_{0,&space;sector_i}&space;=&space;\frac{&space;target_{0,&space;sector_i}}{&space;target_{0}}&space;" title="https://latex.codecogs.com/svg.image?% target_{0, sector_i} = \frac{ target_{0, sector_i}}{ target_{0}} " />
 
 Let's consider the chosen sector as female.
 For this problem:
@@ -70,7 +70,6 @@ $ % Target_{1, sector_i} = \frac{ # Target_{1, sector_i}}{ # Target_{1}} $
 |---------:|---------:|---------:|---------:|---------:|
 |   female | 81 | 233| $frac{81}{594}$ | $frac{233}{342}$ |
 |     male  | 468 | 109|$frac{468}{594}$ | $frac{109}{342}$ |
-|---------:|---------:|---------:|---------:|---------:|
 |     Total | 549 | 342 |
 
 For this problem, in the female $sector$:
