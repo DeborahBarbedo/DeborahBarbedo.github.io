@@ -68,7 +68,7 @@ For this problem:
 
 What is typically described as 'bad' is the <img src="https://latex.codecogs.com/svg.image?\small&space;target_{1}" title="https://latex.codecogs.com/svg.image?\small target_{1}" />.
 
-<img src="https://latex.codecogs.com/svg.image?\tiny&space;%&space;target_{1,&space;sector_i}&space;=&space;\frac{&space;target_{1,&space;sector_i}}{&space;target_{1}}&space;" title="https://latex.codecogs.com/svg.image?\tiny % target_{1, sector_i} = \frac{ target_{1, sector_i}}{ target_{1}} " />
+<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;target_{1,&space;sector_i}&space;=&space;\frac{&space;target_{1,&space;sector_i}}{&space;target_{1}}&space;" title="https://latex.codecogs.com/svg.image?\small % target_{1, sector_i} = \frac{ target_{1, sector_i}}{ target_{1}} " />
 
 For this problem, in the female sector:
 
