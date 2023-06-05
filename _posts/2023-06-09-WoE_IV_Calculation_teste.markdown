@@ -50,61 +50,70 @@ WoE (Weight of Evidence) and IV (Information Value) are best known in the field 
 
 Based on the Kaggle Titanic competition dataset, we've segregated survival information by gender.  To make the concepts more accessible, this post will guide you through the calculations of IV, WoE, and RR using the data provided in the table below:
 
-| Sector | # <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" /> | # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |
+| Sector | # <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " /> | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{1}" title="https://latex.codecogs.com/svg.image?\small target_{1}" /> |
 |--------:|--------:|--------:|
 | female  | 81      | 233     |
 | male    | 468     | 109     |
 | Total   | 549     | 342     |
 
-What is commonly referred to as 'good' is the <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" />.
+What is commonly referred to as 'good' is the <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />.
 
-<img src="https://latex.codecogs.com/svg.image?%&space;target_{0,&space;sector_i}&space;=&space;\frac{&space;target_{0,&space;sector_i}}{&space;target_{0}}&space;" title="https://latex.codecogs.com/svg.image?% target_{0, sector_i} = \frac{ target_{0, sector_i}}{ target_{0}} " />
+<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;target_{0,&space;sector_i}&space;=&space;\frac{&space;target_{0,&space;sector_i}}{&space;target_{0}}&space;" title="https://latex.codecogs.com/svg.image?\small % target_{0, sector_i} = \frac{ target_{0, sector_i}}{ target_{0}} " />
 
 Let's consider the chosen sector as female.
+
 For this problem:
 
-<img src="https://latex.codecogs.com/svg.image?%&space;Survived_{0,&space;female&space;}&space;=&space;\frac{&space;Survived_{0,&space;female}}{&space;Survived_{0}}&space;=&space;\frac{81}{81&plus;468}&space;\approx&space;0.147541&space;" title="https://latex.codecogs.com/svg.image?% Survived_{0, female } = \frac{ Survived_{0, female}}{ Survived_{0}} = \frac{81}{81+468} \approx 0.147541 " />
-What is typically described as 'bad' is the <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />.
-<img src="https://latex.codecogs.com/svg.image?%&space;target_{1,&space;sector_i}&space;=&space;\frac{&space;target_{1,&space;sector_i}}{&space;target_{1}}" title="https://latex.codecogs.com/svg.image?% target_{1, sector_i} = \frac{ target_{1, sector_i}}{ target_{1}}" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;survived_{0,&space;female&space;}&space;=&space;\frac{&space;survived_{0,&space;female}}{&space;survived_{0}}&space;=\frac{81}{81&plus;468}&space;\approx&space;0.147541&space;" title="https://latex.codecogs.com/svg.image?\small % survived_{0, female } = \frac{ survived_{0, female}}{ survived_{0}} =\frac{81}{81+468} \approx 0.147541 " />
 
-| Sector | # <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" /> | # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> | % <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" /> | % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |
-|--------:|--------:|--------:|--------:|--------:|
-| female  | 81      | 233     | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{81}{594}" title="https://latex.codecogs.com/svg.image?\tiny \frac{81}{594}" /> | <img src="https://latex.codecogs.com/svg.image?\small&space;\frac{233}{342}" title="https://latex.codecogs.com/svg.image?\small \frac{233}{342}" /><img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{233}{342}" title="https://latex.codecogs.com/svg.image?\tiny \frac{233}{342}" /> |
-| male    | 468     | 109     | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{468}{594}" title="https://latex.codecogs.com/svg.image?\tiny \frac{468}{594}" /> | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{109}{342}" title="https://latex.codecogs.com/svg.image?\tiny \frac{109}{342}" /> |
-| Total   | 549     | 342     |
+What is typically described as 'bad' is the <img src="https://latex.codecogs.com/svg.image?\small&space;target_{1}" title="https://latex.codecogs.com/svg.image?\small target_{1}" />.
+
+<img src="https://latex.codecogs.com/svg.image?\tiny&space;%&space;target_{1,&space;sector_i}&space;=&space;\frac{&space;target_{1,&space;sector_i}}{&space;target_{1}}&space;" title="https://latex.codecogs.com/svg.image?\tiny % target_{1, sector_i} = \frac{ target_{1, sector_i}}{ target_{1}} " />
 
 For this problem, in the female sector:
 
-$ % Survived_{1, female} = \frac{ # Survived_{1, female}}{ # Survived_{1} } = \frac{233}{233+109} \approx 0.681287 $
-Percentage of population in the study sector:
-This measure gives us an idea of how much the study sector represents in relation to the total population. It is important to consider this distribution for a more comprehensive analysis of the results.
+<img src="https://latex.codecogs.com/svg.image?\tiny&space;%&space;survived_{1,&space;female}&space;=&space;\frac{&space;survived_{1,&space;female}}{&space;survived_{1}&space;}&space;=&space;\frac{233}{233&plus;109}&space;\approx&space;0.681287" title="https://latex.codecogs.com/svg.image?\tiny % survived_{1, female} = \frac{ survived_{1, female}}{ survived_{1} } = \frac{233}{233+109} \approx 0.681287" />
 
-$ % Pop_{sector_i} = \frac{ # Pop_{sector_i}}{ # Pop} $
+| Sector | # <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " /> | # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> | % <img src="https://latex.codecogs.com/svg.image?target_{0}" title="https://latex.codecogs.com/svg.image?target_{0}" /> | % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |
+|--------:|--------:|--------:|--------:|--------:|
+| female  | 81      | 233     | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{81}{594}" title="https://latex.codecogs.com/svg.image?\tiny \frac{81}{594}" /> | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{233}{342}" title="https://latex.codecogs.com/svg.image?\tiny \frac{233}{342}" /> |
+| male    | 468     | 109     | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{468}{594}" title="https://latex.codecogs.com/svg.image?\tiny \frac{468}{594}" /> | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{109}{342}" title="https://latex.codecogs.com/svg.image?\tiny \frac{109}{342}" /> |
+| Total   | 549     | 342     | 1 | 1 |
+
+
+# Percentage of population in the study sector:
+
+
+<img src="https://latex.codecogs.com/svg.image?\tiny&space;%&space;pop_{sector_i}&space;=&space;\frac{&space;pop_{sector_i}}{&space;pop}" title="https://latex.codecogs.com/svg.image?\tiny % pop_{sector_i} = \frac{ pop_{sector_i}}{ pop}" />
 
 For the chosen sector, which is female in this case, the calculation of the population percentage would be:
 
 $ % Pop_{female} = \frac{ # Pop_{female}}{ # Pop} = \frac{81 + 233}{81 + 233 + 468 +109} \approx 0.352413 $
-| Sector |        # target_{0}  |        # target_{1}|    % target_{0}  |        % target_{1}|    % Pop   |
+
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Pop   |
 |---------:|---------:|---------:|---------:|---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| $frac{314}{891}$ |
 |     male  | 468 | 109|0.85| 0.32| $frac{577}{891}$ |
 |     Total | 549 | 342 | 1 | 1 |
 
-RR (Relative Risk):
-The relative risk is a measure that allows us to assess the variability of categories within an explanatory variable, indicating how discriminative that variable can be.
+This measure gives us an idea of how much the study sector represents in relation to the total population. It is important to consider this distribution for a more comprehensive analysis of the results.
 
-When the relative risk is close to 1, the variable is considered neutral, which means that the association between that variable and the desired outcome is unlikely to exist. If the relative risk is greater than 1, it indicates a positive association between the variable and the occurrence of the desired outcome. On the other hand, if the relative risk is less than 1, it indicates a negative association between the variable and the occurrence of the desired outcome.
+# Relative Risk (RR):
 
 $ RR_{sector_i} = \frac{ % Target_{1, sector_i}}{ % Target_{0, sector_i}} $
 
 $ RR_{female} = \frac{ % Survived_{1, female}}{ % Survived_{0, female }} = \frac{ \frac{233}{233+109}}{ \frac{81}{81+468} } \approx 4.617609 $
-| Sector |        # target_{0}  |        # target_{1}|    % target_{0}  |        % target_{1}|    % Pop   | RR |
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Pop   | RR |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| $frac{0.68}{0.15}$ |
 |     male  | 468 | 109|0.85| 0.32| 0.65| $frac{0.32}{0.85}$ |
 |     Total | 549 | 342 | 1 | 1 |1| |
-WoE (Weight of Evidence):
-The farther from zero, the more discriminative the variable is in terms of WoE. Negative values indicate that the variable does not favor the occurrence, while positive values indicate the favoring of the occurrence.
+
+The relative risk is a measure that allows us to assess the variability of categories within an explanatory variable, indicating how discriminative that variable can be.
+
+When the relative risk is close to 1, the variable is considered neutral, which means that the association between that variable and the desired outcome is unlikely to exist. If the relative risk is greater than 1, it indicates a positive association between the variable and the occurrence of the desired outcome. On the other hand, if the relative risk is less than 1, it indicates a negative association between the variable and the occurrence of the desired outcome.
+
+# Weight of Evidence (WoE):
 
 $ WoE_{sector_i} = ln(RR_{sector_i}) $
 
@@ -112,14 +121,31 @@ For this problem, in the female sector:
 
 $ WoE_{female} = ln(RR_{female}) \approx 1.529877 $
 
-| Sector |        # target_{0}  |        # target_{1}|    % target_{0}  |        % target_{1}|    % Pop   | RR |    WoE |
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % Pop   | RR |    WoE |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|
 
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|ln(4.62) |
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|ln(0.37) |
 |     Total | 549 | 342 | 1 | 1 |1| | 0 |
 
-IV (Information Value) :
+The farther from zero, the more discriminative the variable is in terms of WoE. Negative values indicate that the variable does not favor the occurrence, while positive values indicate the favoring of the occurrence.
+
+# Information Value (IV):
+
+$ IV_{sector_i} = WoE_{sector_i} \times (\% Target_{1, sector_i} - \% Target_{0, sector_i} ) $
+
+At $sector$ female:
+
+$ IV_{female} = WoE_{female} \times (\% Survived_{1, female} - \% Survived_{0, female} )  = 1.529877 \times (0.681287 - 0.147541 ) \approx 0.816566 $
+
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Pop   | RR |    WoE | IV |
+|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
+
+|   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| 1.53 * (0.68-0.15) *100|
+|     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| -0.98* (0.32-0.85) *100|
+|     Total | 549 | 342 | 1 | 1 |1| | 0 | | |
+
+
 There is a table indicating the classification of the IV values:
 
 | IV        | Classification            |
@@ -133,22 +159,10 @@ There is a table indicating the classification of the IV values:
 
 If you're interested in checking out the original table, you can find it at this [link](https://teses.usp.br/teses/disponiveis/45/45134/tde-05022015-232801/pt-br.php).
 
-$ IV_{sector_i} = WoE_{sector_i} \times (\% Target_{1, sector_i} - \% Target_{0, sector_i} ) $
-
-At $sector$ female:
-
-$ IV_{female} = WoE_{female} \times (\% Survived_{1, female} - \% Survived_{0, female} )  = 1.529877 \times (0.681287 - 0.147541 ) \approx 0.816566 $
-
-| Sector |        # target_{0}  |        # target_{1}|    % target_{0}  |        % target_{1}|    % Pop   | RR |    WoE | IV |
-|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
-
-|   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| 1.53 * (0.68-0.15) *100|
-|     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| -0.98* (0.32-0.85) *100|
-|     Total | 549 | 342 | 1 | 1 |1| | 0 | | |
 
 The table with all the calculated metrics looks as follows:
 
-| Sector |        # target_{0}  |        # target_{1}|    % target_{0}  |        % target_{1}|    % Pop   | RR |    WoE | IV |
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;\target_{0}&space;" title="https://latex.codecogs.com/svg.image?\small \target_{0} " />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Pop   | RR |    WoE | IV |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
 
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| 0.82|
