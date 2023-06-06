@@ -103,11 +103,11 @@ This measure provides us with valuable information about the representation of t
 
 # Relative Risk (RR):
 
-RR (Relative Risk) for sector ‘i’ can be calculated as the percentage of target occurrences in sector ‘i’ compared to the percentage of target of not occurrences in sector ‘i’:
+The RR (Relative Risk) for sector 'i' can be calculated as the proportion of the sector under study in the target of occurrences in relation to the proportion of sector 'i' in the target of non-occurrences:
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;RR_{sector_i}&space;=&space;\frac{&space;%&space;target_{1,&space;sector_i}}{&space;%&space;target_{0,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small RR_{sector_i} = \frac{ % target_{1, sector_i}}{ % target_{0, sector_i}}" />
 
-Similarly, RR for the female category can be calculated as the percentage of survived occurrences among females compared to the percentage of deaths among females:
+Likewise, the RR for the female category can be calculated as the percentage of females among survivors compared to the percentage of females among those who died: 
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;RR_{female}&space;=&space;\frac{&space;%&space;survived_{1,&space;female}}{&space;%&space;survived_{0,&space;female&space;}}&space;=&space;\frac{&space;\frac{233}{233&plus;109}}{&space;\frac{81}{81&plus;468}&space;}&space;\approx&space;4.617609" title="https://latex.codecogs.com/svg.image?\small RR_{female} = \frac{ % survived_{1, female}}{ % survived_{0, female }} = \frac{ \frac{233}{233+109}}{ \frac{81}{81+468} } \approx 4.617609" />
 
