@@ -9,7 +9,7 @@ title: "Dominando a Regressão Logística: Um Guia Abrangente para o Cálculo de
 # multiple category is not supported
 category: Análise de dados
 # multiple tag entries are possible
-tags: [Análise de dados, Regressão logística, Seleção de variáveis, Valor de Informação (IV), Peso de Evidência (WoE), Conjunto de Dados Titanic, Risco Relativo]
+tags: [Análise de dados, Regressão logística, Seleção de variáveis, Valor de Informação (IV), Peso de Evidência (WoE), Conjunto de Dados Titanic]
 # thumbnail image for post
 img: ":IV_and_WoE_desvenda.jpg"
 # disable comments on this page
@@ -22,7 +22,7 @@ date: 2023-06-12 19:57:53 +0900
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Aprenda como calcular e entender as métricas de Peso da Evidência (WoE) e Valor da Informação (IV), que são amplamente utilizadas para diferenciar indivíduos dignos de crédito dos não dignos de crédito. Esta postagem de blog explora esses cálculos usando o conjunto de dados Titanic, com foco em informações de sobrevivência segregadas por gênero. Desmistifique os conceitos de IV, WoE e RR (Risco Relativo) para torná-los mais acessíveis e tangíveis. Aprofunde-se nos dados e tabelas fornecidos para obter insights e aplicar essas métricas de forma eficaz."
+meta_description: "Aprenda como calcular e entender as métricas de Peso da Evidência (WoE) e Valor da Informação (IV), que são amplamente utilizadas para diferenciar indivíduos dignos de crédito dos não dignos de crédito. Esta postagem de blog explora esses cálculos usando o conjunto de dados Titanic, com foco em informações de sobrevivência segregadas por gênero. Desmistifique os conceitos de IV e WoE para torná-los mais acessíveis e tangíveis. Aprofunde-se nos dados e tabelas fornecidos para obter insights e aplicar essas métricas de forma eficaz."
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
 # image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
@@ -46,7 +46,7 @@ Um Guia Abrangente para o Cálculo de WoE e IV.
 
 Essas métricas são amplamente reconhecidas por sua capacidade de distinguir entre indivíduos dignos de crédito e não dignos de crédito. Ao longo de nossa jornada para entender esses cálculos, frequentemente nos deparamos com os familiares rótulos de "bons" e "maus". Nesse contexto, os "maus clientes" são aqueles que não pagaram suas dívidas, enquanto os "bons clientes" são aqueles que cumpriram suas obrigações e quitaram o empréstimo.
 
-Para clarificar esses conceitos, vamos extrair insights do conjunto de dados da [competição Titanic do Kaggle](https://www.kaggle.com/competitions/titanic/data), examinando especificamente as informações de sobrevivência segregadas por gênero. Nosso objetivo é desmistificar os cálculos de IV, WoE e RR, tornando-os mais acessíveis e tangíveis. Utilizaremos os dados fornecidos na tabela abaixo como base.
+Para clarificar esses conceitos, vamos extrair insights do conjunto de dados da [competição Titanic do Kaggle](https://www.kaggle.com/competitions/titanic/data), examinando especificamente as informações de sobrevivência segregadas por gênero. Nosso objetivo é desmistificar os cálculos de IV e WoE, tornando-os mais acessíveis e tangíveis. Utilizaremos os dados fornecidos na tabela abaixo como base.
 
 | Segmento | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" /> | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{1}" title="https://latex.codecogs.com/svg.image?\small target_{1}" /> |
 |--------:|--------:|--------:|
@@ -102,17 +102,17 @@ Essa medida nos fornece informações valiosas sobre a representação do setor 
 
 # Peso da Evidência (WoE):
 
-Ele pode ser calculado usando o logaritmo natural do Risco Relativo (RR) para cada setor:
+Ele pode ser calculado usando o logaritmo natural do 'Distr' para cada setor:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;RR_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\small WoE_{sector_i} = ln\left ( RR_{sector_i} \right )" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;Distr_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\small WoE_{sector_i} = ln\left ( Distr_{sector_i} \right )" />
 
 Vamos considerar o segmento feminino como exemplo:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{female}&space;=&space;ln\left&space;(&space;RR_{female}&space;\right&space;)&space;\approx&space;1.529877" title="https://latex.codecogs.com/svg.image?\small WoE_{female} = ln\left ( RR_{female} \right ) \approx 1.529877" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{female}&space;=&space;ln\left&space;(&space;Distr_{female}&space;\right&space;)&space;\approx&space;1.529877" title="https://latex.codecogs.com/svg.image?\small WoE_{female} = ln\left ( Distr_{female} \right ) \approx 1.529877" />
 
 Agora, vamos examinar a tabela que apresenta as estatísticas:
 
-| Segmento |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % População   | RR |    WoE |
+| Segmento |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % População   | Distr |    WoE |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|ln(4.62) |
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|ln(0.37) |
@@ -130,7 +130,7 @@ Vamos considerar o segmento feminino como exemplo:
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;IV_{female}&space;=&space;WoE_{female}&space;\times&space;(\%&space;survived_{1,&space;female}&space;-&space;\%&space;survived_{0,&space;female}&space;)&space;&space;=&space;1.529877&space;\times&space;(0.681287&space;-&space;0.147541&space;)&space;\approx&space;0.816566" title="https://latex.codecogs.com/svg.image?\small IV_{female} = WoE_{female} \times (\% survived_{1, female} - \% survived_{0, female} ) = 1.529877 \times (0.681287 - 0.147541 ) \approx 0.816566" />
 
-| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | RR |    WoE | IV |
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | Distr |    WoE | IV |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| <img src="https://latex.codecogs.com/svg.image?\tiny&space;1.53&space;\times&space;(0.68-0.15&space;)&space;" title="https://latex.codecogs.com/svg.image?\tiny 1.53 \times (0.68-0.15 ) " />|
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| <img src="https://latex.codecogs.com/svg.image?\tiny&space;-0.98&space;\times&space;(0.32-0.85&space;)" title="https://latex.codecogs.com/svg.image?\tiny -0.98 \times (0.32-0.85 )" />|
@@ -141,16 +141,16 @@ Se você tiver interesse em verificar a classificação dos valores de IV, você
 
 A tabela com todas as métricas calculadas é a seguinte:
 
-| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % População  | RR |    WoE | IV |
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % População  | Distr |    WoE | IV |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| 0.82|
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| 0.53|
 |     Total | 549 | 342 | 1 | 1 |1| |  |  1.35|
 
-Para facilitar o entendimento de WoE, IV e RR, eu preparei um artigo informativo que explica esses conceitos de forma detalhada. Você pode acessá-lo [aqui](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV). O objetivo desse post é fornecer uma explicação completa e esclarecer as nuances dessas métricas.
+Para facilitar o entendimento de WoE e IV, eu preparei um artigo informativo que explica esses conceitos de forma detalhada. Você pode acessá-lo [aqui](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV). O objetivo desse post é fornecer uma explicação completa e esclarecer as nuances dessas métricas.
 
 Além disso, se você precisa fazer esses cálculos usando Python, criei outro post com as fórmulas correspondentes. Você pode conferir esse recurso neste [link](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function). Com ele, você poderá realizar os cálculos de forma eficiente.
 
-Para obter suporte adicional, compilei diversos materiais complementares no [meu GitHub](https://github.com/DeborahBarbedo) sobre esse tema. Esses recursos estão disponíveis no [repositório de materiais de suporte](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) e foram criados para ajudar você a entender melhor e aplicar na prática os cálculos de IV, WoE e RR.
+Para obter suporte adicional, compilei diversos materiais complementares no [meu GitHub](https://github.com/DeborahBarbedo) sobre esse tema. Esses recursos estão disponíveis no [repositório de materiais de suporte](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) e foram criados para ajudar você a entender melhor e aplicar na prática os cálculos de IV e WoE.
 
 Se tiver mais alguma dúvida ou precisar de mais informações, estou aqui para ajudar!
