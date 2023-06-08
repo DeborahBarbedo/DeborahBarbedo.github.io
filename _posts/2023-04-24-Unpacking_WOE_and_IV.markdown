@@ -129,8 +129,6 @@ Just a quick heads up that you can find all the [support materials](https://gith
 
 # References:
 
-# References:
-
 * Anderson, Raymond. The Credit Scoring Toolkit: Theory and Practice for Retail Credit Risk Management and Decision Automation. Oxford University Press, 2007.
 
 * Siddiqi, Naeem. Credit Risk Scorecards: Developing and Implementing Intelligent Credit Scoring. Wiley, 2006.
