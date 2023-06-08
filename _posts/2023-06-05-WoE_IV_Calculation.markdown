@@ -181,8 +181,8 @@ If you have any further questions or need more information, I'm here to help!
 
 * Siddiqi, Naeem. Credit Risk Scorecards: Developing and Implementing Intelligent Credit Scoring. Wiley, 2006.
 
-* Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
-  https://CRAN.R-project.org/package=woe
+* [Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
+  https://CRAN.R-project.org/package=woe](https://CRAN.R-project.org/package=woe)
 
-* Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
-  version 0.1.6. https://CRAN.R-project.org/package=woeBinning
+* [Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
+  version 0.1.6. https://CRAN.R-project.org/package=woeBinning](https://CRAN.R-project.org/package=woeBinning)

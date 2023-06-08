@@ -68,7 +68,6 @@ Additionally, there is a table indicating the classification of the IV values:
 | \> 0.5     | Suspect predictive power  |
 
 
-If you're interested in checking out the original table, look at one of the references.
 
 These metrics enable you to gain an even clearer view of your data!
 
@@ -133,8 +132,8 @@ Just a quick heads up that you can find all the [support materials](https://gith
 
 * Siddiqi, Naeem. Credit Risk Scorecards: Developing and Implementing Intelligent Credit Scoring. Wiley, 2006.
 
-* Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
-  https://CRAN.R-project.org/package=woe
+* [Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
+  https://CRAN.R-project.org/package=woe](https://CRAN.R-project.org/package=woe)
 
-* Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
-  version 0.1.6. https://CRAN.R-project.org/package=woeBinning
+* [Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
+  version 0.1.6. https://CRAN.R-project.org/package=woeBinning](https://CRAN.R-project.org/package=woeBinning)

@@ -71,7 +71,7 @@ Além disso, temos uma tabela que indica a classificação dos valores de IV:
 | \> 0.5     | Poder de previsão suspeito  |
 
 
-Essa tabela é importante para avaliar a qualidade da capacidade preditiva da variável, de acordo com o valor do IV. É interessante ficar atento à classificação de cada valor e utilizá-la como referência para a interpretação dos resultados. Se você estiver com interesse em conferir a tabela original, pode encontrá-la em um dos materiais de referência.
+Essa tabela é importante para avaliar a qualidade da capacidade preditiva da variável, de acordo com o valor do IV. É interessante ficar atento à classificação de cada valor e utilizá-la como referência para a interpretação dos resultados.
 
 Essas métricas permitem que você tenha uma visão ainda mais clara dos seus dados! Com elas, você pode compreender melhor a relação entre as variáveis estudadas e o resultado que você está buscando prever. Não deixe de utilizá-las para melhorar a qualidade da sua análise e tomar decisões mais embasadas!
 
@@ -134,8 +134,8 @@ Você pode encontrar todos os [materiais de suporte](https://github.com/DeborahB
 
 * Siddiqi, Naeem. Credit Risk Scorecards: Developing and Implementing Intelligent Credit Scoring. Wiley, 2006.
 
-* Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
-  https://CRAN.R-project.org/package=woe
+* [Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
+  https://CRAN.R-project.org/package=woe](https://CRAN.R-project.org/package=woe)
 
-* Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
-  version 0.1.6. https://CRAN.R-project.org/package=woeBinning
+* [Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
+  version 0.1.6. https://CRAN.R-project.org/package=woeBinning](https://CRAN.R-project.org/package=woeBinning)
