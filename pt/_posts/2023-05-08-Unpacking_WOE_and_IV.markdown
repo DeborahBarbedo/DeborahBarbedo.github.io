@@ -110,7 +110,7 @@ Vamos dar uma olhada na tabela gerada pela função [Woe_IV_Continuous](https://
 |     Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 0.556679 | -0.585766 | 0.04 |
 |     Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.37 |
 
-Essa variável também tem um IV alto, indicando forte poder preditivo. Para melhorar o modelo, é recomendável criar uma variável binária indicando se o valor é menor ou igual a 10,5. Ao agrupar categorias, é importante lembrar que o valor da informação tende a diminuir. Outro ponto necessário se atentar, é indicado agrupar apenas categorias com WoE semelhantes. No caso da variável "Fare", a linha 7 tem um WoE negativo próximo de zero, o que sugere uma faixa neutra em relação à sobrevivência. Assim, incluí-la no grupo que favorece a sobrevivência é seguro.
+Essa variável também tem um IV alto, indicando forte poder preditivo. Para melhorar o modelo, é recomendável criar uma variável binária indicando se o valor é menor ou igual a 10,5. Ao agrupar categorias, é importante lembrar que o valor da informação tende a diminuir. Outro ponto necessário se atentar, é indicado agrupar apenas categorias com WoE semelhantes. No caso da variável "Fare", a linha 7 tem um WoE positivo próximo de zero, o que sugere uma faixa neutra em relação à sobrevivência. Assim, incluí-la no grupo que favorece a sobrevivência é seguro.
 
 Com base nesta análise rápida, pudemos criar duas variáveis (FLG_Fare_leq_10.5 e FLG_female) que serão úteis na construção do modelo de regressão logística. Os detalhes podem ser vistos na tabela abaixo.
 
