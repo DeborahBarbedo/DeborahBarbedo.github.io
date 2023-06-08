@@ -107,9 +107,9 @@ The distribution for sector 'i' can be calculated as the proportion of the secto
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{sector_i}&space;=&space;\frac{&space;%&space;target_{0,&space;sector_i}}{&space;%&space;target_{1,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small Distr_{sector_i} = \frac{ % target_{0, sector_i}}{ % target_{1, sector_i}}" />
 
-Likewise, the 'Distr' for the female category can be calculated as the percentage of females among survivors compared to the percentage of females among those who died:
+Likewise, the division of distributions for the female category can be calculated as the percentage of females among who died compared to the percentage of females among those who survivors:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{female}&space;=&space;\frac{&space;%&space;survived_{0,&space;female}}{&space;%&space;survived_{1,&space;female&space;}}&space;=&space;\frac{&space;\frac{81}{81&plus;468}}{&space;\frac{233}{233&plus;109}&space;}&space;\approx&space;4.617609" title="https://latex.codecogs.com/svg.image?\small Distr_{female} = \frac{ % survived_{0, female}}{ % survived_{1, female }} = \frac{ \frac{81}{81+468}}{ \frac{233}{233+109} } \approx 4.617609" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{female}&space;=&space;\frac{&space;%&space;survived_{0,&space;female}}{&space;%&space;survived_{1,&space;female&space;}}&space;=&space;\frac{&space;\frac{81}{81&plus;468}}{&space;\frac{233}{233&plus;109}&space;}&space;\approx&space;0.216562" title="https://latex.codecogs.com/svg.image?\small Distr_{female} = \frac{ % survived_{0, female}}{ % survived_{1, female }} = \frac{ \frac{81}{81+468}}{ \frac{233}{233+109} } \approx 0.216562" />
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | Distr |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|
@@ -126,14 +126,14 @@ Likewise, the 'Distr' for the female category can be calculated as the percentag
 
 Let's consider the female sector as an example:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{female}&space;=&space;ln\left&space;(&space;Distr_{female}&space;\right&space;)&space;\approx&space;1.529877" title="https://latex.codecogs.com/svg.image?\small WoE_{female} = ln\left ( Distr_{female} \right ) \approx 1.529877" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{female}&space;=&space;ln\left&space;(&space;Distr_{female}&space;\right&space;)&space;\approx&space;-1.529877" title="https://latex.codecogs.com/svg.image?\small WoE_{female} = ln\left ( Distr_{female} \right ) \approx -1.529877" />
 
 Now, let's examine the table that presents the statistics:
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % Population   | Distr |    WoE |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|
-|   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|ln(4.62) |
-|     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|ln(0.37) |
+|   female | 81 | 233| 0.15 | 0.68| 0.35| 0.22|ln(0.22) |
+|     male  | 468 | 109|0.85| 0.32| 0.65| 2.67|ln(2.67) |
 |     Total | 549 | 342 | 1 | 1 |1| |  |
 
 By analyzing the WoE values, we can gain insights into the discriminative nature of the variables in predicting the desired outcome.
@@ -146,12 +146,12 @@ It can be calculated using the following formula:
 
 Let's consider the Female sector as an example:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;IV_{female}&space;=&space;WoE_{female}&space;\times&space;(\%&space;survived_{1,&space;female}&space;-&space;\%&space;survived_{0,&space;female}&space;)&space;&space;=&space;1.529877&space;\times&space;(0.681287&space;-&space;0.147541&space;)&space;\approx&space;0.816566" title="https://latex.codecogs.com/svg.image?\small IV_{female} = WoE_{female} \times (\% survived_{1, female} - \% survived_{0, female} ) = 1.529877 \times (0.681287 - 0.147541 ) \approx 0.816566" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;IV_{female}&space;=&space;WoE_{female}&space;\times&space;(\%&space;survived_{1,&space;female}&space;-&space;\%&space;survived_{0,&space;female}&space;)&space;&space;=&space;-1.529877&space;\times&space;(0.681287&space;-&space;0.147541&space;)&space;\approx&space;0.816566" title="https://latex.codecogs.com/svg.image?\small IV_{female} = WoE_{female} \times (\% survived_{1, female} - \% survived_{0, female} ) = -1.529877 \times (0.147541 - 0.681287 ) \approx 0.816565" />
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | Distr |    WoE | IV |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
-|   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| <img src="https://latex.codecogs.com/svg.image?\tiny&space;1.53&space;\times&space;(0.68-0.15&space;)&space;" title="https://latex.codecogs.com/svg.image?\tiny 1.53 \times (0.68-0.15 ) " />|
-|     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| <img src="https://latex.codecogs.com/svg.image?\tiny&space;-0.98&space;\times&space;(0.32-0.85&space;)" title="https://latex.codecogs.com/svg.image?\tiny -0.98 \times (0.32-0.85 )" />|
+|   female | 81 | 233| 0.15 | 0.68| 0.35| 0.22|-1.53| <img src="https://latex.codecogs.com/svg.image?\tiny&space;-1.53&space;\times&space;(0.68-0.15&space;)&space;" title="https://latex.codecogs.com/svg.image?\tiny -1.53 \times (0.68-0.15 ) " />|
+|     male  | 468 | 109|0.85| 0.32| 0.65| 2.67|0.98| <img src="https://latex.codecogs.com/svg.image?\tiny&space;0.98&space;\times&space;(0.32-0.85&space;)" title="https://latex.codecogs.com/svg.image?\tiny 0.98 \times (0.32-0.85 )" />|
 |     Total | 549 | 342 | 1 | 1 |1| |  | | |
 
 
@@ -162,8 +162,8 @@ The table with all the calculated metrics looks as follows:
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population  | Distr |    WoE | IV |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
-|   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| 0.82|
-|     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| 0.53|
+|   female | 81 | 233| 0.15 | 0.68| 0.35| 0.22|-1.53| 0.82|
+|     male  | 468 | 109|0.85| 0.32| 0.65| 2.67|0.98| 0.53|
 |     Total | 549 | 342 | 1 | 1 |1| |  |  1.35|
 
 
