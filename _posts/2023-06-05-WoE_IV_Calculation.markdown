@@ -103,18 +103,18 @@ This measure provides us with valuable information about the representation of t
 
 # Distribution of the targets within each segment (Distr):
 
-The distribution for sector 'i' can be calculated as the proportion of the sector under study in the target of occurrences in relation to the proportion of sector 'i' in the target of non-occurrences:
+The distribution for sector 'i' can be calculated as the proportion of the sector under study in the target of non-occurrences in relation to the proportion of sector 'i' in the target of occurrences:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{sector_i}&space;=&space;\frac{&space;%&space;target_{1,&space;sector_i}}{&space;%&space;target_{0,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small Distr_{sector_i} = \frac{ % target_{1, sector_i}}{ % target_{0, sector_i}}" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{sector_i}&space;=&space;\frac{&space;%&space;target_{0,&space;sector_i}}{&space;%&space;target_{1,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small Distr_{sector_i} = \frac{ % target_{0, sector_i}}{ % target_{1, sector_i}}" />
 
 Likewise, the 'Distr' for the female category can be calculated as the percentage of females among survivors compared to the percentage of females among those who died:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{female}&space;=&space;\frac{&space;%&space;survived_{1,&space;female}}{&space;%&space;survived_{0,&space;female&space;}}&space;=&space;\frac{&space;\frac{233}{233&plus;109}}{&space;\frac{81}{81&plus;468}&space;}&space;\approx&space;4.617609" title="https://latex.codecogs.com/svg.image?\small Distr_{female} = \frac{ % survived_{1, female}}{ % survived_{0, female }} = \frac{ \frac{233}{233+109}}{ \frac{81}{81+468} } \approx 4.617609" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{female}&space;=&space;\frac{&space;%&space;survived_{0,&space;female}}{&space;%&space;survived_{1,&space;female&space;}}&space;=&space;\frac{&space;\frac{81}{81&plus;468}}{&space;\frac{233}{233&plus;109}&space;}&space;\approx&space;4.617609" title="https://latex.codecogs.com/svg.image?\small Distr_{female} = \frac{ % survived_{0, female}}{ % survived_{1, female }} = \frac{ \frac{81}{81+468}}{ \frac{233}{233+109} } \approx 4.617609" />
 
 | Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | Distr |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|
-|   female | 81 | 233| 0.15 | 0.68| 0.35| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{0.68}{0.15}\" title="https://latex.codecogs.com/svg.image?\tiny \frac{0.68}{0.15}" /> |
-|     male  | 468 | 109|0.85| 0.32| 0.65| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{0.32}{0.85}" title="https://latex.codecogs.com/svg.image?\tiny \frac{0.32}{0.85}" /> |
+|   female | 81 | 233| 0.15 | 0.68| 0.35| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{0.15}{0.68}\" title="https://latex.codecogs.com/svg.image?\tiny \frac{0.15}{0.68}" /> |
+|     male  | 468 | 109|0.85| 0.32| 0.65| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{0.85}{0.32}" title="https://latex.codecogs.com/svg.image?\tiny \frac{0.85}{0.32}" /> |
 |     Total | 549 | 342 | 1 | 1 |1| |
 
 
