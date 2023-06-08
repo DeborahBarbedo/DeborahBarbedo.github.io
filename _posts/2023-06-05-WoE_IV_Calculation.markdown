@@ -22,7 +22,7 @@ date: 2023-06-05 11:48:53 +0900
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Learn how to calculate and understand the Weight of Evidence (WoE) and Information Value (IV) metrics, which are widely used to differentiate between creditworthy and non-creditworthy individuals. This blog post explores these calculations using the Titanic - Machine Learning from Disaster dataset, focusing on survival information segregated by gender. Demystify the concepts of IV, WoE, and RR (Relative Risk) to make them more accessible and tangible. Dive into the provided data and tables to gain insights and apply these metrics effectively."
+meta_description: "Learn how to calculate and understand the Weight of Evidence (WoE) and Information Value (IV) metrics, which are widely used to differentiate between creditworthy and non-creditworthy individuals. This blog post explores these calculations using the Titanic - Machine Learning from Disaster dataset, focusing on survival information segregated by gender. Demystify the concepts of IV and WoE, to make them more accessible and tangible. Dive into the provided data and tables to gain insights and apply these metrics effectively."
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
 # image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
@@ -47,7 +47,7 @@ image_lazy_loader_on: true
 
 These metrics are widely recognized for their ability to discern between creditworthy and non-creditworthy individuals. Throughout our journey into understanding these calculations, we frequently encounter the familiar labels of 'good' and 'bad' customers. In this context, 'bad customers' are those who have defaulted on their loans, while 'good customers' are those who have dutifully fulfilled their financial obligations.
 
-To shed light on these concepts, we will draw insights from the [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) dataset, specifically examining the survival information segregated by gender. Our aim is to demystify the calculations of IV, WoE, and RR, making them more approachable and tangible. We will utilize the provided data in the table below as a foundation for our exploration.
+To shed light on these concepts, we will draw insights from the [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) dataset, specifically examining the survival information segregated by gender. Our aim is to demystify the calculations of IV and WoE, making them more approachable and tangible. We will utilize the provided data in the table below as a foundation for our exploration.
 
 
 | Sector | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" /> | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{1}" title="https://latex.codecogs.com/svg.image?\small target_{1}" /> |
@@ -101,37 +101,36 @@ Now, let's examine the table that presents the statistics:
 
 This measure provides us with valuable information about the representation of the study sector within the overall population. Understanding this distribution is crucial for conducting a comprehensive analysis of the results and drawing meaningful conclusions from the data.
 
-# Relative Risk (RR):
+# Distribution :
 
-The RR (Relative Risk) for sector 'i' can be calculated as the proportion of the sector under study in the target of occurrences in relation to the proportion of sector 'i' in the target of non-occurrences:
+The distribution for sector 'i' can be calculated as the proportion of the sector under study in the target of occurrences in relation to the proportion of sector 'i' in the target of non-occurrences:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;RR_{sector_i}&space;=&space;\frac{&space;%&space;target_{1,&space;sector_i}}{&space;%&space;target_{0,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small RR_{sector_i} = \frac{ % target_{1, sector_i}}{ % target_{0, sector_i}}" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{sector_i}&space;=&space;\frac{&space;%&space;target_{1,&space;sector_i}}{&space;%&space;target_{0,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small Distr_{sector_i} = \frac{ % target_{1, sector_i}}{ % target_{0, sector_i}}" />
 
-Likewise, the RR for the female category can be calculated as the percentage of females among survivors compared to the percentage of females among those who died: 
+Likewise, the 'Distr' for the female category can be calculated as the percentage of females among survivors compared to the percentage of females among those who died: 
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;RR_{female}&space;=&space;\frac{&space;%&space;survived_{1,&space;female}}{&space;%&space;survived_{0,&space;female&space;}}&space;=&space;\frac{&space;\frac{233}{233&plus;109}}{&space;\frac{81}{81&plus;468}&space;}&space;\approx&space;4.617609" title="https://latex.codecogs.com/svg.image?\small RR_{female} = \frac{ % survived_{1, female}}{ % survived_{0, female }} = \frac{ \frac{233}{233+109}}{ \frac{81}{81+468} } \approx 4.617609" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{female}&space;=&space;\frac{&space;%&space;survived_{1,&space;female}}{&space;%&space;survived_{0,&space;female&space;}}&space;=&space;\frac{&space;\frac{233}{233&plus;109}}{&space;\frac{81}{81&plus;468}&space;}&space;\approx&space;4.617609" title="https://latex.codecogs.com/svg.image?\small Distr_{female} = \frac{ % survived_{1, female}}{ % survived_{0, female }} = \frac{ \frac{233}{233+109}}{ \frac{81}{81+468} } \approx 4.617609" />
 
-| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | RR |
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | Distr |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{0.68}{0.15}\" title="https://latex.codecogs.com/svg.image?\tiny \frac{0.68}{0.15}" /> |
 |     male  | 468 | 109|0.85| 0.32| 0.65| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{0.32}{0.85}" title="https://latex.codecogs.com/svg.image?\tiny \frac{0.32}{0.85}" /> |
 |     Total | 549 | 342 | 1 | 1 |1| |
 
-The relative risk is a measure that allows us to assess the variability of categories within an explanatory variable, indicating how discriminative that variable can be.
 
 # Weight of Evidence (WoE):
 
- It can be calculated using the natural logarithm of the Relative Risk (RR) for each sector:
+ It can be calculated using the natural logarithm of the 'Distr' for each sector:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;RR_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\small WoE_{sector_i} = ln\left ( RR_{sector_i} \right )" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;Distr_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\small WoE_{sector_i} = ln\left ( Distr_{sector_i} \right )" />
 
 Let's consider the female sector as an example:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{female}&space;=&space;ln\left&space;(&space;RR_{female}&space;\right&space;)&space;\approx&space;1.529877" title="https://latex.codecogs.com/svg.image?\small WoE_{female} = ln\left ( RR_{female} \right ) \approx 1.529877" />
+<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{female}&space;=&space;ln\left&space;(&space;Distr_{female}&space;\right&space;)&space;\approx&space;1.529877" title="https://latex.codecogs.com/svg.image?\small WoE_{female} = ln\left ( Distr_{female} \right ) \approx 1.529877" />
 
 Now, let's examine the table that presents the statistics:
 
-| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % Population   | RR |    WoE |
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % Population   | Distr |    WoE |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|ln(4.62) |
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|ln(0.37) |
@@ -149,7 +148,7 @@ Let's consider the Female sector as an example:
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;IV_{female}&space;=&space;WoE_{female}&space;\times&space;(\%&space;survived_{1,&space;female}&space;-&space;\%&space;survived_{0,&space;female}&space;)&space;&space;=&space;1.529877&space;\times&space;(0.681287&space;-&space;0.147541&space;)&space;\approx&space;0.816566" title="https://latex.codecogs.com/svg.image?\small IV_{female} = WoE_{female} \times (\% survived_{1, female} - \% survived_{0, female} ) = 1.529877 \times (0.681287 - 0.147541 ) \approx 0.816566" />
 
-| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | RR |    WoE | IV |
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | Distr |    WoE | IV |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| <img src="https://latex.codecogs.com/svg.image?\tiny&space;1.53&space;\times&space;(0.68-0.15&space;)&space;" title="https://latex.codecogs.com/svg.image?\tiny 1.53 \times (0.68-0.15 ) " />|
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| <img src="https://latex.codecogs.com/svg.image?\tiny&space;-0.98&space;\times&space;(0.32-0.85&space;)" title="https://latex.codecogs.com/svg.image?\tiny -0.98 \times (0.32-0.85 )" />|
@@ -161,17 +160,23 @@ If you're interested in checking out the IV values classification , you can find
 
 The table with all the calculated metrics looks as follows:
 
-| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population  | RR |    WoE | IV |
+| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population  | Distr |    WoE | IV |
 |---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 4.62|1.53| 0.82|
 |     male  | 468 | 109|0.85| 0.32| 0.65| 0.37|-0.98| 0.53|
 |     Total | 549 | 342 | 1 | 1 |1| |  |  1.35|
 
 
-To ensure a more precise comprehension of WoE, IV, and RR, I have curated an informative post that delves into these concepts. You can access it [here](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV). This article aims to provide a comprehensive explanation, elucidating the intricacies of these metrics.
+To ensure a more precise comprehension of WoE and IV, I have curated an informative post that delves into these concepts. You can access it [here](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV). This article aims to provide a comprehensive explanation, elucidating the intricacies of these metrics.
 
 Moreover, if you find yourself in need of performing these calculations using Python, I have created another post featuring the corresponding formulas, which can be accessed at this [link](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function). This resource will empower you to execute the calculations efficiently.
 
-For additional support, I have compiled a variety of supplementary materials on [my GitHub](https://github.com/DeborahBarbedo), specifically related to the topic of this post. These resources, accessible in the [supporting materials](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) repository, are designed to enhance your comprehension and aid in the practical implementation of IV, WoE, and RR calculations.
+For additional support, I have compiled a variety of supplementary materials on [my GitHub](https://github.com/DeborahBarbedo), specifically related to the topic of this post. These resources, accessible in the [supporting materials](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) repository, are designed to enhance your comprehension and aid in the practical implementation of IV and WoE, calculations.
 
 If you have any further questions or need more information, I'm here to help!
+
+# References:
+
+* Beraldi, Fidel. Atualização dinâmica de modelo de regressão logística binária para detecção de fraudes em transações eletrônicas com cartão de crédito. Universidade de São Paulo, 1 Dec. 2014. DOI.org (Crossref), https://doi.org/10.11606/D.45.2014.tde-05022015-232801.
+
+* Siddiqi, Naeem. Credit Risk Scorecards: Developing and Implementing Intelligent Credit Scoring. Wiley, 2006.
