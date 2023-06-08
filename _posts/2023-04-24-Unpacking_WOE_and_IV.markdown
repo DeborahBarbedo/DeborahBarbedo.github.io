@@ -9,7 +9,7 @@ title: "Mastering Logistic Regression: Unpacking WOE and IV Metrics for Variable
 # multiple category is not supported
 category: Data Analysis
 # multiple tag entries are possible
-tags: [Data analysis, Logistic regression, Feature selection, Information Value (IV), Weight of Evidence (WoE), Predictive modeling, Titanic dataset, Relative Risk ]
+tags: [Data analysis, Logistic regression, Feature selection, Information Value (IV), Weight of Evidence (WoE), Predictive modeling, Titanic dataset ]
 # thumbnail image for post
 img: ":IV_and_WoE _Unpacking.jpg"
 # disable comments on this page
