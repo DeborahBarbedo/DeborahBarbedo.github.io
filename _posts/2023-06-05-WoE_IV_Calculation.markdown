@@ -35,7 +35,7 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-published: false
+#published: false
 
 ---
 
@@ -177,6 +177,12 @@ If you have any further questions or need more information, I'm here to help!
 
 # References:
 
-* Beraldi, Fidel. Atualização dinâmica de modelo de regressão logística binária para detecção de fraudes em transações eletrônicas com cartão de crédito. Universidade de São Paulo, 1 Dec. 2014. DOI.org (Crossref), https://doi.org/10.11606/D.45.2014.tde-05022015-232801.
+* Anderson, Raymond. The Credit Scoring Toolkit: Theory and Practice for Retail Credit Risk Management and Decision Automation. Oxford University Press, 2007.
 
 * Siddiqi, Naeem. Credit Risk Scorecards: Developing and Implementing Intelligent Credit Scoring. Wiley, 2006.
+
+* Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
+  https://CRAN.R-project.org/package=woe
+
+* Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
+  version 0.1.6. https://CRAN.R-project.org/package=woeBinning
