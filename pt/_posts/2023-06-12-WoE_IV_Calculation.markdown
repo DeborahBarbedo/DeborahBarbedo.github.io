@@ -155,6 +155,8 @@ Vamos considerar o segmento feminino como exemplo:
 |   female | 81 | 233| 0.15 | 0.68| 0.35| 0.22|-1.53| <img src="https://latex.codecogs.com/svg.image?\tiny&space;-1.53&space;\times&space;(0.68-0.15&space;)&space;" title="https://latex.codecogs.com/svg.image?\tiny -1.53 \times (0.68-0.15 ) " />|
 |     male  | 468 | 109|0.85| 0.32| 0.65| 2.67|0.98| <img src="https://latex.codecogs.com/svg.image?\tiny&space;0.98&space;\times&space;(0.32-0.85&space;)" title="https://latex.codecogs.com/svg.image?\tiny 0.98 \times (0.32-0.85 )" />|
 |     Total | 549 | 342 | 1 | 1 |1| |  | | |
+
+
 Se você tiver interesse em verificar a classificação dos valores de IV, você pode encontrá-la neste [link](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV).
 
 A tabela com todas as métricas calculadas é a seguinte:
