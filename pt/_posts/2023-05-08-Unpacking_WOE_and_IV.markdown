@@ -126,7 +126,7 @@ Com base nesta análise rápida, pudemos criar duas variáveis (FLG_Fare_leq_10.
 
 Em resumo, analisar as métricas WoE, IV e outras é crucial para identificar variáveis preditivas e agrupar categorias de forma eficaz para melhorar o desempenho do modelo. Espero que a explicação sobre como interpretar as métricas na tabela tenha fornecido o conhecimento necessário para criar, interpretar e selecionar variáveis para o modelo de regressão logística.
 
-Você pode encontrar todos os [materiais de suporte](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) na minha página do Github. E caso você tenha perdido, meu post anterior apresentou a [função para calcular WoE e IV em Python]( https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function). Mas adivinhe só? Estou planejando ir ainda mais a fundo em um post futuro e explicar como essas métricas são calculadas. Então fique ligado! E se você tiver alguma dúvida, não hesite em me perguntar.
+Você pode encontrar todos os [materiais de suporte](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) na minha página do Github. E caso você tenha perdido, meu post anterior apresentou a [função para calcular WoE e IV em Python]( https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function). Mas adivinhe só? Estou planejando ir ainda mais a fundo em um post futuro e explicar [como essas métricas são calculadas](https://deborahbarbedo.github.io/pt/2023-06-12-WoE_IV_Calculation). Então fique ligado! E se você tiver alguma dúvida, não hesite em me perguntar.
 
 # Referências:
 

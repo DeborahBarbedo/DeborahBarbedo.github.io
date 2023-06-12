@@ -152,7 +152,7 @@ A tabela final ficou da seguinte forma:
 
 Vocês gostaram das minhas funções para o cálculo do IV e WoE em Python? Eu amei criá-las, mas percebi que ainda tem muita gente por aí que fica meio perdida com essas métricas e não sabe como utilizá-las para melhorar seus modelos de regressão logística.
 
-Por isso, decidi que é hora de criar um post e explicar tudo bem detalhadamente! Vou mostrar como é realizado o cálculo do IV e do WoE, e dar dicas valiosas sobre como tomar decisões e escolhas inteligentes para melhorar seus modelos com base nessas métricas.
+Por isso, decidi que é hora de criar um post e explicar tudo bem detalhadamente! Vou mostrar como é realizado o [cálculo do IV e do WoE](https://deborahbarbedo.github.io/pt/2023-06-12-WoE_IV_Calculation), e dar dicas valiosas sobre como tomar decisões e escolhas inteligentes para melhorar seus modelos com base nessas métricas.
 
 Estou super empolgada para compartilhar tudo isso com vocês, então fiquem ligados(as)!
 
