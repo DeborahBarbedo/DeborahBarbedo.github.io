@@ -56,6 +56,8 @@ To shed light on these concepts, we will draw insights from the [Titanic - Machi
 | male    | 468     | 109     |
 | Total   | 549     | 342     |
 
+# Targets within each segment:
+
 What is commonly referred to as 'good' is the <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />.
 
 <img src="https://latex.codecogs.com/svg.image?\small&space;%&space;target_{0,&space;sector_i}&space;=&space;\frac{&space;target_{0,&space;sector_i}}{&space;target_{0}}&space;" title="https://latex.codecogs.com/svg.image?\small % target_{0, sector_i} = \frac{ target_{0, sector_i}}{ target_{0}} " />
@@ -181,8 +183,8 @@ If you have any further questions or need more information, I'm here to help!
 
 * Siddiqi, Naeem. Credit Risk Scorecards: Developing and Implementing Intelligent Credit Scoring. Wiley, 2006.
 
-* [Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
-  https://CRAN.R-project.org/package=woe](https://CRAN.R-project.org/package=woe)
+* Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
+  [https://CRAN.R-project.org/package=woe](https://CRAN.R-project.org/package=woe)
 
-* [Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
-  version 0.1.6. https://CRAN.R-project.org/package=woeBinning](https://CRAN.R-project.org/package=woeBinning)
+* Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
+  version 0.1.6. [https://CRAN.R-project.org/package=woeBinning](https://CRAN.R-project.org/package=woeBinning)
