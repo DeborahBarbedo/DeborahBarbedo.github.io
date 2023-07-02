@@ -115,20 +115,26 @@ Pelo Teorema de Mercer, a função Kernel recebe os pontos do espaço de entrada
 Exemplificando, temos o kernel que define o mapeamento ϕ para uma dimensão de espaço mais alta.
 Considere o seguinte: <img src="https://latex.codecogs.com/svg.image?\textbf{W}=&space;\left&space;(&space;x_1,y_1&space;\right&space;),&space;\textbf{Q}=(x_2,y_2&space;)" title="\textbf{W}= \left ( x_1,y_1 \right ), \textbf{Q}=(x_2,y_2 )" />. Assumimos a função do Kernel polinomial, com γ=1 , c=0 e d=2. Com estes parâmetros, é conhecido como Kernel quadrático.
 
-<img src="https://latex.codecogs.com/png.image?\dpi{110}\begin{align*}&space;Kernel&space;Quadr&space;tico(\textbf{W},\textbf{Q})&space;&=&space;(\textbf{W}^T&space;\textbf{Q})^2&space;\\&space;&space;&=&space;(x_1&space;x_2&plus;y_1&space;y_2&space;)^2&space;&space;\\&space;&space;&=&space;x_1^2&space;x_2^2&plus;2x_1&space;x_2&space;y_1&space;y_2&plus;y_1^2&space;y_2^2&space;\\&space;&space;&=&space;(x_1^2&plus;&space;\sqrt{2x_1&space;y_1}&plus;y_1^2)^T&space;&space;(x_2^2&plus;\sqrt{2x_2&space;y_2}&space;&plus;y_2^2)&space;\\&space;&space;&=&space;&space;(\textbf{W})^T&space;&space;(\textbf{Q})&space;&space;\end{align*}&space;&space;&space;" title="\begin{align*} Kernel Quadr tico(\textbf{W},\textbf{Q}) &= (\textbf{W}^T \textbf{Q})^2 \\ &= (x_1 x_2+y_1 y_2 )^2 \\ &= x_1^2 x_2^2+2x_1 x_2 y_1 y_2+y_1^2 y_2^2 \\ &= (x_1^2+ \sqrt{2x_1 y_1}+y_1^2)^T (x_2^2+\sqrt{2x_2 y_2} +y_2^2) \\ &= (\textbf{W})^T (\textbf{Q}) \end{align*} " />
+<img src="https://latex.codecogs.com/png.image?\dpi{110}Kernel&space;Quadr&space;tico(\textbf{W},\textbf{Q})&space;=&space;(\textbf{W}^T&space;\textbf{Q})^2&space;&space;&space;" title="Kernel Quadr tico(\textbf{W},\textbf{Q}) = (\textbf{W}^T \textbf{Q})^2 " />
 
-hkjh
+<img src="https://latex.codecogs.com/png.image?\dpi{110}Kernel&space;Quadr&space;tico(\textbf{W},\textbf{Q})&space;=&space;(x_1&space;x_2&plus;y_1&space;y_2&space;)^2&space;&space;" title="Kernel Quadr tico(\textbf{W},\textbf{Q}) = (x_1 x_2+y_1 y_2 )^2 " />
+
+<img src="https://latex.codecogs.com/png.image?\dpi{110}Kernel&space;Quadr&space;tico(\textbf{W},\textbf{Q})&space;=&space;x_1^2&space;x_2^2&plus;2x_1&space;x_2&space;y_1&space;y_2&plus;y_1^2&space;y_2^2" title="Kernel Quadr tico(\textbf{W},\textbf{Q}) = x_1^2 x_2^2+2x_1 x_2 y_1 y_2+y_1^2 y_2^2" />
+
+<img src="https://latex.codecogs.com/png.image?\dpi{110}Kernel&space;Quadr&space;tico(\textbf{W},\textbf{Q})&space;=&space;(x_1^2&plus;&space;\sqrt{2x_1&space;y_1}&plus;y_1^2)^T&space;&space;(x_2^2&plus;\sqrt{2x_2&space;y_2}&space;&plus;y_2^2)" title="Kernel Quadr tico(\textbf{W},\textbf{Q}) = (x_1^2+ \sqrt{2x_1 y_1}+y_1^2)^T (x_2^2+\sqrt{2x_2 y_2} +y_2^2)" />
+
+<img src="https://latex.codecogs.com/png.image?\dpi{110}Kernel&space;Quadr&space;tico(\textbf{W},\textbf{Q})&space;=&space;&space;(\textbf{W})^T&space;&space;(\textbf{Q})&space;" title="Kernel Quadr tico(\textbf{W},\textbf{Q}) = (\textbf{W})^T (\textbf{Q}) " />
 
 O mapeamento dos pontos para uma dimensão de espaço mais alta, é dada pela função:
 ϕ<img src="https://latex.codecogs.com/svg.image?&space;(Ponto)={x^2,&space;\sqrt{2xy},y^2}&space;" title=" (Ponto)={x^2, \sqrt{2xy},y^2} " />
 
 Existem vários tipos de funções Kernel, como o polinomial, o radial e o de tangente hiperbólica. Essas funções definem o mapeamento para uma dimensão de espaço mais alta.
 
-Polinomial -  <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;(\gamma(\textbf{x}^T\textbf{y})&plus;c)^d" title="K(\textbf{x},\textbf{y}) = (\gamma(\textbf{x}^T\textbf{y})+c)^d" />
+* Polinomial -  <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;(\gamma(\textbf{x}^T\textbf{y})&plus;c)^d" title="K(\textbf{x},\textbf{y}) = (\gamma(\textbf{x}^T\textbf{y})+c)^d" />
 
-Radial -  <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;e^{&space;-&space;\gamma&space;\left\|&space;x-y&space;\right\|^2}" title="K(\textbf{x},\textbf{y}) = e^{ - \gamma \left\| x-y \right\|^2}" />
+* Radial -  <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;e^{&space;-&space;\gamma&space;\left\|&space;x-y&space;\right\|^2}" title="K(\textbf{x},\textbf{y}) = e^{ - \gamma \left\| x-y \right\|^2}" />
 
-Tangente hiperbólica -  <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;tanh&space;\left&space;(&space;\gamma(\textbf{x}^T\textbf{y})&plus;c&space;\right&space;)" title="K(\textbf{x},\textbf{y}) = tanh \left ( \gamma(\textbf{x}^T\textbf{y})+c \right )" />
+* Tangente hiperbólica -  <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;tanh&space;\left&space;(&space;\gamma(\textbf{x}^T\textbf{y})&plus;c&space;\right&space;)" title="K(\textbf{x},\textbf{y}) = tanh \left ( \gamma(\textbf{x}^T\textbf{y})+c \right )" />
 
 Mas se tivéssemos mais de 2 classes para classificar?
 
