@@ -153,9 +153,9 @@ Calcula a classificação entre uma classe e outra classe. Isso é repetido para
 
 * Faceli, Katti. Inteligência artificial: uma abordagem de aprendizado de máquina. Grupo Gen - LTC, 2011.
 
-* Cover, Thomas M. “Geometrical and Statistical Properties of Systems of Linear Inequalities with Applications in Pattern Recognition.” IEEE Transactions on Electronic Computers, vol. EC-14, no. 3, June 1965, pp. 326–34. DOI.org (Crossref), https://doi.org/10.1109/PGEC.1965.264137. [[link]](https://isl.stanford.edu/~cover/papers/paper2.pdf)
+* Cover, Thomas M. “Geometrical and Statistical Properties of Systems of Linear Inequalities with Applications in Pattern Recognition.” IEEE Transactions on Electronic Computers, vol. EC-14, no. 3, June 1965, pp. 326–34. DOI.org (Crossref), [https://doi.org/10.1109/PGEC.1965.264137](https://doi.org/10.1109/PGEC.1965.264137). [[link]](https://isl.stanford.edu/~cover/papers/paper2.pdf)
 
-* Chih-Wei Hsu and Chih-Jen Lin. “A Comparison of Methods for Multiclass Support Vector Machines.” IEEE Transactions on Neural Networks, vol. 13, no. 2, Mar. 2002, pp. 415–25. DOI.org (Crossref), https://doi.org/10.1109/72.991427.
+* Chih-Wei Hsu and Chih-Jen Lin. “A Comparison of Methods for Multiclass Support Vector Machines.” IEEE Transactions on Neural Networks, vol. 13, no. 2, Mar. 2002, pp. 415–25. DOI.org (Crossref), [https://doi.org/10.1109/72.991427](https://doi.org/10.1109/72.991427).
 
 * Platt, John and Cristianini, Nello and Shawe-Taylor, John. “Large Margin DAGs for Multiclass Classification”. Advances in Neural Information Processing Systems, MIT Press, vol.12, 1999. [[link]](https://proceedings.neurips.cc/paper_files/paper/1999/file/4abe17a1c80cbdd2aa241b70840879de-Paper.pdf)
 
