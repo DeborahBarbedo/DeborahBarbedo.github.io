@@ -113,29 +113,35 @@ O truque do Kernel é uma técnica que nos permite evitar o mapeamento explícit
 Pelo Teorema de Mercer, a função Kernel recebe os pontos do espaço de entrada e calcula o produto escalar entre eles no espaço característica, desde que defina Kernel como matriz positivamente definida e que tenha autovalores maior do que zero.
 
 Exemplificando, temos o kernel que define o mapeamento ϕ para uma dimensão de espaço mais alta.
-Considere o seguinte: <img src="https://latex.codecogs.com/svg.image?\textbf{W}=&space;\left&space;(&space;x_1,y_1&space;\right&space;),&space;\textbf{Q}=(x_2,y_2&space;)" title="\textbf{W}= \left ( x_1,y_1 \right ), \textbf{Q}=(x_2,y_2 )" />. Assumimos a função do Kernel polinomial, com γ=1 , c=0 e d=2. Com estes parâmetros, é conhecido como Kernel quadrático.
+Considere o seguinte:
 
-<img src="https://latex.codecogs.com/png.image?\dpi{110}KernelQuadratico(\textbf{W},\textbf{Q})&space;=&space;(\textbf{W}^T&space;\textbf{Q})^2" title="KernelQuadratico(\textbf{W},\textbf{Q}) = (\textbf{W}^T \textbf{Q})^2" />
-
-<img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=&space;(x_1&space;x_2&plus;y_1&space;y_2&space;)^2" title="\space = (x_1 x_2+y_1 y_2 )^2" />
-
-<img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=x_1^2&space;x_2^2&plus;2x_1&space;x_2&space;y_1&space;y_2&plus;y_1^2&space;y_2^2" title="\space =x_1^2 x_2^2+2x_1 x_2 y_1 y_2+y_1^2 y_2^2" />
-
-<img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=(x_1^2&plus;&space;\sqrt{2x_1&space;y_1}&plus;y_1^2)^T&space;&space;(x_2^2&plus;\sqrt{2x_2&space;y_2}&space;&plus;y_2^2)" title="\space =(x_1^2+ \sqrt{2x_1 y_1}+y_1^2)^T (x_2^2+\sqrt{2x_2 y_2} +y_2^2)" />
-
-<img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=&space;\phi(\textbf{W})^T&space;\phi(\textbf{Q})&space;" title="\space = \phi(\textbf{W})^T \phi(\textbf{Q}) " />
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}KernelQuadratico(\textbf{W},\textbf{Q})&space;=&space;(\textbf{W}^T&space;\textbf{Q})^2" title="KernelQuadratico(\textbf{W},\textbf{Q}) = (\textbf{W}^T \textbf{Q})^2" />
+>
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=&space;(x_1&space;x_2&plus;y_1&space;y_2&space;)^2" title="\space = (x_1 x_2+y_1 y_2 )^2" />
+>
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=x_1^2&space;x_2^2&plus;2x_1&space;x_2&space;y_1&space;y_2&plus;y_1^2&space;y_2^2" title="\space =x_1^2 x_2^2+2x_1 x_2 y_1 y_2+y_1^2 y_2^2" />
+>
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=(x_1^2&plus;&space;\sqrt{2x_1&space;y_1}&plus;y_1^2)^T&space;&space;(x_2^2&plus;\sqrt{2x_2&space;y_2}&space;&plus;y_2^2)" title="\space =(x_1^2+ \sqrt{2x_1 y_1}+y_1^2)^T (x_2^2+\sqrt{2x_2 y_2} +y_2^2)" />
+>
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=&space;\phi(\textbf{W})^T&space;\phi(\textbf{Q})&space;" title="\space = \phi(\textbf{W})^T \phi(\textbf{Q}) " />
 
 O mapeamento dos pontos para uma dimensão de espaço mais alta, é dada pela função:
 
-<img src="https://latex.codecogs.com/png.image?\dpi{110}\phi&space;(Ponto)=\left\{&space;x^2,&space;&space;2xy,y^2&space;\right\}" title="\phi (Ponto)=\left\{ x^2, 2xy,y^2 \right\}" />
+>   <img src="https://latex.codecogs.com/png.image?\dpi{110}\phi&space;(Ponto)=\left\{&space;x^2,&space;&space;2xy,y^2&space;\right\}" title="\phi (Ponto)=\left\{ x^2, 2xy,y^2 \right\}" />
 
 Existem vários tipos de funções Kernel, como o polinomial, o radial e o de tangente hiperbólica. Essas funções definem o mapeamento para uma dimensão de espaço mais alta.
 
-* Polinomial -  <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;(\gamma(\textbf{x}^T\textbf{y})&plus;c)^d" title="K(\textbf{x},\textbf{y}) = (\gamma(\textbf{x}^T\textbf{y})+c)^d" />
+### Polinomial
 
-* Radial -  <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;e^{&space;-&space;\gamma&space;\left\|&space;x-y&space;\right\|^2}" title="K(\textbf{x},\textbf{y}) = e^{ - \gamma \left\| x-y \right\|^2}" />
+>   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;(\gamma(\textbf{x}^T\textbf{y})&plus;c)^d" title="K(\textbf{x},\textbf{y}) = (\gamma(\textbf{x}^T\textbf{y})+c)^d" />
 
-* Tangente hiperbólica -  <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;tanh&space;\left&space;(&space;\gamma(\textbf{x}^T\textbf{y})&plus;c&space;\right&space;)" title="K(\textbf{x},\textbf{y}) = tanh \left ( \gamma(\textbf{x}^T\textbf{y})+c \right )" />
+### Radial
+
+>   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;e^{&space;-&space;\gamma&space;\left\|&space;x-y&space;\right\|^2}" title="K(\textbf{x},\textbf{y}) = e^{ - \gamma \left\| x-y \right\|^2}" />
+
+### Tangente hiperbólica
+
+>   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;tanh&space;\left&space;(&space;\gamma(\textbf{x}^T\textbf{y})&plus;c&space;\right&space;)" title="K(\textbf{x},\textbf{y}) = tanh \left ( \gamma(\textbf{x}^T\textbf{y})+c \right )" />
 
 Mas se tivéssemos mais de 2 classes para classificar?
 
@@ -149,12 +155,17 @@ O SVM é originalmente projetado para classificação binária. No entanto, exis
 
 Alguns dos principais métodos são:
 
-## Um-contra-todos:
-Divide os dados em dois grupos, onde um grupo é formado por uma classe específica e o outro grupo contém todas as outras classes. Isso é repetido para cada classe.
-## Um-contra-um:
-Calcula a classificação entre uma classe e outra classe. Isso é repetido para todos os pares possíveis de classes.
-## DAG-SVM:
-É uma generalização da árvore de decisão, onde a árvore cresce por exclusão de classes, utilizando classificação binária.
+### Um-contra-todos:
+
+>   Divide os dados em dois grupos, onde um grupo é formado por uma classe específica e o outro grupo contém todas as outras classes. Isso é repetido para cada classe.
+
+### Um-contra-um:
+
+>   Calcula a classificação entre uma classe e outra classe. Isso é repetido para todos os pares possíveis de classes.
+
+### DAG-SVM:
+
+>   É uma generalização da árvore de decisão, onde a árvore cresce por exclusão de classes, utilizando classificação binária.
 
 # Referências:
 
