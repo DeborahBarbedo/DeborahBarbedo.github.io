@@ -170,7 +170,13 @@ Calculates the classification between one class and another class. This is repea
 It is a generalization of the decision tree, where the tree grows by excluding classes, using binary classification.
 
 
-If you have any questions or need further clarification on any of the concepts covered in this blog post, feel free to reach out. I'm here to assist you and help deepen your understanding of Support Vector Machines. Don't hesitate to ask, and happy learning!
+In this post, we have explored the workings of the Support Vector Machine (SVM) algorithm for classification problems in an accessible and straightforward manner. I hope you have gained a solid understanding of the logic behind this powerful algorithm and are ready to dive deeper or even apply it to your own tasks.
+
+I would love to hear from you! Please leave your comments below and share your questions, experiences, or any additional insights related to the topic of this post. I'm here to help and would love to start a meaningful conversation with my readers. Your participation is valuable and contributes to the enrichment of our community.
+
+If you have any questions or need further clarification, please don't hesitate to reach out to me. I am committed to providing support and guidance to all my readers.
+
+I hope this post has been helpful and informative. Thank you for following along!
 
 # References:
 

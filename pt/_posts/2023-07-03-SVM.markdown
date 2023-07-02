@@ -167,7 +167,9 @@ Calcula a classificação entre uma classe e outra classe. Isso é repetido para
 
 É uma generalização da árvore de decisão, onde a árvore cresce por exclusão de classes, utilizando classificação binária.
 
-Caso você tenha alguma dúvida ou precise de esclarecimentos adicionais sobre os conceitos abordados neste post, fique à vontade para entrar em contato. Estou aqui para ajudar e auxiliar no aprofundamento do seu entendimento sobre Support Vector Machines. Não hesite em perguntar, e bons estudos!
+Neste post, exploramos de forma acessível e descomplicada o funcionamento do algoritmo de Máquina de Vetores de Suporte (SVM) para problemas de classificação. Espero que você tenha compreendido a lógica por trás desse poderoso algoritmo e esteja pronto para aprofundar seu conhecimento ou até mesmo aplicá-lo em suas próprias tarefas.
+
+Gostaria de ouvir você! Deixe seus comentários abaixo e compartilhe suas dúvidas, experiências ou qualquer insight adicional relacionado ao tema do post. Estou aqui para ajudar e adoraria iniciar uma conversa significativa com nossos leitores. Sua participação é valiosa e contribui para o enriquecimento da comunidade.
 
 # Referências:
 
