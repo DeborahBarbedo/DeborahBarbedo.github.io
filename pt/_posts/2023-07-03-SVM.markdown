@@ -35,7 +35,7 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-published: false
+#published: false
 ---
 
 <!-- outline-start -->
@@ -56,76 +56,64 @@ A dimensão Vapnik-Chervonenkis (VC) é uma medida que avalia a capacidade de um
 Exemplo: Dimensão VC de um conjunto de funções lineares para classificação de 2 grupos em um plano, é igual a 3.
 
 
-![Image](\img_2.png)
 
-![such a lovely place](:SVM\DimensaoVC.png){:data-align="center"}
-
-Bah2veremos!
-
-
-![img.png](img.png)
-
+![Dimensão Vapnik-Chervonenkis VC](:SVM\DimensaoVC.png){:data-align="center"}
 
 Se tivéssemos que realizar uma classificação binária com 4 pontos, não seria possível encontrar uma função linear para todas as combinações possíveis.
 
-
-
+![Exemplo classificação binária com 4 pontos](:SVM\Exemplo4.png){:data-align="center"}
 
 # Hiperplano:
 
 Um hiperplano é um plano de dimensão k-1 em um espaço de dimensão k. Por exemplo, em um espaço bidimensional, um hiperplano é uma reta, enquanto em um espaço tridimensional, é um plano.
-Um hiperplano é um plano (k-1)-dimensional na dimensão k.
-Por exemplo:
 
 
+![Um hiperplano é uma reta na dimensão 2. Um hiperplano é um plano na dimensão 3.](:SVM\Hiperplanodim2e3.png){:data-align="center"}
 
-Conectando com o tópico anterior, podemos dizer que a dimensão VC de um hiperplano para uma dimensão K, é K+1.
+Conectando com o tópico anterior, a dimensão VC de um hiperplano em uma dimensão K é igual a K+1. Existem vários hiperplanos possíveis para classificar os dados:
 
-Existem vários hiperplanos possíveis para a classificação dos dados.
-Conectando com o tópico anterior, a dimensão VC de um hiperplano em uma dimensão K é igual a K+1. Existem vários hiperplanos possíveis para classificar os dados, mas o SVM visa encontrar o hiperplano que possui a maior margem de separação entre as duas classes.
+![Hiperplanos](:SVM\Hiperplanos.png){:data-align="center"}
 
+Mas o SVM visa encontrar o hiperplano que possui a maior margem de separação entre as duas classes:
 
-
-
-O objetivo do SVM é encontrar o hiperplano com maior margem de separação entre as duas classes.
-
-
-
+![Hiperplano com maior margem](:SVM\Hiperplanocommaiormargem.png){:data-align="center"}
 
 # Vetores de suporte:
+
 Os vetores de suporte, também conhecidos como pontos críticos, são os pontos de dados que auxiliam na determinação da margem do classificador linear. Eles são fundamentais para a identificação do hiperplano ideal.
-Os vetores de suporte, também conhecidos como pontos críticos, que auxiliam a margem do classificador linear.
+
+![Vetores de suporte](:SVM\Vetoresdesuporte.png){:data-align="center"}
 
 # Margens suaves:
-Para evitar o sobreajuste, é possível adotar margens suaves, permitindo que alguns pontos de dados fiquem dentro da margem de separação. Isso flexibiliza a classificação e torna o modelo mais robusto.
-Para evitar um sobreajuste, é possível adotar margens suaves.
 
+Para evitar o sobreajuste, é possível adotar margens suaves, permitindo que alguns pontos de dados fiquem dentro da margem de separação. Isso flexibiliza a classificação e torna o modelo mais robusto.
+
+![Margens suaves](:SVM\Margenssuaves.png){:data-align="center"}
 
 E se os dados fossem distribuídos de outra forma?
 
 # Dados não lineares e o Teorema de Cover:
+
 O Teorema de Cover nos diz que conjuntos de dados não lineares em espaços de alta dimensão são mais propensos a serem linearmente separáveis em comparação a espaços de menor dimensão, desde que o espaço não esteja excessivamente povoado.
 
+[Dados não lineares](:SVM\TeoremadeCover.png){:data-align="center"}
 
-“ UM CONJUNTO DE DADOS NÃO LINEARES EM UM ESPAÇO DE ALTA DIMENSÃO É MAIS SUCETÍVEL  A SER LINEARMENTE SEPARÁVEL DO QUE  EM UM ESPAÇO DE MENOR DIMENSÃO, NA CONDIÇÃO DE QUE O ESPAÇO NÃO SEJA EXCESSIVAMENTE POVOADO”. - TEOREMA DE COVER
-Com o emprego de um procedimento motivado pelo teorema de Cover, e possível a
-generalização de SVMs para problemas não lineares.
-Então aumentamos a dimensão, aplicando a transformação (x^2,√2xy,y^2)
+
 Com base nisso, podemos aplicar uma transformação nos dados, como a função (x^2,√2xy,y^2), para mapeá-los em um espaço de características de maior dimensão. Assim, torna-se viável aplicar o SVM linear nesse novo espaço de características.
 
-Mapeando as amostras de treinamento do espaço original e transformando por meio
-de uma função para um espaço de maior dimensão, chamado de espaço de características, se torna viável a aplicação do SVM linear.
-No espaço característica, foi possível encontrar um plano que fosse capaz de dividir os dois grupos.
-Mas a função para o espaço característica pode ter uma dimensão muito alta, e pode ser custosa computacionalmente para ser calculada.
+[Espaço de características](:SVM\Espacodecaracterísticas.png){:data-align="center"}
 
-. No entanto, é importante observar que o cálculo da função de mapeamento para o espaço de características pode ser computacionalmente custoso devido à alta dimensionalidade.
+
+No entanto, é importante observar que o cálculo da função de mapeamento para o espaço de características pode ser computacionalmente custoso devido à alta dimensionalidade.
 
 # Truque do KERNEL:
-O truque do Kernel é uma técnica que nos permite evitar o mapeamento explícito dos dados para o espaço de características de alta dimensão. O Kernel recebe os pontos do espaço de entrada e calcula o produto escalar entre eles no espaço de características. O Kernel deve ser definido como uma matriz positivamente definida com autovalores maiores que zero.
+
+O truque do Kernel é uma técnica que nos permite evitar o mapeamento explícito dos dados para o espaço de características de alta dimensão.
+
 Pelo Teorema de Mercer, a função Kernel recebe os pontos do espaço de entrada e calcula o produto escalar entre eles no espaço característica, desde que defina Kernel como matriz positivamente definida e que tenha autovalores maior do que zero.
 
 Exemplificando, temos o kernel que define o mapeamento ϕ para uma dimensão de espaço mais alta.
-Considere o seguinte: W=(x_1,y_1 ),  Q=(x_2,y_2 ). Assumimos a função do Kernel polinomial, com γ=1 , c=0 e d=2. Com estes parâmetros, é conhecido como Kernel quadrático.
+Considere o seguinte: <img src="https://latex.codecogs.com/svg.image?\textbf{W}=&space;\left&space;(&space;x_1,y_1&space;\right&space;),&space;\textbf{Q}=(x_2,y_2&space;)" title="\textbf{W}= \left ( x_1,y_1 \right ), \textbf{Q}=(x_2,y_2 )" />. Assumimos a função do Kernel polinomial, com γ=1 , c=0 e d=2. Com estes parâmetros, é conhecido como Kernel quadrático.
 
 Kernel Quadrático(W,Q)=(W^T Q)^2
 =(x_1 x_2+y_1 y_2 )^2
@@ -150,25 +138,22 @@ SVM tem como objetivo a classificação binária. Para o classificar mais de dua
 O SVM é originalmente projetado para classificação binária. No entanto, existem métodos que permitem a classificação de mais de duas classes. Alguns dos principais métodos são:
 
 
+[SVM Multiclasse](:SVM\SVMMulticlasse.png){:data-align="center"}
+
 
 Principais métodos :
 
 ## Um-contra-todos:
 Divide os dados em dois grupos, onde um grupo é formado por uma classe específica e o outro grupo contém todas as outras classes. Isso é repetido para cada classe.
+
 ## Um-contra-um:
 Calcula a classificação entre uma classe e outra classe. Isso é repetido para todos os pares possíveis de classes.
+
 ## DAG-SVM:
 É uma generalização da árvore de decisão, onde a árvore cresce por exclusão de classes, utilizando classificação binária.
 UM-CONTRA-TODOS
 Divide em dois grupos, onde um é formado por apenas uma classe, e o outro formado pelas demais classes.
 Isto é repetido para todas as classes.
-
-UM-CONTRA-UM
-Uma classe é calculada com outra classe.
-Isto é repetido até que tenham sido realizados todos os pares possíveis.
-DAG-SVM
-Uma generalização da árvore de decisão.
-Utilizando a classificação binária, a árvore vai crescendo por exclusão da classe.
 
 
 # Referências:
@@ -177,10 +162,10 @@ Utilizando a classificação binária, a árvore vai crescendo por exclusão da 
 
 * Faceli, Katti. Inteligência artificial: uma abordagem de aprendizado de máquina. Grupo Gen - LTC, 2011.
 
-* Cover, Thomas M. “Geometrical and Statistical Properties of Systems of Linear Inequalities with Applications in Pattern Recognition.” IEEE Transactions on Electronic Computers, vol. EC-14, no. 3, June 1965, pp. 326–34. DOI.org (Crossref), https://doi.org/10.1109/PGEC.1965.264137. [link](https://isl.stanford.edu/~cover/papers/paper2.pdf)
+* Cover, Thomas M. “Geometrical and Statistical Properties of Systems of Linear Inequalities with Applications in Pattern Recognition.” IEEE Transactions on Electronic Computers, vol. EC-14, no. 3, June 1965, pp. 326–34. DOI.org (Crossref), https://doi.org/10.1109/PGEC.1965.264137. [[link]](https://isl.stanford.edu/~cover/papers/paper2.pdf)
 
 * Chih-Wei Hsu and Chih-Jen Lin. “A Comparison of Methods for Multiclass Support Vector Machines.” IEEE Transactions on Neural Networks, vol. 13, no. 2, Mar. 2002, pp. 415–25. DOI.org (Crossref), https://doi.org/10.1109/72.991427.
 
-* Platt, John and Cristianini, Nello and Shawe-Taylor, John. “Large Margin DAGs for Multiclass Classification”. Advances in Neural Information Processing Systems, MIT Press, vol.12, 1999. [link](https://proceedings.neurips.cc/paper_files/paper/1999/file/4abe17a1c80cbdd2aa241b70840879de-Paper.pdf)
+* Platt, John and Cristianini, Nello and Shawe-Taylor, John. “Large Margin DAGs for Multiclass Classification”. Advances in Neural Information Processing Systems, MIT Press, vol.12, 1999. [[link]](https://proceedings.neurips.cc/paper_files/paper/1999/file/4abe17a1c80cbdd2aa241b70840879de-Paper.pdf)
 
 * V.N. Vapnik and A.Ya. Chervonenkis. Theory of Pattern Recognition. Nauka, Moscow, 1974. (in Russian); German translation: Theorie der Zeichenerkennung, Akademie Verlag, Berlin, 1979.
