@@ -56,19 +56,13 @@ A dimensão Vapnik-Chervonenkis (VC) é uma medida que avalia a capacidade de um
 Exemplo: Dimensão VC de um conjunto de funções lineares para classificação de 2 grupos em um plano, é igual a 3.
 
 
-<p align="center">
-  <img src="image_2.png" alt="Image" />
-</p>
+![Image](img_2.png)
 
-![Descricao da imagem](/image_2.png)
-
-nao aguento mais Agora vai? Atualizou!
+Bah!
 
 Se tivéssemos que realizar uma classificação binária com 4 pontos, não seria possível encontrar uma função linear para todas as combinações possíveis.
 
-<p align="center">
-  <img src="img_3.png" alt="Image" />
-</p>
+
 
 
 # Hiperplano:
@@ -77,25 +71,19 @@ Um hiperplano é um plano de dimensão k-1 em um espaço de dimensão k. Por exe
 Um hiperplano é um plano (k-1)-dimensional na dimensão k.
 Por exemplo:
 
-<p align="center">
-  <img src="img_4.png" alt="Image" />
-</p>
+
 
 Conectando com o tópico anterior, podemos dizer que a dimensão VC de um hiperplano para uma dimensão K, é K+1.
 
 Existem vários hiperplanos possíveis para a classificação dos dados.
 Conectando com o tópico anterior, a dimensão VC de um hiperplano em uma dimensão K é igual a K+1. Existem vários hiperplanos possíveis para classificar os dados, mas o SVM visa encontrar o hiperplano que possui a maior margem de separação entre as duas classes.
 
-<p align="center">
-  <img src="img_5.png" alt="Image" />
-</p>
+
 
 
 O objetivo do SVM é encontrar o hiperplano com maior margem de separação entre as duas classes.
 
-<p align="center">
-  <img src="img_6.png" alt="Image" />
-</p>
+
 
 
 # Vetores de suporte:
@@ -106,14 +94,6 @@ Os vetores de suporte, também conhecidos como pontos críticos, que auxiliam a 
 Para evitar o sobreajuste, é possível adotar margens suaves, permitindo que alguns pontos de dados fiquem dentro da margem de separação. Isso flexibiliza a classificação e torna o modelo mais robusto.
 Para evitar um sobreajuste, é possível adotar margens suaves.
 
-![img_7.png](img_7.png)
-
-
-<p align="center">
-  <img src="img_7.png" alt="Image7" />
-</p>
-
-![img_8.png](img_8.png)
 
 E se os dados fossem distribuídos de outra forma?
 
