@@ -157,15 +157,15 @@ Alguns dos principais métodos são:
 
 ### Um-contra-todos:
 
->   Divide os dados em dois grupos, onde um grupo é formado por uma classe específica e o outro grupo contém todas as outras classes. Isso é repetido para cada classe.
+Divide os dados em dois grupos, onde um grupo é formado por uma classe específica e o outro grupo contém todas as outras classes. Isso é repetido para cada classe.
 
 ### Um-contra-um:
 
->   Calcula a classificação entre uma classe e outra classe. Isso é repetido para todos os pares possíveis de classes.
+Calcula a classificação entre uma classe e outra classe. Isso é repetido para todos os pares possíveis de classes.
 
 ### DAG-SVM:
 
->   É uma generalização da árvore de decisão, onde a árvore cresce por exclusão de classes, utilizando classificação binária.
+É uma generalização da árvore de decisão, onde a árvore cresce por exclusão de classes, utilizando classificação binária.
 
 # Referências:
 
