@@ -16,7 +16,7 @@ img: ":WoE_IV_Python_calculo.jpg"
 #comments_disable: true
 
 # publish date
-date: 2023-07-03 19:57:53 +0900
+date: 2023-07-01 19:57:53 +0900
 
 # seo
 # if not specified, date will be used.
