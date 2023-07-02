@@ -167,6 +167,8 @@ Calcula a classificação entre uma classe e outra classe. Isso é repetido para
 
 É uma generalização da árvore de decisão, onde a árvore cresce por exclusão de classes, utilizando classificação binária.
 
+Caso você tenha alguma dúvida ou precise de esclarecimentos adicionais sobre os conceitos abordados neste post, fique à vontade para entrar em contato. Estou aqui para ajudar e auxiliar no aprofundamento do seu entendimento sobre Support Vector Machines. Não hesite em perguntar, e bons estudos!
+
 # Referências:
 
 * Shalev-Shwartz, Shai, and Shai Ben-David. Understanding Machine Learning: From Theory to Algorithms. Cambridge University Press, 2014.
