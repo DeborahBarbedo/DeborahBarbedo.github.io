@@ -40,7 +40,7 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-Uma Exploração Inicial das SVM, Dimensão VC, Hiperplanos, Vetores de Suporte, Margens Flexíveis, Truque do Kernel e Classificação Multiclasse.
+Uma exploração inicial das SVM, Dimensão VC, Hiperplanos, Vetores de Suporte, Margens Flexíveis, Truque do Kernel e Classificação Multiclasse.
 
 <!-- outline-end -->
 
