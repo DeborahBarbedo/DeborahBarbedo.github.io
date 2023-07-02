@@ -126,7 +126,7 @@ Considere o seguinte: <img src="https://latex.codecogs.com/svg.image?\textbf{W}=
 <img src="https://latex.codecogs.com/png.image?\dpi{110}Kernel&space;Quadr&space;tico(\textbf{W},\textbf{Q})&space;=&space;&space;(\textbf{W})^T&space;&space;(\textbf{Q})&space;" title="Kernel Quadr tico(\textbf{W},\textbf{Q}) = (\textbf{W})^T (\textbf{Q}) " />
 
 O mapeamento dos pontos para uma dimensão de espaço mais alta, é dada pela função:
-ϕ<img src="https://latex.codecogs.com/svg.image?&space;(Ponto)={x^2,&space;\sqrt{2xy},y^2}&space;" title=" (Ponto)={x^2, \sqrt{2xy},y^2} " />
+<img src="https://latex.codecogs.com/svg.image?&space;ϕ(Ponto)={x^2,&space;\sqrt{2xy},y^2}&space;" title=" ϕ(Ponto)={x^2, \sqrt{2xy},y^2} " />
 
 Existem vários tipos de funções Kernel, como o polinomial, o radial e o de tangente hiperbólica. Essas funções definem o mapeamento para uma dimensão de espaço mais alta.
 
