@@ -56,11 +56,11 @@ A dimensão Vapnik-Chervonenkis (VC) é uma medida que avalia a capacidade de um
 Exemplo: Dimensão VC de um conjunto de funções lineares para classificação de 2 grupos em um plano, é igual a 3.
 
 
-<p align="center">
-  <img src="![Image](image_2.png)" alt="Image" />
-</p>
+<div style="text-align: center;">
+  <img src="image_2.png" alt="Image" />
+</div>
 
-Atualizaou
+Atualizou!
 
 Se tivéssemos que realizar uma classificação binária com 4 pontos, não seria possível encontrar uma função linear para todas as combinações possíveis.
 
