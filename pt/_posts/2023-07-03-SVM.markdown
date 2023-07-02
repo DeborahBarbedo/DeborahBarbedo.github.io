@@ -58,9 +58,13 @@ Exemplo: Dimensão VC de um conjunto de funções lineares para classificação 
 
 ![Image](\img_2.png)
 
-![such a lovely place](:post_pic1.jpg){:data-align="center"}
+![such a lovely place](:SVM\DimensaoVC.png){:data-align="center"}
 
 Bah2veremos!
+
+
+![img.png](img.png)
+
 
 Se tivéssemos que realizar uma classificação binária com 4 pontos, não seria possível encontrar uma função linear para todas as combinações possíveis.
 
