@@ -1,0 +1,184 @@
+---
+# multilingual page pair id, this must pair with translations of this page. (This name must be unique)
+lng_pair: 4_SVM
+title: "Demystifying Support Vector Machines (SVM) for Classification."
+
+# post specific
+# if not specified, .name will be used from _data/owner/[language].yml
+#author: "Deborah Cholodoysky Barbedo Pereira"
+# multiple category is not supported
+category: Machine Learning
+# multiple tag entries are possible
+tags: [Support Vector Machines, SVM, Classification, Vapnik-Chervonenkis (VC) dimension, Hyperplanes, Support Vectors, Soft Margins, Kernel Trick, Binary Classification, Multiclass Classification ]
+# thumbnail image for post
+img: ":SVME.jpg"
+# disable comments on this page
+#comments_disable: true
+
+# publish date
+date: 2023-06-05 11:48:53 +0900
+
+# seo
+# if not specified, date will be used.
+#meta_modify_date: 2021-08-10 11:32:53 +0900
+# check the meta_common_description in _data/owner/[language].yml
+meta_description: "Learn about Support Vector Machines (SVM) for classification task. This accessible explanation focuses on SVM's use in classification, covering concepts like Vapnik-Chervonenkis (VC) dimension, hyperplanes, support vectors, soft margins, and the kernel trick. Discover how SVM tackles binary and multiclass classification problems, making it a versatile algorithm for machine learning. Expand your understanding of SVM without overwhelming mathematical proofs and theorems, and get ready to apply this powerful tool in practice."
+# optional
+# please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
+# image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
+image_viewer_on: true
+# please use the "image_lazy_loader_on" below to enable image lazy loader for individual pages or posts (_posts/ or [language]/_posts folders).
+# image lazy loader can be enabled or disabled for all posts using the "image_lazy_loader_posts: true" setting in _data/conf/main.yml.
+image_lazy_loader_on: true
+# exclude from on site search
+#on_site_search_exclude: true
+# exclude from search engines
+#search_engine_exclude: true
+# to disable this page, simply set published: false or delete this file
+#published: false
+
+---
+
+<!-- outline-start -->
+
+ A Beginner-Friendly Exploration of SVM, VC Dimension, Hyperplanes, Support Vectors, Soft Margins, Kernel Trick, and Multiclass Classification.
+
+<!-- outline-end -->
+
+The Support Vector Machine (SVM) is a versatile algorithm used for both regression and classification tasks. It's particularly useful when dealing with numerical random variables. In this post, our focus will be on explaining how SVM works for classification problems.
+The goal here is to make the explanation as accessible as possible, avoiding excessive use of mathematical proofs and theorems that might seem intimidating. I want to introduce SVM in a surface-level manner so that you can grasp the logic behind it. This way, you'll be prepared to delve deeper into the subject with a solid understanding of the algorithm's purpose, or even have a basic comprehension that allows you to apply it quickly.
+
+# Vapnik-Chervonenkis (VC) Dimension:
+The Vapnik-Chervonenkis (VC) dimension is a measure that assesses the capacity of a set of functions to be learned by a statistical binary classification algorithm. In simpler terms, the VC dimension of a set of functions is the maximum number of points that can be divided in different ways by those functions. This measure was proposed by Vapnik and Chervonenkis in 1971, and it's extremely useful for understanding the flexibility of a set of functions in the classification task.
+
+Example: The VC dimension of a set of linear functions for classifying 2 groups in a plane is equal to 3.
+
+![Vapnik-Chervonenkis (VC) dimension](:SVM\DimensaoVCeng.png){:data-align="center"}
+
+
+If we had to perform a binary classification with 4 points, it wouldn't be possible to find a linear function that separates all possible combinations.
+
+![Example binary classification with 4 points](:SVM\Exemplo4.png){:data-align="center"}
+
+
+# Hyperplane:
+
+A hyperplane is a (k-1)-dimensional plane in a k-dimensional space. For example, in a two-dimensional space, a hyperplane is a line, while in a three-dimensional space, it is a plane. 
+
+![A hyperplane is a line in 2 dimensions. A hyperplane is a plane in 3 dimensions.](:SVM\Hiperplanodim2e3.png){:data-align="center"}
+
+
+Connecting with the previous topic, the VC dimension of a hyperplane in a K-dimensional space is equal to K+1. There are multiple possible hyperplanes for classifying the data:
+
+![Hyperplane](:SVM\Hiperplanoseng.png){:data-align="center"}
+
+
+But SVM aims to find the hyperplane with the largest margin of separation between the two classes.
+
+![Hyperplane with the largest margin](:SVM\Hiperplanocommaiormargemeng.png){:data-align="center"}
+ 
+
+# Support Vectors:
+
+Support vectors, also known as critical points, are the data points that assist in determining the margin of the linear classifier. They play a crucial role in identifying the optimal hyperplane. 
+
+![Support Vectors](:SVM\Vetoresdesuporteeng.png){:data-align="center"}
+
+
+# Soft Margins:
+
+To avoid overfitting, it is possible to adopt soft margins, allowing some data points to fall within the separation margin. This flexibilizes the classification and makes the model more robust.
+ 
+![Soft Margins](:SVM\Margenssuaves.png){:data-align="center"}
+
+
+What if the data were distributed differently?
+
+# Nonlinear Data and the Cover's Theorem:
+
+Cover's Theorem tells us that nonlinear datasets in high-dimensional spaces are more likely to be linearly separable compared to lower-dimensional spaces, as long as the space is not excessively crowded. 
+
+![Nonlinear Data](:SVM\TeoremadeCover.png){:data-align="center"}
+
+
+Based on that, we can apply a transformation to the data, such as the function <img src="https://latex.codecogs.com/svg.image?(x^2,&space;2xy,y^2)" title="(x^2, 2xy,y^2)" />, to map them into a higher-dimensional feature space. This makes it feasible to apply linear SVM in this new feature space.
+
+![Feature space](:SVM\Espacodecaracterísticas.png){:data-align="center"}
+ 
+
+However, it is important to note that computing the mapping function for the feature space can be computationally expensive due to the high dimensionality.
+
+# Kernel Trick:
+
+The kernel trick is a technique that allows us to avoid the explicit mapping of data to the high-dimensional feature space.
+According to the Mercer's Theorem, the kernel function takes input space points and computes their inner product in the feature space, as long as the kernel is defined as a positive-definite matrix with eigenvalues greater than zero.
+Illustrating this, we have the kernel that defines the mapping ϕ to a higher-dimensional space.
+Consider the polynomial kernel function with γ=1, c=0, and d=2. With these parameters, it is known as the quadratic kernel.
+
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}QuadraticKernel(\textbf{W},\textbf{Q})&space;=&space;(\textbf{W}^T&space;\textbf{Q})^2" title="QuadraticKernel(\textbf{W},\textbf{Q}) = (\textbf{W}^T \textbf{Q})^2" />
+>
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=&space;(x_1&space;x_2&plus;y_1&space;y_2&space;)^2" title="\space = (x_1 x_2+y_1 y_2 )^2" />
+>
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=x_1^2&space;x_2^2&plus;2x_1&space;x_2&space;y_1&space;y_2&plus;y_1^2&space;y_2^2" title="\space =x_1^2 x_2^2+2x_1 x_2 y_1 y_2+y_1^2 y_2^2" />
+>
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=(x_1^2&plus;&space;\sqrt{2x_1&space;y_1}&plus;y_1^2)^T&space;&space;(x_2^2&plus;\sqrt{2x_2&space;y_2}&space;&plus;y_2^2)" title="\space =(x_1^2+ \sqrt{2x_1 y_1}+y_1^2)^T (x_2^2+\sqrt{2x_2 y_2} +y_2^2)" />
+>
+>  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=&space;\phi(\textbf{W})^T&space;\phi(\textbf{Q})&space;" title="\space = \phi(\textbf{W})^T \phi(\textbf{Q}) " />
+
+
+The mapping of points to a higher-dimensional space is given by the function:
+
+>   <img src="https://latex.codecogs.com/png.image?\dpi{110}\phi&space;(Ponto)=\left\{&space;x^2,&space;&space;2xy,y^2&space;\right\}" title="\phi (Ponto)=\left\{ x^2, 2xy,y^2 \right\}" />
+
+
+There are various types of kernel functions, such as polynomial, radial, and hyperbolic tangent. These functions define the mapping to a higher-dimensional space.
+
+### Polynomial 
+
+>   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;(\gamma(\textbf{x}^T\textbf{y})&plus;c)^d" title="K(\textbf{x},\textbf{y}) = (\gamma(\textbf{x}^T\textbf{y})+c)^d" />
+
+
+### Radial  
+
+>   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;e^{&space;-&space;\gamma&space;\left\|&space;x-y&space;\right\|^2}" title="K(\textbf{x},\textbf{y}) = e^{ - \gamma \left\| x-y \right\|^2}" />
+
+
+### Hyperbolic tangent
+
+>   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;tanh&space;\left&space;(&space;\gamma(\textbf{x}^T\textbf{y})&plus;c&space;\right&space;)" title="K(\textbf{x},\textbf{y}) = tanh \left ( \gamma(\textbf{x}^T\textbf{y})+c \right )" />
+  
+
+But what if we had more than 2 classes to classify?
+
+# Multiclass SVM Classification:
+
+SVM is originally designed for binary classification. However, there are methods that allow for the classification of more than two classes. 
+
+![SVM Multiclasse](:SVM\SVMMulticlasse.png){:data-align="center"}
+
+
+Some of the main methods are:
+
+ 
+## One-vs-All (One-vs-Rest):
+Divides the data into two groups, where one group consists of a specific class and the other group contains all the remaining classes. This is repeated for each class.
+
+## One-vs-One:
+Calculates the classification between one class and another class. This is repeated for all possible pairs of classes.
+
+## Directed Acyclic Graph SVM (DAG-SVM):
+It is a generalization of the decision tree, where the tree grows by excluding classes, using binary classification.
+
+# References:
+
+* Shalev-Shwartz, Shai, and Shai Ben-David. Understanding Machine Learning: From Theory to Algorithms. Cambridge University Press, 2014.
+
+* Faceli, Katti. Inteligência artificial: uma abordagem de aprendizado de máquina. Grupo Gen - LTC, 2011.
+
+* Cover, Thomas M. “Geometrical and Statistical Properties of Systems of Linear Inequalities with Applications in Pattern Recognition.” IEEE Transactions on Electronic Computers, vol. EC-14, no. 3, June 1965, pp. 326–34. DOI.org (Crossref), [https://doi.org/10.1109/PGEC.1965.264137](https://doi.org/10.1109/PGEC.1965.264137). [[link]](https://isl.stanford.edu/~cover/papers/paper2.pdf)
+
+* Chih-Wei Hsu and Chih-Jen Lin. “A Comparison of Methods for Multiclass Support Vector Machines.” IEEE Transactions on Neural Networks, vol. 13, no. 2, Mar. 2002, pp. 415–25. DOI.org (Crossref), [https://doi.org/10.1109/72.991427](https://doi.org/10.1109/72.991427).
+
+* Platt, John and Cristianini, Nello and Shawe-Taylor, John. “Large Margin DAGs for Multiclass Classification”. Advances in Neural Information Processing Systems, MIT Press, vol.12, 1999. [[link]](https://proceedings.neurips.cc/paper_files/paper/1999/file/4abe17a1c80cbdd2aa241b70840879de-Paper.pdf)
+
+* V.N. Vapnik and A.Ya. Chervonenkis. Theory of Pattern Recognition. Nauka, Moscow, 1974. (in Russian); German translation: Theorie der Zeichenerkennung, Akademie Verlag, Berlin, 1979.

@@ -11,12 +11,12 @@ category: Aprendizado de Máquina
 # multiple tag entries are possible
 tags: [SVM, Classificação, VC Dimension, Hiperplanos, Vetores de Suporte, Margens Flexíveis, Truque do Kernel, Classificação Multiclasse, Aprendizado de Máquina]
 # thumbnail image for post
-img: ":WoE_IV_Python_calculo.jpg"
+img: ":SVM.jpg"
 # disable comments on this page
 #comments_disable: true
 
 # publish date
-date: 2023-07-03 19:57:53 +0900
+date: 2023-07-01 19:57:53 +0900
 
 # seo
 # if not specified, date will be used.
@@ -35,7 +35,7 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-published: false
+#published: false
 ---
 
 <!-- outline-start -->
