@@ -180,7 +180,7 @@ I hope this post has been helpful and informative. Thank you for following along
 
 # References:
 
-* Shalev-Shwartz, Shai, and Shai Ben-David. Understanding Machine Learning: From Theory to Algorithms. Cambridge University Press, 2014.
+* Shalev-Shwartz, Shai, and Shai Ben-David. Understanding Machine Learning: From Theory to Algorithms. Cambridge University Press, 2014. [[link]](https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/)
 
 * Faceli, Katti. Inteligência artificial: uma abordagem de aprendizado de máquina. Grupo Gen - LTC, 2011.
 
