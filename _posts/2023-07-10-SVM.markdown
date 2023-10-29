@@ -16,7 +16,7 @@ img: ":SVME.jpg"
 #comments_disable: true
 
 # publish date
-date: 2023-07-10 11:48:53 +0900
+date: 2023-10-29 11:48:53 +0900
 
 # seo
 # if not specified, date will be used.
@@ -35,7 +35,7 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-published: false
+#published: false
 
 ---
 
@@ -63,7 +63,7 @@ If we had to perform a binary classification with 4 points, it wouldn't be possi
 
 # Hyperplane:
 
-A hyperplane is a (k-1)-dimensional plane in a k-dimensional space. For example, in a two-dimensional space, a hyperplane is a line, while in a three-dimensional space, it is a plane. 
+A hyperplane is a (k-1)-dimensional plane in a k-dimensional space. For example, in a two-dimensional space, a hyperplane is a line, while in a three-dimensional space, it is a plane.
 
 ![A hyperplane is a line in 2 dimensions. A hyperplane is a plane in 3 dimensions.](:SVM\Hiperplanodim2e3.png){:data-align="center"}
 
@@ -76,11 +76,11 @@ Connecting with the previous topic, the VC dimension of a hyperplane in a K-dime
 But SVM aims to find the hyperplane with the largest margin of separation between the two classes.
 
 ![Hyperplane with the largest margin](:SVM\Hiperplanocommaiormargemeng.png){:data-align="center"}
- 
+
 
 # Support Vectors:
 
-Support vectors, also known as critical points, are the data points that assist in determining the margin of the linear classifier. They play a crucial role in identifying the optimal hyperplane. 
+Support vectors, also known as critical points, are the data points that assist in determining the margin of the linear classifier. They play a crucial role in identifying the optimal hyperplane.
 
 ![Support Vectors](:SVM\Vetoresdesuporteeng.png){:data-align="center"}
 
@@ -88,7 +88,7 @@ Support vectors, also known as critical points, are the data points that assist 
 # Soft Margins:
 
 To avoid overfitting, it is possible to adopt soft margins, allowing some data points to fall within the separation margin. This flexibilizes the classification and makes the model more robust.
- 
+
 ![Soft Margins](:SVM\Margenssuaves.png){:data-align="center"}
 
 
@@ -96,7 +96,7 @@ What if the data were distributed differently?
 
 # Nonlinear Data and the Cover's Theorem:
 
-Cover's Theorem tells us that nonlinear datasets in high-dimensional spaces are more likely to be linearly separable compared to lower-dimensional spaces, as long as the space is not excessively crowded. 
+Cover's Theorem tells us that nonlinear datasets in high-dimensional spaces are more likely to be linearly separable compared to lower-dimensional spaces, as long as the space is not excessively crowded.
 
 ![Nonlinear Data](:SVM\TeoremadeCover.png){:data-align="center"}
 
@@ -104,7 +104,7 @@ Cover's Theorem tells us that nonlinear datasets in high-dimensional spaces are 
 Based on that, we can apply a transformation to the data, such as the function <img src="https://latex.codecogs.com/svg.image?(x^2,&space;2xy,y^2)" title="(x^2, 2xy,y^2)" />, to map them into a higher-dimensional feature space. This makes it feasible to apply linear SVM in this new feature space.
 
 ![Feature space](:SVM\Espacodecaracterísticas.png){:data-align="center"}
- 
+
 
 However, it is important to note that computing the mapping function for the feature space can be computationally expensive due to the high dimensionality.
 
@@ -133,12 +133,12 @@ The mapping of points to a higher-dimensional space is given by the function:
 
 There are various types of kernel functions, such as polynomial, radial, and hyperbolic tangent. These functions define the mapping to a higher-dimensional space.
 
-### Polynomial 
+### Polynomial
 
 >   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;(\gamma(\textbf{x}^T\textbf{y})&plus;c)^d" title="K(\textbf{x},\textbf{y}) = (\gamma(\textbf{x}^T\textbf{y})+c)^d" />
 
 
-### Radial  
+### Radial
 
 >   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;e^{&space;-&space;\gamma&space;\left\|&space;x-y&space;\right\|^2}" title="K(\textbf{x},\textbf{y}) = e^{ - \gamma \left\| x-y \right\|^2}" />
 
@@ -146,20 +146,20 @@ There are various types of kernel functions, such as polynomial, radial, and hyp
 ### Hyperbolic tangent
 
 >   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;tanh&space;\left&space;(&space;\gamma(\textbf{x}^T\textbf{y})&plus;c&space;\right&space;)" title="K(\textbf{x},\textbf{y}) = tanh \left ( \gamma(\textbf{x}^T\textbf{y})+c \right )" />
-  
+
 
 But what if we had more than 2 classes to classify?
 
 # Multiclass SVM Classification:
 
-SVM is originally designed for binary classification. However, there are methods that allow for the classification of more than two classes. 
+SVM is originally designed for binary classification. However, there are methods that allow for the classification of more than two classes.
 
 ![SVM Multiclasse](:SVM\SVMMulticlasse.png){:data-align="center"}
 
 
 Some of the main methods are:
 
- 
+
 ## One-vs-All (One-vs-Rest):
 Divides the data into two groups, where one group consists of a specific class and the other group contains all the remaining classes. This is repeated for each class.
 
