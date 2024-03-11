@@ -40,36 +40,36 @@ lng_pair: id_links
 #                Links Page Data
 ###########################################################
 page_data:
-  main:
-    header: "Links"
-    info: "É um prazer compartilhar com você uma lista de links que podem ajudá-lo(a) a aprimorar suas habilidades em machine learning, análise de dados e estatística. Sinta-se à vontade para explorar os recursos disponíveis e escolher aqueles que melhor se adequam às suas necessidades. Além disso, atualizo regularmente essa lista com novos recursos, então lembre-se de voltar aqui de vez em quando para ficar por dentro das atualizações mais recentes. Desejo-lhe boa sorte em sua jornada de aprendizado e estou sempre disponível para ajudar caso precise de algum suporte ou orientação."
+main:
+header: "Links"
+info: "É um prazer compartilhar com você uma lista de links que podem ajudá-lo(a) a aprimorar suas habilidades em machine learning, análise de dados e estatística. Sinta-se à vontade para explorar os recursos disponíveis e escolher aqueles que melhor se adequam às suas necessidades. Além disso, atualizo regularmente essa lista com novos recursos, então lembre-se de voltar aqui de vez em quando para ficar por dentro das atualizações mais recentes. Desejo-lhe boa sorte em sua jornada de aprendizado e estou sempre disponível para ajudar caso precise de algum suporte ou orientação."
 
-  # To change order of the Categories, simply change order. (you don't need to change list order.)
-  category:
-    - title: "Ciência de Dados"
-      type: id_datascience
-      color: "#141E26"
-    - title: "Educação"
-      type: id_education
-      color: "#014040"
-    - title: "Programação e Desenvolvimento"
-      type: id_programming
-      color: "#59D9D9"
-    - title: "Aprendizado de Máquina"
-      type: id_machinelearning
-      color: "#25D9C7"
+# To change order of the Categories, simply change order. (you don't need to change list order.)
+category:
+- title: "Ciência de Dados"
+type: id_datascience
+color: "#141E26"
+- title: "Educação"
+type: id_education
+color: "#014040"
+- title: "Programação e Desenvolvimento"
+type: id_programming
+color: "#59D9D9"
+- title: "Aprendizado de Máquina"
+type: id_machinelearning
+color: "#25D9C7"
 
 
-  list:
-    -
-    # programming
-    - type: id_programming
-      title: "Stack OverFlow"
-      url: "https://stackoverflow.com/"
-      info: "Stack Overflow é um site voltado para perguntas e respostas para profissionais e entusiastas da programação."
+list:
+-
+# programming
+- type: id_programming
+title: "Stack OverFlow"
+url: "https://stackoverflow.com/"
+info: "Stack Overflow é um site voltado para perguntas e respostas para profissionais e entusiastas da programação."
 
     # DataScience
-   - type: id_datascience
+    - type: id_datascience
       title: "Kaggle"
       url: "https://www.kaggle.com/"
       info: "Kaggle é uma plataforma completa para Cientistas de Dados. É uma oportunidade para aprender, colaborar e compartilhar conhecimento com outros Cientistas de Dados de todo o mundo."
@@ -88,33 +88,11 @@ page_data:
       url: "https://huggingface.co/"
       info: "A Hugging Face é uma plataforma fácil de usar para o desenvolvimento de aplicações de aprendizado de máquina. É uma ótima opção para desenvolvedores, pesquisadores e estudantes que desejam acessar os últimos modelos de aprendizado de máquina de forma rápida e eficiente."
 
-    # jekyiiliquid
-#    - type: id_jekyiiliquid
-#      title: "Jekyll"
-#      url: "https://jekyllrb.com/"
-#      info: "Transforme o seu simples texto em websites estáticos e blogs."
-#    - type: id_jekyiiliquid
-#      title: "Tabela rápida para Jekyll"
-#      url: "https://cloudcannon.com/community/jekyll-cheat-sheet/"
-#      info: "Existem tantos filtros e variáveis em Jekyll para se lembrar que pode ser difícil lembrar de todos. Essa tabela serve como uma rápida referência para tudo que Jekyll é capaz de fazer."
-#    - type: id_jekyiiliquid
-#      title: "Liquid para Designers"
-#      url: "https://github.com/Shopify/liquid/wiki/Liquid-for-Designers"
-#      info: "Wiki do Liquid para Designers no GitHub"
-#    - type: id_jekyiiliquid
-#      title: "Liquid para Programadores"
-#      url: "https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers"
-#      info: "Wiki de Liquid para Programadores no GitHub"
-#    - type: id_jekyiiliquid
-#      title: "Referências de Liquid"
-#      url: "https://shopify.dev/api/liquid/"
-#      info: "Liquid é uma linguagem modelo criado pelo Shopify e escrita em Ruby. Ela, agora, está disponível em código aberto no GitHub."
-
     # Education
-     - type: id_education
+    - type: id_education
       title: "Machine Learning Mastery"
       url: "https://machinelearningmastery.com/"
-      info:"Machine Learning Mastery é um recurso completo para aprender sobre Machine Learning. É uma plataforma fácil de usar e oferece uma variedade de conteúdos para atender às suas necessidades."
+      info: "Machine Learning Mastery é um recurso completo para aprender sobre Machine Learning. É uma plataforma fácil de usar e oferece uma variedade de conteúdos para atender às suas necessidades."
     - type: id_education
       title: "W3Schools"
       url: "https://www.w3schools.com/"
