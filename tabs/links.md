@@ -40,33 +40,32 @@ lng_pair: id_links
 #                Links Page Data
 ###########################################################
 page_data:
-  main:
-    header: "Links"
-    info: "It's a pleasure to share with you a list of links that can help you improve your skills in machine learning, data analysis, and statistics. Please feel free to explore the available resources and choose the ones that best suit your needs. Additionally, I regularly update this list with new resources, so remember to come back here from time to time to stay up-to-date with the latest updates. I wish you good luck on your learning journey and am always available to help if you need any support or guidance."
+main:
+header: "Links"
+info: "It's a pleasure to share with you a list of links that can help you improve your skills in machine learning, data analysis, and statistics. Please feel free to explore the available resources and choose the ones that best suit your needs. Additionally, I regularly update this list with new resources, so remember to come back here from time to time to stay up-to-date with the latest updates. I wish you good luck on your learning journey and am always available to help if you need any support or guidance."
 
-  # To change order of the Categories, simply change order. (you don't need to change list order.)
-  category:
-    - title: "Data Science"
-      type: id_datascience
-      color: "#141E26"
-    - title: "Education"
-      type: id_education
-      color: "#014040"
-    - title: "Programming"
-      type: id_programming
-      color: "#59D9D9"
-    - title: "Machine Learning"
-      type: id_machinelearning
-      color: "#25D9C7"
+# To change order of the Categories, simply change order. (you don't need to change list order.)
+category:
+- title: "Data Science"
+type: id_datascience
+color: "#141E26"
+- title: "Education"
+type: id_education
+color: "#014040"
+- title: "Programming"
+type: id_programming
+color: "#59D9D9"
+- title: "Machine Learning"
+type: id_machinelearning
+color: "#25D9C7"
 
-
-  list:
-    -
-    # programming
-    - type: id_programming
-      title: "Stack OverFlow"
-      url: "https://stackoverflow.com/"
-      info: "A resource for finding solutions to programming problems, learning new technologies, and getting help from experts."
+list:
+-
+# programming
+- type: id_programming
+title: "Stack OverFlow"
+url: "https://stackoverflow.com/"
+info: "A resource for finding solutions to programming problems, learning new technologies, and getting help from experts."
 
     # DataScience
     - type: id_datascience
@@ -82,7 +81,7 @@ page_data:
       url: "https://paperswithcode.com/"
       info: "A free platform for researchers and practitioners to find and track the latest papers in Machine Learning, Deep Learning, and AI, along with their code and datasets."
 
-    # Aprendizado de Máquina
+    # Machine Learning
     - type: id_machinelearning
       title: "Hugging Face"
       url: "https://huggingface.co/"
@@ -92,10 +91,9 @@ page_data:
     - type: id_education
       title: "Machine Learning Mastery"
       url: "https://machinelearningmastery.com/"
-      info:"A blog and tutorial website for machine learning practitioners."
+      info: "A blog and tutorial website for machine learning practitioners."
     - type: id_education
       title: "W3Schools"
       url: "https://www.w3schools.com/"
       info: "A resource for learning HTML, CSS, JavaScript, and other web development languages."
-
 ---
