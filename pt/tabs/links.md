@@ -46,15 +46,19 @@ page_data:
 
   # To change order of the Categories, simply change order. (you don't need to change list order.)
   category:
-#    - title: "JekyII / Liquid"
-#      type: id_jekyiiliquid
-#      color: "gray"
+    - title: "Ciência de Dados"
+      type: id_datascience
+      color: "#141E26"
     - title: "Educação"
       type: id_education
-      color: "#F4A273"
-    - title: "Programação e Desenvolvimento:"
+      color: "#014040"
+    - title: "Programação e Desenvolvimento"
       type: id_programming
-      color: "#62b462"
+      color: "#59D9D9"
+    - title: "Aprendizado de Máquina"
+      type: id_machinelearning
+      color: "#25D9C7"
+
 
   list:
     -
@@ -63,6 +67,26 @@ page_data:
       title: "Stack OverFlow"
       url: "https://stackoverflow.com/"
       info: "Stack Overflow é um site voltado para perguntas e respostas para profissionais e entusiastas da programação."
+
+    # DataScience
+   - type: id_datascience
+      title: "Kaggle"
+      url: "https://www.kaggle.com/"
+      info: "Kaggle é uma plataforma completa para Cientistas de Dados. É uma oportunidade para aprender, colaborar e compartilhar conhecimento com outros Cientistas de Dados de todo o mundo."
+    - type: id_datascience
+      title: "Repositório da UCI"
+      url: "https://archive.ics.uci.edu/"
+      info: "O Repositório da UCI é um recurso fundamental para Cientistas de Dados, pois oferece uma ampla variedade de conjuntos de dados para diversos fins."
+    - type: id_datascience
+      title: "Papers With Code"
+      url: "https://paperswithcode.com/"
+      info: "O Papers With Code é uma ferramenta para pesquisadores, profissionais e estudantes de Machine Learning. É uma ótima maneira de encontrar soluções para seus problemas, aprender sobre novos métodos e técnicas e se manter atualizado com as últimas pesquisas na área."
+
+    # Aprendizado de Máquina
+    - type: id_machinelearning
+      title: "Hugging Face"
+      url: "https://huggingface.co/"
+      info: "A Hugging Face é uma plataforma fácil de usar para o desenvolvimento de aplicações de aprendizado de máquina. É uma ótima opção para desenvolvedores, pesquisadores e estudantes que desejam acessar os últimos modelos de aprendizado de máquina de forma rápida e eficiente."
 
     # jekyiiliquid
 #    - type: id_jekyiiliquid
@@ -86,7 +110,11 @@ page_data:
 #      url: "https://shopify.dev/api/liquid/"
 #      info: "Liquid é uma linguagem modelo criado pelo Shopify e escrita em Ruby. Ela, agora, está disponível em código aberto no GitHub."
 
-    # webdesign
+    # Education
+     - type: id_education
+      title: "Machine Learning Mastery"
+      url: "https://machinelearningmastery.com/"
+      info:"Machine Learning Mastery é um recurso completo para aprender sobre Machine Learning. É uma plataforma fácil de usar e oferece uma variedade de conteúdos para atender às suas necessidades."
     - type: id_education
       title: "W3Schools"
       url: "https://www.w3schools.com/"
