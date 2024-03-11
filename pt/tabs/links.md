@@ -46,13 +46,13 @@ page_data:
 
   # To change order of the Categories, simply change order. (you don't need to change list order.)
   category:
-    - title: "JekyII / Liquid"
-      type: id_jekyiiliquid
-      color: "gray"
-    - title: "Web Design"
-      type: id_webdesign
-      color: "#F4A273"
-    - title: "Programação"
+#    - title: "JekyII / Liquid"
+#      type: id_jekyiiliquid
+#      color: "gray"
+#    - title: "Web Design"
+#      type: id_webdesign
+#      color: "#F4A273"
+    - title: "Programação e Desenvolvimento:"
       type: id_programming
       color: "#62b462"
 
@@ -65,30 +65,30 @@ page_data:
       info: "Stack Overflow é um site voltado para perguntas e respostas para profissionais e entusiastas da programação."
 
     # jekyiiliquid
-    - type: id_jekyiiliquid
-      title: "Jekyll"
-      url: "https://jekyllrb.com/"
-      info: "Transforme o seu simples texto em websites estáticos e blogs."
-    - type: id_jekyiiliquid
-      title: "Tabela rápida para Jekyll"
-      url: "https://cloudcannon.com/community/jekyll-cheat-sheet/"
-      info: "Existem tantos filtros e variáveis em Jekyll para se lembrar que pode ser difícil lembrar de todos. Essa tabela serve como uma rápida referência para tudo que Jekyll é capaz de fazer."
-    - type: id_jekyiiliquid
-      title: "Liquid para Designers"
-      url: "https://github.com/Shopify/liquid/wiki/Liquid-for-Designers"
-      info: "Wiki do Liquid para Designers no GitHub"
-    - type: id_jekyiiliquid
-      title: "Liquid para Programadores"
-      url: "https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers"
-      info: "Wiki de Liquid para Programadores no GitHub"
-    - type: id_jekyiiliquid
-      title: "Referências de Liquid"
-      url: "https://shopify.dev/api/liquid/"
-      info: "Liquid é uma linguagem modelo criado pelo Shopify e escrita em Ruby. Ela, agora, está disponível em código aberto no GitHub."
+#    - type: id_jekyiiliquid
+#      title: "Jekyll"
+#      url: "https://jekyllrb.com/"
+#      info: "Transforme o seu simples texto em websites estáticos e blogs."
+#    - type: id_jekyiiliquid
+#      title: "Tabela rápida para Jekyll"
+#      url: "https://cloudcannon.com/community/jekyll-cheat-sheet/"
+#      info: "Existem tantos filtros e variáveis em Jekyll para se lembrar que pode ser difícil lembrar de todos. Essa tabela serve como uma rápida referência para tudo que Jekyll é capaz de fazer."
+#    - type: id_jekyiiliquid
+#      title: "Liquid para Designers"
+#      url: "https://github.com/Shopify/liquid/wiki/Liquid-for-Designers"
+#      info: "Wiki do Liquid para Designers no GitHub"
+#    - type: id_jekyiiliquid
+#      title: "Liquid para Programadores"
+#      url: "https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers"
+#      info: "Wiki de Liquid para Programadores no GitHub"
+#    - type: id_jekyiiliquid
+#      title: "Referências de Liquid"
+#      url: "https://shopify.dev/api/liquid/"
+#      info: "Liquid é uma linguagem modelo criado pelo Shopify e escrita em Ruby. Ela, agora, está disponível em código aberto no GitHub."
 
-    # webdesign
-    - type: id_webdesign
-      title: "W3Schools"
-      url: "https://www.w3schools.com/"
-      info: "W3Schools oferece tutoriais gratuitos, referências e exercícios nas linguagens mais importantes da web, cobrindo a mais populares como HTML, CSS, JavaScript, Python, SQL, Java e muito mais."
+#    # webdesign
+#    - type: id_webdesign
+#      title: "W3Schools"
+#      url: "https://www.w3schools.com/"
+#      info: "W3Schools oferece tutoriais gratuitos, referências e exercícios nas linguagens mais importantes da web, cobrindo a mais populares como HTML, CSS, JavaScript, Python, SQL, Java e muito mais."
 ---
