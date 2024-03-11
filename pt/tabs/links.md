@@ -49,9 +49,9 @@ page_data:
 #    - title: "JekyII / Liquid"
 #      type: id_jekyiiliquid
 #      color: "gray"
-#    - title: "Web Design"
-#      type: id_webdesign
-#      color: "#F4A273"
+    - title: "Educação"
+      type: id_education
+      color: "#F4A273"
     - title: "Programação e Desenvolvimento:"
       type: id_programming
       color: "#62b462"
@@ -86,9 +86,9 @@ page_data:
 #      url: "https://shopify.dev/api/liquid/"
 #      info: "Liquid é uma linguagem modelo criado pelo Shopify e escrita em Ruby. Ela, agora, está disponível em código aberto no GitHub."
 
-#    # webdesign
-#    - type: id_webdesign
-#      title: "W3Schools"
-#      url: "https://www.w3schools.com/"
-#      info: "W3Schools oferece tutoriais gratuitos, referências e exercícios nas linguagens mais importantes da web, cobrindo a mais populares como HTML, CSS, JavaScript, Python, SQL, Java e muito mais."
+    # webdesign
+    - type: id_education
+      title: "W3Schools"
+      url: "https://www.w3schools.com/"
+      info: "W3Schools oferece tutoriais gratuitos, referências e exercícios nas linguagens mais importantes da web, cobrindo a mais populares como HTML, CSS, JavaScript, Python, SQL, Java e muito mais."
 ---
