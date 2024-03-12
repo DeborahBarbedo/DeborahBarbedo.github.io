@@ -55,6 +55,9 @@ page_data:
     - title: "Programming"
       type: id_programming
       color: "#59D9D9"
+    - title: "Machine Learning"
+      type: id_machinelearning
+      color: "#25D9C7"
 
   list:
     -
@@ -91,4 +94,11 @@ page_data:
       title: "W3Schools"
       url: "https://www.w3schools.com/"
       info: "W3Schools offers free online tutorials, references and exercises in all the major languages of the web. Covering popular subjects like HTML, CSS, JavaScript, Python, SQL, Java, and many more."
+
+    # machinelearning
+    - type: id_machinelearning
+      title: "Hugging Face"
+      url: "https://huggingface.co/"
+      info: "A platform for sharing and using pre-trained machine learning models."
+
 ---

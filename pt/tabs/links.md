@@ -55,6 +55,9 @@ page_data:
     - title: "Programação"
       type: id_programming
       color: "#59D9D9"
+    - title: "Aprendizado de Máquina"
+      type: id_machinelearning
+      color: "#25D9C7"
 
   list:
     -
@@ -91,4 +94,11 @@ page_data:
       title: "W3Schools"
       url: "https://www.w3schools.com/"
       info: "W3Schools oferece tutoriais gratuitos, referências e exercícios nas linguagens mais importantes da web, cobrindo a mais populares como HTML, CSS, JavaScript, Python, SQL, Java e mutio mais."
+
+    # machinelearning
+    - type: id_machinelearning
+      title: "Hugging Face"
+      url: "https://huggingface.co/"
+      info: "A Hugging Face é uma plataforma fácil de usar para o desenvolvimento de aplicações de aprendizado de máquina. É uma ótima opção para desenvolvedores, pesquisadores e estudantes que desejam acessar os últimos modelos de aprendizado de máquina de forma rápida e eficiente."
+
 ---
