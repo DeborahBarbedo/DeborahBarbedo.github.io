@@ -126,7 +126,7 @@ page_data:
       title: "Machine Learning Mastery"
       url: "https://machinelearningmastery.com/"
       info: "A blog and tutorial website for machine learning practitioners."
-    - type: id_datascience
+    - type: id_education
       title: "W3Schools"
       url: "https://www.w3schools.com/"
       info: "A resource for learning HTML, CSS, JavaScript, and other web development languages."
