@@ -61,7 +61,7 @@ page_data:
     - title: "Ciência de Dados"
       type: id_datascience
       color: "#79F297"
-    - title: "Education"
+    - title: "Educação"
       type: id_education
       color: "#595452"
 
