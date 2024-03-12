@@ -61,6 +61,9 @@ page_data:
     - title: "Ciência de Dados"
       type: id_datascience
       color: "#79F297"
+    - title: "Education"
+      type: id_education
+      color: "#595452"
 
   list:
     -
@@ -117,5 +120,15 @@ page_data:
       title: "Papers With Code"
       url: "https://paperswithcode.com/"
       info: "O Papers With Code é uma ferramenta para pesquisadores, profissionais e estudantes de Machine Learning. É uma ótima maneira de encontrar soluções para seus problemas, aprender sobre novos métodos e técnicas e se manter atualizado com as últimas pesquisas na área."
+
+    # education
+    - type: id_education
+      title: "Machine Learning Mastery"
+      url: "https://machinelearningmastery.com/"
+      info: "Machine Learning Mastery é um recurso completo para aprender sobre Machine Learning. É uma plataforma fácil de usar e oferece uma variedade de conteúdos para atender às suas necessidades."
+    - type: id_education
+      title: "W3Schools"
+      url: "https://www.w3schools.com/"
+      info: "W3Schools oferece tutoriais gratuitos, referências e exercícios nas linguagens mais importantes da web, cobrindo a mais populares como HTML, CSS, JavaScript, Python, SQL, Java e muito mais."
 
 ---

@@ -61,6 +61,9 @@ page_data:
     - title: "Data Science"
       type: id_datascience
       color: "#79F297"
+    - title: "Education"
+      type: id_education
+      color: "#595452"
 
   list:
     -
@@ -117,5 +120,15 @@ page_data:
       title: "Papers With Code"
       url: "https://paperswithcode.com/"
       info: "A free platform for researchers and practitioners to find and track the latest papers in Machine Learning, Deep Learning, and AI, along with their code and datasets."
+
+    # education
+    - type: id_education
+      title: "Machine Learning Mastery"
+      url: "https://machinelearningmastery.com/"
+      info: "A blog and tutorial website for machine learning practitioners."
+    - type: id_datascience
+      title: "W3Schools"
+      url: "https://www.w3schools.com/"
+      info: "A resource for learning HTML, CSS, JavaScript, and other web development languages."
 
 ---
