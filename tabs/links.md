@@ -58,6 +58,9 @@ page_data:
     - title: "Machine Learning"
       type: id_machinelearning
       color: "#25D9C7"
+    - title: "Data Science"
+      type: id_datascience
+      color: "#79F297"
 
   list:
     -
@@ -100,5 +103,19 @@ page_data:
       title: "Hugging Face"
       url: "https://huggingface.co/"
       info: "A platform for sharing and using pre-trained machine learning models."
+
+    # datascience
+    - type: id_datascience
+      title: "Kaggle"
+      url: "https://www.kaggle.com/"
+      info: "An online community for data scientists and machine learning practitioners."
+    - type: id_datascience
+      title: "UCI Machine Learning Repository"
+      url: "https://archive.ics.uci.edu/"
+      info: "A free and public repository of machine learning datasets."
+    - type: id_datascience
+      title: "Papers With Code"
+      url: "https://paperswithcode.com/"
+      info: "A free platform for researchers and practitioners to find and track the latest papers in Machine Learning, Deep Learning, and AI, along with their code and datasets."
 
 ---

@@ -58,6 +58,9 @@ page_data:
     - title: "Aprendizado de Máquina"
       type: id_machinelearning
       color: "#25D9C7"
+    - title: "Ciência de Dados"
+      type: id_datascience
+      color: "#79F297"
 
   list:
     -
@@ -100,5 +103,19 @@ page_data:
       title: "Hugging Face"
       url: "https://huggingface.co/"
       info: "A Hugging Face é uma plataforma fácil de usar para o desenvolvimento de aplicações de aprendizado de máquina. É uma ótima opção para desenvolvedores, pesquisadores e estudantes que desejam acessar os últimos modelos de aprendizado de máquina de forma rápida e eficiente."
+
+    # datascience
+    - type: id_datascience
+      title: "Kaggle"
+      url: "https://www.kaggle.com/"
+      info: "Kaggle é uma plataforma completa para Cientistas de Dados. É uma oportunidade para aprender, colaborar e compartilhar conhecimento com outros Cientistas de Dados de todo o mundo."
+    - type: id_datascience
+      title: "Repositório da UCI"
+      url: "https://archive.ics.uci.edu/"
+      info: "O Repositório da UCI é um recurso fundamental para Cientistas de Dados, pois oferece uma ampla variedade de conjuntos de dados para diversos fins."
+    - type: id_datascience
+      title: "Papers With Code"
+      url: "https://paperswithcode.com/"
+      info: "O Papers With Code é uma ferramenta para pesquisadores, profissionais e estudantes de Machine Learning. É uma ótima maneira de encontrar soluções para seus problemas, aprender sobre novos métodos e técnicas e se manter atualizado com as últimas pesquisas na área."
 
 ---
