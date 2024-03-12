@@ -48,13 +48,13 @@ page_data:
   category:
     - title: "JekyII / Liquid"
       type: id_jekyiiliquid
-      color: "gray"
+      color: "#141E26"
     - title: "Web Design"
       type: id_webdesign
-      color: "#F4A273"
+      color: "#014040"
     - title: "Programming"
       type: id_programming
-      color: "#62b462"
+      color: "#59D9D9"
 
   list:
     -
