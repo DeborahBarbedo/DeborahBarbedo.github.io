@@ -40,24 +40,24 @@ lng_pair: id_links
 #                Links Page Data
 ###########################################################
 page_data:
-main:
-header: "Links"
-info: "É um prazer compartilhar com você uma lista de links que podem ajudá-lo(a) a aprimorar suas habilidades em machine learning, análise de dados e estatística. Sinta-se à vontade para explorar os recursos disponíveis e escolher aqueles que melhor se adequam às suas necessidades."
+  main:
+    header: "Links"
+    info: "É um prazer compartilhar com você uma lista de links que podem ajudá-lo(a) a aprimorar suas habilidades em machine learning, análise de dados e estatística. Sinta-se à vontade para explorar os recursos disponíveis e escolher aqueles que melhor se adequam às suas necessidades."
 
 # To change order of the Categories, simply change order. (you don't need to change list order.)
 	category:
 		- title: "Ciência de Dados"
 		  type: id_datascience
-      color: "#141E26"
+	      color: "#141E26"
 		- title: "Educação"
-      type: id_education
-      color: "#014040"
+	      type: id_education
+	      color: "#014040"
 		- title: "Programação e Desenvolvimento"
-      type: id_programming
-      color: "#59D9D9"
+	      type: id_programming
+	      color: "#59D9D9"
 		- title: "Aprendizado de Máquina"
-      type: id_machinelearning
-      color: "#25D9C7"
+	      type: id_machinelearning
+	      color: "#25D9C7"
 
 
 	list:
