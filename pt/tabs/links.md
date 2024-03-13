@@ -120,6 +120,10 @@ page_data:
       title: "Papers With Code"
       url: "https://paperswithcode.com/"
       info: "O Papers With Code é uma ferramenta para pesquisadores, profissionais e estudantes de Machine Learning. É uma ótima maneira de encontrar soluções para seus problemas, aprender sobre novos métodos e técnicas e se manter atualizado com as últimas pesquisas na área."
+    - type: id_datascience
+      title: "KNIME"
+      url: "https://www.knime.com/"
+      info: "KNIME (Konstanz Information Miner) é uma plataforma completa e flexível para análise de dados, integração e geração de relatórios. A plataforma oferece uma interface intuitiva e fácil de usar, tornando-a acessível a usuários de todos os níveis de experiência."
 
     # education
     - type: id_education

@@ -120,6 +120,10 @@ page_data:
       title: "Papers With Code"
       url: "https://paperswithcode.com/"
       info: "A free platform for researchers and practitioners to find and track the latest papers in Machine Learning, Deep Learning, and AI, along with their code and datasets."
+    - type: id_datascience
+      title: "KNIME"
+      url: "https://www.knime.com/"
+      info: "KNIME (Konstanz Information Miner) is a comprehensive and flexible platform for data analysis, integration, and reporting. The platform offers an intuitive and easy-to-use interface, making it accessible to users of all experience levels."
 
     # education
     - type: id_education
