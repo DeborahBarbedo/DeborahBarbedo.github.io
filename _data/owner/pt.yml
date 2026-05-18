@@ -2,10 +2,10 @@
 # Owner's Personal Information
 ###########################################################
 # This is your brand name
-brand: "Deborah"
+brand: "Deborah Barbedo"
 
 # text below the brand name
-brand_sub_text: "Desperte Insights Poderosos"
+brand_sub_text: "Ciência de Dados Aplicada"
 
 # used for seo meta post author (if it's not defined in post)
 name: "Deborah Cholodoysky Barbedo Pereira"
@@ -15,11 +15,11 @@ home:
   # you can also use $site_brand, $site_greetings, $site_welcome in line1 and line2 for replacing texts.
   #top_header_line1: "top_header_line1 site_welcome"
   # if commented, top header will be a single line
-  top_header_line2: "Desperte Insights Poderosos"
+  top_header_line2: "Ciência de Dados Aplicada"
 
 # about page sub title
 about:
-  sub_title: "Apresentando algumas das ferramentas e conhecimentos necessários para explorar o poder dos dados através de Estatística e Aprendizado de Máquina."
+  sub_title: "Machine Learning e Data Science."
 
 # if you don't want to add copyright year, comment or leave it blank.
 # the year during which the claimed copyright for the work was first asserted.
@@ -42,7 +42,7 @@ creative_commons:
 # seo meta this is needed for each language
 # If meta_description is not defined in front matter, it's created from (post / page) content,
 # if it has no content, this will be used for page description. It is also used in manifest.json
-meta_common_description: "Desperte Insights Poderosos. Apresentando algumas das ferramentas e conhecimentos necessários para explorar o poder dos dados através de Estatística , Ciência de Dados , IA e Aprendizado de Máquina."
+meta_common_description: "Conteúdo técnico sobre Ciência de Dados Aplicada, Forecasting, Deep Learning e Pesquisa Operacional voltados à modelagem preditiva, otimização e tomada de decisão."
 
 # contact options (side nav bottom and about page)
 # the order of the items will be shown as here.

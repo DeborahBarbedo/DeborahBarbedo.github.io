@@ -2,10 +2,10 @@
 # Owner's Personal Information
 ###########################################################
 # This is your brand name
-brand: "Deborah"
+brand: "Deborah Barbedo"
 
 # text below the brand name
-brand_sub_text: "Unlock Powerful Insights"
+brand_sub_text: "Applied Data Science"
 
 # used for seo meta post author (if it's not defined in post)
 name: "Deborah Cholodoysky Barbedo Pereira"
@@ -15,11 +15,11 @@ home:
   # you can also use $site_brand, $site_greetings, $site_welcome in line1 and line2 for replacing texts.
   #top_header_line1: "top_header_line1 "
   # if commented, top header will be a single line
-  top_header_line2: "Unlock Powerful Insights"
+  top_header_line2: "Applied Data Science"
 
 # about page sub title
 about:
-  sub_title: "Introducing some of the tools and knowledge necessary to harness the power of data through Statistics and Machine Learning."
+  sub_title: "Machine Learning e Data Science."
 
 # if you don't want to add copyright year, comment or leave it blank.
 # the year during which the claimed copyright for the work was first asserted.
@@ -42,7 +42,7 @@ creative_commons:
 # seo meta this is needed for each language
 # If meta_description is not defined in front matter, it's created from (post / page) content,
 # if it has no content, this will be used for page description. It is also used in manifest.json
-meta_common_description: "Unlock Powerful Insights. Introducing some of the tools and knowledge necessary to harness the power of data through Statistics , Data Science, AI and Machine Learning."
+meta_common_description: "Technical content on Applied Data Science, Forecasting, Deep Learning, and Operations Research focused on predictive modeling, optimization, and decision making."
 
 # contact options (side nav bottom and about page)
 # the order of the items will be shown as here.
