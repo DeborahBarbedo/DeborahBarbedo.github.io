@@ -85,7 +85,14 @@ Entre os itens disponíveis podem ser considerados produtos como frango congelad
 | I7 | Panetone | 3.0 | 20.00 | Seco | Ambiente | Seco |
 | I8 | Shampoo | 1.2 | 15.00 | Líquido | Ambiente | Úmido |
 
+# Matriz de Afinidade 
 
+
+Para cada par item–mochila, é calculado um valor $v_{ij}$ com base na compatibilidade de temperatura, na compatibilidade de umidade e no valor monetário do item. Na implementação em Python, esse valor é armazenado na matriz 'values[bag][item]'.
+
+O código realiza esse cálculo de compatibilidade antes da otimização. Esse é o pulo do gato da afinidade de alocação, pois permite transformar regras qualitativas em coeficientes numéricos que serão usados pela função objetivo do modelo.
+
+<script src="https://gist.github.com/DeborahBarbedo/8f82aefd1396f569dff2095e5cd68586.js"></script>
 
 
 # Referências:
