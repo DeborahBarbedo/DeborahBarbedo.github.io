@@ -1,0 +1,67 @@
+---
+# multilingual page pair id, this must pair with translations of this page. (This name must be unique)
+lng_pair: 5_SMKP
+title: "Otimização de Mochilas Múltiplas com Afinidades de Alocação."
+
+# post specific
+# if not specified, .name will be used from _data/owner/[language].yml
+#author: "Deborah Cholodoysky Barbedo Pereira"
+# multiple category is not supported
+category: Otimização
+# multiple tag entries are possible
+tags: [Otimização Combinatória, Google OR-Tools, Python ]
+# thumbnail image for post
+img: ":SVM.jpg"
+# disable comments on this page
+#comments_disable: true
+
+# publish date
+date: 2026-05-18 10:46:53 +0900
+
+# seo
+# if not specified, date will be used.
+#meta_modify_date: 2021-08-10 11:32:53 +0900
+# check the meta_common_description in _data/owner/[language].yml
+meta_description: "Otimização de Mochilas Múltiplas com Afinidade: modelagem matemática e implementação em Python com OR-Tools e backend SCIP para alocação de recursos."
+# optional
+# please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
+# image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
+image_viewer_on: true
+# please use the "image_lazy_loader_on" below to enable image lazy loader for individual pages or posts (_posts/ or [language]/_posts folders).
+# image lazy loader can be enabled or disabled for all posts using the "image_lazy_loader_posts: true" setting in _data/conf/main.yml.
+image_lazy_loader_on: true
+# exclude from on site search
+#on_site_search_exclude: true
+# exclude from search engines
+#search_engine_exclude: true
+# to disable this page, simply set published: false or delete this file
+#published: false
+---
+
+<!-- outline-start -->
+
+Um Modelo de Programação Linear Inteira Binária para o Problema de Mochilas Múltiplas com Coeficientes de Afinidade Baseados em Variáveis Ambientais.
+
+<!-- outline-end -->
+
+O Multiple Knapsack Problem (MKP) é um dos modelos clássicos de otimização combinatória utilizados para representar situações em que múltiplos recipientes, cada um com capacidade limitada, devem receber itens de diferentes pesos e valores. Em sua formulação tradicional, o problema considera apenas o lucro associado a cada item e as restrições de capacidade de cada recipiente.
+
+No entanto, o que acontece quando os itens não podem ser alocados em qualquer recipiente devido a restrições climáticas ou operacionais?  Os problemas de alocação do mundo real frequentemente exigem mecanismos de atribuição que levem em conta a compatibilidade entre o item e o local em que ele será armazenado.
+
+Neste trabalho, apresenta-se uma extensão prática do MKP que incorpora afinidades item–mochila. Nessa abordagem, restrições qualitativas associadas tanto ao produto quanto ao recipiente são convertidas em critérios quantitativos. A partir dessa transformação, constrói-se uma função de valor contextual capaz de refletir o grau de compatibilidade entre cada par por meio de um score híbrido.
+
+
+Para ilustrar a aplicação, utilizaremos o cenário de compras de supermercado, onde diferentes produtos devem ser distribuídos em sacolas de transporte. Nesse cenário, sacolas térmicas são mais adequadas para itens como frangos congelados e sorvetes, enquanto sacolas de papel são menos apropriadas para produtos pesados ou úmidos. Esse exemplo permite demonstrar como características ambientais e físicas podem influenciar diretamente a qualidade da alocação.
+
+O modelo é resolvido com o solver SCIP, por meio da biblioteca OR-Tools em Python. O objetivo é maximizar o valor total das alocações baseadas em afinidade , respeitando simultaneamente as restrições de capacidade física das sacolas e a unicidade de atribuição dos itens. O uso do backend SCIP permite modelar o problema como um programa linear inteiro binário, oferecendo uma abordagem eficiente e gratuita para resolver problemas de otimização de mochila múltipla com afinidade.
+
+
+
+
+# Referências:
+
+* Google OR-Tools — Documentation: Assignment with Task Sizes. [[link]](https://developers.google.com/optimization/assignment/assignment_cp)
+
+* Google OR-Tools — Documentation: Linear Optimization and Knapsack Examples. [[link]](https://developers.google.com/optimization/pack/knapsack)
+
+* Kellerer, H., Pferschy, U., and Pisinger, D. (2004). Knapsack Problems. Springer.
