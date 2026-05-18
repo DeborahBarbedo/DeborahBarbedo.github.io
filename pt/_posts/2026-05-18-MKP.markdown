@@ -94,6 +94,40 @@ O código realiza esse cálculo de compatibilidade antes da otimização. Esse �
 
 <script src="https://gist.github.com/DeborahBarbedo/8f82aefd1396f569dff2095e5cd68586.js"></script>
 
+# Otimização
+## Índices
+
+- $i = 1, \dots, m$: itens
+
+- $b = 1, \dots, n$: sacola
+
+## Parâmetros
+
+- $w_i$: peso do item $i$
+
+- $v_{ib}$: afinidade do item $i$ em relação a sacola $b$
+
+- $c_b$: capacidade da sacola $b$
+
+## Variáveis de decisões
+
+Variável binária:
+
+$$
+x_{i,b} =
+\begin{cases}
+1, & \text{se o item } i \text{ será designado a sacola } b \\
+0, & \text{cc}
+\end{cases}
+$$
+
+$$
+x_{i,b} \in \{0,1\},
+\quad
+\forall i = 1, \dots, m,
+\quad
+\forall b = 1, \dots, n
+$$
 
 # Referências:
 
