@@ -54,7 +54,6 @@ defaults:
 highlighter: rouge
 markdown: kramdown
 kramdown:
-  math_engine: mathjax
   # This is default for GitHub Pages sites and cannot be changed.
   syntax_highlighter: rouge
 
