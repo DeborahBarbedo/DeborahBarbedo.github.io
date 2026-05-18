@@ -3,11 +3,19 @@
  * Licensed under MIT
 */
 
+.home-heading-container {
+  @include get_scheme(home-heading-colors-);
+}
+
 .home-heading {
   position: relative;
   overflow: hidden;
 
-  width: 100%;
+  width: calc(100% + (var(--text-spacing) * 2));
+
+  margin-top: calc(-1 * var(--text-spacing));
+  margin-left: calc(-1 * var(--text-spacing));
+
   min-height: 420px;
 
   border-radius: 32px;
@@ -47,6 +55,13 @@
   filter: blur(40px);
 }
 
+.home-heading > img {
+  border-radius: 32px;
+  max-width: var(--main-container-width-limit);
+  width: 100%;
+  height: auto;
+}
+
 .home-heading-message {
   position: relative;
   z-index: 2;
@@ -64,4 +79,25 @@
   letter-spacing: -2px;
 
   color: white;
+
+  padding: 0 20px;
+}
+
+.home-intro-text {
+  text-align: justify;
+  margin-top: 32px;
+}
+
+.home-intro-text > h1,
+.home-intro-text > h2,
+.home-intro-text > h3,
+.home-intro-text > h4,
+.home-intro-text > h5,
+.home-intro-text > h6 {
+  color: var(--home-intro-text-header-color);
+}
+
+/* remove last spacing */
+.home-intro-text > p:last-child {
+  margin-bottom: 0px;
 }
