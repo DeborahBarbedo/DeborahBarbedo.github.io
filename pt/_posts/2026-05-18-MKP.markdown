@@ -55,6 +55,36 @@ Para ilustrar a aplicação, utilizaremos o cenário de compras de supermercado,
 
 O modelo é resolvido com o solver SCIP, por meio da biblioteca OR-Tools em Python. O objetivo é maximizar o valor total das alocações baseadas em afinidade , respeitando simultaneamente as restrições de capacidade física das sacolas e a unicidade de atribuição dos itens. O uso do backend SCIP permite modelar o problema como um programa linear inteiro binário, oferecendo uma abordagem eficiente e gratuita para resolver problemas de otimização de mochila múltipla com afinidade.
 
+# Definição do problema
+
+No cenário hipotético considerado, utilizam-se quatro tipos de sacolas de supermercado: térmica, de papel, de plástico e de pano. Cada uma delas possui uma capacidade máxima de peso e apresenta diferentes níveis de afinidade em relação às condições de umidade e temperatura dos itens transportados.
+
+| ID | Tipo | Capacidade (kg) | Material | Notas | Temperatura | Umidade |
+| :--- | :--- | :---: | :--- | :--- | :--- | :--- |
+| B1 | Térmico | 10 | Isolante | Ideal para itens frios ou úmidos | Frio | Úmido |
+| B1 | Térmico | 10 | Isolante | Ideal para itens frios ou úmidos | Fresco | Úmido |
+| B1 | Térmico | 10 | Isolante | Ideal para itens frios ou úmidos | Muito Frio | Úmido |
+| B2 | Tecido | 8 | Pano leve | Respirável, mas não à prova de umidade | Fresco | Seco |
+| B2 | Tecido | 8 | Pano leve | Respirável, mas não à prova de umidade | Ambiente | Seco |
+| B3 | Plástico | 6 | Impermeável | Protege contra líquidos | Ambiente | Seco |
+| B3 | Plástico | 6 | Impermeável | Protege contra líquidos | Fresco | Seco |
+| B3 | Plástico | 6 | Impermeável | Protege contra líquidos | Ambiente | Úmido |
+| B3 | Plástico | 6 | Impermeável | Protege contra líquidos | Fresco | Úmido |
+| B4 | Papelão | 5 | Frágil | Inadequado para itens úmidos ou pesados | Ambiente | Seco |
+
+Entre os itens disponíveis podem ser considerados produtos como frango congelado, que exige conservação em baixa temperatura e apresenta umidade elevada, e arroz, que deve ser mantido em condições secas e adequadas de armazenamento. Além dessas características qualitativas, cada item também é associado a um peso e a um valor, que serão utilizados na formulação do problema de otimização.
+
+| ID | Nome | Peso (kg) | Valor (USD) | Tipo de Armazenamento | Temperatura | Umidade |
+| :--- | :--- | :---: | :---: | :--- | :--- | :--- |
+| I1 | Frango Congelado | 3.0 | 25.00 | Refrigerado | Frio | Úmido |
+| I2 | Arroz | 2.0 | 12.00 | Seco | Ambiente | Seco |
+| I3 | Sabonete Líquido | 1.5 | 9.50 | Líquido | Ambiente | Úmido |
+| I4 | Livro | 1.0 | 22.00 | Seco | Ambiente | Seco |
+| I5 | Sorvete | 2.5 | 18.00 | Congelado | Muito Frio | Úmido |
+| I6 | Tomate | 2.0 | 7.00 | Fresco | Fresco | Úmido |
+| I7 | Panetone | 3.0 | 20.00 | Seco | Ambiente | Seco |
+| I8 | Shampoo | 1.2 | 15.00 | Líquido | Ambiente | Úmido |
+
 
 
 
