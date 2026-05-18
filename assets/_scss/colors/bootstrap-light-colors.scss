@@ -1,0 +1,82 @@
+// bootstrap colors for light scheme - Cyber-Minimalista Modo Claro
+
+%bootstrap-light-pagination-colors-light {
+  --pagination-button-text-color: #18181b;
+  --pagination-button-background-color: #ffffff;
+  --pagination-button-border-color: #e4e4e7;
+  --pagination-button-active-background-color: #18181b;
+  --pagination-button-hover-background-color: #f4f4f5;
+  .pagination > li:not(.disabled, .active) > a,
+  .pager > li:not(.disabled) > a {
+    color: var(--pagination-button-text-color);
+  }
+  .pagination > li.active > a {
+    border-color: var(--pagination-button-active-background-color);
+    background-color: var(--pagination-button-active-background-color);
+    color: #ffffff !important;
+  }
+  .pager > li > a,
+  .pagination > li > a {
+    background-color: var(--pagination-button-background-color);
+    border-color: var(--pagination-button-border-color);
+  }
+  .pager > li > a:hover,
+  .pagination > li:not(.active) > a:hover {
+    background-color: var(--pagination-button-hover-background-color);
+  }
+}
+
+%bootstrap-light-panel-colors-light {
+  .panel {
+    background-color: #ffffff;
+  }
+  .panel-default > .panel-heading {
+    color: #18181b;
+    background-color: #f4f4f5;
+    border-bottom-color: #e4e4e7;
+  }
+  .panel-default {
+    border-color: #e4e4e7;
+  }
+}
+
+%bootstrap-light-table-colors-light {
+  .table > thead > tr > th {
+    border-bottom-color: #a1a1aa;
+    color: #18181b;
+  }
+  .table > tbody > tr > td {
+    border-top-color: #e4e4e7;
+    color: #3f3f46;
+  }
+}
+
+%bootstrap-light-table-hover-colors-light {
+  .table-hover > tbody > tr:hover {
+    background-color: #f4f4f5;
+  }
+}
+
+%bootstrap-light-table-striped-colors-light {
+  .table-striped > tbody > tr:nth-child(odd) {
+    background-color: #fafafa;
+  }
+}
+
+%bootstrap-light-navbar-colors-light {
+  .navbar-toggle {
+    border-color: #a1a1aa;
+  }
+  .navbar-toggle:hover,
+  .navbar-toggle:active,
+  .navbar-toggle:focus {
+    background-color: #f4f4f5;
+  }
+  .navbar {
+    background-color: #{$menu-background-light};
+    border-color: #e4e4e7;
+  }
+  .navbar > .navbar-collapse {
+    border-color: transparent;
+  }
+}

@@ -6,7 +6,7 @@
 // don't add any class. only definitions and mixin
 // otherwise it will be added to all css file outputs
 
-// mixin
+// mixin - Controla a alternância inteligente de cores do blog
 @mixin get_scheme_opt($name, $dark_scheme_enabled: false) {
   $dark_attr: '[data-color-scheme="dark"]';
   $light: light;
@@ -33,6 +33,10 @@
   }
 }
 
+// Arquivos base de cores que nós customizamos para o estilo Cyber-Minimalista:
 @import "colors/light-colors";
 @import "colors/dark-colors";
+
+// Arquivos de compatibilidade de componentes (Tabelas, Paginação, etc):
+@import "colors/bootstrap-light-colors"; 
 @import "colors/bootstrap-dark-colors";

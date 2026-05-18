@@ -6,15 +6,15 @@
 // don't add any class. only definitions
 // otherwise it will be added to all output css files
 
-// bootstrap colors for dark scheme
+// bootstrap colors for dark scheme - Estilo Cyber-Minimalista
 
 // common/pager
 %bootstrap-dark-pagination-colors-dark {
   --pagination-button-text-color: #{$header-color-dark};
-  --pagination-button-background-color: #222;
-  --pagination-button-border-color: #333;
-  --pagination-button-active-background-color: #{$button-color-dark};
-  --pagination-button-hover-background-color: #333;
+  --pagination-button-background-color: #1a1a1e;       // Acompanha o fundo dos cards
+  --pagination-button-border-color: #2d3139;           // Linha sutil da nossa paleta
+  --pagination-button-active-background-color: #ffffff; // Botão da página atual vira branco puro
+  --pagination-button-hover-background-color: #2d3139;  // Hover elegante em cinza médio
   .pagination > li:not(.disabled, .active) > a,
   .pager > li:not(.disabled) > a {
     color: var(--pagination-button-text-color);
@@ -22,6 +22,7 @@
   .pagination > li.active > a {
     border-color: var(--pagination-button-active-background-color);
     background-color: var(--pagination-button-active-background-color);
+    color: #121214 !important; // Texto do botão ativo fica preto para contraste total
   }
   .pager > li > a,
   .pagination > li > a {
@@ -31,20 +32,21 @@
   .pager > li > a:hover,
   .pagination > li:not(.active) > a:hover {
     background-color: var(--pagination-button-hover-background-color);
+    color: #ffffff;
   }
 }
 // post/table-of-contents
 %bootstrap-dark-panel-colors-dark {
   .panel {
-    background-color: #212121;
+    background-color: #1a1a1e;
   }
   .panel-default > .panel-heading {
-    color: #ccc;
-    background-color: #303030;
-    border-bottom-color: #333;
+    color: #ffffff;
+    background-color: #2d3139;
+    border-bottom-color: #2d3139;
   }
   .panel-default {
-    border-color: #333;
+    border-color: #2d3139;
   }
 }
 // default
@@ -61,42 +63,44 @@
     opacity: 1;
   }
 }
-// links post project
+// links post project (Essencial para tabelas de dados em posts técnicos)
 %bootstrap-dark-table-colors-dark {
   .table > thead > tr > th {
-    border-bottom-color: #444;
+    border-bottom-color: #4b5563; // Bordas das tabelas mais nítidas e limpas
+    color: #ffffff;
   }
   .table > tbody > tr > td {
-    border-top-color: #444;
+    border-top-color: #2d3139;
+    color: #d1d5db;
   }
 }
 // links
 %bootstrap-dark-table-hover-colors-dark {
   .table-hover > tbody > tr:hover {
-    background-color: #333;
+    background-color: #2d3139; // Efeito de passar o mouse nas linhas da tabela
   }
 }
 // post projects
 %bootstrap-dark-table-striped-colors-dark {
   .table-striped > tbody > tr:nth-child(odd) {
-    background-color: #333;
+    background-color: #1a1a1e; // Linhas intercaladas sutilmente mapeadas
   }
 }
 // top-nav
 %bootstrap-dark-navbar-colors-dark {
-  // top nav menu button
+  // top nav menu button (Menu sanduíche no mobile)
   .navbar-toggle {
-    border-color: #808080;
+    border-color: #4b5563;
   }
   .navbar-toggle:hover,
   .navbar-toggle:active,
   .navbar-toggle:focus {
-    background-color: #222;
+    background-color: #1a1a1e;
   }
   // top nav colors
   .navbar {
     background-color: #{$menu-background-dark};
-    border-color: #222;
+    border-color: #2d3139;
   }
   //top nav open top border
   .navbar > .navbar-collapse {
