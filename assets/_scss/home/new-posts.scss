@@ -4,58 +4,104 @@
 */
 
 .new-posts-container {
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-top: 64px;
 }
 
 .new-posts-container h1 {
-  font-size: 2.2rem;
+  font-size: 3rem;
+  font-weight: 800;
+
+  color: #0F172A;
+
+  margin-bottom: 32px;
+
+  letter-spacing: -1px;
 }
 
 .new-posts {
-  display: block;
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 24px;
+
   list-style: none;
-  position: relative;
-  width: auto;
-  padding-left: 5px;
-  margin-bottom: 0px;
+
+  padding: 0;
+  margin: 0;
 }
 
 .new-posts > li {
-  font-size: 1.6rem;
-  font-weight: 300;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.new-posts > li:hover {
+  transform: translateY(-6px);
 }
 
 .new-posts > li > a {
-  display: block;
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  min-height: 180px;
+
+  padding: 28px;
+
+  border-radius: 28px;
+
+  background: white;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 10px 30px rgba(15,23,42,.06);
+
+  border:
+    1px solid rgba(226,232,240,.8);
 }
 
-/* post date */
+/* título */
+.new-posts > li > a:not(span) {
+  font-size: 1.8rem;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  color: #0F172A;
+
+  white-space: normal;
+
+  overflow: visible;
+
+  width: 100%;
+}
+
+/* data */
 .new-posts > li span {
-  position: absolute;
-  right: 0px;
+  position: relative;
+
+  margin-top: 24px;
+
+  font-size: 1.3rem;
+
+  font-weight: 500;
+
+  color: #64748B;
 }
 
-/* add an ellipsis if post title is too long */
-.new-posts > li :not(span) {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 65%;
-}
-/* space between links */
-.new-posts > li:not(li:last-child) {
-  margin-bottom: 5px;
-}
+@media screen and (max-width: 768px) {
+  .new-posts {
+    grid-template-columns: 1fr;
+  }
 
-/* remove last spacing */
-.new-posts > li:last-child {
-  margin-bottom: 0px;
-}
-
-@media screen and (max-width: 500px) {
-  .new-posts-container {
-    margin-left: unset;
-    margin-right: unset;
+  .new-posts-container h1 {
+    font-size: 2.4rem;
   }
 }
