@@ -40,41 +40,46 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-Um Modelo de Programação Linear Inteira Binária para o Problema de Mochilas Múltiplas com Coeficientes de Afinidade Baseados em Variáveis Ambientais.
+Neste artigo apresento uma extensão contextual do Problema de Mochilas Múltiplas (MKP), incorporando restrições ambientais de temperatura e umidade em um modelo MILP implementado com Google OR-Tools e SCIP.
 
 <!-- outline-end -->
 
-O Multiple Knapsack Problem (MKP) é um dos modelos clássicos de otimização combinatória utilizados para representar situações em que múltiplos recipientes, cada um com capacidade limitada, devem receber itens de diferentes pesos e valores. Em sua formulação tradicional, o problema considera apenas o lucro associado a cada item e as restrições de capacidade de cada recipiente.
+O Multiple Knapsack Problem (MKP) é um dos problemas clássicos da otimização combinatória, utilizado para modelar cenários em que múltiplos recipientes com capacidade limitada precisam acomodar itens com diferentes pesos e valores. Em sua formulação tradicional, o problema considera apenas o lucro associado a cada item e as restrições de capacidade de cada recipiente.
 
-No entanto, o que acontece quando os itens não podem ser alocados em qualquer recipiente devido a restrições climáticas ou operacionais?  Os problemas de alocação do mundo real frequentemente exigem mecanismos de atribuição que levem em conta a compatibilidade entre o item e o local em que ele será armazenado.
+No entanto, o que acontece quando os itens não podem ser alocados em qualquer recipiente devido a condições climáticas ou operacionais?  Os problemas de alocação do mundo real frequentemente exigem mecanismos de atribuição que levem em conta a compatibilidade entre o item e o local em que ele será armazenado.
 
-Neste trabalho, apresenta-se uma extensão prática do MKP que incorpora afinidades item–mochila. Nessa abordagem, restrições qualitativas associadas tanto ao produto quanto ao recipiente são convertidas em critérios quantitativos. A partir dessa transformação, constrói-se uma função de valor contextual capaz de refletir o grau de compatibilidade entre cada par por meio de um score híbrido.
+Neste trabalho, apresento uma extensão prática do MKP que incorpora afinidades item–mochila. Nessa abordagem, restrições qualitativas associadas tanto ao produto quanto ao recipiente são convertidas em critérios quantitativos. A partir dessa transformação, cconstrói-se uma função de afinidade contextual capaz de quantificar a compatibilidade entre item e recipiente.
+
+
+
+> Em vez de apenas maximizar valor, este modelo maximiza adequação contextual, aproximando a otimização matemática do comportamento humano real em tarefas de empacotamento.
+
 
 
 Para ilustrar a aplicação, utilizaremos o cenário de compras de supermercado, onde diferentes produtos devem ser distribuídos em sacolas de transporte. Nesse cenário, sacolas térmicas são mais adequadas para itens como frangos congelados e sorvetes, enquanto sacolas de papel são menos apropriadas para produtos pesados ou úmidos. Esse exemplo permite demonstrar como características ambientais e físicas podem influenciar diretamente a qualidade da alocação.
 
-O modelo é resolvido com o solver SCIP, por meio da biblioteca OR-Tools em Python. O objetivo é maximizar o valor total das alocações baseadas em afinidade , respeitando simultaneamente as restrições de capacidade física das sacolas e a unicidade de atribuição dos itens. O uso do backend SCIP permite modelar o problema como um programa linear inteiro binário, oferecendo uma abordagem eficiente e gratuita para resolver problemas de otimização de mochila múltipla com afinidade.
+O problema é formulado como um Mixed-Integer Linear Program (MILP) utilizando Google OR-Tools em Python, com resolução via solver SCIP. O objetivo consiste em maximizar o valor contextual das alocações, respeitando restrições de capacidade física e compatibilidade ambiental.
+
 
 # Definição do problema
 
-No cenário hipotético considerado, utilizam-se quatro tipos de sacolas de supermercado: térmica, de papel, de plástico e de pano. Cada uma delas possui uma capacidade máxima de peso e apresenta diferentes níveis de afinidade em relação às condições de umidade e temperatura dos itens transportados.
+No cenário hipotético considerado, utilizam-se quatro tipos de sacolas de supermercado: térmica, de papel, de plástico e de tecido. Cada uma delas possui uma capacidade máxima de peso e apresenta diferentes níveis de afinidade em relação às condições de umidade e temperatura dos itens transportados.
 
-| ID | Tipo | Capacidade (kg) | Material | Notas | Temperatura | Umidade |
-| :--- | :--- | :---: | :--- | :--- | :--- | :--- |
-| B1 | Térmico | 10 | Isolante | Ideal para itens frios ou úmidos | Frio | Úmido |
-| B1 | Térmico | 10 | Isolante | Ideal para itens frios ou úmidos | Fresco | Úmido |
-| B1 | Térmico | 10 | Isolante | Ideal para itens frios ou úmidos | Muito Frio | Úmido |
-| B2 | Tecido | 8 | Pano leve | Respirável, mas não à prova de umidade | Fresco | Seco |
-| B2 | Tecido | 8 | Pano leve | Respirável, mas não à prova de umidade | Ambiente | Seco |
-| B3 | Plástico | 6 | Impermeável | Protege contra líquidos | Ambiente | Seco |
-| B3 | Plástico | 6 | Impermeável | Protege contra líquidos | Fresco | Seco |
-| B3 | Plástico | 6 | Impermeável | Protege contra líquidos | Ambiente | Úmido |
-| B3 | Plástico | 6 | Impermeável | Protege contra líquidos | Fresco | Úmido |
-| B4 | Papelão | 5 | Frágil | Inadequado para itens úmidos ou pesados | Ambiente | Seco |
+A tabela a seguir descreve os recipientes disponíveis:
 
-Entre os itens disponíveis podem ser considerados produtos como frango congelado, que exige conservação em baixa temperatura e apresenta umidade elevada, e arroz, que deve ser mantido em condições secas e adequadas de armazenamento. Além dessas características qualitativas, cada item também é associado a um peso e a um valor, que serão utilizados na formulação do problema de otimização.
+| ID | Tipo | Capacidade (kg) | Temperaturas Compatíveis | Umidade Compatível | Observações |
+| :--- | :--- | :---: | :--- | :--- | :--- |
+| B1 | Térmica | 10 | Frio, Fresco, Muito Frio | Úmido | Ideal para itens refrigerados |
+| B2 | Tecido | 8 | Fresco, Ambiente | Seco | Respirável, não impermeável |
+| B3 | Plástico | 6 | Ambiente, Fresco | Seco, Úmido | Proteção contra líquidos |
+| B4 | Papel | 5 | Ambiente | Seco | Inadequado para umidade |
 
-| ID | Nome | Peso (kg) | Valor (USD) | Tipo de Armazenamento | Temperatura | Umidade |
+Os itens considerados no exemplo representam produtos com diferentes requisitos ambientais, pesos e valores econômicos.
+Produtos refrigerados, como frango congelado e sorvete, exigem compatibilidade térmica, enquanto itens secos demandam ambientes com baixa umidade.
+
+A tabela a seguir descrevem os itens utilizados no experimento computacional:
+
+| ID | Nome | Peso (kg) | Valor | Tipo de Armazenamento | Temperatura | Umidade |
 | :--- | :--- | :---: | :---: | :--- | :--- | :--- |
 | I1 | Frango Congelado | 3.0 | 25.00 | Refrigerado | Frio | Úmido |
 | I2 | Arroz | 2.0 | 12.00 | Seco | Ambiente | Seco |
@@ -85,12 +90,56 @@ Entre os itens disponíveis podem ser considerados produtos como frango congelad
 | I7 | Panetone | 3.0 | 20.00 | Seco | Ambiente | Seco |
 | I8 | Shampoo | 1.2 | 15.00 | Líquido | Ambiente | Úmido |
 
-# Matriz de Afinidade 
+# Matriz de Afinidade
 
+Para cada par item–sacola, calcula-se um valor contextual $v_{ib}$ com base na afinidade de temperatura, afinidade de umidade e valor econômico do item.
 
-Para cada par item–mochila, é calculado um valor $v_{ij}$ com base na compatibilidade de temperatura, na compatibilidade de umidade e no valor monetário do item. Na implementação em Python, esse valor é armazenado na matriz 'values[bag][item]'.
+Diferentemente do Multiple Knapsack Problem tradicional, em que o valor depende apenas do item:
 
-O código realiza esse cálculo de compatibilidade antes da otimização. Esse é o pulo do gato da afinidade de alocação, pois permite transformar regras qualitativas em coeficientes numéricos que serão usados pela função objetivo do modelo.
+- MKP Tradicional
+
+$$
+v_i
+$$
+
+- Modelo Proposto
+
+$$
+v_{ib}
+$$
+
+No modelo proposto, o valor passa a depender simultaneamente do item $i$ e da sacola $b$, introduzindo dependência contextual na função objetivo.
+
+---
+
+## Exemplo de cálculo
+
+Para o item **I1 (Frango Congelado)** e a sacola **B1 (Térmica)**:
+
+| Critério | Score |
+| :--- | :---: |
+| Temperatura compatível | 1 |
+| Umidade compatível | 1 |
+| Valor normalizado | $25/25 = 1$ |
+
+Score final:
+
+$$
+\frac{1 + 1 + 1}{3} = 1.0
+$$
+
+---
+
+A matriz de compatibilidade foi construída utilizando restrições ambientais de umidade, evitando, por exemplo, a alocação de produtos úmidos em recipientes de papel.
+
+> O principal diferencial do modelo está na transformação de regras qualitativas em coeficientes quantitativos utilizados diretamente pela função objetivo do problema de otimização.
+
+Na implementação em Python, os scores são armazenados na estrutura:
+
+```python
+values[(item, bag)]
+
+e utilizados posteriormente na formulação matemática do MILP.
 
 <script src="https://gist.github.com/DeborahBarbedo/8f82aefd1396f569dff2095e5cd68586.js"></script>
 
@@ -117,7 +166,7 @@ $$
 x_{i,b} =
 \begin{cases}
 1, & \text{se o item } i \text{ será designado a sacola } b \\
-0, & \text{cc}
+0, & \text{caso contrário}
 \end{cases}
 $$
 
@@ -128,6 +177,82 @@ x_{i,b} \in \{0,1\},
 \quad
 \forall b = 1, \dots, n
 $$
+
+## Restrição de capacidade
+$$
+\sum_{i=1}^{m} w_i x_{ib} \leq c_b \quad \forall b=1, \dots,n
+$$
+
+## Restrição de item
+
+Cada item pode ser atribuído a, no máximo, uma sacola:
+
+$$
+\sum_{b=1}^{n} x_{ib} \leq 1
+\quad
+\forall i = 1, \dots, m
+$$
+
+## Restrição de compatibilidade
+
+Variável binária:
+
+$$
+Compatibility_{i,b} =
+\begin{cases}
+1, & \text{se item } i \text{ pode ir na sacola } b \\
+0, & \text{se item } i \text{ não pode ir na sacola} b
+\end{cases}
+$$
+
+$$
+Compatibility_{i,b} \in \{0,1\},
+\quad
+\forall i = 1, \dots, m,
+\quad
+\forall b = 1, \dots, n
+$$
+
+$$x_{ib} \leq Compatibility_{ib}$$
+
+## Função Objetivo
+
+Maximizar o valor total dos itens atribuídos às sacolas:
+
+$$
+\max
+\sum_{i=1}^{m}
+\sum_{b=1}^{n}
+v_{ib} x_{ib}
+$$
+
+# Implementação no Python
+
+<script src="https://gist.github.com/DeborahBarbedo/ec439df69af1825966acfab19ac4403f.js"></script>
+
+# Resultado final
+
+Observa-se que o modelo prioriza a maximização da afinidade local entre item e sacola, não necessariamente a ocupação ótima de capacidade física, o que evidencia a natureza da função objetivo baseada em score contextual. Lembrando que o valor total representa a soma dos scores de compatibilidade ajustados por item, não devendo ser interpretado como valor monetário absoluto.
+
+* **Sacola Térmica (B1)** — *Capacidade: 10 kg | Ocupado: 7.5 kg (75%)*
+    * Frango congelado (3.0 kg) — Score: 1.0
+    * Sorvete (2.5 kg) — Score: 0.907
+    * Tomate (2.0 kg) — Score: 0.760
+
+* **Sacola de Plástico (B3)** — *Capacidade: 6 kg | Ocupado: 2.7 kg (45%)*
+    * Sabonete Líquido (1.5 kg) — Score: 0.793
+    * Shampoo (1.2 kg) — Score: 0.867
+
+* **Sacola de Tecido (B2)** — *Capacidade: 8 kg | Ocupado: 6.0 kg (75%)*
+    * Arroz (2.0 kg) — Score: 0.827
+    * Livro (1.0 kg) — Score: 0.960
+    * Panetone (3.0 kg) — Score: 0.933
+
+**Score total: 7.047**
+
+Diferentemente do MKP tradicional, onde o valor do item é fixo, neste modelo o valor é dependente do contexto da alocação, introduzindo uma dimensão de compatibilidade ambiental. Observa-se que o modelo não necessariamente utiliza todos os recipientes disponíveis, uma vez que a formulação atual não impõe restrições ou incentivos de utilização mínima, refletindo a natureza de otimização puramente baseada em valor marginal.
+O código completo em Python, incluindo construção da matriz de afinidade e modelagem no OR-Tools, está disponível no repositório: [Multi-Knapsack Optimization with Preference-Based Item Assignment](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/Multi-Knapsack%20Optimization%20with%20Preference-Based%20Item%20Assignment)
+
 
 # Referências:
 
