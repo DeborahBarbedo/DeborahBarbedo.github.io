@@ -281,26 +281,26 @@ Além disso, o valor total obtido não deve ser interpretado como valor monetár
 ### **Sacola Térmica (B1)**
 *Capacidade: 10 kg | Ocupado: 7.5 kg (75%)*
 
-- Frango congelado (3.0 kg) — Score: 1.000
-- Sorvete (2.5 kg) — Score: 0.907
-- Tomate (2.0 kg) — Score: 0.760
+- Frango congelado (3.0 kg) - Score: 1.000
+- Sorvete (2.5 kg) - Score: 0.907
+- Tomate (2.0 kg) - Score: 0.760
 
 ---
 
 ### **Sacola de Plástico (B3)**
 *Capacidade: 6 kg | Ocupado: 2.7 kg (45%)*
 
-- Sabonete Líquido (1.5 kg) — Score: 0.793
-- Shampoo (1.2 kg) — Score: 0.867
+- Sabonete Líquido (1.5 kg) - Score: 0.793
+- Shampoo (1.2 kg) - Score: 0.867
 
 ---
 
 ### **Sacola de Tecido (B2)**
 *Capacidade: 8 kg | Ocupado: 6.0 kg (75%)*
 
-- Arroz (2.0 kg) — Score: 0.827
-- Livro (1.0 kg) — Score: 0.960
-- Panetone (3.0 kg) — Score: 0.933
+- Arroz (2.0 kg) - Score: 0.827
+- Livro (1.0 kg) - Score: 0.960
+- Panetone (3.0 kg) - Score: 0.933
 
 ---
 
@@ -327,10 +327,10 @@ O código completo em Python, incluindo a construção da matriz de afinidade e 
 
 # Referências
 
-- Google OR-Tools — *Assignment with Task Sizes*  
+- Google OR-Tools - *Assignment with Task Sizes*  
 [[link]](https://developers.google.com/optimization/assignment/assignment_cp)
 
-- Google OR-Tools — *Linear Optimization and Knapsack Examples*  
+- Google OR-Tools - *Linear Optimization and Knapsack Examples*  
 [[link]](https://developers.google.com/optimization/pack/knapsack)
 
 - Kellerer, H.; Pferschy, U.; Pisinger, D.  
