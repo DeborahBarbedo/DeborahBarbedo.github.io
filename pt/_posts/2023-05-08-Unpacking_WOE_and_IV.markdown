@@ -1,15 +1,15 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 2_WoE_IV_Python_Unpacking
-title: "Dominando a Regressão Logística: Desvendando as Métricas WoE e IV para Seleção e Interpretação de Variáveis."
+title: "WoE e IV em Regressão Logística: Interpretação e Seleção de Variáveis"
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
 #author: "Deborah Cholodoysky Barbedo Pereira"
 # multiple category is not supported
-category: Análise de dados
+category: Ciência de Dados
 # multiple tag entries are possible
-tags: [Análise de dados, Regressão logística, Seleção de variáveis, Valor de Informação (IV), Peso de Evidência (WoE), Conjunto de Dados Titanic]
+tags: [Python, Regressão Logística, Feature Engineering, Seleção de Variáveis, Weight of Evidence, Information Value, WoE, IV, Credit Scoring, Titanic Dataset]
 # thumbnail image for post
 img: ":IV_and_WoE_desvenda.jpg"
 # disable comments on this page
@@ -22,7 +22,7 @@ date: 2023-05-08 19:57:53 +0900
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Aprenda a selecionar e interpretar variáveis para modelos de regressão logística com as métricas WoE e IV. Descubra como criar variáveis por agrupamento para melhorar a eficácia da análise e tomar decisões mais embasadas. Domine essas métricas com a ajuda de exemplos práticos baseados nos dados da competição Titanic do Kaggle. Leia agora!"
+meta_description: "Aprenda a interpretar Weight of Evidence (WoE) e Information Value (IV) em modelos de regressão logística. Descubra como utilizar essas métricas para seleção de variáveis, análise preditiva e agrupamento de categorias com exemplos práticos utilizando o dataset Titanic."
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
 # image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
@@ -37,96 +37,218 @@ image_lazy_loader_on: true
 # to disable this page, simply set published: false or delete this file
 #published: false
 ---
-
 <!-- outline-start -->
 
-WoE e IV para Seleção e Interpretação de Variáveis.
+Aprenda a interpretar **Weight of Evidence (WoE)** e **Information Value (IV)** para seleção de variáveis, análise preditiva e construção de modelos de regressão logística.
 
 <!-- outline-end -->
 
-Você já ouviu falar em WoE e IV? Essas siglas significam Valor de Informação e Peso de Evidência, respectivamente, e são muito importantes na hora de construir, selecionar e interpretar variáveis para modelos de regressão logística.
+Construir um bom modelo de classificação não significa apenas escolher algoritmos: é fundamental compreender o comportamento das variáveis e sua relação com o evento de interesse.
 
-Essas métricas ajudam a ter insights sobre a eficácia de uma variável em prever a resposta desejada, além de descobrir a direção em que essa variável está inclinando a resposta.
+É nesse contexto que surgem o **Weight of Evidence (WoE)** e o **Information Value (IV)**, duas métricas amplamente utilizadas em *credit scoring*, seleção de variáveis e modelagem preditiva.
 
-Ao final deste post, você será capaz de interpretar essas métricas e criar variáveis por agrupamento, tudo com a ajuda de exemplos práticos baseados nos dados da [competição Titanic do Kaggle](https://www.kaggle.com/competitions/titanic/data). Vamos juntos nessa jornada?
+Essas técnicas ajudam a medir o poder discriminatório de uma variável, além de fornecer insights sobre a direção e a intensidade da relação entre os atributos e a variável alvo.
 
-# Apresentação das métricas
+Neste artigo, você aprenderá:
 
-Lembra do post anterior sobre [como criar as funções WoE e IV em Python]( https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function)? Agora eu vou te mostrar como interpretar a tabela e extrair ainda mais insights!
+- como interpretar WoE e IV na prática;
+- como essas métricas auxiliam na construção de modelos de regressão logística;
+- como utilizar WoE e IV no agrupamento de categorias (*binning*);
+- como transformar variáveis em atributos mais interpretáveis e preditivos.
 
-Abaixo são explicadas as diversas métricas apresentadas na tabela que são úteis para avaliar a relação entre a variável estudada e a ocorrência de resultados negativos ou positivos.
-
--	**Proporção 0 ou 1 na variável resposta** para cada setor da variável estudada, o que ajuda a entender a distribuição da variável em relação aos resultados.
--	**WoE**, uma métrica útil para avaliar a discriminação da variável. Quanto mais longe de 0 o WoE estiver, mais discriminatória será a variável. Um WoE negativo indica que a variável favorece a ocorrência da variável resposta, enquanto um WoE positivo indica que a variável não favorece a ocorrência.
--	**IV**, o Valor de Informação que ajuda a avaliar a capacidade preditiva das variáveis. É importante destacar que se um setor da variável indicar uma forte associação com a variável resposta, mas aparecer com pouca frequência na população, seu IV não será alto. O Valor de Informação Total de uma variável é a soma dos IVs para cada setor estudado.
-
-Além disso, temos uma tabela que indica a classificação dos valores de IV:
-
-| IV        | Classificação            |
-|-----------|---------------------------|
-| ≤ 0.02   | Não é útil para prever |
-| 0.02 -0.1 | Poder de previsão fraco     |
-| 0.1 - 0.3 | Poder de previsão moderado |
-| 0.3 - 0.5 | Poder de previsão forte   |
-| \> 0.5     | Poder de previsão suspeito  |
+Para tornar os conceitos mais intuitivos, utilizaremos exemplos práticos com o conjunto de dados da [competição Titanic do Kaggle](https://www.kaggle.com/competitions/titanic/data).
 
 
-Essa tabela é importante para avaliar a qualidade da capacidade preditiva da variável, de acordo com o valor do IV. É interessante ficar atento à classificação de cada valor e utilizá-la como referência para a interpretação dos resultados.
+# Apresentação das Métricas
 
-Essas métricas permitem que você tenha uma visão ainda mais clara dos seus dados! Com elas, você pode compreender melhor a relação entre as variáveis estudadas e o resultado que você está buscando prever. Não deixe de utilizá-las para melhorar a qualidade da sua análise e tomar decisões mais embasadas!
+No post anterior sobre [como calcular WoE e IV em Python](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function), vimos como construir as funções responsáveis pelo cálculo dessas métricas. Agora, vamos entender como interpretar os resultados e extrair insights para modelos de regressão logística.
 
-# Criação de variáveis por agrupamento
-Agrupar categorias é uma alternativa na criação de variáveis para modelos preditivos. Isso envolve analisar a similaridade na discriminação das variáveis resposta e avaliar casos representativos em cada atributo, resultando em categorias agrupadas de uma forma que faça sentido. O agrupamento de categorias com base na análise de IV e WoE apresenta várias vantagens, como simplificar a equação, reduzir o risco de overfitting e tornar as variáveis mais adequadas para o modelo. No entanto, é importante lembrar que o valor de informação sempre diminui quando as categorias são agrupadas, e apenas categorias com WoE semelhantes devem ser combinadas para evitar a perda de informações importantes. Portanto, ao realizar essa etapa, é fundamental buscar um equilíbrio entre a simplificação e a manutenção da coerência das informações.
+Essas métricas ajudam a avaliar como cada variável explicativa se relaciona com a variável resposta.
+
+As principais métricas são:
+
+- **Proporção das classes (`0` e `1`)**  
+  Representa a distribuição da variável resposta dentro de cada segmento da variável analisada. Essa métrica ajuda a entender como os eventos estão distribuídos entre as categorias.
+
+- **Weight of Evidence (WoE)**  
+  Mede o poder discriminatório de cada categoria. Quanto mais distante de zero for o valor de WoE, maior tende a ser a capacidade discriminatória do segmento.
+
+  Em geral:
+
+  - `WoE > 0` - maior concentração relativa de não eventos (`target₀`);
+  - `WoE < 0` - maior concentração relativa de eventos (`target₁`);
+  - `WoE ≈ 0` - distribuição semelhante entre as classes.
+
+- **Information Value (IV)**  
+  Mede a capacidade preditiva da variável como um todo. O IV total é obtido pela soma das contribuições de cada segmento.
+
+  É importante observar que categorias raras podem apresentar WoE extremos, mas ainda assim contribuírem pouco para o IV total devido à baixa representatividade populacional.
+
+---
+
+## Interpretação dos Valores de IV
+
+A tabela abaixo apresenta uma classificação frequentemente utilizada para interpretação do poder preditivo de uma variável:
+
+| IV | Interpretação |
+|:---|:---|
+| `IV ≤ 0.02` | Variável sem poder preditivo |
+| `0.02 < IV ≤ 0.10` | Poder preditivo fraco |
+| `0.10 < IV ≤ 0.30` | Poder preditivo médio |
+| `0.30 < IV ≤ 0.50` | Poder preditivo forte |
+| `IV > 0.50` | Poder preditivo muito forte (*possível data leakage*) |
+
+Valores excessivamente altos de IV podem indicar vazamento de informação (*data leakage*), especialmente quando a variável possui relação direta com o evento alvo.
+
+---
+
+Essas métricas são extremamente úteis em etapas de:
+
+- seleção de variáveis;
+- análise exploratória;
+- *feature engineering*;
+- agrupamento de categorias (*binning*);
+- interpretação de modelos de regressão logística.
+
+Ao interpretar corretamente WoE e IV, torna-se possível construir modelos mais robustos, interpretáveis e alinhados ao comportamento dos dados.
+
+# Criação de Variáveis por Agrupamento (*Binning*)
+
+O agrupamento de categorias (*binning*) é uma estratégia amplamente utilizada na criação de variáveis para modelos preditivos, especialmente em problemas de regressão logística e *credit scoring*.
+
+A ideia consiste em combinar categorias ou intervalos que apresentem comportamento semelhante em relação à variável resposta, utilizando métricas como **Weight of Evidence (WoE)** e **Information Value (IV)** como apoio na análise.
+
+Esse processo oferece diversas vantagens:
+
+- simplificação das variáveis;
+- redução da dimensionalidade;
+- diminuição do risco de *overfitting*;
+- maior estabilidade estatística;
+- melhoria na interpretabilidade do modelo;
+- relações mais lineares entre as variáveis e o logit da regressão logística.
+
+Entretanto, alguns cuidados são importantes durante o agrupamento:
+
+- categorias agrupadas devem possuir comportamentos semelhantes;
+- segmentos com WoE muito diferentes não devem ser combinados;
+- agrupamentos excessivos podem reduzir significativamente o poder preditivo da variável;
+- categorias muito raras podem gerar WoE instáveis.
+
+Em geral, ao agrupar categorias, ocorre uma redução natural do **Information Value (IV)**, já que parte da capacidade discriminatória da variável é suavizada. Por isso, o objetivo do *binning* deve ser encontrar um equilíbrio entre:
+
+- simplificação do modelo;
+- estabilidade estatística;
+- manutenção da informação relevante.
+
+Quando realizado corretamente, o agrupamento de categorias pode melhorar significativamente a robustez e a capacidade de generalização do modelo preditivo.
 
 
 
-# Mão na massa
-Vamos colocar em prática tudo o que aprendemos e ir além na análise dos dados.
+# Aplicação Prática
 
-Ao aplicarmos a função [Woe_IV_Discrete](https://gist.github.com/DeborahBarbedo/08ed242316fe3b9ed3350460e2a140f3) na variável "Sex" dos dados da competição [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) do [Kaggle]( https://www.kaggle.com/), encontramos alguns insights interessantes.
+Agora vamos aplicar, na prática, os conceitos de **Weight of Evidence (WoE)** e **Information Value (IV)** utilizando o dataset da competição [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data).
 
-| Survived |        0 |        1 |    Distr |       WoE |       IV | IV_total |
-|---------:|---------:|---------:|---------:|----------:|---------:|---------:|
-|      Sex |          |          |          |           |          |          |
-|   female | 0.147541 | 0.681287 | 0.216562 | -1.529877 | 0.816565 | 1.341681 |
-|     male | 0.852459 | 0.318713 | 2.674688 |  0.983833 | 0.525116 | 1.341681 |
+Nosso objetivo será interpretar as métricas, identificar variáveis preditivas e entender como utilizar WoE e IV na criação de novas variáveis para modelos de regressão logística.
+
+---
+
+## Exemplo com Variável Discreta
+
+Ao aplicarmos a função [Woe_IV_Discrete](https://gist.github.com/DeborahBarbedo/08ed242316fe3b9ed3350460e2a140f3) na variável `Sex`, obtemos a seguinte tabela:
+
+| Sex | `target₀` | `target₁` | `Distr` | `WoE` | `IV` | `IV_total` |
+|:------|-----------:|-----------:|---------:|-------:|------:|------------:|
+| female | 0.147541 | 0.681287 | 0.216562 | -1.529877 | 0.816565 | 1.341681 |
+| male   | 0.852459 | 0.318713 | 2.674688 | 0.983833  | 0.525116 | 1.341681 |
+
+A interpretação dos resultados é bastante intuitiva:
+
+- o valor negativo de `WoE` para `female` indica maior associação com sobrevivência (`target₁`);
+- o valor positivo de `WoE` para `male` indica maior associação com não sobrevivência (`target₀`);
+- o `IV_total = 1.34` indica altíssimo poder discriminatório da variável `Sex`.
+
+Em problemas de credit scoring, variáveis com IV muito elevado costumam exigir atenção adicional, pois podem indicar separação excessiva entre as classes ou possível vazamento de informação.
+---
+
+## Exemplo com Variável Contínua
+
+Além de variáveis categóricas, WoE e IV também podem ser aplicados em variáveis contínuas após o processo de discretização (*binning*).
 
 
- A métrica WoE confirma que ser do sexo feminino favorece a sobrevivência. A métrica IV indica que a variável sexo está fortemente relacionada à variável resposta, o que sugere um alto poder preditivo.
+| Variável | Intervalo | `target₀` | `target₁` | `Distr` | `WoE` | `IV` |
+|:---|:---|---:|---:|---:|---:|---:|
+| Fare | `<= 7.55` | 0.143898 | 0.038012 | 3.785624 | 1.331211 | 0.14 |
+| Fare | `7.55 – 7.8542` | 0.111111 | 0.076023 | 1.461538 | 0.379490 | 0.01 |
+| Fare | `7.8542 – 8.05` | 0.158470 | 0.055556 | 2.852459 | 1.048181 | 0.11 |
+| Fare | `8.05 – 10.5` | 0.109290 | 0.052632 | 2.076503 | 0.730685 | 0.04 |
+| Fare | `10.5 – 14.4542` | 0.087432 | 0.105263 | 0.830601 | -0.185606 | 0.00 |
+| Fare | `14.4542 – 21.6792` | 0.092896 | 0.108187 | 0.858662 | -0.152380 | 0.00 |
+| Fare | `21.6792 – 27` | 0.078324 | 0.134503 | 0.582324 | -0.540729 | 0.03 |
+| Fare | `27 – 39.6875` | 0.103825 | 0.099415 | 1.044359 | 0.043403 | 0.00 |
+| Fare | `39.6875 – 77.9583` | 0.076503 | 0.137427 | 0.556679 | -0.585766 | 0.04 |
+| **Total** | — | **1.000000** | **1.000000** | **1.000000** | **0.000000** | **0.37** |
 
-Vamos dar uma olhada na tabela gerada pela função [Woe_IV_Continuous](https://gist.github.com/DeborahBarbedo/d9ddd529f9b4359e4a867a649ab9544b) para a variável "Fare".
+A variável `Fare` também apresenta forte capacidade preditiva (`IV = 0.37`).
 
+Além disso, a análise do WoE permite identificar faixas com comportamentos semelhantes, possibilitando o agrupamento de categorias (*binning*).
 
-| variable |                 limit |        0 |        1 |    Distr |       WoE |   IV |
-|---------:|----------------------:|---------:|---------:|---------:|----------:|-----:|
-|     Fare |              <=[7.55] | 0.143898 | 0.038012 | 3.785624 |  1.331211 | 0.14 |
-|     Fare |     [7.55] a [7.8542] | 0.111111 | 0.076023 | 1.461538 |  0.379490 | 0.01 |
-|     Fare |     [7.8542] a [8.05] | 0.158470 | 0.055556 | 2.852459 |  1.048181 | 0.11 |
-|     Fare |       [8.05] a [10.5] | 0.109290 | 0.052632 | 2.076503 |  0.730685 | 0.04 |
-|     Fare |    [10.5] a [14.4542] | 0.087432 | 0.105263 | 0.830601 | -0.185606 | 0.00 |
-|     Fare | [14.4542] a [21.6792] | 0.092896 | 0.108187 | 0.858662 | -0.152380 | 0.00 |
-|     Fare |     [21.6792] a [27.] | 0.078324 | 0.134503 | 0.582324 | -0.540729 | 0.03 |
-|     Fare |     [27.] a [39.6875] | 0.103825 | 0.099415 | 1.044359 |  0.043403 | 0.00 |
-|     Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 0.556679 | -0.585766 | 0.04 |
-|     Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.37 |
+Observe que:
 
-Essa variável também tem um IV alto, indicando forte poder preditivo. Para melhorar o modelo, é recomendável criar uma variável binária indicando se o valor é menor ou igual a 10,5. Ao agrupar categorias, é importante lembrar que o valor da informação tende a diminuir. Outro ponto necessário se atentar, é indicado agrupar apenas categorias com WoE semelhantes. No caso da variável "Fare", a linha 7 tem um WoE positivo próximo de zero, o que sugere uma faixa neutra em relação à sobrevivência. Assim, incluí-la no grupo que favorece a sobrevivência é seguro.
+- faixas com `WoE > 0` tendem a estar mais associadas à não sobrevivência;
+- faixas com `WoE < 0` apresentam maior associação com sobrevivência;
+- valores de `WoE` próximos de zero indicam comportamento neutro.
 
-Com base nesta análise rápida, pudemos criar duas variáveis (FLG_Fare_leq_10.5 e FLG_female) que serão úteis na construção do modelo de regressão logística. Os detalhes podem ser vistos na tabela abaixo.
+Com base nesses resultados, podemos criar uma variável binária indicando, por exemplo, se a tarifa é menor ou igual a `10.5`.
 
-| PassengerId | Survived | Pclass |    Sex | ... |    Fare | Cabin | Embarked | FLG_female | FLG_Fare_leq_10.5 |
-|------------:|---------:|-------:|-------:|----:|--------:|------:|---------:|-----------:|------------------:|
-|           1 |        0 |      3 |   male | ... |  7.2500 |   NaN |        S |          0 |                 1 |
-|           2 |        1 |      1 | female | ... | 71.2833 |   C85 |        C |          1 |                 0 |
-|           3 |        1 |      3 | female | ... |  7.9250 |   NaN |        S |          1 |                 1 |
-|         ... |      ... |    ... |    ... | ... |     ... |   ... |      ... |        ... |               ... |
-|         889 |        0 |      3 | female | ... | 23.4500 |   NaN |        S |          1 |                 0 |
-|         890 |        1 |      1 |   male | ... | 30.0000 |  C148 |        C |          0 |                 0 |
-|         891 |        0 |      3 |   male | ... |  7.7500 |   NaN |        Q |          0 |                 1 |
+---
 
-Em resumo, analisar as métricas WoE, IV e outras é crucial para identificar variáveis preditivas e agrupar categorias de forma eficaz para melhorar o desempenho do modelo. Espero que a explicação sobre como interpretar as métricas na tabela tenha fornecido o conhecimento necessário para criar, interpretar e selecionar variáveis para o modelo de regressão logística.
+## Criação de Novas Variáveis
 
-Você pode encontrar todos os [materiais de suporte](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) na minha página do Github. E caso você tenha perdido, meu post anterior apresentou a [função para calcular WoE e IV em Python]( https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function). Mas adivinhe só? Estou planejando ir ainda mais a fundo em um post futuro e explicar [como essas métricas são calculadas](https://deborahbarbedo.github.io/pt/2023-06-12-WoE_IV_Calculation). Então fique ligado! E se você tiver alguma dúvida, não hesite em me perguntar.
+A partir da análise de WoE e IV, podemos construir variáveis derivadas que tornam o modelo mais simples e interpretável.
+
+Exemplo:
+
+| PassengerId | Survived | Sex | Fare | `FLG_female` | `FLG_Fare_leq_10.5` |
+|---:|---:|:---|---:|---:|---:|
+| 1 | 0 | male | 7.2500 | 0 | 1 |
+| 2 | 1 | female | 71.2833 | 1 | 0 |
+| 3 | 1 | female | 7.9250 | 1 | 1 |
+| ... | ... | ... | ... | ... | ... |
+| 891 | 0 | male | 7.7500 | 0 | 1 |
+
+Nesse exemplo:
+
+- `FLG_female` identifica passageiros do sexo feminino;
+- `FLG_Fare_leq_10.5` identifica tarifas menores ou iguais a `10.5`.
+
+Essas transformações podem melhorar:
+
+- interpretabilidade do modelo;
+- estabilidade estatística;
+- generalização;
+- desempenho preditivo.
+
+---
+
+# Conclusão
+
+As métricas **Weight of Evidence (WoE)** e **Information Value (IV)** são ferramentas extremamente úteis para:
+
+- seleção de variáveis;
+- análise exploratória;
+- agrupamento de categorias (*binning*);
+- criação de variáveis derivadas;
+- interpretação de modelos de regressão logística.
+
+Além de contribuírem para modelos mais interpretáveis e robustos, WoE e IV permitem compreender o comportamento das variáveis ao longo dos diferentes segmentos da população, auxiliando tanto na seleção de atributos quanto na engenharia de variáveis para problemas de classificação binária.
+
+---
+
+# Recursos Complementares
+
+- [Materiais de suporte no GitHub](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE)
+- [Função para cálculo de WoE e IV em Python](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function)
+- [Como WoE e IV são calculados](https://deborahbarbedo.github.io/pt/2023-06-12-WoE_IV_Calculation)
 
 # Referências:
 
