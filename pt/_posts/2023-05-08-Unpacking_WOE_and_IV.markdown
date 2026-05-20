@@ -168,6 +168,7 @@ A interpretação dos resultados é bastante intuitiva:
 - o `IV_total = 1.34` indica altíssimo poder discriminatório da variável `Sex`.
 
 Em problemas de credit scoring, variáveis com IV muito elevado costumam exigir atenção adicional, pois podem indicar separação excessiva entre as classes ou possível vazamento de informação.
+
 ---
 
 ## Exemplo com Variável Contínua
