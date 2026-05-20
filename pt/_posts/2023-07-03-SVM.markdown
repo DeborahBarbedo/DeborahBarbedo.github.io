@@ -1,7 +1,7 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 4_SVM
-title: "Desmistificando as Máquinas de Vetores de Suporte (SVM) para Classificação."
+title: "Máquinas de Vetores de Suporte (SVM): Guia Introdutório para Classificação"
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
@@ -9,7 +9,7 @@ title: "Desmistificando as Máquinas de Vetores de Suporte (SVM) para Classifica
 # multiple category is not supported
 category: Aprendizado de Máquina
 # multiple tag entries are possible
-tags: [SVM, Classificação, VC Dimension, Hiperplanos, Vetores de Suporte, Margens Flexíveis, Truque do Kernel, Classificação Multiclasse, Aprendizado de Máquina]
+tags: [SVM, Aprendizado de Máquina, Classificação, Truque do Kernel, Máquina de Vetores de Suporte]
 # thumbnail image for post
 img: ":SVM.jpg"
 # disable comments on this page
@@ -22,7 +22,7 @@ date: 2023-07-03 10:46:53 +0900
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Neste post, explore o funcionamento das Máquinas de Vetores de Suporte (SVM) para classificação. Descubra conceitos como VC Dimension, hiperplanos, vetores de suporte e o truque do kernel. Uma introdução acessível ao SVM para iniciantes no campo do Aprendizado de Máquina."
+meta_description: "Entenda como funcionam as Máquinas de Vetores de Suporte (SVM), incluindo hiperplanos separadores, margem máxima, vetores de suporte, kernels e classificação não linear com kernel RBF."
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
 # image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
@@ -40,136 +40,251 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-Uma exploração inicial das SVM, Dimensão VC, Hiperplanos, Vetores de Suporte, Margens Flexíveis, Truque do Kernel e Classificação Multiclasse.
+Uma introdução às Máquinas de Vetores de Suporte (SVM), explorando conceitos como dimensão VC, hiperplanos, vetores de suporte, margens flexíveis, truque do kernel e classificação multiclasse.
 
 <!-- outline-end -->
 
-A máquina de vetores de suporte, em inglês Support Vector Machine (SVM),  é um algoritmo versátil usado tanto para regressão quanto para classificação. Ele é especialmente útil quando lidamos com variáveis aleatórias numéricas. Neste post, vamos nos concentrar em explicar como o SVM funciona para problemas de classificação.
+A Máquina de Vetores de Suporte, do inglês *Support Vector Machine* (SVM), é um algoritmo versátil amplamente utilizado em problemas de classificação e regressão. Neste post, o foco será compreender intuitivamente como o SVM funciona em tarefas de classificação.
 
-O objetivo aqui é tornar a explicação o mais acessível possível, evitando o uso excessivo de demonstrações matemáticas e teoremas que possam parecer assustadores. Quero apresentar o SVM de forma superficial para que você possa entender a lógica por trás dele. Assim, você estará preparado para se aprofundar no assunto, já com uma base sólida sobre o propósito do algoritmo, ou mesmo para uma compreensão básica que permita aplicá-lo rapidamente.
+A proposta aqui é apresentar os principais conceitos do algoritmo de forma acessível, evitando demonstrações matemáticas excessivamente formais. O objetivo não é esgotar o tema, mas construir uma intuição sólida sobre a lógica por trás do SVM, desde a ideia de separação por hiperplanos até o uso do truque do kernel.
+
+Ao final da leitura, você terá uma visão clara do propósito do algoritmo, de suas principais características e do contexto em que ele costuma ser aplicado.
 
 # Dimensão Vapnik-Chervonenkis (VC):
 
-A dimensão Vapnik-Chervonenkis (VC) é uma medida que avalia a capacidade de um conjunto de funções serem aprendidas por um algoritmo de classificação binária estatística. Em termos mais simples, a dimensão VC de um conjunto de funções é o número máximo de pontos que podem ser divididos de formas diferentes por essas funções. Essa medida foi proposta por Vapnik e Chervonenkis em 1971, e é extremamente útil para compreender a flexibilidade de um conjunto de funções na tarefa de classificação.
+A dimensão Vapnik-Chervonenkis (VC) é uma medida utilizada para quantificar a capacidade de representação de um modelo de classificação. Em termos intuitivos, **ela indica o número máximo de pontos que podem ser separados corretamente em todas as configurações possíveis (*shattering*) por um determinado conjunto de funções**.
 
+Esse conceito foi proposto por Vapnik e Chervonenkis em 1971 e é amplamente utilizado para analisar a flexibilidade de modelos de aprendizado estatístico. Quanto maior a dimensão VC, maior a capacidade do modelo de representar padrões complexos.
 
-Exemplo: Dimensão VC de um conjunto de funções lineares para classificação de 2 grupos em um plano, é igual a 3.
+## Exemplo
 
+A dimensão VC de classificadores lineares binários em um plano bidimensional é igual a 3. Isso significa que existem configurações com 3 pontos que podem ser separadas corretamente em todas as combinações possíveis utilizando uma reta.
 
 
 ![Dimensão Vapnik-Chervonenkis VC](:SVM\DimensaoVC.png){:data-align="center"}
 
-Se tivéssemos que realizar uma classificação binária com 4 pontos, não seria possível encontrar uma função linear para todas as combinações possíveis.
+No entanto, ao utilizar 4 pontos, já existem algumas combinações que não podem ser separadas por uma única função linear.
+
 
 ![Exemplo classificação binária com 4 pontos](:SVM\Exemplo4.png){:data-align="center"}
 
-# Hiperplano:
+Essa medida é importante porque modelos com VC muito alta tendem a memorizar os dados (overfitting), enquanto modelos com VC baixa demais podem não aprender padrões relevantes (underfitting).
 
-Um hiperplano é um plano de dimensão k-1 em um espaço de dimensão k. Por exemplo, em um espaço bidimensional, um hiperplano é uma reta, enquanto em um espaço tridimensional, é um plano.
+# Hiperplano
+
+O hiperplano divide o espaço de características em regiões de decisão associadas a diferentes classes.
+
+Um hiperplano é uma estrutura geométrica de dimensão \(k-1\) inserida em um espaço de dimensão \(k\). Em termos intuitivos:
+
+- em um espaço bidimensional, um hiperplano corresponde a uma reta;
+- em um espaço tridimensional, corresponde a um plano.
+- em dimensões maiores, é a generalização dessas ideias.
 
 
 ![Um hiperplano é uma reta na dimensão 2. Um hiperplano é um plano na dimensão 3.](:SVM\Hiperplanodim2e3.png){:data-align="center"}
 
-Conectando com o tópico anterior, a dimensão VC de um hiperplano em uma dimensão K é igual a K+1. Existem vários hiperplanos possíveis para classificar os dados:
+Conectando com o tópico anterior, classificadores lineares definidos por hiperplanos em um espaço de dimensão \(K\) possuem dimensão VC igual a \(K + 1\). Isso ajuda a compreender a capacidade desses modelos em separar diferentes configurações de dados.
+
+Em muitos problemas de classificação, existem diversos hiperplanos capazes de separar corretamente as classes:
+
 
 ![Hiperplanos](:SVM\Hiperplanos.png){:data-align="center"}
 
-Mas o SVM visa encontrar o hiperplano que possui a maior margem de separação entre as duas classes:
+O objetivo do SVM é encontrar o hiperplano que maximiza a margem de separação entre as classes. Em outras palavras, o algoritmo procura a fronteira de decisão mais distante possível dos pontos de ambas as categorias.
+
+Uma margem grande funciona como um "colchão de segurança": quanto maior ela é, mais robusto o classificador tende a ser diante de ruídos e novos exemplos.
 
 ![Hiperplano com maior margem](:SVM\Hiperplanocommaiormargem.png){:data-align="center"}
 
-# Vetores de suporte:
+# Vetores de Suporte
 
-Os vetores de suporte, também conhecidos como pontos críticos, são os pontos de dados que auxiliam na determinação da margem do classificador linear. Eles são fundamentais para a identificação do hiperplano ideal.
+Os vetores de suporte são os pontos de dados mais próximos do hiperplano de separação. São eles que **definem a margem máxima do classificador e, consequentemente, influenciam diretamente a posição do hiperplano ótimo encontrado pelo SVM**.
+
+Esses pontos são chamados de "vetores de suporte" porque sustentam a fronteira de decisão do modelo. Em termos práticos, pequenas alterações nesses pontos podem modificar significativamente o hiperplano obtido.
+
+Uma característica importante do SVM é que apenas os vetores de suporte participam diretamente da definição da solução final. Pontos mais distantes da fronteira possuem pouca ou nenhuma influência no hiperplano ótimo.
 
 ![Vetores de suporte](:SVM\Vetoresdesuporte.png){:data-align="center"}
 
-# Margens suaves:
+# Margens Suaves
 
-Para evitar o sobreajuste, é possível adotar margens suaves, permitindo que alguns pontos de dados fiquem dentro da margem de separação. Isso flexibiliza a classificação e torna o modelo mais robusto.
+Em muitos problemas reais, os dados não são perfeitamente separáveis por um hiperplano. Para lidar com esse cenário, o SVM pode utilizar margens suaves (*soft margins*), permitindo que alguns pontos invadam a margem de separação ou até mesmo sejam classificados incorretamente.
 
-![Margens suaves](:SVM\Margenssuaves.png){:data-align="center"}
+Essa flexibilização reduz a rigidez do modelo e ajuda a evitar o *overfitting*, tornando o classificador mais robusto diante de ruídos e dados atípicos.
 
-E se os dados fossem distribuídos de outra forma?
+O SVM busca, então, um equilíbrio entre:
+- maximizar a margem de separação;
+- minimizar os erros de classificação.
 
-# Dados não lineares e o Teorema de Cover:
+Esse equilíbrio é controlado pelo hiperparâmetro C:
 
-O Teorema de Cover nos diz que conjuntos de dados não lineares em espaços de alta dimensão são mais propensos a serem linearmente separáveis em comparação a espaços de menor dimensão, desde que o espaço não esteja excessivamente povoado.
+C alto → penaliza fortemente erros → margem rígida → risco de overfitting
+
+C baixo → tolera violações → margem mais suave → maior generalização
+
+Mas o que acontece quando os dados não podem ser separados linearmente?
+
+# Dados Não Lineares e o Teorema de Cover
+
+O Teorema de Cover afirma que padrões complexos possuem maior probabilidade de se tornarem linearmente separáveis quando projetados em espaços de maior dimensionalidade, desde que esses espaços não estejam excessivamente preenchidos.
+
 
 ![Dados não lineares](:SVM\TeoremadeCover.png){:data-align="center"}
 
 
-Com base nisso, podemos aplicar uma transformação nos dados, como a função <img src="https://latex.codecogs.com/svg.image?(x^2,&space;2xy,y^2)" title="(x^2, 2xy,y^2)" />, para mapeá-los em um espaço de características de maior dimensão. Assim, torna-se viável aplicar o SVM linear nesse novo espaço de características.
+Com base nessa ideia, podemos aplicar transformações nos dados para mapeá-los em um novo espaço de características de dimensão mais elevada. Por exemplo, uma transformação como:
+
+
+\[
+(x, y) \rightarrow (x^2, 2xy, y^2)
+\]
+
+
+pode tornar separável um conjunto que originalmente não era linearmente separável.
+
+Após essa transformação, torna-se possível aplicar um SVM linear no novo espaço de características.
 
 ![Espaço de características](:SVM\Espacodecaracterísticas.png){:data-align="center"}
 
 
-No entanto, é importante observar que o cálculo da função de mapeamento para o espaço de características pode ser computacionalmente custoso devido à alta dimensionalidade.
-
-# Truque do Kernel:
-
-O truque do Kernel é uma técnica que nos permite evitar o mapeamento explícito dos dados para o espaço de características de alta dimensão.
-
-Pelo Teorema de Mercer, a função Kernel recebe os pontos do espaço de entrada e calcula o produto escalar entre eles no espaço característica, desde que defina Kernel como matriz positivamente definida e que tenha autovalores maior do que zero.
-
-Exemplificando, temos o kernel que define o mapeamento ϕ para uma dimensão de espaço mais alta.
-Considere o seguinte:
-
->  <img src="https://latex.codecogs.com/png.image?\dpi{110}KernelQuadratico(\textbf{W},\textbf{Q})&space;=&space;(\textbf{W}^T&space;\textbf{Q})^2" title="KernelQuadratico(\textbf{W},\textbf{Q}) = (\textbf{W}^T \textbf{Q})^2" />
->
->  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=&space;(x_1&space;x_2&plus;y_1&space;y_2&space;)^2" title="\space = (x_1 x_2+y_1 y_2 )^2" />
->
->  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=x_1^2&space;x_2^2&plus;2x_1&space;x_2&space;y_1&space;y_2&plus;y_1^2&space;y_2^2" title="\space =x_1^2 x_2^2+2x_1 x_2 y_1 y_2+y_1^2 y_2^2" />
->
->  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=(x_1^2&plus;&space;\sqrt{2x_1&space;y_1}&plus;y_1^2)^T&space;&space;(x_2^2&plus;\sqrt{2x_2&space;y_2}&space;&plus;y_2^2)" title="\space =(x_1^2+ \sqrt{2x_1 y_1}+y_1^2)^T (x_2^2+\sqrt{2x_2 y_2} +y_2^2)" />
->
->  <img src="https://latex.codecogs.com/png.image?\dpi{110}\space&space;=&space;\phi(\textbf{W})^T&space;\phi(\textbf{Q})&space;" title="\space = \phi(\textbf{W})^T \phi(\textbf{Q}) " />
-
-O mapeamento dos pontos para uma dimensão de espaço mais alta, é dada pela função:
-
->   <img src="https://latex.codecogs.com/png.image?\dpi{110}\phi&space;(Ponto)=\left\{&space;x^2,&space;&space;2xy,y^2&space;\right\}" title="\phi (Ponto)=\left\{ x^2, 2xy,y^2 \right\}" />
-
-Existem vários tipos de funções Kernel, como o polinomial, o radial e o de tangente hiperbólica. Essas funções definem o mapeamento para uma dimensão de espaço mais alta.
-
-### Polinomial
-
->   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;(\gamma(\textbf{x}^T\textbf{y})&plus;c)^d" title="K(\textbf{x},\textbf{y}) = (\gamma(\textbf{x}^T\textbf{y})+c)^d" />
-
-### Radial
-
->   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;e^{&space;-&space;\gamma&space;\left\|&space;x-y&space;\right\|^2}" title="K(\textbf{x},\textbf{y}) = e^{ - \gamma \left\| x-y \right\|^2}" />
-
-### Tangente hiperbólica
-
->   <img src="https://latex.codecogs.com/svg.image?K(\textbf{x},\textbf{y})&space;=&space;tanh&space;\left&space;(&space;\gamma(\textbf{x}^T\textbf{y})&plus;c&space;\right&space;)" title="K(\textbf{x},\textbf{y}) = tanh \left ( \gamma(\textbf{x}^T\textbf{y})+c \right )" />
-
-Mas se tivéssemos mais de 2 classes para classificar?
+Entretanto, trabalhar explicitamente em espaços de alta dimensionalidade pode ser computacionalmente caro. Esse problema motivou o desenvolvimento do chamado *truque do kernel*, que permite realizar essas transformações de forma implícita e eficiente.
 
 
-# Classificação SVM Multiclasse:
+# Truque do Kernel
 
-O SVM é originalmente projetado para classificação binária. No entanto, existem métodos que permitem a classificação de mais de duas classes.
+O *truque do kernel* (*kernel trick*) é uma técnica que permite ao SVM trabalhar implicitamente em espaços de alta dimensionalidade sem precisar calcular explicitamente o mapeamento dos dados para esse novo espaço de características.
 
+A ideia central é simples: em vez de transformar diretamente os pontos para uma dimensão maior, calcula-se apenas o produto interno entre eles nesse espaço transformado.
+
+Pelo Teorema de Mercer, determinadas funções kernel podem ser interpretadas como produtos internos em um espaço de características de maior dimensão, desde que satisfaçam propriedades matemáticas específicas, como gerar matrizes simétricas e positivas semidefinidas.
+
+## Exemplo: Kernel Polinomial Quadrático
+
+Considere o seguinte kernel:
+
+\[
+K(\mathbf{w}, \mathbf{q}) = (\mathbf{w}^T \mathbf{q})^2
+\]
+
+Expandindo o produto interno:
+
+\[
+= (x_1x_2 + y_1y_2)^2
+\]
+
+\[
+= x_1^2x_2^2 + 2x_1x_2y_1y_2 + y_1^2y_2^2
+\]
+
+Esse resultado pode ser reescrito como:
+
+\[
+= \phi(\mathbf{w})^T \phi(\mathbf{q})
+\]
+
+onde:
+
+\[
+\phi(x,y) = (x^2,\sqrt{2}xy,y^2)
+\]
+
+Ou seja, o kernel realiza implicitamente o cálculo do produto interno em um espaço de maior dimensão, sem que seja necessário computar explicitamente a transformação \(\phi\).
+
+Isso torna o treinamento computacionalmente mais eficiente, especialmente quando trabalhamos com espaços de características muito grandes.
+
+## Tipos de Kernel
+
+Existem diversos tipos de funções kernel utilizadas em SVM, entre as mais conhecidas:
+
+- Kernel Linear;
+- Kernel Polinomial;
+- Kernel Radial (*RBF*);
+- Kernel Sigmoide (*Tangente Hiperbólica*).
+
+Cada kernel define implicitamente uma forma diferente de transformação do espaço de características.
+
+## Principais Funções Kernel
+
+### Kernel Polinomial
+
+O kernel polinomial permite representar fronteiras de decisão não lineares por meio de combinações polinomiais entre os atributos.
+
+\[
+K(\mathbf{x}, \mathbf{y}) = (\gamma \mathbf{x}^T \mathbf{y} + c)^d
+\]
+
+onde:
+- \(d\) define o grau do polinômio;
+- \(\gamma\) controla a influência dos dados;
+- \(c\) é uma constante de ajuste.
+
+---
+
+### Kernel Radial (RBF)
+
+O kernel radial (*Radial Basis Function*) é um dos mais utilizados em SVM devido à sua capacidade de modelar relações altamente não lineares.
+
+\[
+K(\mathbf{x}, \mathbf{y}) = e^{-\gamma \|\mathbf{x}-\mathbf{y}\|^2}
+\]
+
+Esse kernel mede similaridade com base na distância euclidiana entre os pontos: quanto mais próximos eles estão, maior tende a ser o valor do kernel.
+
+---
+
+### Kernel Sigmoide (Tangente Hiperbólica)
+
+O kernel sigmoide possui comportamento semelhante ao de neurônios artificiais utilizados em redes neurais.
+
+\[
+K(\mathbf{x}, \mathbf{y}) = \tanh(\gamma \mathbf{x}^T \mathbf{y} + c)
+\]
+
+Seu uso é menos comum em comparação aos kernels polinomial e radial.
+
+
+Mas o que acontece quando temos mais de duas classes?
+
+# Classificação SVM Multiclasse
+
+O SVM foi originalmente desenvolvido para problemas de classificação binária. Entretanto, diversas estratégias permitem estender sua utilização para cenários com múltiplas classes.
 
 ![SVM Multiclasse](:SVM\SVMMulticlasse.png){:data-align="center"}
 
-Alguns dos principais métodos são:
+Entre os principais métodos utilizados, destacam-se:
 
-### Um-contra-todos:
+## Um-contra-todos (*One-vs-Rest*)
 
-Divide os dados em dois grupos, onde um grupo é formado por uma classe específica e o outro grupo contém todas as outras classes. Isso é repetido para cada classe.
+Nesse método, um classificador é treinado para separar uma classe específica de todas as demais. O processo é repetido para cada classe do problema.
 
-### Um-contra-um:
+Por exemplo, em um problema com três classes \(A\), \(B\) e \(C\), seriam treinados três classificadores:
+- \(A\) versus \((B,C)\);
+- \(B\) versus \((A,C)\);
+- \(C\) versus \((A,B)\).
 
-Calcula a classificação entre uma classe e outra classe. Isso é repetido para todos os pares possíveis de classes.
+---
 
-### DAG-SVM:
+## Um-contra-um (*One-vs-One*)
 
-É uma generalização da árvore de decisão, onde a árvore cresce por exclusão de classes, utilizando classificação binária.
+Nesse caso, um classificador é treinado para cada par possível de classes.
 
-Neste post, exploramos o funcionamento do algoritmo de Máquina de Vetores de Suporte (SVM) para problemas de classificação. Espero que você tenha compreendido a lógica por trás desse algoritmo e esteja pronto para aprofundar seu conhecimento ou até mesmo aplicá-lo em suas próprias tarefas.
+Em um problema com três classes, seriam treinados classificadores para:
+- \(A\) versus \(B\);
+- \(A\) versus \(C\);
+- \(B\) versus \(C\).
 
-Gostaria de ouvir você! Deixe seus comentários abaixo e compartilhe suas dúvidas.
+A decisão final normalmente ocorre por votação entre os classificadores.
+
+---
+
+## DAG-SVM
+
+O *DAG-SVM* (*Directed Acyclic Graph SVM*) organiza múltiplos classificadores binários em uma estrutura em grafo acíclico direcionado baseada em classificações binárias sequenciais.
+
+A cada etapa, uma classe é eliminada até que reste apenas a classe final atribuída ao exemplo.
+
+---
+
 
 # Referências:
 
