@@ -1,15 +1,15 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 3_WoE_IV_Python_calculation
-title: "Dominando a Regressão Logística: Um Guia Abrangente para o Cálculo de WoE e IV."
+title: "WoE e IV em Python: Guia Completo para Regressão Logística"
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
 #author: "Deborah Cholodoysky Barbedo Pereira"
 # multiple category is not supported
-category: Análise de dados
+category: Ciência de Dados
 # multiple tag entries are possible
-tags: [Análise de dados, Regressão logística, Seleção de variáveis, Valor de Informação (IV), Peso de Evidência (WoE), Conjunto de Dados Titanic]
+tags: [Python, Regressão Logística, Feature Engineering, Seleção de Variáveis, Weight of Evidence, Information Value, WoE, IV, Titanic Dataset, Credit Scoring]
 # thumbnail image for post
 img: ":WoE_IV_Python_calculo.jpg"
 # disable comments on this page
@@ -22,7 +22,7 @@ date: 2023-06-12 19:57:53 +0900
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Aprenda como calcular e entender as métricas de Peso da Evidência (WoE) e Valor da Informação (IV), que são amplamente utilizadas para diferenciar indivíduos dignos de crédito dos não dignos de crédito. Esta postagem de blog explora esses cálculos usando o conjunto de dados Titanic, com foco em informações de sobrevivência segregadas por gênero. Desmistifique os conceitos de IV e WoE para torná-los mais acessíveis e tangíveis. Aprofunde-se nos dados e tabelas fornecidos para obter insights e aplicar essas métricas de forma eficaz."
+meta_description: "Aprenda a calcular Weight of Evidence (WoE) e Information Value (IV) em Python utilizando o dataset Titanic. Entenda como essas métricas ajudam na seleção de variáveis para modelos de regressão logística e credit scoring."
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
 # image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
@@ -35,156 +35,354 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-published: false
+#published: false
 ---
 
 <!-- outline-start -->
 
-Um Guia Abrangente para o Cálculo de WoE e IV.
+O **Weight of Evidence (WoE)** e o **Information Value (IV)** são métricas amplamente utilizadas em problemas de *credit scoring*, seleção de variáveis e modelos de regressão logística.
+
+Essas técnicas são especialmente populares no mercado financeiro por permitirem medir o poder discriminatório de uma variável em relação a um evento de interesse.
 
 <!-- outline-end -->
 
-Essas métricas são amplamente reconhecidas por sua capacidade de distinguir entre indivíduos dignos de crédito e não dignos de crédito. Ao longo de nossa jornada para entender esses cálculos, frequentemente nos deparamos com os familiares rótulos de "bons" e "maus". Nesse contexto, os "maus clientes" são aqueles que não pagaram suas dívidas, enquanto os "bons clientes" são aqueles que cumpriram suas obrigações e quitaram o empréstimo.
+Tradicionalmente, os registros são divididos entre:
 
-Para clarificar esses conceitos, vamos extrair insights do conjunto de dados da [competição Titanic do Kaggle](https://www.kaggle.com/competitions/titanic/data), examinando especificamente as informações de sobrevivência segregadas por gênero. Nosso objetivo é desmistificar os cálculos de IV e WoE, tornando-os mais acessíveis e tangíveis. Utilizaremos os dados fornecidos na tabela abaixo como base.
+- **bons** (*good*) - clientes adimplentes;
+- **maus** (*bad*) - clientes inadimplentes.
 
-| Segmento | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" /> | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{1}" title="https://latex.codecogs.com/svg.image?\small target_{1}" /> |
-|--------:|--------:|--------:|
-| female | 81      | 233     |
-| male    | 468     | 109     |
-| Total   | 549     | 342     |
+Neste artigo, utilizaremos o conjunto de dados da [competição Titanic do Kaggle](https://www.kaggle.com/competitions/titanic/data) para demonstrar, passo a passo, como calcular WoE e IV de maneira visual e intuitiva.
 
-# Percentual do rótulo no segmento de estudo:
+Nosso objetivo é transformar conceitos frequentemente vistos como abstratos em algo intuitivo, interpretável e facilmente aplicável na prática.
 
-O que é comumente chamado de 'bom' é o  <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />.
+## Base de Dados Utilizada
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;target_{0,&space;sector_i}&space;=&space;\frac{&space;target_{0,&space;sector_i}}{&space;target_{0}}&space;" title="https://latex.codecogs.com/svg.image?\small % target_{0, sector_i} = \frac{ target_{0, sector_i}}{ target_{0}} " />
+Para demonstrar o cálculo do **Weight of Evidence (WoE)** e do **Information Value (IV)**, utilizaremos a variável **gênero** (`female` e `male`) do dataset Titanic em relação à sobrevivência dos passageiros.
 
-Vamos considerar o setor escolhido como feminino.
+A tabela abaixo apresenta a distribuição da variável alvo:
 
-Para este problema:
+| Segmento | Não Sobreviveu (`target₀`) | Sobreviveu (`target₁`) |
+|:----------|---------------------------:|-----------------------:|
+| female    | 81                         | 233                    |
+| male      | 468                        | 109                    |
+| **Total** | **549**                    | **342**                |
 
+Onde:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;survived_{0,&space;female&space;}&space;=&space;\frac{&space;survived_{0,&space;female}}{&space;survived_{0}}&space;=\frac{81}{81&plus;468}&space;\approx&space;0.147541&space;" title="https://latex.codecogs.com/svg.image?\small % survived_{0, female } = \frac{ survived_{0, female}}{ survived_{0}} =\frac{81}{81+468} \approx 0.147541 " />
+- `target₀` representa os passageiros que **não sobreviveram**;
+- `target₁` representa os passageiros que **sobreviveram**.
 
-O que é tipicamente descrito como 'mau' é o  <img src="https://latex.codecogs.com/svg.image?\small&space;target_{1}" title="https://latex.codecogs.com/svg.image?\small target_{1}" />.
+# Percentual de Cada Classe por Segmento
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;target_{1,&space;sector_i}&space;=&space;\frac{&space;target_{1,&space;sector_i}}{&space;target_{1}}&space;" title="https://latex.codecogs.com/svg.image?\small % target_{1, sector_i} = \frac{ target_{1, sector_i}}{ target_{1}} " />
+O percentual de uma classe dentro de um segmento é calculado pela proporção daquele grupo em relação ao total da respectiva classe.
 
-Para este problema, no segmento feminino:
+Para a classe `target₀`:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;survived_{1,&space;female}&space;=&space;\frac{&space;survived_{1,&space;female}}{&space;survived_{1}&space;}&space;=&space;\frac{233}{233&plus;109}&space;\approx&space;0.681287" title="https://latex.codecogs.com/svg.image?\small % survived_{1, female} = \frac{ survived_{1, female}}{ survived_{1} } = \frac{233}{233+109} \approx 0.681287" />
+$$
+\%target_{0,sector_i}
+=
+\frac{target_{0,sector_i}}{target₀}
+$$
 
-| Segmento | # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" /> | # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> | % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" /> | % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |
-|--------:|--------:|--------:|--------:|--------:|
-| female  | 81      | 233     | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{81}{594}" title="https://latex.codecogs.com/svg.image?\tiny \frac{81}{594}" /> | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{233}{342}" title="https://latex.codecogs.com/svg.image?\tiny \frac{233}{342}" /> |
-| male    | 468     | 109     | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{468}{594}" title="https://latex.codecogs.com/svg.image?\tiny \frac{468}{594}" /> | <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{109}{342}" title="https://latex.codecogs.com/svg.image?\tiny \frac{109}{342}" /> |
-| Total   | 549     | 342     | 1 | 1 |
+Considerando o segmento **female**:
 
+$$
+\%survived_{0,female}
+=
+\frac{81}{81 + 468}
+=
+\frac{81}{549}
+\approx 0.1475
+$$
 
-# Percentual da população no segmento de estudo:
+Ou seja, aproximadamente **14,75%** dos passageiros que não sobreviveram eram mulheres.
 
-O Percentual da População no segmento de estudo é uma medida que indica a proporção da população total representada por um setor específico:
+---
 
+Para a classe `target₁`:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;population_{sector_i}&space;=&space;\frac{&space;population_{sector_i}}{&space;population}" title="https://latex.codecogs.com/svg.image?\small % population_{sector_i} = \frac{ population_{sector_i}}{ population}" />
+$$
+\%target_{1,sector_i}
+=
+\frac{target_{1,sector_i}}{target₁}
+$$
 
-Vamos calcular o percentual da população para o segmento escolhido, que é o feminino neste caso:
+No segmento **female**:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;%&space;population_{female}&space;=&space;\frac{&space;population_{female}}{&space;population&space;}&space;=&space;\frac{81&space;&plus;&space;233}{81&space;&plus;&space;233&space;&plus;&space;468&space;&plus;109}&space;\approx&space;0.352413" title="https://latex.codecogs.com/svg.image?\small % population_{female} = \frac{ population_{female}}{ population } = \frac{81 + 233}{81 + 233 + 468 +109} \approx 0.352413" />
+$$
+\%survived_{1,female}
+=
+\frac{233}{233 + 109}
+=
+\frac{233}{342}
+\approx 0.6813
+$$
 
-Agora, vamos à tabela que apresenta as estatísticas:
+Assim, aproximadamente **68,13%** dos passageiros sobreviventes eram mulheres.
 
-| Segmento |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % População   |
-|---------:|---------:|---------:|---------:|---------:|---------:|
-|   female | 81 | 233| 0.15 | 0.68| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{314}{891}" title="https://latex.codecogs.com/svg.image?\tiny \frac{314}{891}" /> |
-|     male  | 468 | 109|0.85| 0.32| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{577}{891}" title="https://latex.codecogs.com/svg.image?\tiny \frac{577}{891}" /> |
-|     Total | 549 | 342 | 1 | 1 |
+---
 
-Essa medida nos fornece informações valiosas sobre a representação do setor de estudo dentro da população geral. Compreender essa distribuição é crucial para realizar uma análise abrangente dos resultados e tirar conclusões significativas a partir dos dados.
+# Distribuição Percentual por Segmento
 
-# Distribuição dos rótulos dentro de cada segmento (Distr):
+| Segmento | `target₀` | `target₁` | % `target₀` | % `target₁` |
+|:----------|-----------:|-----------:|-------------:|-------------:|
+| female    | 81         | 233        | 0.1475       | 0.6813       |
+| male      | 468        | 109        | 0.8525       | 0.3187       |
+| **Total** | **549**    | **342**    | **1.0**      | **1.0**      |
 
-A distribuição para o setor 'i' pode ser calculada como a proporção do segmento em estudo com rótulo de não ocorrências em relação à proporção do setor 'i' nos com rótulo de ocorrências:
+Observe que a soma das proporções de cada classe é igual a 1:
 
-<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{sector_i}&space;=&space;\frac{&space;%&space;target_{0,&space;sector_i}}{&space;%&space;target_{1,&space;sector_i}}" title="https://latex.codecogs.com/svg.image?\small Distr_{sector_i} = \frac{ % target_{0, sector_i}}{ % target_{1, sector_i}}" />
+$$
+\sum \%target₀ = 1
+\quad\text{e}\quad
+\sum \%target₁ = 1
+$$
 
-Da mesma forma, a divisão das distribuições para a categoria feminina pode ser calculada como a porcentagem de mulheres entre os falecidos em comparação com a porcentagem de mulheres entre os sobreviventes:
-
-<img src="https://latex.codecogs.com/svg.image?\small&space;Distr_{female}&space;=&space;\frac{&space;%&space;survived_{0,&space;female}}{&space;%&space;survived_{1,&space;female&space;}}&space;=&space;\frac{&space;\frac{81}{81&plus;468}}{&space;\frac{233}{233&plus;109}&space;}&space;\approx&space;0.216562" title="https://latex.codecogs.com/svg.image?\small Distr_{female} = \frac{ % survived_{0, female}}{ % survived_{1, female }} = \frac{ \frac{81}{81+468}}{ \frac{233}{233+109} } \approx 0.216562" />
-
-| Segmento |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | Distr |
-|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|
-|   female | 81 | 233| 0.15 | 0.68| 0.35| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{0.15}{0.68}\" title="https://latex.codecogs.com/svg.image?\tiny \frac{0.15}{0.68}" /> |
-|     male  | 468 | 109|0.85| 0.32| 0.65| <img src="https://latex.codecogs.com/svg.image?\tiny&space;\frac{0.85}{0.32}" title="https://latex.codecogs.com/svg.image?\tiny \frac{0.85}{0.32}" /> |
-|     Total | 549 | 342 | 1 | 1 |1| |
-
-
-# Peso da Evidência (WoE):
-
-Ele pode ser calculado usando o logaritmo natural da 'Distr' para cada setor:
-
-<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{sector_i}&space;=&space;ln\left&space;(&space;Distr_{sector_i}&space;\right&space;)" title="https://latex.codecogs.com/svg.image?\small WoE_{sector_i} = ln\left ( Distr_{sector_i} \right )" />
-
-Vamos considerar o segmento feminino como exemplo:
-
-<img src="https://latex.codecogs.com/svg.image?\small&space;WoE_{female}&space;=&space;ln\left&space;(&space;Distr_{female}&space;\right&space;)&space;\approx&space;-1.529877" title="https://latex.codecogs.com/svg.image?\small WoE_{female} = ln\left ( Distr_{female} \right ) \approx -1.529877" />
-
-Agora, vamos examinar a tabela que apresenta as estatísticas:
-
-| Segmento |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" /> |    % Population   | Distr |    WoE |
-|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|
-|   female | 81 | 233| 0.15 | 0.68| 0.35| 0.22|ln(0.22) |
-|     male  | 468 | 109|0.85| 0.32| 0.65| 2.67|ln(2.67) |
-|     Total | 549 | 342 | 1 | 1 |1| |  |
-
-Ao analisar os valores de WoE, podemos obter insights sobre a natureza discriminante das variáveis na previsão do resultado desejado.
-
-# Valor da Informação (IV):
-
-Ele pode ser calculado usando a seguinte fórmula:
-
-<img src="https://latex.codecogs.com/svg.image?\small&space;IV_{sector_i}&space;=&space;WoE_{sector_i}&space;\times&space;(%&space;target_{0,&space;sector_i}&space;-&space;%&space;target_{1,&space;sector_i}&space;)" title="https://latex.codecogs.com/svg.image?\small IV_{sector_i} = WoE_{sector_i} \times (% target_{0, sector_i} - % target_{1, sector_i} )" />
-
-Vamos considerar o segmento feminino como exemplo:
-
-<img src="https://latex.codecogs.com/svg.image?\small&space;IV_{female}&space;=&space;WoE_{female}&space;\times&space;(\%&space;survived_{0,&space;female}&space;-&space;\%&space;survived_{1,&space;female}&space;)&space;&space;=&space;-1.529877&space;\times&space;(0.681287&space;-&space;0.147541&space;)&space;\approx&space;0.816566" title="https://latex.codecogs.com/svg.image?\small IV_{female} = WoE_{female} \times (\% survived_{0, female} - \% survived_{1, female} ) = -1.529877 \times (0.147541 - 0.681287 ) \approx 0.816565" />
-
-| Segmento |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population   | Distr |    WoE | IV |
-|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
-|   female | 81 | 233| 0.15 | 0.68| 0.35| 0.22|-1.53| <img src="https://latex.codecogs.com/svg.image?\tiny&space;-1.53&space;\times&space;(0.68-0.15&space;)&space;" title="https://latex.codecogs.com/svg.image?\tiny -1.53 \times (0.68-0.15 ) " />|
-|     male  | 468 | 109|0.85| 0.32| 0.65| 2.67|0.98| <img src="https://latex.codecogs.com/svg.image?\tiny&space;0.98&space;\times&space;(0.32-0.85&space;)" title="https://latex.codecogs.com/svg.image?\tiny 0.98 \times (0.32-0.85 )" />|
-|     Total | 549 | 342 | 1 | 1 |1| |  | | |
+Essas distribuições serão utilizadas posteriormente no cálculo do **Weight of Evidence (WoE)** e do **Information Value (IV)**.
 
 
-Se você tiver interesse em verificar a classificação dos valores de IV, você pode encontrá-la neste [link](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV).
+# Percentual da População por Segmento
 
-A tabela com todas as métricas calculadas é a seguinte:
+O percentual populacional representa a participação de cada segmento em relação ao total da amostra.
 
-| Sector |        # <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        # <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % <img src="https://latex.codecogs.com/svg.image?\small&space;target_{0}" title="https://latex.codecogs.com/svg.image?\small target_{0}" />  |        % <img src="https://latex.codecogs.com/svg.image?target_{1}" title="https://latex.codecogs.com/svg.image?target_{1}" />|    % Population  | Distr |    WoE | IV |
-|---------:|---------:|---------:|---------:|---------:|---------:| ---------:|---------:|---------:|
-|   female | 81 | 233| 0.15 | 0.68| 0.35| 0.22|-1.53| 0.82|
-|     male  | 468 | 109|0.85| 0.32| 0.65| 2.67|0.98| 0.53|
-|     Total | 549 | 342 | 1 | 1 |1| |  |  1.35|
+Essa métrica é calculada por:
+
+$$
+\%population_{sector_i}
+=
+\frac{population_{sector_i}}{population}
+$$
+
+Para o segmento **female**:
+
+$$
+\%population_{female}
+=
+\frac{81 + 233}{81 + 233 + 468 + 109}
+=
+\frac{314}{891}
+\approx 0.3524
+$$
+
+Portanto, mulheres representam aproximadamente **35,24%** da população analisada.
+
+---
+
+# Distribuição Populacional por Segmento
+
+| Segmento | População | % População |
+|:----------|-----------:|-------------:|
+| female    | 314        | 0.3524 |
+| male      | 577        | 0.6476 |
+| **Total** | **891**    | **1.0** |
+
+Essa distribuição ajuda a entender a representatividade de cada segmento dentro da base de dados, sendo útil na interpretação do **Weight of Evidence (WoE)** e do **Information Value (IV)**.
+
+# Razão entre Distribuições (*Distribution Ratio*)
+
+A razão entre distribuições compara a participação de um segmento entre as classes `target₀` e `target₁`.
+
+Ela é definida por:
+
+$$
+Distr_{sector_i}
+=
+\frac{
+\%target_{0,sector_i}
+}{
+\%target_{1,sector_i}
+}
+$$
+
+Para o segmento **female**:
+
+$$
+Distr_{female}
+=
+\frac{0.1475}{0.6813}
+\approx 0.2166
+$$
+
+Isso indica que a participação das mulheres entre os passageiros que não sobreviveram é significativamente menor do que entre os passageiros sobreviventes.
+
+---
+
+# Razão entre Distribuições por Segmento
+
+| Segmento | % `target₀` | % `target₁` | `Distr` |
+|:----------|-------------:|-------------:|---------:|
+| female    | 0.1475 | 0.6813 | 0.2166 |
+| male      | 0.8525 | 0.3187 | 2.6745 |
+| **Total** | **1.0** | **1.0** | — |
+
+Valores:
+
+- menores que `1` indicam maior concentração relativa em `target₁`;
+- maiores que `1` indicam maior concentração relativa em `target₀`.
+
+# Weight of Evidence (WoE)
+
+O **Weight of Evidence (WoE)** é obtido aplicando o logaritmo natural à razão entre distribuições.
+
+Sua definição é dada por:
+
+$$
+WoE_{sector_i}
+=
+\ln\left(
+Distr_{sector_i}
+\right)
+$$
+
+Substituindo a definição de `Distr`:
+
+$$
+WoE_{sector_i}
+=
+\ln\left(
+\frac{
+\%target_{0,sector_i}
+}{
+\%target_{1,sector_i}
+}
+\right)
+$$
+
+Para o segmento **female**:
+
+$$
+WoE_{female}
+=
+\ln(0.2166)
+\approx -1.5299
+$$
+
+O valor negativo indica que o segmento **female** possui maior concentração relativa em `target₁` do que em `target₀`.
+
+---
+
+# Weight of Evidence por Segmento
+
+| Segmento | `Distr` | `WoE` |
+|:----------|---------:|------:|
+| female    | 0.2166 | -1.5299 |
+| male      | 2.6745 | 0.9834 |
+| **Total** | — | — |
+
+Interpretação:
+
+- `WoE < 0`: maior concentração relativa em `target₁`;
+- `WoE > 0`: maior concentração relativa em `target₀`;
+- `WoE ≈ 0`: distribuição semelhante entre as classes.
+
+# Information Value (IV)
+
+O **Information Value (IV)** mede o poder preditivo de uma variável em relação à variável alvo.
+
+A contribuição de cada segmento para o IV é calculada por:
+
+$$
+IV_{sector_i}
+=
+WoE_{sector_i}
+\times
+\left(
+\%target_{0,sector_i}
+-
+\%target_{1,sector_i}
+\right)
+$$
+
+Substituindo a definição de `WoE`:
+
+$$
+IV_{sector_i}
+=
+\ln\left(
+\frac{
+\%target_{0,sector_i}
+}{
+\%target_{1,sector_i}
+}
+\right)
+\times
+\left(
+\%target_{0,sector_i}
+-
+\%target_{1,sector_i}
+\right)
+$$
+
+Para o segmento **female**:
+
+$$
+IV_{female}
+=
+-1.5299
+\times
+(0.1475 - 0.6813)
+\approx 0.8166
+$$
+
+---
+
+# Contribuição do IV por Segmento
+
+| Segmento | `WoE` | IV |
+|:----------|------:|------:|
+| female    | -1.5299 | 0.8166 |
+| male      | 0.9834  | 0.5244 |
+| **Total IV** | — | **1.3410** |
+
+O **Information Value total** da variável é obtido pela soma das contribuições de todos os segmentos:
+
+$$
+IV
+=
+\sum_i IV_{sector_i}
+$$
+
+Em geral:
+
+- `IV < 0.02`: variável sem poder preditivo;
+- `0.02 ≤ IV < 0.1`: poder fraco;
+- `0.1 ≤ IV < 0.3`: poder médio;
+- `0.3 ≤ IV < 0.5`: poder forte;
+- `IV ≥ 0.5`: poder muito forte.
+
+No exemplo apresentado, a variável **gênero** possui um IV igual a **1.3410**, indicando altíssimo poder discriminatório.
 
 
-Para facilitar o entendimento de WoE e IV, eu preparei um artigo informativo que explica esses conceitos de forma detalhada. Você pode acessá-lo [aqui](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV). O objetivo desse post é fornecer uma explicação completa e esclarecer as nuances dessas métricas.
+# Considerações Importantes
 
-Além disso, se você precisa fazer esses cálculos usando Python, criei outro post com as fórmulas correspondentes. Você pode conferir esse recurso neste [link](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function). Com ele, você poderá realizar os cálculos de forma eficiente.
+Ao utilizar **Weight of Evidence (WoE)** e **Information Value (IV)**, alguns cuidados são importantes:
 
-Para obter suporte adicional, compilei diversos materiais complementares no [meu GitHub](https://github.com/DeborahBarbedo) sobre esse tema. Esses recursos estão disponíveis no [repositório de materiais de suporte](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE) e foram criados para ajudar você a entender melhor e aplicar na prática os cálculos de IV e WoE.
+- categorias com baixa frequência podem gerar valores instáveis;
+- divisões por zero devem ser tratadas adequadamente;
+- variáveis com IV excessivamente alto podem indicar *data leakage*;
+- o WoE é amplamente utilizado em regressão logística por favorecer relações mais lineares entre as variáveis e o logit;
+- processos de *binning* podem impactar significativamente os valores de WoE e IV.
 
-Se tiver mais alguma dúvida ou precisar de mais informações, estou aqui para ajudar!
+---
 
+# Recursos Complementares
 
-# Referências:
+Caso queira aprofundar seus conhecimentos sobre WoE e IV:
 
-* Anderson, Raymond. The Credit Scoring Toolkit: Theory and Practice for Retail Credit Risk Management and Decision Automation. Oxford University Press, 2007.
+- [Entendendo WoE e IV](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV)
+- [Funções em Python para cálculo de WoE e IV](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function)
+- [Materiais complementares no GitHub](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE)
 
-* Siddiqi, Naeem. Credit Risk Scorecards: Developing and Implementing Intelligent Credit Scoring. Wiley, 2006.
+---
 
-* Sudarson Mothilal Thoppay (2015). woe: Computes Weight of Evidence and Information Values. R package version 0.2.
-  [https://CRAN.R-project.org/package=woe](https://CRAN.R-project.org/package=woe)
+# Referências
 
-* Thilo Eichenberg (2018). woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors. R package
-  version 0.1.6. [https://CRAN.R-project.org/package=woeBinning](https://CRAN.R-project.org/package=woeBinning)
+- Anderson, Raymond. *The Credit Scoring Toolkit: Theory and Practice for Retail Credit Risk Management and Decision Automation*. Oxford University Press, 2007.
+
+- Siddiqi, Naeem. *Credit Risk Scorecards: Developing and Implementing Intelligent Credit Scoring*. Wiley, 2006.
+
+- Thoppay, Sudarson Mothilal (2015). *woe: Computes Weight of Evidence and Information Values*. R package version 0.2.  
+  https://CRAN.R-project.org/package=woe
+
+- Eichenberg, Thilo (2018). *woeBinning: Supervised Weight of Evidence Binning of Numeric Variables and Factors*. R package version 0.1.6.  
+  https://CRAN.R-project.org/package=woeBinning
