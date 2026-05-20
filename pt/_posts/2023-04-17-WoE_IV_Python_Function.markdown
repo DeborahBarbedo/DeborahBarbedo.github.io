@@ -218,15 +218,6 @@ As funções desenvolvidas neste post permitem:
 - discretizar variáveis contínuas automaticamente;
 - consolidar os resultados em uma única tabela para análise exploratória.
 
-No próximo post, irei detalhar:
-
-- como o WoE é calculado;
-- como interpretar o IV;
-- boas práticas de binning;
-- cuidados para evitar overfitting.
-
-Também apresentarei exemplos práticos de aplicação dessas métricas em modelos preditivos.
-
 ---
 
 ## Código e materiais complementares
