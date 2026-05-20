@@ -1,17 +1,17 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 1_WoE_IV_Python_function
-title: "Funções em Python para cálculo de Weight of Evidence (WoE) e Information Value (IV)"
+title: "Função em Python para calcular WoE e IV"
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
-#author: " "
+#author: "Deborah Cholodoysky Barbedo Pereira"
 # multiple category is not supported
 category: Análise de dados
 # multiple tag entries are possible
-tags: [Python, Ciência de Dados, Machine Learning, Regressão Logística, Feature Engineering, Seleção de Variáveis, Weight of Evidence, Information Value, WoE, IV, Titanic Dataset]
+tags: [Programação em Python, Análise de dados, Regressão logística, Seleção de variáveis, Valor de Informação (IV), Peso de Evidência (WoE), Conjunto de Dados Titanic]
 # thumbnail image for post
-img: ":IV_and_WoE.jpg"
+img: ":IV_WoE_Funcao_Python.jpg"
 # disable comments on this page
 #comments_disable: true
 
@@ -22,7 +22,7 @@ date: 2023-04-17 13:57:53 +0900
 # if not specified, date will be used.
 #meta_modify_date: 2021-08-10 11:32:53 +0900
 # check the meta_common_description in _data/owner/[language].yml
-meta_description: "Aprenda a calcular Weight of Evidence (WoE) e Information Value (IV) em Python para seleção de variáveis em regressão logística. Inclui exemplos práticos com o dataset Titanic e funções completas em Python."
+meta_description: "Aprenda como aprimorar seus modelos preditivos com o poder do Valor da Informação (IV) e Peso da Evidência (WoE). Nesta página, você encontrará instruções passo a passo para criar funções personalizadas em Python que calculam WoE e IV, permitindo avaliar com precisão a preditividade das variáveis e melhorar o desempenho do seu modelo."
 # optional
 # please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
 # image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
@@ -35,62 +35,20 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-#published: false
-
-excerpt: "Aprenda a calcular Weight of Evidence (WoE) e Information Value (IV) em Python para seleção de variáveis em modelos de regressão logística."
-
+published: false
 ---
 
+<!-- outline-start -->
 
-O Weight of Evidence (WoE) e o Information Value (IV) são métricas amplamente utilizadas em problemas de classificação binária, especialmente em modelos de regressão logística, análise de risco de crédito e scorecards.
+Melhore modelos de regressão logística com WoE e IV em Python.
 
-Essas métricas ajudam a avaliar:
+<!-- outline-end -->
 
-o poder preditivo de uma variável;
-a relação entre categorias e o evento de interesse;
-a qualidade das transformações aplicadas às variáveis.
+Você já ouviu falar de Valor de Informação e Peso de Evidência? Essas duas estatísticas são uma dupla dinâmica para a seleção de variáveis preditoras em modelos de regressão logística - elas trabalham juntas para melhorar a preditividade!
 
-Durante alguns projetos em Python, senti falta de funções simples e reutilizáveis para calcular WoE e IV de forma prática. Por isso, decidi desenvolver minhas próprias funções para:
+Com o Valor de Informação e o Peso de Evidência, você pode ter insights sobre a eficácia de uma variável em prever a resposta desejada, além de descobrir a direção em que essa variável está inclinando a resposta.
 
-variáveis categóricas;
-variáveis contínuas;
-geração de tabelas consolidadas com WoE e IV.
-
-Neste post, apresento essas funções utilizando o conjunto de dados clássico do Titanic.
-
-#O que é WoE?
-
-O Weight of Evidence (WoE) mede a relação entre a distribuição de eventos e não eventos em uma categoria específica.
-
-WoE=ln(
-%evento
-%n
-a
-˜
-o evento
-	​
-
-)
-
-Valores positivos indicam maior concentração de não eventos, enquanto valores negativos indicam maior concentração de eventos.
-
-#O que é IV?
-
-O Information Value (IV) mede o poder preditivo de uma variável.
-
-IV=∑(%n
-a
-˜
-o evento−%evento)×WoE
-
-Uma interpretação comum do IV é:
-
-IV	Interpretação
-< 0.02	Sem poder preditivo
-0.02 – 0.1	Fraco
-0.1 – 0.3	Médio
-0.3 – 0.5	Forte
-> 0.5	Muito forte
+Mas quando comecei a usar Python para selecionar e criar variáveis, percebi que faltava uma função que pudesse trazer essas métricas para a análise. Então, resolvi criar minhas próprias funções em Python para gerar tabelas que mostrassem o WoE e o IV.
 
 
 # WoE e IV para variáveis discretas
@@ -127,7 +85,7 @@ Então, aqui está como ficou a função para as variáveis contínuas:
 <script src="https://gist.github.com/DeborahBarbedo/d9ddd529f9b4359e4a867a649ab9544b.js"></script>
 
 
-Após definir a estratégia de discretização em decis, a função passou a gerar tabelas mais interpretáveis e consistentes para variáveis contínuas.
+Foi um trabalho árduo, mas o resultado foi bem satisfatório!
 
 
 | variable |                 limit |        0 |        1 |    Distr |       WoE |   IV |
@@ -154,7 +112,7 @@ Após definir a estratégia de discretização em decis, a função passou a ger
 |     Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.37 |
 
 
-# Função consolidada para variáveis contínuas e categóricas
+# Tudo junto agora
 
 Depois de superar os obstáculos iniciais, decidi me desafiar ainda mais e criar outra função incrível - aquela que uniria as métricas tanto das variáveis discretas quanto das contínuas em uma única tabela.
 
@@ -192,51 +150,11 @@ A tabela final ficou da seguinte forma:
 |     Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 0.556679 | -0.585766 | 0.040000 |          |
 |     Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.370000 |          |
 
-
-
-# Interpretando os resultados
-
-Observando os resultados do conjunto Titanic:
-
-A variável Sex apresentou IV superior a 1.3, indicando altíssimo poder preditivo.
-A variável Fare apresentou IV próximo de 0.37, sugerindo forte capacidade de discriminação.
-Já a variável Age apresentou IV mais baixo (0.09), indicando menor contribuição preditiva isoladamente.
-
-Essas métricas ajudam na:
-
-seleção de variáveis;
-criação de scorecards;
-transformação de variáveis para regressão logística;
-identificação de relações não lineares.
-
-# Conclusão
-
-O uso de WoE e IV pode melhorar significativamente a interpretabilidade e a capacidade preditiva de modelos de regressão logística.
-
-Além de auxiliar na seleção de variáveis, essas métricas ajudam a entender como diferentes faixas ou categorias influenciam a probabilidade do evento de interesse.
-
-As funções desenvolvidas neste post permitem:
-
-calcular WoE e IV para variáveis categóricas;
-discretizar variáveis contínuas automaticamente;
-consolidar os resultados em tabelas únicas para análise.
-
-No próximo post, apresentarei em detalhes:
-
-como o WoE é calculado;
-como interpretar o IV;
-boas práticas de binning;
-cuidados para evitar overfitting.
-
-Também mostrarei exemplos práticos de aplicação em modelos preditivos.
-
 Vocês gostaram das minhas funções para o cálculo do IV e WoE em Python? Eu amei criá-las, mas percebi que ainda tem muita gente por aí que fica meio perdida com essas métricas e não sabe como utilizá-las para melhorar seus modelos de regressão logística.
 
 Por isso, decidi que é hora de criar um post e explicar tudo bem detalhadamente! Vou mostrar como é realizado o [cálculo do IV e do WoE](https://deborahbarbedo.github.io/pt/2023-06-12-WoE_IV_Calculation), e dar dicas valiosas sobre como tomar decisões e escolhas inteligentes para melhorar seus modelos com base nessas métricas.
 
 Estou super empolgada para compartilhar tudo isso com vocês, então fiquem ligados(as)!
-
-
 
 # Referências:
 

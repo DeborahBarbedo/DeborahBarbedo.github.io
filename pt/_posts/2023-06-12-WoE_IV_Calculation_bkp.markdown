@@ -11,7 +11,7 @@ category: Análise de dados
 # multiple tag entries are possible
 tags: [Análise de dados, Regressão logística, Seleção de variáveis, Valor de Informação (IV), Peso de Evidência (WoE), Conjunto de Dados Titanic]
 # thumbnail image for post
-img: ":WoE_IV_Python_calculo.jpg"
+img: ":IV_and_WoE.jpg"
 # disable comments on this page
 #comments_disable: true
 
