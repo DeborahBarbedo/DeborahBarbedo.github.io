@@ -190,7 +190,7 @@ $$
 \phi(x,y) = (x^2,\sqrt{2}xy,y^2)
 $$
 
-Ou seja, o kernel realiza implicitamente o cálculo do produto interno em um espaço de maior dimensão, sem que seja necessário computar explicitamente a transformação \(\phi\).
+Ou seja, o kernel realiza implicitamente o cálculo do produto interno em um espaço de maior dimensão, sem que seja necessário computar explicitamente a transformação $ \(\phi\) $ .
 
 Isso torna o treinamento computacionalmente mais eficiente, especialmente quando trabalhamos com espaços de características muito grandes.
 
@@ -216,9 +216,9 @@ K(\mathbf{x}, \mathbf{y}) = (\gamma \mathbf{x}^T \mathbf{y} + c)^d
 $$
 
 onde:
-- \(d\) define o grau do polinômio;
-- \(\gamma\) controla a influência dos dados;
-- \(c\) é uma constante de ajuste.
+- $ \(d\) $ define o grau do polinômio;
+- $ \(\gamma\) $ controla a influência dos dados;
+- $ \(c\) $ é uma constante de ajuste.
 
 ---
 
