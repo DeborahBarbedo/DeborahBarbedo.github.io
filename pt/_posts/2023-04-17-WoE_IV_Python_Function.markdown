@@ -237,7 +237,7 @@ O repositório contém as funções desenvolvidas para o cálculo de WoE e IV, i
 - exemplos de aplicação no [dataset Titanic](https://www.kaggle.com/competitions/titanic/data).
 
 
-# Referências:
+## Referências:
 
 * Anderson, Raymond. The Credit Scoring Toolkit: Theory and Practice for Retail Credit Risk Management and Decision Automation. Oxford University Press, 2007.
 
