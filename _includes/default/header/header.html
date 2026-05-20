@@ -12,9 +12,11 @@
 {%- capture page_title_tag -%} {{ site.data.owner[lng].brand }} - {{ page_title }} {%- endcapture -%}
 
 {%- if  page.layout == 'post' -%}
-<title>{{ page_title | truncate: 60 }}</title>
+  {%-comment-%} Mantém um limite seguro para posts não ficarem gigantescos nos buscadores {%-endcomment-%}
+  <title>{{ page_title | truncate: 70 }}</title>
 {%- else -%}
-<title>{{ page_title_tag | truncate: 60 }}</title>
+  {%-comment-%} Remove o truncate para as abas principais lerem o texto longo que você configurou nos arquivos YML {%-endcomment-%}
+  <title>{{ page_title_tag }}</title>
 {%- endif %}
 
 {%- if site.data.conf.main.google_font_load_in_head -%}
