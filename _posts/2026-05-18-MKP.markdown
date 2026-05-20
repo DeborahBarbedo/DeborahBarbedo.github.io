@@ -1,0 +1,342 @@
+---
+# multilingual page pair id, this must pair with translations of this page. (This name must be unique)
+lng_pair: 5_SMKP
+title: "Context-Aware Multiple Knapsack Optimization with Environmental Affinities"
+
+# post specific
+# if not specified, .name will be used from _data/owner/[language].yml
+#author: "Deborah Cholodoysky Barbedo Pereira"
+# multiple category is not supported
+category: Optimization
+# multiple tag entries are possible
+tags: [Combinatorial Optimization, Multiple Knapsack Problem, Google OR-Tools, Python, Integer Linear Programming, SCIP ]
+# thumbnail image for post
+img: ":SMKP.jpg"
+# disable comments on this page
+#comments_disable: true
+
+# publish date
+date: 2026-05-20 10:46:53 +0900
+
+# seo
+# if not specified, date will be used.
+#meta_modify_date: 2021-08-10 11:32:53 +0900
+# check the meta_common_description in _data/owner/[language].yml
+meta_description: "Context-aware extension of the Multiple Knapsack Problem (MKP) using environmental affinities, binary integer linear programming, and Google OR-Tools with SCIP in Python."
+# optional
+# please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
+# image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
+image_viewer_on: true
+# please use the "image_lazy_loader_on" below to enable image lazy loader for individual pages or posts (_posts/ or [language]/_posts folders).
+# image lazy loader can be enabled or disabled for all posts using the "image_lazy_loader_posts: true" setting in _data/conf/main.yml.
+image_lazy_loader_on: true
+# exclude from on site search
+#on_site_search_exclude: true
+# exclude from search engines
+#search_engine_exclude: true
+# to disable this page, simply set published: false or delete this file
+#published: false
+---
+
+<!-- outline-start -->
+
+In this article, I present a contextual extension of the Multiple Knapsack Problem (MKP), incorporating environmental constraints such as temperature and humidity into a MILP model implemented with Google OR-Tools and SCIP.
+
+<!-- outline-end -->
+
+The Multiple Knapsack Problem (MKP) is one of the classical problems in combinatorial optimization, commonly used to model scenarios in which multiple containers with limited capacity must accommodate items with different weights and values. In its traditional formulation, the problem considers only the profit associated with each item and the capacity constraints of each container.
+
+However, what happens when items cannot be assigned to any container due to environmental or operational conditions? Real-world allocation problems often require assignment mechanisms that account for compatibility between the item and the location where it will be stored.
+
+In this work, I present a practical extension of the MKP that incorporates item–knapsack affinities. In this approach, qualitative constraints associated with both the product and the container are transformed into quantitative criteria. From this transformation, a contextual affinity function is constructed to measure the compatibility between items and containers.
+
+
+
+> Instead of simply maximizing value, this model maximizes contextual suitability, bringing mathematical optimization closer to real human behavior in packing tasks.
+
+
+
+To illustrate the application, we use a grocery shopping scenario, where different products must be distributed among transport bags. In this setting, insulated bags are more suitable for items such as frozen chicken and ice cream, while paper bags are less appropriate for heavy or wet products. This example demonstrates how environmental and physical characteristics can directly influence allocation quality.
+
+The problem is formulated as a Mixed-Integer Linear Program (MILP) using Google OR-Tools in Python, solved with the SCIP solver. The objective is to maximize the contextual value of allocations while respecting both physical capacity constraints and environmental compatibility requirements.
+
+# Problem Definition
+
+In the hypothetical scenario considered, four types of grocery bags are used: insulated, fabric, plastic, and paper bags. Each one has a maximum weight capacity and different levels of affinity with respect to the humidity and temperature conditions of the transported items.
+
+The following table describes the available bags:
+
+| ID | Type | Capacity (kg) | Compatible Temperatures | Compatible Humidity | Notes |
+| :--- | :--- | :---: | :--- | :--- | :--- |
+| B1 | Insulated | 10 | Cold, Fresh, Very Cold | Humid | Ideal for refrigerated items |
+| B2 | Fabric | 8 | Fresh, Ambient | Dry | Breathable, not waterproof |
+| B3 | Plastic | 6 | Ambient, Fresh | Dry, Humid | Protection against liquids |
+| B4 | Paper | 5 | Ambient | Dry | Unsuitable for humidity |
+
+The items considered in the example represent products with different environmental requirements, weights, and economic values. Refrigerated products, such as frozen chicken and ice cream, require thermal compatibility, while dry items demand low-humidity environments.
+
+The following table describes the items used in the computational experiment:
+
+| ID | Name | Weight (kg) | Value | Storage Type | Temperature | Humidity |
+| :--- | :--- | :---: | :---: | :--- | :--- | :--- |
+| I1 | Frozen Chicken | 3.0 | 25.00 | Refrigerated | Cold | Humid |
+| I2 | Rice | 2.0 | 12.00 | Dry Goods | Ambient | Dry |
+| I3 | Liquid Soap | 1.5 | 9.50 | Liquid | Ambient | Humid |
+| I4 | Book | 1.0 | 22.00 | Dry Goods | Ambient | Dry |
+| I5 | Ice Cream | 2.5 | 18.00 | Frozen | Very Cold | Humid |
+| I6 | Tomato | 2.0 | 7.00 | Fresh Produce | Fresh | Humid |
+| I7 | Panettone | 3.0 | 20.00 | Dry Goods | Ambient | Dry |
+| I8 | Shampoo | 1.2 | 15.00 | Liquid | Ambient | Humid |
+
+# Affinity Matrix
+
+For each item–bag pair, a contextual value $v_{ib}$ is computed based on temperature affinity, humidity affinity, and the economic value of the item.
+
+Unlike the traditional Multiple Knapsack Problem, where the value depends only on the item:
+
+- Traditional MKP
+
+$$
+v_i
+$$
+
+- Proposed Model
+
+$$
+v_{ib}
+$$
+
+In the proposed model, the value depends simultaneously on both the item $i$ and the bag $b$, introducing contextual dependency into the objective function.
+
+$$
+v_{ib} =
+\frac{
+Score^{temp}_{ib}
++
+Score^{hum}_{ib}
++
+Value_i^{norm}
+}{3}
+$$
+
+---
+
+## Calculation Example
+
+For item **I1 (Frozen Chicken)** and bag **B1 (Insulated)**:
+
+| Criterion | Score |
+| :--- | :---: |
+| Compatible temperature | 1 |
+| Compatible humidity | 1 |
+| Normalized value | $25/25 = 1$ |
+
+Final score:
+
+$$
+\frac{1 + 1 + 1}{3} = 1.0
+$$
+
+---
+
+The compatibility matrix was constructed using environmental humidity constraints, preventing, for example, the allocation of humid products into paper bags.
+
+> The main contribution of the model lies in transforming qualitative rules into quantitative coefficients directly used in the objective function of the optimization problem.
+
+In the Python implementation, the scores are stored in the `values[(item, bag)]` structure and later used in the mathematical formulation of the MILP.
+
+<script src="https://gist.github.com/DeborahBarbedo/8f82aefd1396f569dff2095e5cd68586.js"></script>
+
+# Optimization
+
+The problem is formulated as a binary integer linear program, in which each decision variable represents the assignment of an item to a bag.
+
+## Model Characteristics
+
+The proposed model can be characterized as a contextual extension of the classical Multiple Knapsack Problem, since the item value is no longer fixed and instead depends on the item–bag combination.
+
+## Indices
+
+- $i = 1, \dots, m$: items
+
+- $b = 1, \dots, n$: bags
+
+## Parameters
+
+- $w_i$: weight of item $i$
+
+- $v_{ib}$: contextual value of item $i$ when assigned to bag $b$
+
+- $c_b$: capacity of bag $b$
+
+## Decision variables
+
+Binary variable:
+
+$$
+x_{i,b} =
+\begin{cases}
+1, & \text{if item } i \text{ is assigned to bag } b \\
+0, & \text{otherwise}
+\end{cases}
+$$
+
+$$
+x_{i,b} \in \{0,1\},
+\quad
+\forall i = 1, \dots, m,
+\quad
+\forall b = 1, \dots, n
+$$
+
+## Capacity constraint
+
+The sum of the weights assigned to each bag cannot exceed its maximum capacity.
+
+$$
+\sum_{i=1}^{m} w_i x_{ib} \leq c_b \quad \forall b=1, \dots,n
+$$
+
+## Single assignment constraint
+
+Each item can be assigned to at most one bag:
+
+$$
+\sum_{b=1}^{n} x_{ib} \leq 1
+\quad
+\forall i = 1, \dots, m
+$$
+
+## Compatibility constraint
+
+This constraint prevents items from being assigned to environmentally incompatible bags.
+
+
+$$
+Compatibility_{i,b} =
+\begin{cases}
+1, & \text{ if item } i \text{ is compatible with bag  } b \\
+0, & \text{ if item } i \text{ is NOT compatible with bag } b
+\end{cases}
+$$
+
+$$
+Compatibility_{i,b} \in \{0,1\},
+\quad
+\forall i = 1, \dots, m,
+\quad
+\forall b = 1, \dots, n
+$$
+
+$$
+x_{ib} \leq Compatibility_{ib}
+$$
+
+
+When $Compatibility_{ib} = 0$, the decision variable $x_{ib}$ is forced to take a value of zero.
+
+## Objective Function
+
+Maximize the total value of the items assigned to the bags:
+
+$$
+\max Z =
+\sum_{i=1}^{m}
+\sum_{b=1}^{n}
+v_{ib} x_{ib}
+$$
+
+
+Thus, the model simultaneously seeks to maximize contextual fitness while respecting physical and environmental allocation constraints.
+
+# Implementation in Python
+
+The implementation was developed in Python using Google OR-Tools with the SCIP solver to model and solve the optimization problem.
+
+The snippet below presents the core of the MILP formulation, including:
+
+- creation of the binary decision variables;
+- capacity constraints;
+- single assignment constraints;
+- environmental compatibility constraints;
+- definition of the objective function;
+- model resolution.
+
+> The preprocessing step responsible for constructing the contextual affinity matrix was presented previously.
+
+---
+
+<script src="https://gist.github.com/DeborahBarbedo/ec439df69af1825966acfab19ac4403f.js"></script>
+
+## Final Result
+
+The model prioritizes maximizing the contextual affinity between item and bag, rather than necessarily achieving optimal physical capacity utilization. This highlights the nature of the objective function, which is based on an environmental compatibility score.
+
+Furthermore, the total value obtained should not be interpreted as an absolute monetary value, but rather as the sum of the contextualized affinity scores between items and bags.
+
+---
+
+## Bag Allocation
+
+### **Thermal Bag (B1)**
+*Capacity: 10 kg | Occupied: 7.5 kg (75%)*
+
+- Frozen chicken (3.0 kg) - Score: 1.000
+- Ice cream (2.5 kg) - Score: 0.907
+- Tomato (2.0 kg) - Score: 0.760
+
+---
+
+### **Plastic Bag (B3)**
+*Capacity: 6 kg | Occupied: 2.7 kg (45%)*
+
+- Liquid soap (1.5 kg) - Score: 0.793
+- Shampoo (1.2 kg) - Score: 0.867
+
+---
+
+### **Fabric Bag (B2)**
+*Capacity: 8 kg | Occupied: 6.0 kg (75%)*
+
+- Rice (2.0 kg) - Score: 0.827
+- Book (1.0 kg) - Score: 0.960
+- Panettone (3.0 kg) - Score: 0.933
+
+---
+
+## Total Score
+
+$$
+Z = 7.047
+$$
+
+---
+
+Unlike the traditional Multiple Knapsack Problem, where item values are fixed, the proposed model introduces contextual dependency into the item–bag assignment process. As a result, the utility associated with an item varies according to the environmental characteristics of the selected bag.
+
+It can also be observed that the model does not necessarily utilize all available bags, since the current formulation does not impose constraints or incentives for minimum usage. Thus, the final solution reflects only the maximization of the contextual marginal value defined by the objective function.
+
+> The proposed formulation transforms the classical fixed-value knapsack paradigm into a context-dependent allocation framework, where utility emerges from the interaction between item and environment.
+
+---
+
+## Source Code
+
+The complete Python code, including the construction of the affinity matrix and the mathematical modeling in Google OR-Tools, is available in the repository below:
+
+[Multi-Knapsack Optimization with Preference-Based Item Assignment](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/Multi-Knapsack%20Optimization%20with%20Preference-Based%20Item%20Assignment)
+
+
+# Referências
+
+- Google OR-Tools - *Assignment with Task Sizes*  
+[[link]](https://developers.google.com/optimization/assignment/assignment_cp)
+
+- Google OR-Tools - *Linear Optimization and Knapsack Examples*  
+[[link]](https://developers.google.com/optimization/pack/knapsack)
+
+- Kellerer, H.; Pferschy, U.; Pisinger, D.  
+*Knapsack Problems*. Springer, 2004.
+
+- Martello, S.; Toth, P.  
+*Knapsack Problems: Algorithms and Computer Implementations*. Wiley, 1990.

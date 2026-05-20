@@ -11,7 +11,7 @@ category: Otimização
 # multiple tag entries are possible
 tags: [Otimização Combinatória, Multiple Knapsack Problem, Google OR-Tools, Python, Programação Linear Inteira, SCIP ]
 # thumbnail image for post
-img: ":SVM.jpg"
+img: ":SMKP.jpg"
 # disable comments on this page
 #comments_disable: true
 
