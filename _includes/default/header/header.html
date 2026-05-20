@@ -13,7 +13,7 @@
 
 {%- if  page.layout == 'post' -%}
   {%-comment-%} Mantém um limite seguro para posts não ficarem gigantescos nos buscadores {%-endcomment-%}
-  <title>{{ page_title | truncate: 70 }}</title>
+  <title>{{ page_title | truncate: 69 }}</title>
 {%- else -%}
   {%-comment-%} Remove o truncate para as abas principais lerem o texto longo que você configurou nos arquivos YML {%-endcomment-%}
   <title>{{ page_title_tag }}</title>
