@@ -111,7 +111,7 @@ post:
 
 # for post-list layout
 post-list:
-  title: Blog
+  title: Blog Técnico | Artigos de Data Science e Machine Learning
   button_name: Blog
   upside_down_tabs:
     tab:
@@ -135,20 +135,20 @@ post-list:
 
 # for home layout
 home:
-  title: Bem vindo
+  title: Deborah Barbedo | Ciência de Dados Aplicada
   button_name: Principal
   new_posts_title: Novos artigos
   new_posts_show_more_button: Veja mais ...
 
 # for archives layout
 archives:
-  title: Arquivo
+  title: Arquivo de Posts | Tutoriais e Códigos de Ciência de Dados
   button_name: Arquivo
   page_header: Arquivo
 
 # for about layout
 about:
-  title: Sobre
+  title: Sobre Mim | Ciência de Dados e Inteligência Artificial
   button_name: Sobre
   email_title: Email
 
