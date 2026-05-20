@@ -135,9 +135,9 @@ O Teorema de Cover afirma que padrões complexos possuem maior probabilidade de 
 Com base nessa ideia, podemos aplicar transformações nos dados para mapeá-los em um novo espaço de características de dimensão mais elevada. Por exemplo, uma transformação como:
 
 
-\[
-(x, y) \rightarrow (x^2, 2xy, y^2)
-\]
+$$
+(x, y) \rightarrow (x^2, \sqrt(2)xy, y^2)
+$$
 
 
 pode tornar separável um conjunto que originalmente não era linearmente separável.
@@ -162,31 +162,31 @@ Pelo Teorema de Mercer, determinadas funções kernel podem ser interpretadas co
 
 Considere o seguinte kernel:
 
-\[
+$$
 K(\mathbf{w}, \mathbf{q}) = (\mathbf{w}^T \mathbf{q})^2
-\]
+$$
 
 Expandindo o produto interno:
 
-\[
+$$
 = (x_1x_2 + y_1y_2)^2
-\]
+$$
 
-\[
+$$
 = x_1^2x_2^2 + 2x_1x_2y_1y_2 + y_1^2y_2^2
-\]
+$$
 
 Esse resultado pode ser reescrito como:
 
-\[
+$$
 = \phi(\mathbf{w})^T \phi(\mathbf{q})
-\]
+$$
 
 onde:
 
-\[
+$$
 \phi(x,y) = (x^2,\sqrt{2}xy,y^2)
-\]
+$$
 
 Ou seja, o kernel realiza implicitamente o cálculo do produto interno em um espaço de maior dimensão, sem que seja necessário computar explicitamente a transformação \(\phi\).
 
@@ -209,9 +209,9 @@ Cada kernel define implicitamente uma forma diferente de transformação do espa
 
 O kernel polinomial permite representar fronteiras de decisão não lineares por meio de combinações polinomiais entre os atributos.
 
-\[
+$$
 K(\mathbf{x}, \mathbf{y}) = (\gamma \mathbf{x}^T \mathbf{y} + c)^d
-\]
+$$
 
 onde:
 - \(d\) define o grau do polinômio;
@@ -224,9 +224,9 @@ onde:
 
 O kernel radial (*Radial Basis Function*) é um dos mais utilizados em SVM devido à sua capacidade de modelar relações altamente não lineares.
 
-\[
+$$
 K(\mathbf{x}, \mathbf{y}) = e^{-\gamma \|\mathbf{x}-\mathbf{y}\|^2}
-\]
+$$
 
 Esse kernel mede similaridade com base na distância euclidiana entre os pontos: quanto mais próximos eles estão, maior tende a ser o valor do kernel.
 
@@ -236,9 +236,9 @@ Esse kernel mede similaridade com base na distância euclidiana entre os pontos:
 
 O kernel sigmoide possui comportamento semelhante ao de neurônios artificiais utilizados em redes neurais.
 
-\[
+$$
 K(\mathbf{x}, \mathbf{y}) = \tanh(\gamma \mathbf{x}^T \mathbf{y} + c)
-\]
+$$
 
 Seu uso é menos comum em comparação aos kernels polinomial e radial.
 
