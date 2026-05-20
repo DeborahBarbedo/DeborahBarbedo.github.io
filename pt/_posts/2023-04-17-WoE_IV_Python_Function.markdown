@@ -37,205 +37,213 @@ image_lazy_loader_on: true
 # to disable this page, simply set published: false or delete this file
 #published: false
 
-excerpt: "Aprenda a calcular Weight of Evidence (WoE) e Information Value (IV) em Python para seleção de variáveis em modelos de regressão logística."
+excerpt: "Veja como utilizar WoE e IV em Python para análise preditiva, seleção de variáveis e regressão logística."
 
 ---
 
+<!-- outline-start -->
 
-O Weight of Evidence (WoE) e o Information Value (IV) são métricas amplamente utilizadas em problemas de classificação binária, especialmente em modelos de regressão logística, análise de risco de crédito e scorecards.
+Aprenda a calcular Weight of Evidence (WoE) e Information Value (IV) em Python para seleção de variáveis em regressão logística, utilizando exemplos práticos com o dataset Titanic.
 
-Essas métricas ajudam a avaliar:
+<!-- outline-end -->
 
-o poder preditivo de uma variável;
-a relação entre categorias e o evento de interesse;
-a qualidade das transformações aplicadas às variáveis.
+O **Weight of Evidence (WoE)** e o **Information Value (IV)** são métricas amplamente utilizadas em problemas de classificação binária, especialmente em modelos de regressão logística, análise de risco de crédito e scorecards.
 
-Durante alguns projetos em Python, senti falta de funções simples e reutilizáveis para calcular WoE e IV de forma prática. Por isso, decidi desenvolver minhas próprias funções para:
+Essas métricas auxiliam na avaliação:
 
-variáveis categóricas;
-variáveis contínuas;
-geração de tabelas consolidadas com WoE e IV.
+- do poder preditivo de uma variável;
+- da relação entre categorias e o evento de interesse;
+- da qualidade das transformações aplicadas às variáveis.
 
-Neste post, apresento essas funções utilizando o conjunto de dados clássico do Titanic.
+Durante alguns projetos em Python, senti falta de funções simples e reutilizáveis para calcular WoE e IV de maneira prática. Por isso, decidi desenvolver minhas próprias funções para:
 
-#O que é WoE?
+- variáveis categóricas;
+- variáveis contínuas;
+- geração de tabelas consolidadas com WoE e IV.
 
-O Weight of Evidence (WoE) mede a relação entre a distribuição de eventos e não eventos em uma categoria específica.
+Neste post, apresento essas funções utilizando o clássico [conjunto de dados Titanic](https://www.kaggle.com/competitions/titanic/data).
 
-WoE=ln(
-%evento
-%n
-a
-˜
-o evento
-	​
 
-)
+## O que é WoE?
+
+O **Weight of Evidence (WoE)** mede a relação entre a distribuição de eventos e não eventos em uma categoria específica.
+
+$$
+WoE = \ln\left(\frac{\%\,\text{não evento}}{\%\,\text{evento}}\right)
+$$
 
 Valores positivos indicam maior concentração de não eventos, enquanto valores negativos indicam maior concentração de eventos.
 
-#O que é IV?
+## O que é IV?
 
-O Information Value (IV) mede o poder preditivo de uma variável.
+O **Information Value (IV)** mede o poder preditivo de uma variável.
 
-IV=∑(%n
-a
-˜
-o evento−%evento)×WoE
+$$
+IV = \sum (\%\,\text{não evento} - \%\,\text{evento}) \times WoE
+$$
 
 Uma interpretação comum do IV é:
 
-IV	Interpretação
-< 0.02	Sem poder preditivo
-0.02 – 0.1	Fraco
-0.1 – 0.3	Médio
-0.3 – 0.5	Forte
-> 0.5	Muito forte
+| IV | Interpretação |
+|---|---|
+| < 0.02 | Sem poder preditivo |
+| 0.02 – 0.1 | Fraco |
+| 0.1 – 0.3 | Médio |
+| 0.3 – 0.5 | Forte |
+| > 0.5 | Muito forte |
 
 
-# WoE e IV para variáveis discretas
 
-Comecei criando uma função para as variáveis discretas e fui me aprimorando a partir daí. Quem sabe, talvez você também possa criar suas próprias funções para aprimorar sua análise de dados!
+
+## WoE e IV para variáveis discretas
+
+Comecei desenvolvendo uma função para variáveis discretas e, a partir dela, fui refinando a abordagem. Talvez isso também te incentive a criar suas próprias funções e aprofundar suas análises de dados.
 
 <script src="https://gist.github.com/DeborahBarbedo/08ed242316fe3b9ed3350460e2a140f3.js"></script>
 
 
-Então, inseri alguns dados da competição [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) na minha função de WoE e IV em Python, e deixe-me dizer, os resultados foram realmente surpreendentes!
+Em seguida, utilizei dados da competição [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) para aplicar a função de WoE e IV em Python. Os resultados foram bastante interessantes:
 
+| Survived | 0 | 1 | Distr | WoE | IV | IV_total |
+|----------|---|---|-------|-----|----|----------|
+| female | 0.147541 | 0.681287 | 0.216562 | -1.529877 | 0.816565 | 1.341681 |
+| male | 0.852459 | 0.318713 | 2.674688 | 0.983833 | 0.525116 | 1.341681 |
+| C | 0.136612 | 0.273529 | 0.499442 | -0.694264 | 0.095057 | 0.122728 |
+| Q | 0.085610 | 0.088235 | 0.970249 | -0.030203 | 0.000079 | 0.122728 |
+| S | 0.777778 | 0.638235 | 1.218638 | 0.197734 | 0.027592 | 0.122728 |
 
-| Survived |        0 |        1 |    Distr |       WoE |       IV | IV_total |
-|---------:|---------:|---------:|---------:|----------:|---------:|---------:|
-|   female | 0.147541 | 0.681287 | 0.216562 | -1.529877 | 0.816565 | 1.341681 |
-|     male | 0.852459 | 0.318713 | 2.674688 |  0.983833 | 0.525116 | 1.341681 |
-|        C | 0.136612 | 0.273529 | 0.499442 | -0.694264 | 0.095057 | 0.122728 |
-|        Q | 0.085610 | 0.088235 | 0.970249 | -0.030203 | 0.000079 | 0.122728 |
-|        S | 0.777778 | 0.638235 | 1.218638 |  0.197734 | 0.027592 | 0.122728 |
+A função gerou uma tabela que evidencia claramente os valores de WoE e IV para cada categoria, permitindo compreender melhor quais variáveis têm maior capacidade de discriminar o evento de interesse.
 
+Se você estiver trabalhando com esse mesmo conjunto de dados (ou qualquer outro), recomendo fortemente testar essa abordagem. Trata-se de uma ferramenta bastante útil para exploração de dados e melhoria de modelos preditivos.
 
-A função gerou uma tabela que claramente mostrou os valores de WoE e IV para cada variável no conjunto de dados, me dando uma compreensão melhor de quais fatores eram mais importantes para prever as taxas de sobrevivência.
+## WoE e IV para variáveis contínuas
 
-Se você estiver trabalhando com esse mesmo conjunto de dados (ou qualquer outro, na verdade), eu altamente recomendo testar essa função. É uma ferramenta poderosa para obter insights sobre seus dados e melhorar seus modelos preditivos.
+No caso de variáveis contínuas, o processo se torna um pouco mais desafiador, principalmente na definição da melhor estratégia de discretização. Isso porque diferentes problemas podem exigir diferentes formas de binning.
 
-# WoE e IV para variáveis contínuas
+Após algumas tentativas e rascunhos, optei por utilizar a divisão em decis, o que permite uma análise mais estável da distribuição e, caso necessário, a agregação posterior em quartis ou outros agrupamentos.
 
-Quando se trata das variáveis contínuas, a coisa ficou um pouco mais complicada para mim. Eu não tinha certeza de qual era a melhor forma de dividir essas variáveis para a análise, já que elas podem ser bem diferentes dependendo do problema.
-
-Fiquei pensando e rascunhando várias ideias, até que finalmente decidi colocar tudo em decis, porque isso permitiria analisar o retorno pelo IV em partes maiores (quartis, por exemplo), se fosse necessário.
-
-Então, aqui está como ficou a função para as variáveis contínuas:
+Essa escolha resultou em uma abordagem mais interpretável e consistente para o cálculo de WoE e IV em variáveis contínuas.
 
 <script src="https://gist.github.com/DeborahBarbedo/d9ddd529f9b4359e4a867a649ab9544b.js"></script>
 
 
-Após definir a estratégia de discretização em decis, a função passou a gerar tabelas mais interpretáveis e consistentes para variáveis contínuas.
+A função final passou a gerar tabelas mais estruturadas, facilitando a análise do poder preditivo de cada faixa das variáveis:
 
+| variável | faixa | 0 | 1 | distr | WoE | IV |
+|----------|------|---|---|-------|-----|----|
+| Age | <=[14.] | 0.058288 | 0.131579 | 0.442987 | -0.814214 | 0.06 |
+| Age | [14.] a [19.] | 0.096539 | 0.099415 | 0.971070 | -0.029356 | 0.00 |
+| Age | [19.] a [22.] | 0.087432 | 0.055556 | 1.573770 | 0.453474 | 0.01 |
+| Age | [22.] a [25.] | 0.080146 | 0.076023 | 1.054224 | 0.052805 | 0.00 |
+| Age | [25.] a [28.] | 0.067395 | 0.070175 | 0.960383 | -0.040424 | 0.00 |
+| Age | [28.] a [31.8] | 0.072860 | 0.076023 | 0.958386 | -0.042505 | 0.00 |
+| Age | [31.8] a [36.] | 0.085610 | 0.128655 | 0.665425 | -0.407330 | 0.02 |
+| Age | [36.] a [41.] | 0.061931 | 0.055556 | 1.114754 | 0.108634 | 0.00 |
+| Age | [41.] a [50.] | 0.085610 | 0.090643 | 0.944474 | -0.057127 | 0.00 |
+| Age | total | 1.000000 | 1.000000 | 1.000000 | 0.000000 | 0.09 |
+| Fare | <=[7.55] | 0.143898 | 0.038012 | 3.785624 | 1.331211 | 0.14 |
+| Fare | [7.55] a [7.8542] | 0.111111 | 0.076023 | 1.461538 | 0.379490 | 0.01 |
+| Fare | [7.8542] a [8.05] | 0.158470 | 0.055556 | 2.852459 | 1.048181 | 0.11 |
+| Fare | [8.05] a [10.5] | 0.109290 | 0.052632 | 2.076503 | 0.730685 | 0.04 |
+| Fare | [10.5] a [14.4542] | 0.087432 | 0.105263 | 0.830601 | -0.185606 | 0.00 |
+| Fare | [14.4542] a [21.6792] | 0.092896 | 0.108187 | 0.858662 | -0.152380 | 0.00 |
+| Fare | [21.6792] a [27.] | 0.078324 | 0.134503 | 0.582324 | -0.540729 | 0.03 |
+| Fare | [27.] a [39.6875] | 0.103825 | 0.099415 | 1.044359 | 0.043403 | 0.00 |
+| Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 0.556679 | -0.585766 | 0.04 |
+| Fare | total | 1.000000 | 1.000000 | 1.000000 | 0.000000 | 0.37 |
 
-| variable |                 limit |        0 |        1 |    Distr |       WoE |   IV |
-|---------:|----------------------:|---------:|---------:|---------:|----------:|-----:|
-|      Age |               <=[14.] | 0.058288 | 0.131579 | 0.442987 | -0.814214 | 0.06 |
-|      Age |         [14.] a [19.] | 0.096539 | 0.099415 | 0.971070 | -0.029356 | 0.00 |
-|      Age |         [19.] a [22.] | 0.087432 | 0.055556 | 1.573770 |  0.453474 | 0.01 |
-|      Age |         [22.] a [25.] | 0.080146 | 0.076023 | 1.054224 |  0.052805 | 0.00 |
-|      Age |         [25.] a [28.] | 0.067395 | 0.070175 | 0.960383 | -0.040424 | 0.00 |
-|      Age |        [28.] a [31.8] | 0.072860 | 0.076023 | 0.958386 | -0.042505 | 0.00 |
-|      Age |        [31.8] a [36.] | 0.085610 | 0.128655 | 0.665425 | -0.407330 | 0.02 |
-|      Age |         [36.] a [41.] | 0.061931 | 0.055556 | 1.114754 |  0.108634 | 0.00 |
-|      Age |         [41.] a [50.] | 0.085610 | 0.090643 | 0.944474 | -0.057127 | 0.00 |
-|      Age |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.09 |
-|     Fare |              <=[7.55] | 0.143898 | 0.038012 | 3.785624 |  1.331211 | 0.14 |
-|     Fare |     [7.55] a [7.8542] | 0.111111 | 0.076023 | 1.461538 |  0.379490 | 0.01 |
-|     Fare |     [7.8542] a [8.05] | 0.158470 | 0.055556 | 2.852459 |  1.048181 | 0.11 |
-|     Fare |       [8.05] a [10.5] | 0.109290 | 0.052632 | 2.076503 |  0.730685 | 0.04 |
-|     Fare |    [10.5] a [14.4542] | 0.087432 | 0.105263 | 0.830601 | -0.185606 | 0.00 |
-|     Fare | [14.4542] a [21.6792] | 0.092896 | 0.108187 | 0.858662 | -0.152380 | 0.00 |
-|     Fare |     [21.6792] a [27.] | 0.078324 | 0.134503 | 0.582324 | -0.540729 | 0.03 |
-|     Fare |     [27.] a [39.6875] | 0.103825 | 0.099415 | 1.044359 |  0.043403 | 0.00 |
-|     Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 0.556679 | -0.585766 | 0.04 |
-|     Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.37 |
+## Função consolidada para variáveis contínuas e categóricas
 
+Após superar os desafios iniciais, decidi avançar na implementação e desenvolver uma função consolidada capaz de calcular WoE e IV tanto para variáveis categóricas quanto contínuas em uma única estrutura.
 
-# Função consolidada para variáveis contínuas e categóricas
-
-Depois de superar os obstáculos iniciais, decidi me desafiar ainda mais e criar outra função incrível - aquela que uniria as métricas tanto das variáveis discretas quanto das contínuas em uma única tabela.
-
-Confesso que essa função foi bem mais rápida de criar! Então, sem mais delongas, aqui está a função que fiz para juntar tudo isso em uma tabela só:
+Essa abordagem simplifica o processo de análise, permitindo uma visão unificada do poder preditivo das variáveis.
 
 <script src="https://gist.github.com/DeborahBarbedo/bc3597b64ad2fcd54266664c62adbe3f.js"></script>
 
-A tabela final ficou da seguinte forma:
+A tabela final obtida é apresentada abaixo:
 
-| variable |                 limit |        0 |        1 |    Distr |       WoE |       IV | IV_total |
-|---------:|----------------------:|---------:|---------:|---------:|----------:|---------:|---------:|
-|   female |                       | 0.147541 | 0.681287 | 0.216562 | -1.529877 | 0.816565 | 1.341681 |
-|     male |                       | 0.852459 | 0.318713 | 2.674688 |  0.983833 | 0.525116 | 1.341681 |
-|        C |                       | 0.136612 | 0.273529 | 0.499442 | -0.694264 | 0.095057 | 0.122728 |
-|        Q |                       | 0.085610 | 0.088235 | 0.970249 | -0.030203 | 0.000079 | 0.122728 |
-|        S |                       | 0.777778 | 0.638235 | 1.218638 |  0.197734 | 0.027592 | 0.122728 |
-|      Age |               <=[14.] | 0.058288 | 0.131579 | 0.442987 | -0.814214 | 0.060000 |          |
-|      Age |         [14.] a [19.] | 0.096539 | 0.099415 | 0.971070 | -0.029356 | 0.000000 |          |
-|      Age |         [19.] a [22.] | 0.087432 | 0.055556 | 1.573770 |  0.453474 | 0.010000 |          |
-|      Age |         [22.] a [25.] | 0.080146 | 0.076023 | 1.054224 |  0.052805 | 0.000000 |          |
-|      Age |         [25.] a [28.] | 0.067395 | 0.070175 | 0.960383 | -0.040424 | 0.000000 |          |
-|      Age |        [28.] a [31.8] | 0.072860 | 0.076023 | 0.958386 | -0.042505 | 0.000000 |          |
-|      Age |        [31.8] a [36.] | 0.085610 | 0.128655 | 0.665425 | -0.407330 | 0.020000 |          |
-|      Age |         [36.] a [41.] | 0.061931 | 0.055556 | 1.114754 |  0.108634 | 0.000000 |          |
-|      Age |         [41.] a [50.] | 0.085610 | 0.090643 | 0.944474 | -0.057127 | 0.000000 |          |
-|      Age |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.090000 |          |
-|     Fare |              <=[7.55] | 0.143898 | 0.038012 | 3.785624 |  1.331211 | 0.140000 |          |
-|     Fare |     [7.55] a [7.8542] | 0.111111 | 0.076023 | 1.461538 |  0.379490 | 0.010000 |          |
-|     Fare |     [7.8542] a [8.05] | 0.158470 | 0.055556 | 2.852459 |  1.048181 | 0.110000 |          |
-|     Fare |       [8.05] a [10.5] | 0.109290 | 0.052632 | 2.076503 |  0.730685 | 0.040000 |          |
-|     Fare |    [10.5] a [14.4542] | 0.087432 | 0.105263 | 0.830601 | -0.185606 | 0.000000 |          |
-|     Fare | [14.4542] a [21.6792] | 0.092896 | 0.108187 | 0.858662 | -0.152380 | 0.000000 |          |
-|     Fare |     [21.6792] a [27.] | 0.078324 | 0.134503 | 0.582324 | -0.540729 | 0.030000 |          |
-|     Fare |     [27.] a [39.6875] | 0.103825 | 0.099415 | 1.044359 |  0.043403 | 0.000000 |          |
-|     Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 0.556679 | -0.585766 | 0.040000 |          |
-|     Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.370000 |          |
+| variável | faixa | 0 | 1 | distr | WoE | IV | IV_total |
+|----------|------|---|---|-------|-----|----|----------|
+| female |  | 0.147541 | 0.681287 | 0.216562 | -1.529877 | 0.816565 | 1.341681 |
+| male |  | 0.852459 | 0.318713 | 2.674688 | 0.983833 | 0.525116 | 1.341681 |
+| C |  | 0.136612 | 0.273529 | 0.499442 | -0.694264 | 0.095057 | 0.122728 |
+| Q |  | 0.085610 | 0.088235 | 0.970249 | -0.030203 | 0.000079 | 0.122728 |
+| S |  | 0.777778 | 0.638235 | 0.970249 | 0.197734 | 0.027592 | 0.122728 |
+| Age | <=[14.] | 0.058288 | 0.131579 | 0.442987 | -0.814214 | 0.060000 |  |
+| Age | [14.] a [19.] | 0.096539 | 0.099415 | 0.971070 | -0.029356 | 0.000000 |  |
+| Age | [19.] a [22.] | 0.087432 | 0.055556 | 1.573770 | 0.453474 | 0.010000 |  |
+| Age | [22.] a [25.] | 0.080146 | 0.076023 | 1.054224 | 0.052805 | 0.000000 |  |
+| Age | [25.] a [28.] | 0.067395 | 0.070175 | 0.960383 | -0.040424 | 0.000000 |  |
+| Age | [28.] a [31.8] | 0.072860 | 0.076023 | 0.958386 | -0.042505 | 0.000000 |  |
+| Age | [31.8] a [36.] | 0.085610 | 0.128655 | 0.665425 | -0.407330 | 0.020000 |  |
+| Age | [36.] a [41.] | 0.061931 | 0.055556 | 1.114754 | 0.108634 | 0.000000 |  |
+| Age | [41.] a [50.] | 0.085610 | 0.090643 | 0.944474 | -0.057127 | 0.000000 |  |
+| Age | total | 1.000000 | 1.000000 | 1.000000 | 0.000000 | 0.090000 |  |
+| Fare | <=[7.55] | 0.143898 | 0.038012 | 3.785624 | 1.331211 | 0.140000 |  |
+| Fare | [7.55] a [7.8542] | 0.111111 | 0.076023 | 1.461538 | 0.379490 | 0.010000 |  |
+| Fare | [7.8542] a [8.05] | 0.158470 | 0.055556 | 2.852459 | 1.048181 | 0.110000 |  |
+| Fare | [8.05] a [10.5] | 0.109290 | 0.052632 | 2.076503 | 0.730685 | 0.040000 |  |
+| Fare | [10.5] a [14.4542] | 0.087432 | 0.105263 | 0.830601 | -0.185606 | 0.000000 |  |
+| Fare | [14.4542] a [21.6792] | 0.092896 | 0.108187 | 0.858662 | -0.152380 | 0.000000 |  |
+| Fare | [21.6792] a [27.] | 0.078324 | 0.134503 | 0.582324 | -0.540729 | 0.030000 |  |
+| Fare | [27.] a [39.6875] | 0.103825 | 0.099415 | 1.044359 | 0.043403 | 0.000000 |  |
+| Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 0.556679 | -0.585766 | 0.040000 |  |
+| Fare | total | 1.000000 | 1.000000 | 1.000000 | 0.000000 | 0.370000 |  |
+
+## Interpretando os resultados
+
+Observando os resultados obtidos no conjunto de dados Titanic, é possível extrair algumas conclusões importantes sobre o poder preditivo das variáveis:
+
+- A variável **Sex** apresentou IV superior a 1.3, indicando altíssimo poder preditivo.
+- A variável **Fare** apresentou IV próximo de 0.37, sugerindo forte capacidade de discriminação.
+- Já a variável **Age** apresentou IV mais baixo (0.09), indicando menor contribuição preditiva quando analisada isoladamente.
+
+Essas métricas são amplamente utilizadas em tarefas de modelagem preditiva e podem apoiar decisões como:
+
+- seleção de variáveis;
+- construção de scorecards;
+- transformação de variáveis para regressão logística;
+- identificação de relações não lineares entre variáveis e o evento de interesse.
 
 
-
-# Interpretando os resultados
-
-Observando os resultados do conjunto Titanic:
-
-A variável Sex apresentou IV superior a 1.3, indicando altíssimo poder preditivo.
-A variável Fare apresentou IV próximo de 0.37, sugerindo forte capacidade de discriminação.
-Já a variável Age apresentou IV mais baixo (0.09), indicando menor contribuição preditiva isoladamente.
-
-Essas métricas ajudam na:
-
-seleção de variáveis;
-criação de scorecards;
-transformação de variáveis para regressão logística;
-identificação de relações não lineares.
-
-# Conclusão
+## Conclusão
 
 O uso de WoE e IV pode melhorar significativamente a interpretabilidade e a capacidade preditiva de modelos de regressão logística.
 
-Além de auxiliar na seleção de variáveis, essas métricas ajudam a entender como diferentes faixas ou categorias influenciam a probabilidade do evento de interesse.
+Além de auxiliar na seleção de variáveis, essas métricas permitem compreender como diferentes faixas ou categorias influenciam a probabilidade do evento de interesse.
 
 As funções desenvolvidas neste post permitem:
 
-calcular WoE e IV para variáveis categóricas;
-discretizar variáveis contínuas automaticamente;
-consolidar os resultados em tabelas únicas para análise.
+- calcular WoE e IV para variáveis categóricas;
+- discretizar variáveis contínuas automaticamente;
+- consolidar os resultados em uma única tabela para análise exploratória.
 
-No próximo post, apresentarei em detalhes:
+No próximo post, irei detalhar:
 
-como o WoE é calculado;
-como interpretar o IV;
-boas práticas de binning;
-cuidados para evitar overfitting.
+- como o WoE é calculado;
+- como interpretar o IV;
+- boas práticas de binning;
+- cuidados para evitar overfitting.
 
-Também mostrarei exemplos práticos de aplicação em modelos preditivos.
+Também apresentarei exemplos práticos de aplicação dessas métricas em modelos preditivos.
 
-Vocês gostaram das minhas funções para o cálculo do IV e WoE em Python? Eu amei criá-las, mas percebi que ainda tem muita gente por aí que fica meio perdida com essas métricas e não sabe como utilizá-las para melhorar seus modelos de regressão logística.
+---
 
-Por isso, decidi que é hora de criar um post e explicar tudo bem detalhadamente! Vou mostrar como é realizado o [cálculo do IV e do WoE](https://deborahbarbedo.github.io/pt/2023-06-12-WoE_IV_Calculation), e dar dicas valiosas sobre como tomar decisões e escolhas inteligentes para melhorar seus modelos com base nessas métricas.
+## Código e materiais complementares
 
-Estou super empolgada para compartilhar tudo isso com vocês, então fiquem ligados(as)!
+- [Interpretação e Seleção de Variáveis com WoE e IV](https://deborahbarbedo.github.io/pt/2023-05-08-Unpacking_WOE_and_IV)
+- [Como WoE e IV são calculados](https://deborahbarbedo.github.io/pt/2023-06-12-WoE_IV_Calculation)
 
+Os códigos utilizados neste post estão disponíveis no GitHub:
+
+- [Materiais de suporte no GitHub](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE)
+
+O repositório contém as funções desenvolvidas para o cálculo de WoE e IV, incluindo:
+
+- variáveis categóricas;
+- variáveis contínuas;
+- função consolidada;
+- exemplos de aplicação no [dataset Titanic](https://www.kaggle.com/competitions/titanic/data).
 
 
 # Referências:

@@ -11,7 +11,7 @@ category: Ciência de Dados
 # multiple tag entries are possible
 tags: [Python, Regressão Logística, Feature Engineering, Seleção de Variáveis, Weight of Evidence, Information Value, WoE, IV, Titanic Dataset, Credit Scoring]
 # thumbnail image for post
-img: ":WoE_IV_Python_calculo.jpg"
+img: ":IV_and_WoE.jpg"
 # disable comments on this page
 #comments_disable: true
 
