@@ -110,7 +110,7 @@ post:
 
 # for post-list layout
 post-list:
-  title: Technical Blog | Data Science, Machine Learning & Statistics Articles
+  title: Technical Blog | Data Science & AI Articles
   button_name: Blog
   upside_down_tabs:
     tab:
@@ -134,7 +134,7 @@ post-list:
 
 # for home layout
 home:
-  title: Deborah Barbedo | Applied Data Science & Operations Research
+  title: Applied Data Science & Operations Research
   button_name: Home
   new_posts_title: New Articles
   new_posts_show_more_button: View More ...
@@ -147,7 +147,7 @@ archives:
 
 # for about layout
 about:
-  title: About Me | Applied Data Science & Predictive Modeling
+  title: About Me | Data Science & Predictive Modeling
   button_name: About
   email_title: email
 
