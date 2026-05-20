@@ -116,6 +116,8 @@ O SVM busca, então, um equilíbrio entre:
 - maximizar a margem de separação;
 - minimizar os erros de classificação.
 
+![Soft Margins](:SVM\Margenssuaves.png){:data-align="center"}
+
 Esse equilíbrio é controlado pelo hiperparâmetro C:
 
 C alto → penaliza fortemente erros → margem rígida → risco de overfitting

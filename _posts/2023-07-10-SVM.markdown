@@ -11,7 +11,7 @@ category: Machine Learning
 # multiple tag entries are possible
 tags: [Support Vector Machines, SVM, Classification, Vapnik-Chervonenkis (VC) dimension, Hyperplanes, Support Vectors, Soft Margins, Kernel Trick, Binary Classification, Multiclass Classification ]
 # thumbnail image for post
-img: ":SVME.jpg"
+img: ":SVM.jpg"
 # disable comments on this page
 #comments_disable: true
 
