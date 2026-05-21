@@ -268,8 +268,37 @@
   @import "projects/project-container";
 {% endif %}
 
-nav[data-toggle="toc"] {
-  position: sticky !important;
-  top: 90px !important;
-  align-self: flex-start;
+/**********************************************************
+* Customizações de Posicionamento do TOC (Índice)
+***********************************************************/
+
+/* Aplica o comportamento apenas em telas grandes (Desktop) */
+@media (min-width: 1200px) {
+  /* Alvo na classe padrão de TOC do tema Mr. Green */
+  .toc, #toc, .post-directory, #post-directory {
+    position: fixed !important;
+    top: 80px !important;        /* Distância confortável do topo da página */
+    right: calc(50% - 630px) !important; /* Centralização dinâmica baseada no container do post */
+    left: auto !important;
+    bottom: auto !important;
+    width: 260px !important;     /* Largura ideal para não ocupar a tela toda */
+    max-height: 75vh !important; /* Evita que o índice passe da tela se o post for gigante */
+    overflow-y: auto !important; /* Cria barra de rolagem interna se houver muitos tópicos */
+    z-index: 99 !important;      /* Mantém o índice acima de outros elementos ao rolar */
+    background-color: var(--body-bg) !important; /* Acompanha a cor de fundo do tema (Claro/Escuro) */
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra leve para dar profundidade */
+  }
+}
+
+/* Garante que em telas menores (tablets e celulares) ele se comporte bem */
+@media (max-width: 1199px) {
+  .toc, #toc, .post-directory, #post-directory {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    margin-bottom: 30px !important;
+  }
 }
