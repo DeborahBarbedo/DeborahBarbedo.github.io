@@ -12,6 +12,7 @@ category: Optimization
 tags: [Combinatorial Optimization, Multiple Knapsack Problem, Google OR-Tools, Python, Integer Linear Programming, SCIP ]
 # thumbnail image for post
 img: ":SMKP.jpg"
+img_alt: "Context-aware Multiple Knapsack Problem optimization using environmental affinities and Google OR-Tools" 
 # disable comments on this page
 #comments_disable: true
 
@@ -60,7 +61,7 @@ To illustrate the application, we use a grocery shopping scenario, where differe
 
 The problem is formulated as a Mixed-Integer Linear Program (MILP) using Google OR-Tools in Python, solved with the SCIP solver. The objective is to maximize the contextual value of allocations while respecting both physical capacity constraints and environmental compatibility requirements.
 
-# Problem Definition
+## Problem Definition
 
 In the hypothetical scenario considered, four types of grocery bags are used: insulated, fabric, plastic, and paper bags. Each one has a maximum weight capacity and different levels of affinity with respect to the humidity and temperature conditions of the transported items.
 
@@ -88,7 +89,7 @@ The following table describes the items used in the computational experiment:
 | I7 | Panettone | 3.0 | 20.00 | Dry Goods | Ambient | Dry |
 | I8 | Shampoo | 1.2 | 15.00 | Liquid | Ambient | Humid |
 
-# Affinity Matrix
+## Affinity Matrix
 
 For each item–bag pair, a contextual value $v_{ib}$ is computed based on temperature affinity, humidity affinity, and the economic value of the item.
 
@@ -121,7 +122,7 @@ $$
 
 ---
 
-## Calculation Example
+### Calculation Example
 
 For item **I1 (Frozen Chicken)** and bag **B1 (Insulated)**:
 
@@ -147,21 +148,21 @@ In the Python implementation, the scores are stored in the `values[(item, bag)]`
 
 <script src="https://gist.github.com/DeborahBarbedo/8f82aefd1396f569dff2095e5cd68586.js"></script>
 
-# Optimization
+## Optimization
 
 The problem is formulated as a binary integer linear program, in which each decision variable represents the assignment of an item to a bag.
 
-## Model Characteristics
+### Model Characteristics
 
 The proposed model can be characterized as a contextual extension of the classical Multiple Knapsack Problem, since the item value is no longer fixed and instead depends on the item–bag combination.
 
-## Indices
+### Indices
 
 - $i = 1, \dots, m$: items
 
 - $b = 1, \dots, n$: bags
 
-## Parameters
+### Parameters
 
 - $w_i$: weight of item $i$
 
@@ -169,7 +170,7 @@ The proposed model can be characterized as a contextual extension of the classic
 
 - $c_b$: capacity of bag $b$
 
-## Decision variables
+### Decision variables
 
 Binary variable:
 
@@ -189,7 +190,7 @@ x_{i,b} \in \{0,1\},
 \forall b = 1, \dots, n
 $$
 
-## Capacity constraint
+### Capacity constraint
 
 The sum of the weights assigned to each bag cannot exceed its maximum capacity.
 
@@ -197,7 +198,7 @@ $$
 \sum_{i=1}^{m} w_i x_{ib} \leq c_b \quad \forall b=1, \dots,n
 $$
 
-## Single assignment constraint
+### Single assignment constraint
 
 Each item can be assigned to at most one bag:
 
@@ -207,7 +208,7 @@ $$
 \forall i = 1, \dots, m
 $$
 
-## Compatibility constraint
+### Compatibility constraint
 
 This constraint prevents items from being assigned to environmentally incompatible bags.
 
@@ -235,7 +236,7 @@ $$
 
 When $Compatibility_{ib} = 0$, the decision variable $x_{ib}$ is forced to take a value of zero.
 
-## Objective Function
+### Objective Function
 
 Maximize the total value of the items assigned to the bags:
 
@@ -249,7 +250,7 @@ $$
 
 Thus, the model simultaneously seeks to maximize contextual fitness while respecting physical and environmental allocation constraints.
 
-# Implementation in Python
+## Implementation in Python
 
 The implementation was developed in Python using Google OR-Tools with the SCIP solver to model and solve the optimization problem.
 
@@ -276,9 +277,9 @@ Furthermore, the total value obtained should not be interpreted as an absolute m
 
 ---
 
-## Bag Allocation
+### Bag Allocation
 
-### **Thermal Bag (B1)**
+#### **Thermal Bag (B1)**
 *Capacity: 10 kg | Occupied: 7.5 kg (75%)*
 
 - Frozen chicken (3.0 kg) - Score: 1.000
@@ -287,7 +288,7 @@ Furthermore, the total value obtained should not be interpreted as an absolute m
 
 ---
 
-### **Plastic Bag (B3)**
+#### **Plastic Bag (B3)**
 *Capacity: 6 kg | Occupied: 2.7 kg (45%)*
 
 - Liquid soap (1.5 kg) - Score: 0.793
@@ -295,7 +296,7 @@ Furthermore, the total value obtained should not be interpreted as an absolute m
 
 ---
 
-### **Fabric Bag (B2)**
+#### **Fabric Bag (B2)**
 *Capacity: 8 kg | Occupied: 6.0 kg (75%)*
 
 - Rice (2.0 kg) - Score: 0.827
@@ -304,7 +305,7 @@ Furthermore, the total value obtained should not be interpreted as an absolute m
 
 ---
 
-## Total Score
+### Total Score
 
 $$
 Z = 7.047
@@ -327,7 +328,7 @@ The complete Python code, including the construction of the affinity matrix and 
 [Multi-Knapsack Optimization with Preference-Based Item Assignment](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/Multi-Knapsack%20Optimization%20with%20Preference-Based%20Item%20Assignment)
 
 
-# Referências
+## Referências
 
 - Google OR-Tools - *Assignment with Task Sizes*  
 [[link]](https://developers.google.com/optimization/assignment/assignment_cp)
