@@ -212,69 +212,14 @@
 {% endif %}
 
 /**********************************************************
-* for layout specific content
-***********************************************************/
-
-{% if home_page_exist %}
-  @import "home/home-heading";
-  @import "home/new-posts";
-{% endif %}
-
-{% if about_page_exist %}
-  @import "about/about-style";
-
-  {% if site.data.conf.others.about.show_contacts and contacts_exist %}
-    @import "about/about-contact";
-  {% endif %}
-{% endif %}
-
-{% if post_exist %}
-  {% if site.data.conf.posts.share_buttons == true %}
-    @import "post/share";
-  {% endif %}
-
-  {% if toc_exist == true %}
-    @import "post/table-of-contents";
-  {% endif %}
-
-  {% if site.data.conf.posts.comments.engine != empty
-    and site.data.conf.posts.comments.engine != nil
-  %}
-    #comment_thread {
-      margin-top: 30px;
-      margin-bottom: 30px;
-      /*min-height: 100px;*/
-    }
-  {% endif %}
-{% endif %}
-
-{% if post_list_page_exist %}
-  @import "post-list/thumbnails";
-
-  {% if post_query_tabs_exist == true %}
-    @import "post-list/upside-down-tabs";
-  {% endif %}
-{% endif %}
-
-{% if archives_page_exist %}
-  @import "archives/archives";
-{% endif %}
-
-{% if links_page_exist %}
-  @import "links/link-style";
-{% endif %}
-
-{% if projects_page_exist %}
-  @import "projects/project-container";
-{% endif %}
-
-/**********************************************************
-* TOC lateral fixa à direita
+* TOC lateral fixa à direita (Desktop)
 ***********************************************************/
 
 @media (min-width: 1200px) {
 
   #post-directory {
+
+    display: block !important;
 
     position: fixed !important;
 
@@ -298,7 +243,7 @@
 
     border-radius: 10px !important;
 
-    background: rgba(255,255,255,0.88) !important;
+    background: rgba(255, 255, 255, 0.88) !important;
 
     backdrop-filter: blur(8px) !important;
 
@@ -309,7 +254,7 @@
 }
 
 /**********************************************************
-* Mobile / Tablet
+* Mobile / Tablets
 ***********************************************************/
 
 @media (max-width: 1199px) {
