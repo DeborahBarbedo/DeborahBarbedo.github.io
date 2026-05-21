@@ -267,3 +267,9 @@
 {% if projects_page_exist %}
   @import "projects/project-container";
 {% endif %}
+
+nav[data-toggle="toc"] {
+  position: sticky !important;
+  top: 90px !important;
+  align-self: flex-start;
+}
