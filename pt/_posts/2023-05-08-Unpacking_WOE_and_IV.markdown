@@ -59,7 +59,7 @@ Neste artigo, você aprenderá:
 Para tornar os conceitos mais intuitivos, utilizaremos exemplos práticos com o conjunto de dados da [competição Titanic do Kaggle](https://www.kaggle.com/competitions/titanic/data).
 
 
-# Apresentação das Métricas
+## Apresentação das Métricas
 
 No post anterior sobre [como calcular WoE e IV em Python](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function), vimos como construir as funções responsáveis pelo cálculo dessas métricas. Agora, vamos entender como interpretar os resultados e extrair insights para modelos de regressão logística.
 
@@ -86,7 +86,7 @@ As principais métricas são:
 
 ---
 
-## Interpretação dos Valores de IV
+### Interpretação dos Valores de IV
 
 A tabela abaixo apresenta uma classificação frequentemente utilizada para interpretação do poder preditivo de uma variável:
 
@@ -112,7 +112,7 @@ Essas métricas são extremamente úteis em etapas de:
 
 Ao interpretar corretamente WoE e IV, torna-se possível construir modelos mais robustos, interpretáveis e alinhados ao comportamento dos dados.
 
-# Criação de Variáveis por Agrupamento (*Binning*)
+## Criação de Variáveis por Agrupamento (*Binning*)
 
 O agrupamento de categorias (*binning*) é uma estratégia amplamente utilizada na criação de variáveis para modelos preditivos, especialmente em problemas de regressão logística e *credit scoring*.
 
@@ -144,7 +144,7 @@ Quando realizado corretamente, o agrupamento de categorias pode melhorar signifi
 
 
 
-# Aplicação Prática
+## Aplicação Prática
 
 Agora vamos aplicar, na prática, os conceitos de **Weight of Evidence (WoE)** e **Information Value (IV)** utilizando o dataset da competição [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data).
 
@@ -152,7 +152,7 @@ Nosso objetivo será interpretar as métricas, identificar variáveis preditivas
 
 ---
 
-## Exemplo com Variável Discreta
+### Exemplo com Variável Discreta
 
 Ao aplicarmos a função [Woe_IV_Discrete](https://gist.github.com/DeborahBarbedo/08ed242316fe3b9ed3350460e2a140f3) na variável `Sex`, obtemos a seguinte tabela:
 
@@ -171,7 +171,7 @@ Em problemas de credit scoring, variáveis com IV muito elevado costumam exigir 
 
 ---
 
-## Exemplo com Variável Contínua
+### Exemplo com Variável Contínua
 
 Além de variáveis categóricas, WoE e IV também podem ser aplicados em variáveis contínuas após o processo de discretização (*binning*).
 
@@ -203,7 +203,7 @@ Com base nesses resultados, podemos criar uma variável binária indicando, por 
 
 ---
 
-## Criação de Novas Variáveis
+### Criação de Novas Variáveis
 
 A partir da análise de WoE e IV, podemos construir variáveis derivadas que tornam o modelo mais simples e interpretável.
 
@@ -231,7 +231,7 @@ Essas transformações podem melhorar:
 
 ---
 
-# Conclusão
+## Conclusão
 
 As métricas **Weight of Evidence (WoE)** e **Information Value (IV)** são ferramentas extremamente úteis para:
 
@@ -245,13 +245,13 @@ Além de contribuírem para modelos mais interpretáveis e robustos, WoE e IV pe
 
 ---
 
-# Recursos Complementares
+## Recursos Complementares
 
 - [Materiais de suporte no GitHub](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE)
 - [Função para cálculo de WoE e IV em Python](https://deborahbarbedo.github.io/pt/2023-04-17-WoE_IV_Python_Function)
 - [Como WoE e IV são calculados](https://deborahbarbedo.github.io/pt/2023-06-12-WoE_IV_Calculation)
 
-# Referências:
+## Referências:
 
 * Anderson, Raymond. The Credit Scoring Toolkit: Theory and Practice for Retail Credit Risk Management and Decision Automation. Oxford University Press, 2007.
 
