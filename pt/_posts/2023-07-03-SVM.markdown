@@ -12,6 +12,7 @@ category: Aprendizado de Máquina
 tags: [SVM, Aprendizado de Máquina, Classificação, Truque do Kernel, Máquina de Vetores de Suporte]
 # thumbnail image for post
 img: ":SVM.jpg"
+img_alt: "Ilustração sobre Máquinas de Vetores de Suporte (SVM)"
 # disable comments on this page
 #comments_disable: true
 
@@ -61,12 +62,12 @@ Esse conceito foi proposto por Vapnik e Chervonenkis em 1971 e é amplamente uti
 A dimensão VC de classificadores lineares binários em um plano bidimensional é igual a 3. Isso significa que existem configurações com 3 pontos que podem ser separadas corretamente em todas as combinações possíveis utilizando uma reta.
 
 
-![Dimensão Vapnik-Chervonenkis VC](:SVM\DimensaoVC.png){:data-align="center"}
+![Exemplo da dimensão Vapnik-Chervonenkis mostrando separação linear de pontos](:SVM/DimensaoVC.png)
 
 No entanto, ao utilizar 4 pontos, já existem algumas combinações que não podem ser separadas por uma única função linear.
 
 
-![Exemplo classificação binária com 4 pontos](:SVM\Exemplo4.png){:data-align="center"}
+![Exemplo de classificação binária com quatro pontos não linearmente separáveis](:SVM/Exemplo4.png)
 
 Essa medida é importante porque modelos com VC muito alta tendem a memorizar os dados (overfitting), enquanto modelos com VC baixa demais podem não aprender padrões relevantes (underfitting).
 
@@ -81,20 +82,20 @@ Um hiperplano é uma estrutura geométrica de dimensão \(k-1\) inserida em um e
 - em dimensões maiores, é a generalização dessas ideias.
 
 
-![Um hiperplano é uma reta na dimensão 2. Um hiperplano é um plano na dimensão 3.](:SVM\Hiperplanodim2e3.png){:data-align="center"}
+![Representação de hiperplano como reta em 2D e plano em 3D](:SVM/Hiperplanodim2e3.png)
 
 Conectando com o tópico anterior, classificadores lineares definidos por hiperplanos em um espaço de dimensão \(K\) possuem dimensão VC igual a \(K + 1\). Isso ajuda a compreender a capacidade desses modelos em separar diferentes configurações de dados.
 
 Em muitos problemas de classificação, existem diversos hiperplanos capazes de separar corretamente as classes:
 
 
-![Hiperplanos](:SVM\Hiperplanos.png){:data-align="center"}
+![Exemplo de múltiplos hiperplanos separando classes em um problema SVM](:SVM/Hiperplanos.png)
 
 O objetivo do SVM é encontrar o hiperplano que maximiza a margem de separação entre as classes. Em outras palavras, o algoritmo procura a fronteira de decisão mais distante possível dos pontos de ambas as categorias.
 
 Uma margem grande funciona como um "colchão de segurança": quanto maior ela é, mais robusto o classificador tende a ser diante de ruídos e novos exemplos.
 
-![Hiperplano com maior margem](:SVM\Hiperplanocommaiormargem.png){:data-align="center"}
+![Hiperplano ótimo com margem máxima entre as classes no SVM](:SVM/Hiperplanocommaiormargem.png)
 
 ## Vetores de Suporte
 
@@ -104,7 +105,7 @@ Esses pontos são chamados de "vetores de suporte" porque sustentam a fronteira 
 
 Uma característica importante do SVM é que apenas os vetores de suporte participam diretamente da definição da solução final. Pontos mais distantes da fronteira possuem pouca ou nenhuma influência no hiperplano ótimo.
 
-![Vetores de suporte](:SVM\Vetoresdesuporte.png){:data-align="center"}
+![Vetores de suporte próximos à fronteira de decisão do SVM](:SVM/Vetoresdesuporte.png)
 
 ## Margens Suaves
 
@@ -116,7 +117,7 @@ O SVM busca, então, um equilíbrio entre:
 - maximizar a margem de separação;
 - minimizar os erros de classificação.
 
-![Soft Margins](:SVM\Margenssuaves.png){:data-align="center"}
+![Comparação entre margens suaves e margens rígidas em SVM](:SVM/Margenssuaves.png)
 
 Esse equilíbrio é controlado pelo hiperparâmetro C:
 
@@ -131,7 +132,7 @@ Mas o que acontece quando os dados não podem ser separados linearmente?
 O Teorema de Cover afirma que padrões complexos possuem maior probabilidade de se tornarem linearmente separáveis quando projetados em espaços de maior dimensionalidade, desde que esses espaços não estejam excessivamente preenchidos.
 
 
-![Dados não lineares](:SVM\TeoremadeCover.png){:data-align="center"}
+![Exemplo de dados não linearmente separáveis ilustrando o Teorema de Cover](:SVM/TeoremadeCover.png)
 
 
 Com base nessa ideia, podemos aplicar transformações nos dados para mapeá-los em um novo espaço de características de dimensão mais elevada. Por exemplo, uma transformação como:
@@ -146,7 +147,7 @@ pode tornar separável um conjunto que originalmente não era linearmente separ�
 
 Após essa transformação, torna-se possível aplicar um SVM linear no novo espaço de características.
 
-![Espaço de características](:SVM\Espacodecaracterísticas.png){:data-align="center"}
+![Transformação de dados para um espaço de características de maior dimensão](:SVM/Espacodecaracterísticas.png)
 
 
 Entretanto, trabalhar explicitamente em espaços de alta dimensionalidade pode ser computacionalmente caro. Esse problema motivou o desenvolvimento do chamado *truque do kernel*, que permite realizar essas transformações de forma implícita e eficiente.
@@ -251,7 +252,7 @@ Mas o que acontece quando temos mais de duas classes?
 
 O SVM foi originalmente desenvolvido para problemas de classificação binária. Entretanto, diversas estratégias permitem estender sua utilização para cenários com múltiplas classes.
 
-![SVM Multiclasse](:SVM\SVMMulticlasse.png){:data-align="center"}
+![Exemplo de classificação multiclasse utilizando SVM](:SVM/SVMMulticlasse.png)
 
 Entre os principais métodos utilizados, destacam-se:
 
