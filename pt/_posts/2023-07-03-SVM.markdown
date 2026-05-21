@@ -50,13 +50,13 @@ A proposta aqui é apresentar os principais conceitos do algoritmo de forma aces
 
 Ao final da leitura, você terá uma visão clara do propósito do algoritmo, de suas principais características e do contexto em que ele costuma ser aplicado.
 
-# Dimensão Vapnik-Chervonenkis (VC):
+## Dimensão Vapnik-Chervonenkis (VC):
 
 A dimensão Vapnik-Chervonenkis (VC) é uma medida utilizada para quantificar a capacidade de representação de um modelo de classificação. Em termos intuitivos, **ela indica o número máximo de pontos que podem ser separados corretamente em todas as configurações possíveis (*shattering*) por um determinado conjunto de funções**.
 
 Esse conceito foi proposto por Vapnik e Chervonenkis em 1971 e é amplamente utilizado para analisar a flexibilidade de modelos de aprendizado estatístico. Quanto maior a dimensão VC, maior a capacidade do modelo de representar padrões complexos.
 
-## Exemplo
+### Exemplo
 
 A dimensão VC de classificadores lineares binários em um plano bidimensional é igual a 3. Isso significa que existem configurações com 3 pontos que podem ser separadas corretamente em todas as combinações possíveis utilizando uma reta.
 
@@ -70,7 +70,7 @@ No entanto, ao utilizar 4 pontos, já existem algumas combinações que não pod
 
 Essa medida é importante porque modelos com VC muito alta tendem a memorizar os dados (overfitting), enquanto modelos com VC baixa demais podem não aprender padrões relevantes (underfitting).
 
-# Hiperplano
+## Hiperplano
 
 O hiperplano divide o espaço de características em regiões de decisão associadas a diferentes classes.
 
@@ -96,7 +96,7 @@ Uma margem grande funciona como um "colchão de segurança": quanto maior ela é
 
 ![Hiperplano com maior margem](:SVM\Hiperplanocommaiormargem.png){:data-align="center"}
 
-# Vetores de Suporte
+## Vetores de Suporte
 
 Os vetores de suporte são os pontos de dados mais próximos do hiperplano de separação. São eles que **definem a margem máxima do classificador e, consequentemente, influenciam diretamente a posição do hiperplano ótimo encontrado pelo SVM**.
 
@@ -106,7 +106,7 @@ Uma característica importante do SVM é que apenas os vetores de suporte partic
 
 ![Vetores de suporte](:SVM\Vetoresdesuporte.png){:data-align="center"}
 
-# Margens Suaves
+## Margens Suaves
 
 Em muitos problemas reais, os dados não são perfeitamente separáveis por um hiperplano. Para lidar com esse cenário, o SVM pode utilizar margens suaves (*soft margins*), permitindo que alguns pontos invadam a margem de separação ou até mesmo sejam classificados incorretamente.
 
@@ -126,7 +126,7 @@ C baixo → tolera violações → margem mais suave → maior generalização
 
 Mas o que acontece quando os dados não podem ser separados linearmente?
 
-# Dados Não Lineares e o Teorema de Cover
+## Dados Não Lineares e o Teorema de Cover
 
 O Teorema de Cover afirma que padrões complexos possuem maior probabilidade de se tornarem linearmente separáveis quando projetados em espaços de maior dimensionalidade, desde que esses espaços não estejam excessivamente preenchidos.
 
@@ -152,7 +152,7 @@ Após essa transformação, torna-se possível aplicar um SVM linear no novo esp
 Entretanto, trabalhar explicitamente em espaços de alta dimensionalidade pode ser computacionalmente caro. Esse problema motivou o desenvolvimento do chamado *truque do kernel*, que permite realizar essas transformações de forma implícita e eficiente.
 
 
-# Truque do Kernel
+## Truque do Kernel
 
 O *truque do kernel* (*kernel trick*) é uma técnica que permite ao SVM trabalhar implicitamente em espaços de alta dimensionalidade sem precisar calcular explicitamente o mapeamento dos dados para esse novo espaço de características.
 
@@ -160,7 +160,7 @@ A ideia central é simples: em vez de transformar diretamente os pontos para uma
 
 Pelo Teorema de Mercer, determinadas funções kernel podem ser interpretadas como produtos internos em um espaço de características de maior dimensão, desde que satisfaçam propriedades matemáticas específicas, como gerar matrizes simétricas e positivas semidefinidas.
 
-## Exemplo: Kernel Polinomial Quadrático
+### Exemplo: Kernel Polinomial Quadrático
 
 Considere o seguinte kernel:
 
@@ -194,7 +194,7 @@ Ou seja, o kernel realiza implicitamente o cálculo do produto interno em um esp
 
 Isso torna o treinamento computacionalmente mais eficiente, especialmente quando trabalhamos com espaços de características muito grandes.
 
-## Tipos de Kernel
+### Tipos de Kernel
 
 Existem diversos tipos de funções kernel utilizadas em SVM, entre as mais conhecidas:
 
@@ -205,9 +205,9 @@ Existem diversos tipos de funções kernel utilizadas em SVM, entre as mais conh
 
 Cada kernel define implicitamente uma forma diferente de transformação do espaço de características.
 
-## Principais Funções Kernel
+### Principais Funções Kernel
 
-### Kernel Polinomial
+#### Kernel Polinomial
 
 O kernel polinomial permite representar fronteiras de decisão não lineares por meio de combinações polinomiais entre os atributos.
 
@@ -222,7 +222,7 @@ onde:
 
 ---
 
-### Kernel Radial (RBF)
+#### Kernel Radial (RBF)
 
 O kernel radial (*Radial Basis Function*) é um dos mais utilizados em SVM devido à sua capacidade de modelar relações altamente não lineares.
 
@@ -234,7 +234,7 @@ Esse kernel mede similaridade com base na distância euclidiana entre os pontos:
 
 ---
 
-### Kernel Sigmoide (Tangente Hiperbólica)
+#### Kernel Sigmoide (Tangente Hiperbólica)
 
 O kernel sigmoide possui comportamento semelhante ao de neurônios artificiais utilizados em redes neurais.
 
@@ -247,7 +247,7 @@ Seu uso é menos comum em comparação aos kernels polinomial e radial.
 
 Mas o que acontece quando temos mais de duas classes?
 
-# Classificação SVM Multiclasse
+## Classificação SVM Multiclasse
 
 O SVM foi originalmente desenvolvido para problemas de classificação binária. Entretanto, diversas estratégias permitem estender sua utilização para cenários com múltiplas classes.
 
@@ -255,7 +255,7 @@ O SVM foi originalmente desenvolvido para problemas de classificação binária.
 
 Entre os principais métodos utilizados, destacam-se:
 
-## Um-contra-todos (*One-vs-Rest*)
+### Um-contra-todos (*One-vs-Rest*)
 
 Nesse método, um classificador é treinado para separar uma classe específica de todas as demais. O processo é repetido para cada classe do problema.
 
@@ -266,7 +266,7 @@ Por exemplo, em um problema com três classes \(A\), \(B\) e \(C\), seriam trein
 
 ---
 
-## Um-contra-um (*One-vs-One*)
+### Um-contra-um (*One-vs-One*)
 
 Nesse caso, um classificador é treinado para cada par possível de classes.
 
@@ -279,7 +279,7 @@ A decisão final normalmente ocorre por votação entre os classificadores.
 
 ---
 
-## DAG-SVM
+### DAG-SVM
 
 O *DAG-SVM* (*Directed Acyclic Graph SVM*) organiza múltiplos classificadores binários em uma estrutura em grafo acíclico direcionado baseada em classificações binárias sequenciais.
 
@@ -288,7 +288,7 @@ A cada etapa, uma classe é eliminada até que reste apenas a classe final atrib
 ---
 
 
-# Referências:
+## Referências:
 
 * Shalev-Shwartz, Shai, and Shai Ben-David. Understanding Machine Learning: From Theory to Algorithms. Cambridge University Press, 2014. [[link]](https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/)
 
