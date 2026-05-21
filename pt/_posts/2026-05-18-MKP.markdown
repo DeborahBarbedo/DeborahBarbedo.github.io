@@ -61,7 +61,7 @@ Para ilustrar a aplicação, utilizaremos o cenário de compras de supermercado,
 O problema é formulado como um Mixed-Integer Linear Program (MILP) utilizando Google OR-Tools em Python, com resolução via solver SCIP. O objetivo consiste em maximizar o valor contextual das alocações, respeitando restrições de capacidade física e compatibilidade ambiental.
 
 
-# Definição do problema
+## Definição do problema
 
 No cenário hipotético considerado, utilizam-se quatro tipos de sacolas de supermercado: térmica, de papel, de plástico e de tecido. Cada uma delas possui uma capacidade máxima de peso e apresenta diferentes níveis de afinidade em relação às condições de umidade e temperatura dos itens transportados.
 
@@ -90,7 +90,7 @@ A tabela a seguir descrevem os itens utilizados no experimento computacional:
 | I7 | Panetone | 3.0 | 20.00 | Seco | Ambiente | Seco |
 | I8 | Shampoo | 1.2 | 15.00 | Líquido | Ambiente | Úmido |
 
-# Matriz de Afinidade
+## Matriz de Afinidade
 
 Para cada par item–sacola, calcula-se um valor contextual $v_{ib}$ com base na afinidade de temperatura, afinidade de umidade e valor econômico do item.
 
@@ -123,7 +123,7 @@ $$
 
 ---
 
-## Exemplo de cálculo
+### Exemplo de cálculo
 
 
 Para o item **I1 (Frango Congelado)** e a sacola **B1 (Térmica)**:
@@ -150,21 +150,21 @@ Na implementação em Python, os scores são armazenados na estrutura values[(it
 
 <script src="https://gist.github.com/DeborahBarbedo/8f82aefd1396f569dff2095e5cd68586.js"></script>
 
-# Otimização
+## Otimização
 
 O problema é formulado como um programa linear inteiro binário, no qual cada variável de decisão representa a atribuição de um item a uma sacola.
 
-## Natureza do Modelo
+### Natureza do Modelo
 
 O modelo proposto caracteriza-se como uma extensão contextual do Multiple Knapsack Problem clássico, uma vez que o valor do item deixa de ser fixo e passa a depender da combinação item–sacola.
 
-## Índices
+### Índices
 
 - $i = 1, \dots, m$: itens
 
 - $b = 1, \dots, n$: sacola
 
-## Parâmetros
+### Parâmetros
 
 - $w_i$: peso do item $i$
 
@@ -172,7 +172,7 @@ O modelo proposto caracteriza-se como uma extensão contextual do Multiple Knaps
 
 - $c_b$: capacidade da sacola $b$
 
-## Variáveis de decisão
+### Variáveis de decisão
 
 Variável binária:
 
@@ -192,7 +192,7 @@ x_{i,b} \in \{0,1\},
 \forall b = 1, \dots, n
 $$
 
-## Restrição de capacidade
+### Restrição de capacidade
 
 A soma dos pesos atribuídos a cada sacola não pode ultrapassar sua capacidade máxima.
 
@@ -200,7 +200,7 @@ $$
 \sum_{i=1}^{m} w_i x_{ib} \leq c_b \quad \forall b=1, \dots,n
 $$
 
-## Restrição de atribuição única
+### Restrição de atribuição única
 
 Cada item pode ser atribuído a, no máximo, uma sacola:
 
@@ -210,7 +210,7 @@ $$
 \forall i = 1, \dots, m
 $$
 
-## Restrição de compatibilidade
+### Restrição de compatibilidade
 
 Essa restrição impede que itens sejam atribuídos a sacolas incompatíveis ambientalmente.
 
@@ -236,7 +236,7 @@ $$
 
 Quando $Compatibility_{ib} = 0$, a variável de decisão $x_{ib}$ é forçada a assumir valor zero.
 
-## Função Objetivo
+### Função Objetivo
 
 Maximizar o valor total dos itens atribuídos às sacolas:
 
@@ -249,7 +249,7 @@ $$
 
 Dessa forma, o modelo busca simultaneamente maximizar adequação contextual e respeitar restrições físicas e ambientais de alocação.
 
-# Implementação no Python
+## Implementação no Python
 
 A implementação foi desenvolvida em Python utilizando Google OR-Tools com o solver SCIP para modelagem e resolução do problema de otimização.
 
@@ -268,7 +268,7 @@ O trecho abaixo apresenta o núcleo da formulação MILP, incluindo:
 
 <script src="https://gist.github.com/DeborahBarbedo/ec439df69af1825966acfab19ac4403f.js"></script>
 
-## Resultado Final
+### Resultado Final
 
 O modelo prioriza a maximização da afinidade contextual entre item e sacola, não necessariamente a ocupação ótima da capacidade física. Isso evidencia a natureza da função objetivo baseada em score de compatibilidade ambiental.
 
@@ -276,9 +276,9 @@ Além disso, o valor total obtido não deve ser interpretado como valor monetár
 
 ---
 
-## Alocação das Sacolas
+### Alocação das Sacolas
 
-### **Sacola Térmica (B1)**
+#### **Sacola Térmica (B1)**
 *Capacidade: 10 kg | Ocupado: 7.5 kg (75%)*
 
 - Frango congelado (3.0 kg) - Score: 1.000
@@ -287,7 +287,7 @@ Além disso, o valor total obtido não deve ser interpretado como valor monetár
 
 ---
 
-### **Sacola de Plástico (B3)**
+#### **Sacola de Plástico (B3)**
 *Capacidade: 6 kg | Ocupado: 2.7 kg (45%)*
 
 - Sabonete Líquido (1.5 kg) - Score: 0.793
@@ -295,7 +295,7 @@ Além disso, o valor total obtido não deve ser interpretado como valor monetár
 
 ---
 
-### **Sacola de Tecido (B2)**
+#### **Sacola de Tecido (B2)**
 *Capacidade: 8 kg | Ocupado: 6.0 kg (75%)*
 
 - Arroz (2.0 kg) - Score: 0.827
@@ -304,7 +304,7 @@ Além disso, o valor total obtido não deve ser interpretado como valor monetár
 
 ---
 
-## Score Total
+### Score Total
 
 $$
 Z = 7.047
@@ -318,14 +318,14 @@ Podemos observar também que o modelo não necessariamente utiliza todas as saco
 
 ---
 
-## Código-Fonte
+### Código-Fonte
 
 O código completo em Python, incluindo a construção da matriz de afinidade e a modelagem matemática no Google OR-Tools, está disponível no repositório abaixo:
 
 [Multi-Knapsack Optimization with Preference-Based Item Assignment](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/Multi-Knapsack%20Optimization%20with%20Preference-Based%20Item%20Assignment)
 
 
-# Referências
+## Referências
 
 - Google OR-Tools - *Assignment with Task Sizes*  
 [[link]](https://developers.google.com/optimization/assignment/assignment_cp)
