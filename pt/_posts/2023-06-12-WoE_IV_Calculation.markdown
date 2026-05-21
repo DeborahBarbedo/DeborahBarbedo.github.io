@@ -72,7 +72,7 @@ Onde:
 - `target₀` representa os passageiros que **não sobreviveram**;
 - `target₁` representa os passageiros que **sobreviveram**.
 
-# Percentual de Cada Classe por Segmento
+## Percentual de Cada Classe por Segmento
 
 O percentual de uma classe dentro de um segmento é calculado pela proporção daquele grupo em relação ao total da respectiva classe.
 
@@ -122,7 +122,7 @@ Assim, aproximadamente **68,13%** dos passageiros sobreviventes eram mulheres.
 
 ---
 
-# Distribuição Percentual por Segmento
+## Distribuição Percentual por Segmento
 
 | Segmento | `target₀` | `target₁` | % `target₀` | % `target₁` |
 |:----------|-----------:|-----------:|-------------:|-------------:|
@@ -141,7 +141,7 @@ $$
 Essas distribuições serão utilizadas posteriormente no cálculo do **Weight of Evidence (WoE)** e do **Information Value (IV)**.
 
 
-# Percentual da População por Segmento
+## Percentual da População por Segmento
 
 O percentual populacional representa a participação de cada segmento em relação ao total da amostra.
 
@@ -168,7 +168,7 @@ Portanto, mulheres representam aproximadamente **35,24%** da população analisa
 
 ---
 
-# Distribuição Populacional por Segmento
+## Distribuição Populacional por Segmento
 
 | Segmento | População | % População |
 |:----------|-----------:|-------------:|
@@ -178,7 +178,7 @@ Portanto, mulheres representam aproximadamente **35,24%** da população analisa
 
 Essa distribuição ajuda a entender a representatividade de cada segmento dentro da base de dados, sendo útil na interpretação do **Weight of Evidence (WoE)** e do **Information Value (IV)**.
 
-# Razão entre Distribuições (*Distribution Ratio*)
+## Razão entre Distribuições (*Distribution Ratio*)
 
 A razão entre distribuições compara a participação de um segmento entre as classes `target₀` e `target₁`.
 
@@ -207,7 +207,7 @@ Isso indica que a participação das mulheres entre os passageiros que não sobr
 
 ---
 
-# Razão entre Distribuições por Segmento
+## Razão entre Distribuições por Segmento
 
 | Segmento | % `target₀` | % `target₁` | `Distr` |
 |:----------|-------------:|-------------:|---------:|
@@ -220,7 +220,7 @@ Valores:
 - menores que `1` indicam maior concentração relativa em `target₁`;
 - maiores que `1` indicam maior concentração relativa em `target₀`.
 
-# Weight of Evidence (WoE)
+## Weight of Evidence (WoE)
 
 O **Weight of Evidence (WoE)** é obtido aplicando o logaritmo natural à razão entre distribuições.
 
@@ -261,7 +261,7 @@ O valor negativo indica que o segmento **female** possui maior concentração re
 
 ---
 
-# Weight of Evidence por Segmento
+## Weight of Evidence por Segmento
 
 | Segmento | `Distr` | `WoE` |
 |:----------|---------:|------:|
@@ -275,7 +275,7 @@ Interpretação:
 - `WoE > 0`: maior concentração relativa em `target₀`;
 - `WoE ≈ 0`: distribuição semelhante entre as classes.
 
-# Information Value (IV)
+## Information Value (IV)
 
 O **Information Value (IV)** mede o poder preditivo de uma variável em relação à variável alvo.
 
@@ -326,7 +326,7 @@ $$
 
 ---
 
-# Contribuição do IV por Segmento
+## Contribuição do IV por Segmento
 
 | Segmento | `WoE` | IV |
 |:----------|------:|------:|
@@ -353,7 +353,7 @@ Em geral:
 No exemplo apresentado, a variável **gênero** possui um IV igual a **1.3410**, indicando altíssimo poder discriminatório.
 
 
-# Considerações Importantes
+## Considerações Importantes
 
 Ao utilizar **Weight of Evidence (WoE)** e **Information Value (IV)**, alguns cuidados são importantes:
 
@@ -365,7 +365,7 @@ Ao utilizar **Weight of Evidence (WoE)** e **Information Value (IV)**, alguns cu
 
 ---
 
-# Recursos Complementares
+## Recursos Complementares
 
 Caso queira aprofundar seus conhecimentos sobre WoE e IV:
 
@@ -375,7 +375,7 @@ Caso queira aprofundar seus conhecimentos sobre WoE e IV:
 
 ---
 
-# Referências
+## Referências
 
 - Anderson, Raymond. *The Credit Scoring Toolkit: Theory and Practice for Retail Credit Risk Management and Decision Automation*. Oxford University Press, 2007.
 
