@@ -212,24 +212,18 @@
 {% endif %}
 
 /**********************************************************
-* TOC lateral fixa à direita (Desktop)
+* TOC lateral fixa à direita
 ***********************************************************/
 
 @media (min-width: 1200px) {
 
-  #post-directory {
-
-    display: block !important;
+  nav[data-toggle="toc"] {
 
     position: fixed !important;
 
     top: 100px !important;
 
-    right: 40px !important;
-
-    left: auto !important;
-
-    bottom: auto !important;
+    right: calc(50% - 700px) !important;
 
     width: 260px !important;
 
@@ -241,11 +235,9 @@
 
     padding: 15px !important;
 
-    border-radius: 10px !important;
+    border-radius: 8px !important;
 
-    background: rgba(255, 255, 255, 0.88) !important;
-
-    backdrop-filter: blur(8px) !important;
+    background: var(--body-bg) !important;
 
     border: 1px solid rgba(128,128,128,0.15) !important;
 
@@ -253,13 +245,9 @@
   }
 }
 
-/**********************************************************
-* Mobile / Tablets
-***********************************************************/
-
 @media (max-width: 1199px) {
 
-  #post-directory {
+  nav[data-toggle="toc"] {
 
     position: relative !important;
 
@@ -267,16 +255,6 @@
 
     right: auto !important;
 
-    left: auto !important;
-
-    bottom: auto !important;
-
     width: 100% !important;
-
-    max-height: none !important;
-
-    overflow-y: visible !important;
-
-    backdrop-filter: none !important;
   }
 }
