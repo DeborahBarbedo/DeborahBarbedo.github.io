@@ -269,29 +269,10 @@
 {% endif %}
 
 /**********************************************************
-* Remove espaço original do TOC do tema
-***********************************************************/
-
-.post-directory-container {
-    width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/**********************************************************
-* TOC lateral fixa à direita (Desktop)
+* TOC lateral fixa à direita
 ***********************************************************/
 
 @media (min-width: 1200px) {
-
-  .post-directory-container {
-
-    width: 0 !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-  }
 
   #post-directory {
 
@@ -332,11 +313,6 @@
 ***********************************************************/
 
 @media (max-width: 1199px) {
-
-  .post-directory-container {
-
-    width: auto !important;
-  }
 
   #post-directory {
 
