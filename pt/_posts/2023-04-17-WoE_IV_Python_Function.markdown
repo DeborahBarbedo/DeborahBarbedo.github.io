@@ -209,7 +209,7 @@ Essas métricas são amplamente utilizadas em tarefas de modelagem preditiva e p
 
 ## Conclusão
 
-O uso de WoE e IV pode melhorar significativamente a interpretabilidade e a capacidade preditiva de modelos de regressão logística.
+O uso de WoE e IV pode melhorar a interpretabilidade e a capacidade preditiva de modelos de regressão logística.
 
 Além de auxiliar na seleção de variáveis, essas métricas permitem compreender como diferentes faixas ou categorias influenciam a probabilidade do evento de interesse.
 

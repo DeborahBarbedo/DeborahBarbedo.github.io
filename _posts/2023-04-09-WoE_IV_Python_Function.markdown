@@ -1,41 +1,26 @@
 ---
-# multilingual page pair id, this must pair with translations of this page. (This name must be unique)
+# Multilingual page pair ID (must match translations of this page and be unique)
 lng_pair: 1_WoE_IV_Python_function
-title: "Function in Python to calculate WoE and IV"
+title: "Building a Python Function to Calculate WoE and IV"
 
-# post specific
-# if not specified, .name will be used from _data/owner/[language].yml
-#author: "Deborah Cholodoysky Barbedo Pereira"
-# multiple category is not supported
+# Post specific settings
 category: Data Analysis
-# multiple tag entries are possible
-tags: [Python functions, Data analysis, Logistic regression, Feature selection, Information Value (IV), Weight of Evidence (WoE), Predictive modeling, Titanic dataset ]
-# thumbnail image for post
-img: ":IV_and_WoE _functions_in_Python.jpg"
-# disable comments on this page
-#comments_disable: true
+tags: [Python, Data Analysis, Logistic Regression, Feature Selection, Information Value, Weight of Evidence, Predictive Modeling, Titanic Dataset, WoE, IV]
+img: ":IV_and_WoE_functions_in_Python.jpg"
+img_alt: "Diagram or code snippet representing WoE and IV calculations in Python"
 
-# publish date
+# Publish date
 date: 2023-04-09 20:48:53 +0900
 
-# seo
-# if not specified, date will be used.
-#meta_modify_date: 2021-08-10 11:32:53 +0900
-# check the meta_common_description in _data/owner/[language].yml
-meta_description: "Learn how to enhance your predictive models with the power of Information Value (IV) and Weight of Evidence (WoE). This page provides step-by-step instructions for creating custom Python functions that calculate WoE and IV, enabling you to accurately evaluate feature predictiveness and improve model performance."
-# optional
-# please use the "image_viewer_on" below to enable image viewer for individual pages or posts (_posts/ or [language]/_posts folders).
-# image viewer can be enabled or disabled for all posts using the "image_viewer_posts: true" setting in _data/conf/main.yml.
+# SEO
+meta_description: "Enhance your predictive models using Information Value (IV) and Weight of Evidence (WoE). Learn how to build custom Python functions to automate WoE and IV calculations, evaluate feature importance, and streamline variable selection."
+
+# Features
 image_viewer_on: true
-# please use the "image_lazy_loader_on" below to enable image lazy loader for individual pages or posts (_posts/ or [language]/_posts folders).
-# image lazy loader can be enabled or disabled for all posts using the "image_lazy_loader_posts: true" setting in _data/conf/main.yml.
 image_lazy_loader_on: true
-# exclude from on site search
-#on_site_search_exclude: true
-# exclude from search engines
-#search_engine_exclude: true
-# to disable this page, simply set published: false or delete this file
-#published: false
+
+excerpt: "A step-by-step guide to building a consolidated Python function that automates Weight of Evidence (WoE) and Information Value (IV) calculations for both categorical and continuous data."
+
 ---
 
 <!-- outline-start -->
@@ -112,16 +97,17 @@ If you are working with this same dataset (or any other), I highly recommend tes
 
 # WoE and IV for continuous variables
 
-When it came to the continuous variables, things got a bit trickier for me. I wasn't entirely sure how to break down these variables for analysis because they can vary so much depending on the problem at hand.
+## WoE and IV for Continuous Variables
 
-I spent a lot of time brainstorming and drafting several different ideas until I finally settled on breaking everything down into deciles. That way, I could analyze the IV return in larger portions (like quartiles) if needed.
+When it comes to continuous variables, the process becomes a bit more challenging, mainly when defining the best discretization strategy. This is because different problems can require different approaches to binning.
 
-Anyway, after a lot of hard work, I finally came up with a function for the continuous variables.
+After a few attempts and drafts, I chose to divide the data into deciles, which allows for a more stable analysis of the distribution and, if necessary, subsequent aggregation into quartiles or other groupings.
+
+This choice resulted in a more interpretable and consistent approach for calculating WoE and IV in continuous variables.
 
 <script src="https://gist.github.com/DeborahBarbedo/d9ddd529f9b4359e4a867a649ab9544b.js"></script>
 
-
-It was definitely a challenge, but the end result was super satisfying!
+The final function now generates more structured tables, making it easier to analyze the predictive power of each variable range:
 
 | variable |                 limit |        0 |        1 |    Distr |       WoE |   IV |
 |---------:|----------------------:|---------:|---------:|---------:|----------:|-----:|
@@ -147,15 +133,15 @@ It was definitely a challenge, but the end result was super satisfying!
 |     Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.37 |
 
 
-# All together now
+## Consolidated Function for Continuous and Categorical Variables
 
-Once I got over the initial obstacles, I decided to tackle creating another function. This one would combine the metrics for both discrete and continuous variables into a single, comprehensive table.
+After overcoming the initial challenges, I decided to take the implementation a step further and develop a consolidated function capable of calculating WoE and IV for both categorical and continuous variables within a single framework.
 
-I must admit, this function was way easier and quicker to make! So, without further ado, check out the function I whipped up to bring it all together in one table:
+This approach simplifies the analysis process, providing a unified view of the predictive power of the variables.
 
 <script src="https://gist.github.com/DeborahBarbedo/bc3597b64ad2fcd54266664c62adbe3f.js"></script>
 
-The final table is:
+The final table obtained is shown below:
 
 | variable |                 limit |        0 |        1 |    Distr |       WoE |       IV | IV_total |
 |---------:|----------------------:|---------:|---------:|---------:|----------:|---------:|---------:|
@@ -185,13 +171,54 @@ The final table is:
 |     Fare | [39.6875] a [77.9583] | 0.076503 | 0.137427 | 0.556679 | -0.585766 | 0.040000 |          |
 |     Fare |                       | 1.000000 | 1.000000 | 1.000000 |  0.000000 | 0.370000 |          |
 
-Hey, did you liked my Python functions for calculating IV and WoE? I had a blast creating them, but I've realized that there are still a lot of folks out there who might be feeling a bit lost when it comes to these metrics.
+## Interpreting the Results
 
-Since they can be so helpful in improving your logistic regression models, I've decided it's high time to write up a post and explain everything in detail. I'm going to walk you through [how to calculate IV and WoE](https://deborahbarbedo.github.io/posts/2023-06-05-WoE_IV_Calculation) and give you some seriously valuable tips on [how to use these metrics](https://deborahbarbedo.github.io/posts/2023-04-24-Unpacking_WOE_and_IV) to make savvy decisions and elevate your models to the next level.
+Looking at the results obtained from the Titanic dataset, we can draw some important conclusions about the predictive power of the variables:
 
-I'm really excited to share all of this with you, so don't miss out! Keep your eyes peeled for my next post!
+- The **Sex** variable showed an IV greater than 1.3, indicating very high predictive power.
+- The **Fare** variable showed an IV close to 0.37, suggesting a strong capacity for discrimination.
+- On the other hand, the **Age** variable showed a lower IV (0.09), indicating a weaker predictive contribution when analyzed in isolation.
 
-# References:
+These metrics are widely used in predictive modeling tasks and can support decisions such as:
+
+- feature selection;
+- scorecard building;
+- variable transformation for logistic regression;
+- identifying non-linear relationships between variables and the event of interest.
+
+## Conclusion
+
+Using WoE and IV improve the interpretability and predictive capability of logistic regression models.
+
+In addition to helping with feature selection, these metrics make it possible to understand how different ranges or categories influence the probability of the event of interest.
+
+The functions developed in this post allow you to:
+
+- calculate WoE and IV for categorical variables;
+- automatically discretize continuous variables;
+- consolidate the results into a single table for exploratory analysis.
+
+---
+
+## Code and Supplementary Materials
+
+- [Variable Interpretation and Selection with WoE and IV](https://deborahbarbedo.github.io/posts/2023-04-24-Unpacking_WOE_and_IV)
+- [How WoE and IV are Calculated](https://deborahbarbedo.github.io/posts/2023-06-05-WoE_IV_Calculation)
+
+The code used in this post is available on GitHub:
+
+- [Supporting Materials on GitHub](https://github.com/DeborahBarbedo/Supporting_materials/tree/main/IV_WoE)
+
+The repository contains the functions developed to calculate WoE and IV, including:
+
+- categorical variables;
+- continuous variables;
+- consolidated function;
+- application examples using the [Titanic dataset](https://www.kaggle.com/competitions/titanic/data).
+
+---
+
+## References
 
 * Anderson, Raymond. The Credit Scoring Toolkit: Theory and Practice for Retail Credit Risk Management and Decision Automation. Oxford University Press, 2007.
 
