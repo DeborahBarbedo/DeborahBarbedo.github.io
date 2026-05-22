@@ -40,62 +40,22 @@ image_lazy_loader_on: true
 
 <!-- outline-start -->
 
-Learn how to calculate Weight of Evidence (WoE) and Information Value (IV) in Python for feature selection in logistic regression, using practical examples with the Titanic dataset.
+Improve Your Logistic Regression Model with Python Functions.
 
 <!-- outline-end -->
 
-**Weight of Evidence (WoE)** and **Information Value (IV)** are widely used metrics in binary classification problems, especially in logistic regression models, credit risk analysis, and scorecards.
+Hey, have you ever heard of Information Value and Weight of Evidence? These two stats are a total power duo when it comes to picking predictor variables for logistic regression models. Together, they help improve predictability big time!
+Using Information Value and Weight of Evidence, you can see just how effective a variable is in predicting the response you want, and even find out which direction that variable is leaning the response.
 
-These metrics help evaluate:
+But here's the thing: when I started using Python to create and select variables, I realized that was missing a function that could include these metrics in my analysis. So, I decided to make my own functions in Python that would generate tables with WoE and IV.
 
-- the predictive power of a variable;
-- the relationship between categories and the target event;
-- the quality of transformations applied to variables.
+# WoE and IV for discrete variables
 
-While working on some Python projects, I noticed the lack of simple and reusable functions to calculate WoE and IV in a practical way. For this reason, I decided to develop my own functions for:
-
-- categorical variables;
-- continuous variables;
-- generating consolidated WoE and IV tables.
-
-In this post, I present these functions using the classic [Titanic dataset from Kaggle](https://www.kaggle.com/competitions/titanic/data).
-
-## What is WoE?
-
-**Weight of Evidence (WoE)** measures the relationship between the distribution of events and non-events within a specific category.
-
-$$
-WoE = \ln\left(\frac{\%\,\text{non-event}}{\%\,\text{event}}\right)
-$$
-
-Positive values indicate a higher concentration of non-events, while negative values indicate a higher concentration of events.
-
-## What is IV?
-
-**Information Value (IV)** measures the predictive power of a variable.
-
-$$
-IV = \sum (\%\,\text{non-event} - \%\,\text{event}) \times WoE
-$$
-
-A common interpretation of IV is:
-
-| IV | Interpretation |
-|---|---|
-| < 0.02 | No predictive power |
-| 0.02 – 0.1 | Weak |
-| 0.1 – 0.3 | Medium |
-| 0.3 – 0.5 | Strong |
-| > 0.5 | Very strong |
-
-## WoE and IV for Discrete Variables
-
-I started by developing a function for discrete variables, and from there, I kept refining the approach. 
-
+I started off by building a function for discrete variables and kept improving from there.
 
 <script src="https://gist.github.com/DeborahBarbedo/08ed242316fe3b9ed3350460e2a140f3.js"></script>
 
-Next, I used data from the [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) competition to apply the WoE and IV function in Python. The results were quite interesting:
+So, I plugged some data from the [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic/data) competition into my Python WoE and IV function, and let me tell you, the results were seriously eye-opening!
 
 | Survived |        0 |        1 |    Distr |       WoE |       IV | IV_total |
 |---------:|---------:|---------:|---------:|----------:|---------:|---------:|
@@ -105,10 +65,10 @@ Next, I used data from the [Titanic - Machine Learning from Disaster](https://ww
 |        Q | 0.085610 | 0.088235 | 0.970249 | -0.030203 | 0.000079 | 0.122728 |
 |        S | 0.777778 | 0.638235 | 1.218638 |  0.197734 | 0.027592 | 0.122728 |
 
-The function generated a table that clearly highlights the WoE and IV values for each category, making it easier to understand which variables have a greater capacity to differentiate the event of interest.
 
-If you are working with this same dataset (or any other), I highly recommend testing this approach. It is a very useful tool for data exploration and improving predictive models.
+The function generated a table that clearly showed the WoE and IV values for each variable in the dataset, giving me a better understanding of which factors were most important in predicting survival rates.
 
+If you're working with this same dataset (or any other for that matter), I highly recommend giving this function a go. It's a powerful tool for gaining insights into your data and improving your predictive models.
 
 # WoE and IV for continuous variables
 
