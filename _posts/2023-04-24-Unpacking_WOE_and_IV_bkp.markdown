@@ -12,7 +12,6 @@ category: Data Analysis
 tags: [Data analysis, Logistic regression, Feature selection, Information Value (IV), Weight of Evidence (WoE), Predictive modeling, Titanic dataset ]
 # thumbnail image for post
 img: ":IV_and_WoE _Unpacking.jpg"
-img_alt: " "
 # disable comments on this page
 #comments_disable: true
 
@@ -37,94 +36,40 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-#published: false
-
-excerpt: "A step-by-step guide to building a consolidated Python function that automates Weight of Evidence (WoE) and Information Value (IV) calculations for both categorical and continuous data."
-
+published: false
 ---
 
-<<!-- outline-start -->
+<!-- outline-start -->
 
-Learn how to interpret **Weight of Evidence (WoE)** and **Information Value (IV)** for variable selection, predictive analysis, and logistic regression modeling.
+Unpacking WOE and IV Metrics for Variable Selection and Interpretation.
 
 <!-- outline-end -->
 
-Building a good classification model is not just about choosing algorithms, it’s essential to understand how variables behave and how they relate to the event of interest.
+Ever heard of WOE and IV? They stand for "Weight of Evidence" and "Value of Information" respectively, and are essential for building, selecting, and interpreting variables for logistic regression models. These metrics help you determine how well a variable predicts the response you're looking for, as well as which way the variable is skewing the response.
 
-That’s where **Weight of Evidence (WoE)** and **Information Value (IV)** come in. These two metrics are widely used in *credit scoring*, variable selection, and predictive modeling.
+# Metrics Presentation
 
-They help measure a variable’s discriminatory power and provide insights into the direction and strength of the relationship between predictors and the target variable.
+Remember the previous post on how to create [WoE and IV functions in Python](https://deborahbarbedo.github.io/posts/2023-04-09-WoE_IV_Python_Function)? Now I'll show you how to interpret the table and extract even more insights!
 
-In this article, you will learn:
-
-- how to interpret WoE and IV in practice;
-- how these metrics support the development of logistic regression models;
-- how to use WoE and IV for category grouping (*binning*);
-- how to transform variables into more interpretable and predictive features.
-
-To make the concepts more intuitive, we’ll use practical examples based on the dataset from the [Kaggle Titanic competition](https://www.kaggle.com/competitions/titanic/data).
+The table presents several metrics that are useful in evaluating the relationship between the study variable and the occurrence of negative or positive outcomes. Some of these metrics include:
+-	**Proportion of targets 0 or 1** for each sector of the study variable, which helps to understand the variable's distribution in relation to outcomes.
+-	**WoE**, a useful metric for assessing the variable's discrimination. The further away from 0 the WoE is, the more discriminating the variable is. A negative WoE indicates that the variable favor the occurrence of the target, while a positive WoE indicates that the variable does not favors the occurrence.
+-	**IV**, an Information Value that helps assess the predictivity of the variables. It is important to note that if a sector of the variable indicates a strong association with the target but appears infrequently in the population, its IV will not be high. The Total Information Value of a variable is the sum of the IVs for each sector studied.
 
 
+Additionally, there is a table indicating the classification of the IV values:
 
-## Metric Overview
-
-In the previous post on [how to calculate WoE and IV in Python](https://deborahbarbedo.github.io/posts/2023-04-09-WoE_IV_Python_Function), we explored how to build the functions responsible for computing these metrics. Now, we’ll focus on how to interpret the results and extract insights for logistic regression models.
-
-These metrics help evaluate how each explanatory variable relates to the response variable.
-
-The main metrics are:
-
----
-
-### **Class Proportions (`0` and `1`)**  
-  Represents the distribution of the target variable within each segment of the analyzed feature. This metric helps you understand how events are distributed across categories.
-
----  
-
-### **Weight of Evidence (WoE)**  
-  Measures the discriminatory power of each category. The farther the WoE value is from zero, the stronger the segment’s ability to distinguish between classes.
-
-  In general:
-
-  - `WoE > 0` — higher relative concentration of non-events (`target₀`);
-  - `WoE < 0` — higher relative concentration of events (`target₁`);
-  - `WoE ≈ 0` — similar distribution between classes.
-
----  
-
-### **Information Value (IV)**  
-  Measures the overall predictive power of the variable. The total IV is obtained by summing the contributions of each segment.
-
-  The table below presents a commonly used classification for interpreting the predictive power of a variable:
-
-| IV | Interpretation |
-|:---|:---|
-| `IV ≤ 0.02` | Variable with no predictive power |
-| `0.02 < IV ≤ 0.10` | Weak predictive power |
-| `0.10 < IV ≤ 0.30` | Medium predictive power |
-| `0.30 < IV ≤ 0.50` | Strong predictive power |
-| `IV > 0.50` | Very strong predictive power (*possible data leakage*) |
-
-Extremely high IV values may indicate information leakage (*data leakage*), especially when the variable has a direct relationship with the target event.
-
----
-
-It’s important to note that rare categories may show extreme WoE values but still contribute little to the total IV due to low population representation.
-
-These metrics are extremely useful in the following stages:
-
-- variable selection;
-- exploratory analysis;
-- feature engineering;
-- category grouping (*binning*);
-- interpretation of logistic regression models.
-
-By correctly interpreting WoE and IV, it becomes possible to build models that are more robust, interpretable, and aligned with the underlying data behavior.
+| IV        | Classification            |
+|-----------|---------------------------|
+| ≤ 0.02   | Not useful for prediction |
+| 0.02 -0.1 | Weak predictive power     |
+| 0.1 - 0.3 | Moderate predictive power |
+| 0.3 - 0.5 | Strong predictive power   |
+| \> 0.5     | Suspect predictive power  |
 
 
----
 
-
+These metrics enable you to gain an even clearer view of your data!
 
 
 # Grouping Categories

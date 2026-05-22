@@ -38,6 +38,7 @@ image_lazy_loader_on: true
 # to disable this page, simply set published: false or delete this file
 #published: false
 ---
+
 <!-- outline-start -->
 
 Aprenda a interpretar **Weight of Evidence (WoE)** e **Information Value (IV)** para seleção de variáveis, análise preditiva e construção de modelos de regressão logística.
