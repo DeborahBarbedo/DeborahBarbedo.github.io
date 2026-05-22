@@ -12,6 +12,7 @@ category: Machine Learning
 tags: [Support Vector Machines, SVM, Classification, Hyperplanes, Support Vectors, Soft Margin, Kernel Trick, Binary Classification, Multiclass Classification, VC Dimension]
 # thumbnail image for post
 img: ":SVM.jpg"
+img_alt: "Illustration of SVM classification showing decision boundary and support vectors"
 # disable comments on this page
 #comments_disable: true
 
@@ -52,28 +53,28 @@ The goal here is to present the main concepts behind the algorithm in an accessi
 By the end of this post, you will have a clear understanding of the algorithm’s purpose, its main characteristics, and the contexts in which it is commonly applied.
 
 
-# Vapnik-Chervonenkis (VC) Dimension
+## Vapnik-Chervonenkis (VC) Dimension
 
 The Vapnik-Chervonenkis (VC) dimension is a measure used to quantify the representational capacity of a classification model. Intuitively, **it indicates the maximum number of points that can be correctly separated in every possible configuration (*shattering*) by a given set of functions**.
 
 This concept was introduced by Vapnik and Chervonenkis in 1971 and is widely used to analyze the flexibility of statistical learning models. In general, the higher the VC dimension, the greater the model’s ability to represent complex patterns.
 
-## Example
+### Example
 
 The VC dimension of binary linear classifiers in a two-dimensional plane is equal to 3. This means that there are configurations of 3 points that can be correctly separated in all possible label combinations using a straight line.
 
 
-![Vapnik-Chervonenkis (VC) dimension](:SVM\DimensaoVCeng.png){:data-align="center"}
+![Illustration of Vapnik-Chervonenkis (VC) dimension in SVM classification](:SVM\DimensaoVCeng.png){:data-align="center"}
 
 
 However, when using 4 points, there are already some configurations that cannot be separated by a single linear function.
 
 
-![Example binary classification with 4 points](:SVM\Exemplo4.png){:data-align="center"}
+![Illustration of binary classification using four separable points](:SVM\Exemplo4.png){:data-align="center" alt="Illustration of binary classification using four separable points"}
 
 This measure is important because models with a very high VC dimension tend to memorize the data (*overfitting*), while models with a VC dimension that is too low may fail to learn relevant patterns (*underfitting*).
 
-# Hyperplane
+## Hyperplane
 
 A hyperplane divides the feature space into decision regions associated with different classes.
 
@@ -83,7 +84,7 @@ A hyperplane is a geometric structure of dimension $ \(k - 1\) $ embedded in a s
 - in a three-dimensional space, it corresponds to a plane;
 - in higher dimensions, it is the generalization of these ideas.
 
-![A hyperplane is a line in 2 dimensions. A hyperplane is a plane in 3 dimensions.](:SVM\Hiperplanodim2e3.png){:data-align="center"}
+![Illustration showing that a hyperplane is a line in two dimensions and a plane in three dimensions](:SVM\Hiperplanodim2e3.png){:data-align="center" alt="Illustration showing that a hyperplane is a line in two dimensions and a plane in three dimensions"}
 
 
 Connecting this idea with the previous topic, linear classifiers defined by hyperplanes in a space of dimension $ \(K\) $ have a VC dimension equal to $ \(K + 1\) $ . This helps explain the capacity of these models to separate different data configurations.
@@ -91,7 +92,7 @@ Connecting this idea with the previous topic, linear classifiers defined by hype
 In many classification problems, there are multiple hyperplanes capable of correctly separating the classes:
 
 
-![Hyperplane](:SVM\Hiperplanoseng.png){:data-align="center"}
+![Example of a separating hyperplane in Support Vector Machines](:SVM\Hiperplanoseng.png){:data-align="center" alt="Example of a separating hyperplane in Support Vector Machines"}
 
 
 The goal of SVM is to find the hyperplane that maximizes the separation margin between the classes. In other words, the algorithm searches for the decision boundary that is as far as possible from the points of both categories.
@@ -99,10 +100,10 @@ The goal of SVM is to find the hyperplane that maximizes the separation margin b
 A large margin acts as a "safety buffer": the larger the margin, the more robust the classifier tends to be against noise and unseen examples.
 
 
-![Hyperplane with the largest margin](:SVM\Hiperplanocommaiormargemeng.png){:data-align="center"}
+![Support Vector Machine hyperplane with maximum margin between classes](:SVM\Hiperplanocommaiormargemeng.png){:data-align="center" alt="Support Vector Machine hyperplane with maximum margin between classes"}
 
 
-# Support Vectors
+## Support Vectors
 
 Support vectors are the data points closest to the separating hyperplane. They are the points that **define the classifier’s maximum margin and, consequently, directly influence the position of the optimal hyperplane found by SVM**.
 
@@ -113,7 +114,7 @@ An important characteristic of SVM is that only the support vectors directly par
 ![Support Vectors](:SVM\Vetoresdesuporteeng.png){:data-align="center"}
 
 
-# Soft Margins
+## Soft Margins
 
 In many real-world problems, the data cannot be perfectly separated by a hyperplane. To handle this scenario, SVM can use *soft margins*, allowing some points to invade the separation margin or even be misclassified.
 
@@ -123,7 +124,7 @@ SVM therefore seeks a balance between:
 - maximizing the separation margin;
 - minimizing classification errors.
 
-![Soft Margins](:SVM\Margenssuaves.png){:data-align="center"}
+![Illustration of soft margins in Support Vector Machines](:SVM\Margenssuaves.png){:data-align="center" alt="Illustration of soft margins in Support Vector Machines"}
 
 
 This balance is controlled by the hyperparameter $ \(C\) $:
@@ -133,11 +134,11 @@ This balance is controlled by the hyperparameter $ \(C\) $:
 
 But what happens when the data cannot be separated linearly?
 
-# Nonlinear Data and Cover’s Theorem
+## Nonlinear Data and Cover’s Theorem
 
 Cover’s Theorem states that complex patterns are more likely to become linearly separable when projected into higher-dimensional spaces, provided that these spaces are not excessively populated.
 
-![Nonlinear Data](:SVM\TeoremadeCover.png){:data-align="center"}
+![Illustration of nonlinear data and feature space transformation in Support Vector Machines](:SVM\TeoremadeCover.png){:data-align="center" alt="Illustration of nonlinear data and feature space transformation in Support Vector Machines"}
 
 
 Based on this idea, we can apply transformations to the data in order to map it into a new feature space with higher dimensionality. For example, a transformation such as:
@@ -152,13 +153,13 @@ After this transformation, it becomes possible to apply a linear SVM in the new 
 
 
 
-![Feature space](:SVM\Espacodecaracterísticas.png){:data-align="center"}
+![Illustration of feature space transformation in Support Vector Machines](:SVM\Espacodecaracterísticas.png){:data-align="center" alt="Illustration of feature space transformation in Support Vector Machines"}
 
 
 However, explicitly working in high-dimensional spaces can be computationally expensive. This challenge motivated the development of the so-called *kernel trick*, which allows these transformations to be performed implicitly and efficiently.
 
 
-## Example: Quadratic Polynomial Kernel
+### Example: Quadratic Polynomial Kernel
 
 Consider the following kernel:
 
@@ -192,7 +193,7 @@ In other words, the kernel implicitly computes the inner product in a higher-dim
 
 This makes training computationally more efficient, especially when working with very large feature spaces.
 
-## Types of Kernels
+### Types of Kernels
 
 There are several types of kernel functions commonly used in SVM, among the most well-known are:
 
@@ -203,9 +204,8 @@ There are several types of kernel functions commonly used in SVM, among the most
 
 Each kernel implicitly defines a different type of transformation of the feature space.
 
-## Main Kernel Functions
 
-### Polynomial Kernel
+#### Polynomial Kernel
 
 The polynomial kernel allows the representation of nonlinear decision boundaries through polynomial combinations of the features.
 
@@ -220,7 +220,7 @@ where:
 
 ---
 
-### Radial Kernel (RBF)
+#### Radial Kernel (RBF)
 
 The radial kernel (*Radial Basis Function*) is one of the most widely used kernels in SVM because of its ability to model highly nonlinear relationships.
 
@@ -232,7 +232,7 @@ This kernel measures similarity based on the Euclidean distance between points: 
 
 ---
 
-### Sigmoid Kernel (Hyperbolic Tangent)
+#### Sigmoid Kernel (Hyperbolic Tangent)
 
 The sigmoid kernel behaves similarly to artificial neurons used in neural networks.
 
@@ -244,7 +244,7 @@ Its use is less common compared to polynomial and radial kernels.
 
 But what happens when we have more than two classes?
 
-# Multiclass SVM Classification
+## Multiclass SVM Classification
 
 SVM was originally developed for binary classification problems. However, several strategies allow its extension to scenarios involving multiple classes.
 
@@ -254,7 +254,7 @@ SVM was originally developed for binary classification problems. However, severa
 
 Among the main methods used, the following stand out:
 
-## One-vs-Rest (OvR)
+### One-vs-Rest (OvR)
 
 In this method, a classifier is trained to separate one specific class from all the others. The process is repeated for each class in the problem.
 
@@ -265,7 +265,7 @@ For example, in a problem with three classes  $ \(A\) $ ,  $ \(B\) $ , and  $ \(
 
 ---
 
-## One-vs-One (OvO)
+### One-vs-One (OvO)
 
 In this approach, a classifier is trained for every possible pair of classes.
 
@@ -278,7 +278,7 @@ The final decision is usually made through a voting process among the classifier
 
 ---
 
-## DAG-SVM
+### DAG-SVM
 
 *DAG-SVM* (*Directed Acyclic Graph SVM*) organizes multiple binary classifiers into a directed acyclic graph structure based on sequential binary classifications.
 
@@ -286,7 +286,7 @@ At each stage, one class is eliminated until only the final class assigned to th
 
 ---
 
-# References:
+## References:
 
 * Shalev-Shwartz, Shai, and Shai Ben-David. Understanding Machine Learning: From Theory to Algorithms. Cambridge University Press, 2014. [[link]](https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/)
 
