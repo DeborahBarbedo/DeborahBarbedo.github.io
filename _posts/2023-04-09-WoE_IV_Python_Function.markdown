@@ -6,7 +6,7 @@ title: "Building a Python Function to Calculate WoE and IV"
 # Post specific settings
 category: Data Analysis
 tags: [Python, Data Analysis, Logistic Regression, Feature Selection, Information Value, Weight of Evidence, Predictive Modeling, Titanic Dataset, WoE, IV]
-img: ":IV_and_WoE_functions_in_Python.jpg"
+img: ":IV_and_WoE.jpg"
 img_alt: "Diagram or code snippet representing WoE and IV calculations in Python"
 
 # Publish date
