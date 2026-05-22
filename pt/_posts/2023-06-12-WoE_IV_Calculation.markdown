@@ -12,6 +12,7 @@ category: Ciência de Dados
 tags: [Python, Regressão Logística, Feature Engineering, Seleção de Variáveis, Weight of Evidence, Information Value, WoE, IV, Titanic Dataset, Credit Scoring]
 # thumbnail image for post
 img: ":IV_and_WoE.jpg"
+img_alt: "Guia completo de WoE e IV em Python para regressão logística e credit scoring"
 # disable comments on this page
 #comments_disable: true
 

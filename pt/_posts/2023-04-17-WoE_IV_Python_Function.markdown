@@ -12,6 +12,7 @@ category: Análise de dados
 tags: [Python, Ciência de Dados, Machine Learning, Regressão Logística, Feature Engineering, Seleção de Variáveis, Weight of Evidence, Information Value, WoE, IV, Titanic Dataset]
 # thumbnail image for post
 img: ":IV_and_WoE.jpg"
+img_alt: "Cálculo de Weight of Evidence (WoE) e Information Value (IV) em Python para seleção de variáveis"
 # disable comments on this page
 #comments_disable: true
 

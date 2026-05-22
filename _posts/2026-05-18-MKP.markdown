@@ -12,7 +12,7 @@ category: Optimization
 tags: [Combinatorial Optimization, Multiple Knapsack Problem, Google OR-Tools, Python, Integer Linear Programming, SCIP ]
 # thumbnail image for post
 img: ":SMKP.jpg"
-img_alt: "Context-aware Multiple Knapsack Problem optimization using environmental affinities and Google OR-Tools" 
+img_alt: "Diagram illustrating a context-aware Multiple Knapsack Problem with environmental affinities" 
 # disable comments on this page
 #comments_disable: true
 
