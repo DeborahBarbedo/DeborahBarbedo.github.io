@@ -95,8 +95,6 @@ The function generated a table that clearly highlights the WoE and IV values for
 If you are working with this same dataset (or any other), I highly recommend testing this approach. It is a very useful tool for data exploration and improving predictive models.
 
 
-# WoE and IV for continuous variables
-
 ## WoE and IV for Continuous Variables
 
 When it comes to continuous variables, the process becomes a bit more challenging, mainly when defining the best discretization strategy. This is because different problems can require different approaches to binning.
