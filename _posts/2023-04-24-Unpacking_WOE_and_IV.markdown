@@ -30,7 +30,7 @@ image_lazy_loader_on: true
 
 ---
 
-<<!-- outline-start -->
+<!-- outline-start -->
 
 Learn how to interpret **Weight of Evidence (WoE)** and **Information Value (IV)** for variable selection, predictive analysis, and logistic regression modeling.
 
