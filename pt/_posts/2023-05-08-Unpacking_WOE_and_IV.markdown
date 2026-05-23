@@ -69,50 +69,49 @@ Essas métricas ajudam a avaliar como cada variável explicativa se relaciona co
 
 As principais métricas são:
 
-- **Proporção das classes (`0` e `1`)**  
+---
+
+### **Proporção das classes (`0` e `1`)**  
   Representa a distribuição da variável resposta dentro de cada segmento da variável analisada. Essa métrica ajuda a entender como os eventos estão distribuídos entre as categorias.
 
-- **Weight of Evidence (WoE)**  
+---
+
+### **Weight of Evidence (WoE)**  
   Mede o poder discriminatório de cada categoria. Quanto mais distante de zero for o valor de WoE, maior tende a ser a capacidade discriminatória do segmento.
 
   Em geral:
 
-  - `WoE > 0` - maior concentração relativa de não eventos (`target₀`);
-  - `WoE < 0` - maior concentração relativa de eventos (`target₁`);
-  - `WoE ≈ 0` - distribuição semelhante entre as classes.
+  | WoE | Interpretation |
+  |:---|:---|
+  | `WoE > 0` | maior concentração relativa de não eventos (`target₀`) |
+  | `WoE ≈ 0` | distribuição semelhante entre as classes |
+  | `WoE < 0` | maior concentração relativa de eventos (`target₁`) |
 
-- **Information Value (IV)**  
+
+---
+
+### **Information Value (IV)**  
   Mede a capacidade preditiva da variável como um todo. O IV total é obtido pela soma das contribuições de cada segmento.
 
-  É importante observar que categorias raras podem apresentar WoE extremos, mas ainda assim contribuírem pouco para o IV total devido à baixa representatividade populacional.
+
+  A tabela abaixo apresenta uma classificação frequentemente utilizada para interpretação do poder preditivo de uma variável:
+
+  | IV | Interpretação |
+  |:---|:---|
+  | `IV ≤ 0.02` | Variável sem poder preditivo |
+  | `0.02 < IV ≤ 0.10` | Poder preditivo fraco |
+  | `0.10 < IV ≤ 0.30` | Poder preditivo médio |
+  | `0.30 < IV ≤ 0.50` | Poder preditivo forte |
+  | `IV > 0.50` | Poder preditivo muito forte (*possível data leakage*) |
+
+  Valores excessivamente altos de IV podem indicar vazamento de informação (*data leakage*), especialmente quando a variável possui relação direta com o evento alvo.
 
 ---
 
-### Interpretação dos Valores de IV
+É importante observar que **categorias raras** podem apresentar WoE extremos, mas ainda assim contribuírem pouco para o IV total devido à **baixa representatividade populacional**. 
 
-A tabela abaixo apresenta uma classificação frequentemente utilizada para interpretação do poder preditivo de uma variável:
+Essas métricas são extremamente úteis em etapas de de modelagem, destacando-se na **análise exploratória**, no ***feature engineering***, no próprio **agrupamento de categorias (*binning*)** e na **seleção de variáveis**. No fim das contas, ao interpretar corretamente o WoE e o IV, torna-se possível facilitar a **interpretação de modelos de regressão logística** e construir modelos mais robustos e alinhados ao comportamento dos dados.
 
-| IV | Interpretação |
-|:---|:---|
-| `IV ≤ 0.02` | Variável sem poder preditivo |
-| `0.02 < IV ≤ 0.10` | Poder preditivo fraco |
-| `0.10 < IV ≤ 0.30` | Poder preditivo médio |
-| `0.30 < IV ≤ 0.50` | Poder preditivo forte |
-| `IV > 0.50` | Poder preditivo muito forte (*possível data leakage*) |
-
-Valores excessivamente altos de IV podem indicar vazamento de informação (*data leakage*), especialmente quando a variável possui relação direta com o evento alvo.
-
----
-
-Essas métricas são extremamente úteis em etapas de:
-
-- seleção de variáveis;
-- análise exploratória;
-- *feature engineering*;
-- agrupamento de categorias (*binning*);
-- interpretação de modelos de regressão logística.
-
-Ao interpretar corretamente WoE e IV, torna-se possível construir modelos mais robustos, interpretáveis e alinhados ao comportamento dos dados.
 
 ## Criação de Variáveis por Agrupamento (*Binning*)
 
@@ -120,14 +119,9 @@ O agrupamento de categorias (*binning*) é uma estratégia amplamente utilizada 
 
 A ideia consiste em combinar categorias ou intervalos que apresentem comportamento semelhante em relação à variável resposta, utilizando métricas como **Weight of Evidence (WoE)** e **Information Value (IV)** como apoio na análise.
 
-Esse processo oferece diversas vantagens:
 
-- simplificação das variáveis;
-- redução da dimensionalidade;
-- diminuição do risco de *overfitting*;
-- maior estabilidade estatística;
-- melhoria na interpretabilidade do modelo;
-- relações mais lineares entre as variáveis e o logit da regressão logística.
+Ao adotar essa abordagem, o modelo ganha em robustez. Esse processo simplifica as variáveis e reduz a dimensionalidade dos dados, o que consequentemente *diminui o risco de overfitting* e traz maior estabilidade estatística. Além disso, o binning melhora a interpretabilidade do modelo e ajuda a estabelecer relações mais lineares entre as variáveis explicativas e o logit da regressão logística.
+
 
 Entretanto, alguns cuidados são importantes durante o agrupamento:
 
@@ -136,14 +130,7 @@ Entretanto, alguns cuidados são importantes durante o agrupamento:
 - agrupamentos excessivos podem reduzir significativamente o poder preditivo da variável;
 - categorias muito raras podem gerar WoE instáveis.
 
-Em geral, ao agrupar categorias, ocorre uma redução natural do **Information Value (IV)**, já que parte da capacidade discriminatória da variável é suavizada. Por isso, o objetivo do *binning* deve ser encontrar um equilíbrio entre:
-
-- simplificação do modelo;
-- estabilidade estatística;
-- manutenção da informação relevante.
-
-Quando realizado corretamente, o agrupamento de categorias pode melhorar significativamente a robustez e a capacidade de generalização do modelo preditivo.
-
+Essa manipulação traz um dilema conhecido: ao agrupar categorias, ocorre uma redução natural do **Information Value (IV)**, já que parte da capacidade discriminatória original da variável é suavizada. Por isso, o grande desafio do *binning* é encontrar o ponto de equilíbrio entre a simplificação do modelo, a estabilidade estatística e a manutenção da informação relevante. Quando realizado corretamente, o agrupamento de categorias pode melhorar significativamente a robustez e a capacidade de generalização do modelo preditivo.
 
 
 ## Aplicação Prática
@@ -219,29 +206,18 @@ Exemplo:
 | ... | ... | ... | ... | ... | ... |
 | 891 | 0 | male | 7.7500 | 0 | 1 |
 
-Nesse exemplo:
+Nesse cenário, criamos variáveis binárias (*flags*) para simplificar a informação:
 
 - `FLG_female` identifica passageiros do sexo feminino;
 - `FLG_Fare_leq_10.5` identifica tarifas menores ou iguais a `10.5`.
 
-Essas transformações podem melhorar:
-
-- interpretabilidade do modelo;
-- estabilidade estatística;
-- generalização;
-- desempenho preditivo.
+Esse tipo de transformação potencializa a **interpretabilidade do modelo** e garante maior **estabilidade estatística**. Além disso, ao reduzir o ruído dos dados originais, a abordagem melhora a **generalização** e o **desempenho preditivo** final do algoritmo.
 
 ---
 
 ## Conclusão
 
-As métricas **Weight of Evidence (WoE)** e **Information Value (IV)** são ferramentas extremamente úteis para:
-
-- seleção de variáveis;
-- análise exploratória;
-- agrupamento de categorias (*binning*);
-- criação de variáveis derivadas;
-- interpretação de modelos de regressão logística.
+As métricas **Weight of Evidence (WoE)** e **Information Value (IV)** são ferramentas extremamente úteis para seleção de variáveis, análise exploratória, agrupamento de categorias (*binning*), criação de variáveis derivadas e interpretação de modelos de regressão logística.
 
 Além de contribuírem para modelos mais interpretáveis e robustos, WoE e IV permitem compreender o comportamento das variáveis ao longo dos diferentes segmentos da população, auxiliando tanto na seleção de atributos quanto na engenharia de variáveis para problemas de classificação binária.
 
