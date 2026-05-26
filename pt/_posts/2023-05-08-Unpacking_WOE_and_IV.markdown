@@ -81,7 +81,7 @@ As principais métricas são:
 
   Em geral:
 
-  | WoE | Interpretation |
+  | WoE | Interpretação |
   |:---|:---|
   | `WoE > 0` | maior concentração relativa de não eventos (`target₀`) |
   | `WoE ≈ 0` | distribuição semelhante entre as classes |
