@@ -1,7 +1,8 @@
 ---
 # multilingual page pair id, this must pair with translations of this page. (This name must be unique)
 lng_pair: 3_WoE_IV_Python_calculation
-title: "WoE e IV em Python: Guia Completo para Regressão Logística"
+title: "Como Calcular WoE e IV: Guia Completo para Regressão Logística"
+
 
 # post specific
 # if not specified, .name will be used from _data/owner/[language].yml
@@ -12,7 +13,7 @@ category: Ciência de Dados
 tags: [Python, Regressão Logística, Feature Engineering, Seleção de Variáveis, Weight of Evidence, Information Value, WoE, IV, Titanic Dataset, Credit Scoring]
 # thumbnail image for post
 img: ":IV_and_WoE.jpg"
-img_alt: "Guia completo de WoE e IV em Python para regressão logística e credit scoring"
+img_alt: "Exemplo prático de cálculo de WoE e IV em Python usando o Titanic Dataset para modelos de credit scoring e regressão logística"
 # disable comments on this page
 #comments_disable: true
 
@@ -75,14 +76,15 @@ Onde:
 
 ## Percentual de Cada Classe por Segmento
 
-O percentual de uma classe dentro de um segmento é calculado pela proporção daquele grupo em relação ao total da respectiva classe.
+O percentual de uma classe dentro de um segmento corresponde à proporção daquele grupo em relação ao total da respectiva classe. Essas proporções representam a **distribuição de não‑eventos** (`target₀`) e **eventos** (`target₁`) em cada segmento.
+
 
 Para a classe `target₀`:
 
 $$
-\%target_{0,sector_i}
+\%target_{0,segment_i}
 =
-\frac{target_{0,sector_i}}{target₀}
+\frac{target_{0,segment_i}}{target₀}
 $$
 
 Considerando o segmento **female**:
@@ -98,14 +100,15 @@ $$
 
 Ou seja, aproximadamente **14,75%** dos passageiros que não sobreviveram eram mulheres.
 
+
 ---
 
 Para a classe `target₁`:
 
 $$
-\%target_{1,sector_i}
+\%target_{1,segment_i}
 =
-\frac{target_{1,sector_i}}{target₁}
+\frac{target_{1,segment_i}}{target₁}
 $$
 
 No segmento **female**:
@@ -120,6 +123,7 @@ $$
 $$
 
 Assim, aproximadamente **68,13%** dos passageiros sobreviventes eram mulheres.
+
 
 ---
 
@@ -144,14 +148,15 @@ Essas distribuições serão utilizadas posteriormente no cálculo do **Weight o
 
 ## Percentual da População por Segmento
 
-O percentual populacional representa a participação de cada segmento em relação ao total da amostra.
+O percentual populacional representa a participação de cada segmento em relação ao total da amostra. Essa medida será utilizada posteriormente no cálculo da **razão entre distribuições**, componente essencial do WoE.
+
 
 Essa métrica é calculada por:
 
 $$
-\%population_{sector_i}
+\%population_{segment_i}
 =
-\frac{population_{sector_i}}{population}
+\frac{population_{segment_i}}{population}
 $$
 
 Para o segmento **female**:
@@ -165,11 +170,12 @@ $$
 \approx 0.3524
 $$
 
-Portanto, mulheres representam aproximadamente **35,24%** da população analisada.
+Portanto, mulheres representam aproximadamente **35,24%** da população analisada, ou seja, cerca de 35 a cada 100 passageiros.
+
 
 ---
 
-## Distribuição Populacional por Segmento
+### Distribuição Populacional por Segmento
 
 | Segmento | População | % População |
 |:----------|-----------:|-------------:|
@@ -179,21 +185,33 @@ Portanto, mulheres representam aproximadamente **35,24%** da população analisa
 
 Essa distribuição ajuda a entender a representatividade de cada segmento dentro da base de dados, sendo útil na interpretação do **Weight of Evidence (WoE)** e do **Information Value (IV)**.
 
+Ela será comparada às distribuições de `target₀` e `target₁` para identificar diferenças entre a população geral e o comportamento das classes.
+
+
 ## Razão entre Distribuições (*Distribution Ratio*)
 
 A razão entre distribuições compara a participação de um segmento entre as classes `target₀` e `target₁`.
 
+
 Ela é definida por:
 
 $$
-Distr_{sector_i}
+Distr_{segment_i}
 =
 \frac{
-\%target_{0,sector_i}
+\%target_{0,segment_i}
 }{
-\%target_{1,sector_i}
+\%target_{1,segment_i}
 }
 $$
+
+Valores menores que 1 indicam que o segmento é proporcionalmente mais associado ao evento `target₁`, enquanto valores maiores que 1 indicam maior associação ao não‑evento `target₀`.
+
+  | Distribution Ratio | Interpretação |
+  |:---|:---|
+  | Distr < 1 | o segmento é **menos representado** entre os não‑eventos (`target₀`) |
+  | Distr > 1 | o segmento é **mais representado** entre os não‑eventos (`target₀`) |
+
 
 Para o segmento **female**:
 
@@ -204,7 +222,7 @@ Distr_{female}
 \approx 0.2166
 $$
 
-Isso indica que a participação das mulheres entre os passageiros que não sobreviveram é significativamente menor do que entre os passageiros sobreviventes.
+Isso indica que a participação das mulheres entre os passageiros que não sobreviveram é proporcionalmente muito menor do que entre os passageiros que sobreviveram, ou seja, `female` está mais associada ao evento (`target₁`).
 
 ---
 
@@ -223,28 +241,31 @@ Valores:
 
 ## Weight of Evidence (WoE)
 
-O **Weight of Evidence (WoE)** é obtido aplicando o logaritmo natural à razão entre distribuições.
+
+O **Weight of Evidence (WoE)** é obtido aplicando o logaritmo natural à razão entre distribuições. Ele quantifica a evidência de que um segmento está mais associado ao evento (`target₁`) ou ao não‑evento (`target₀`).
+
+O uso do logaritmo torna a escala simétrica em torno de zero, o que facilita a interpretação e melhora a estabilidade em modelos lineares como a regressão logística.
 
 Sua definição é dada por:
 
 $$
-WoE_{sector_i}
+WoE_{segment_i}
 =
 \ln\left(
-Distr_{sector_i}
+Distr_{segment_i}
 \right)
 $$
 
 Substituindo a definição de `Distr`:
 
 $$
-WoE_{sector_i}
+WoE_{segment_i}
 =
 \ln\left(
 \frac{
-\%target_{0,sector_i}
+\%target_{0,segment_i}
 }{
-\%target_{1,sector_i}
+\%target_{1,segment_i}
 }
 \right)
 $$
@@ -258,7 +279,9 @@ WoE_{female}
 \approx -1.5299
 $$
 
-O valor negativo indica que o segmento **female** possui maior concentração relativa em `target₁` do que em `target₀`.
+
+O valor negativo indica que o segmento **female** possui maior concentração relativa em `target₁` do que em `target₀`, ou seja, há **evidência a favor do evento**.
+
 
 ---
 
@@ -279,38 +302,39 @@ Interpretação:
 ## Information Value (IV)
 
 O **Information Value (IV)** mede o poder preditivo de uma variável em relação à variável alvo.
+Ele combina a intensidade da evidência (WoE) com o tamanho da diferença entre as distribuições, capturando tanto a força quanto a relevância estatística do segmento.
 
 A contribuição de cada segmento para o IV é calculada por:
 
 $$
-IV_{sector_i}
+IV_{segment_i}
 =
-WoE_{sector_i}
+WoE_{segment_i}
 \times
 \left(
-\%target_{0,sector_i}
+\%target_{0,segment_i}
 -
-\%target_{1,sector_i}
+\%target_{1,segment_i}
 \right)
 $$
 
 Substituindo a definição de `WoE`:
 
 $$
-IV_{sector_i}
+IV_{segment_i}
 =
 \ln\left(
 \frac{
-\%target_{0,sector_i}
+\%target_{0,segment_i}
 }{
-\%target_{1,sector_i}
+\%target_{1,segment_i}
 }
 \right)
 \times
 \left(
-\%target_{0,sector_i}
+\%target_{0,segment_i}
 -
-\%target_{1,sector_i}
+\%target_{1,segment_i}
 \right)
 $$
 
@@ -327,7 +351,7 @@ $$
 
 ---
 
-## Contribuição do IV por Segmento
+### Contribuição do IV por Segmento
 
 | Segmento | `WoE` | IV |
 |:----------|------:|------:|
@@ -337,11 +361,14 @@ $$
 
 O **Information Value total** da variável é obtido pela soma das contribuições de todos os segmentos:
 
+
 $$
 IV
 =
-\sum_i IV_{sector_i}
+\sum_i IV_{segment_i}
 $$
+
+Como o IV é aditivo, variáveis com muitos segmentos podem inflar artificialmente o valor total.
 
 Em geral:
 
@@ -351,7 +378,7 @@ Em geral:
 - `0.3 ≤ IV < 0.5`: poder forte;
 - `IV ≥ 0.5`: poder muito forte.
 
-No exemplo apresentado, a variável **gênero** possui um IV igual a **1.3410**, indicando altíssimo poder discriminatório.
+No exemplo apresentado, a variável **gênero** possui um IV igual a **1.3410**, indicando altíssimo poder discriminatório, valores tão elevados podem inclusive sugerir *data leakage* em cenários reais.
 
 
 ## Considerações Importantes
@@ -363,6 +390,8 @@ Ao utilizar **Weight of Evidence (WoE)** e **Information Value (IV)**, alguns cu
 - variáveis com IV excessivamente alto podem indicar *data leakage*;
 - o WoE é amplamente utilizado em regressão logística por favorecer relações mais lineares entre as variáveis e o logit;
 - processos de *binning* podem impactar significativamente os valores de WoE e IV.
+
+Embora WoE tenha sido criado para regressão logística, ele também pode ser útil em modelos de árvore ao reduzir cardinalidade e ruído.
 
 ---
 
