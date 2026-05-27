@@ -127,7 +127,7 @@ Assim, aproximadamente **68,13%** dos passageiros sobreviventes eram mulheres.
 
 ---
 
-## Distribuição Percentual por Segmento
+### Distribuição Percentual por Segmento
 
 | Segmento | `target₀` | `target₁` | % `target₀` | % `target₁` |
 |:----------|-----------:|-----------:|-------------:|-------------:|
@@ -226,7 +226,7 @@ Isso indica que a participação das mulheres entre os passageiros que não sobr
 
 ---
 
-## Razão entre Distribuições por Segmento
+### Razão entre Distribuições por Segmento
 
 | Segmento | % `target₀` | % `target₁` | `Distr` |
 |:----------|-------------:|-------------:|---------:|
@@ -285,7 +285,7 @@ O valor negativo indica que o segmento **female** possui maior concentração re
 
 ---
 
-## Weight of Evidence por Segmento
+### Weight of Evidence por Segmento
 
 | Segmento | `Distr` | `WoE` |
 |:----------|---------:|------:|
